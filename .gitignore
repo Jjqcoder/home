@@ -1,0 +1,39 @@
+# 忽略操作系统自动生成的文件  
+.DS_Store  
+Thumbs.db  
+  
+# 忽略编译生成的文件和目录  
+*.o  
+*.so  
+*.a  
+*.pyc  
+__pycache__/  
+build/  
+dist/  
+  
+# 忽略编辑器临时文件  
+*.swp  
+*.tmp  
+*.log  
+*.bak  
+  
+# 忽略 IDE 配置文件和目录  
+.idea/  
+.vscode/  
+  
+# 忽略数据文件或数据库  
+*.db  
+data/  
+  
+# 忽略其他不需要追踪的文件  
+.env  
+.env.example  
+  
+# 忽略 node_modules 目录和 package-lock.json 文件（如果你使用 Node.js）  
+node_modules/  
+package-lock.json  
+  
+# 忽略其他特定于项目的文件或目录  
+# 例如，如果你使用 Docker，你可能想要忽略以下文件：  
+docker-compose.override.yml  
+.dockerignore

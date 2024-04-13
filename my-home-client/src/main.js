@@ -1,8 +1,7 @@
 import { createApp } from 'vue'
-import './style.css'
+// 将下方的css注释掉，element-plus的布局才可以生效
+// import './style.css'
 import App from './App.vue'
 import router from './router' // 导入路由 
-import ElementPlus from 'element-plus' // 引入Element-Plus
 
-
-createApp(App).use(router).use(ElementPlus).mount('#app')
+createApp(App).use(router).mount('#app')

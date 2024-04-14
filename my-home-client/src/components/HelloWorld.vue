@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button>你好，欢迎来到我的网站🎈 </el-button>
+    <h1>你好，欢迎来到我的网站🎈🎈🎈🎈</h1>
   </div>
 </template>
 

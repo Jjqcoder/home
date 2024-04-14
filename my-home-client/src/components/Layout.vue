@@ -2,11 +2,11 @@
   <el-row>
     <!-- 一共有24份 -->
     <!-- 左边留白 -->
-    <el-col :span="4" style="background:white">
+    <el-col :span="2" style="background:white">
       <div class="grid-content" />
     </el-col>
     <!-- 导航栏左侧-LOGO -->
-    <el-col :span="4" style="background:Beige">
+    <el-col :span="6" style="background:Beige">
       <div class="grid-content ep-bg-purple-dark my-home"><span class="my-logo">Home</span></div>
     </el-col>
     <!-- 导航栏中心 -->
@@ -14,23 +14,24 @@
       <div class="grid-content"><span class="my-search">搜索本站</span></div>
     </el-col>
     <!-- 导航栏右侧-存放下拉框，放入网站相关信息、功能 -->
-    <el-col :span="4" style="background:Beige">
+    <el-col :span="6" style="background:Beige">
       <div class="grid-content"><span class="my-more">更多</span></div>
     </el-col>
     <!-- 右边留白 -->
-    <el-col :span="4" style="background:Khaki2">
+    <el-col :span="2" style="background:Khaki2">
       <div class="grid-content" />
     </el-col>
   </el-row>
   <el-row>
-    <el-col :span="4" style="background:white" class="content">
+    <el-col :span="2" style="background:white" class="content">
       <div class="grid-content" />
     </el-col>
-    <el-col :span="16" style="background:Cornsilk" class="content">
+    <el-col :span="20" style="background:Cornsilk" class="content">
       <span class="my-content">主体内容</span>
       <div class="grid-content" />
     </el-col>
-    <el-col :span="4" style="background:white" class="content">
+    <!-- 右边留白 -->
+    <el-col :span="2" style="background:white" class="content">
       <div class="grid-content" />
     </el-col>
   </el-row>

@@ -30,6 +30,15 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>3.4.3</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -39,6 +48,27 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!--MySQL-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.25</version>
+            </dependency>
+
+            <!--MyBatis-Plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.4.3</version>
+            </dependency>
+            <!--Lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
+                <version>1.18.20</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

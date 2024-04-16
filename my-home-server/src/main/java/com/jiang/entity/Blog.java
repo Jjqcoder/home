@@ -16,13 +16,13 @@ public class Blog {
     private Integer id;
     @TableField("user_name") // 指定字段名与数据库字段
     private Date blogCreateTime;
-    @TableField("user_name")
+    @TableField("blogUpdateTime")
     private Date blogUpdateTime;
-    @TableField("user_name")
+    @TableField("blogTitle")
     private String blogTitle;
-    @TableField("user_name")
+    @TableField("blogContent")
     private String blogContent;
-    @TableField("user_name")
+    @TableField("isDelete")
     private String isDelete;
 
 }

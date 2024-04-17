@@ -4,7 +4,6 @@ import com.jiang.entity.Blog;
 
 import java.util.List;
 
-
 public interface BlogService{
     public Blog getBlogById(Integer id);
 

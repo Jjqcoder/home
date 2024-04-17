@@ -1,3 +1,10 @@
+
+
+<script setup>
+// 引入`更多功能`组件
+import MoreFunc from './MoreFunc.vue';
+</script>
+
 <template>
   <el-row>
     <!-- 一共有24份 -->
@@ -15,7 +22,9 @@
     </el-col>
     <!-- 导航栏右侧-存放下拉框，放入网站相关信息、功能 -->
     <el-col :span="6" style="background:Beige">
-      <div class="grid-content"><span class="my-more">更多</span></div>
+      <div class="grid-content"><span class="my-more">
+          <MoreFunc />
+        </span></div>
     </el-col>
     <!-- 右边留白 -->
     <el-col :span="2" style="background:Khaki2">

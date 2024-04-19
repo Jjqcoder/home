@@ -2,7 +2,7 @@
 
 <script setup>
 // 引入`更多功能`组件
-import MoreFunc from './MoreFunc.vue';
+import MoreFunc from './more/index.vue';
 </script>
 
 <template>
@@ -36,7 +36,12 @@ import MoreFunc from './MoreFunc.vue';
       <div class="grid-content" />
     </el-col>
     <el-col :span="20" style="background:Cornsilk" class="content">
-      <span class="my-content">主体内容</span>
+      <span class="my-content">
+        <!-- 主体内容 -->
+        <router-view></router-view>
+      </span>
+      <!-- 存放主体内容 -->
+
       <div class="grid-content" />
     </el-col>
     <!-- 右边留白 -->

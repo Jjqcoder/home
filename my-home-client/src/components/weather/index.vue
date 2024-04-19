@@ -1,10 +1,17 @@
 <template>
-  查天气
+  <div id="app">
+    <el-cascader size="large" :options="pcTextArr" v-model="selectedOptions">
+    </el-cascader>
+  </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup>
+import { pcTextArr } from 'element-china-area-data';
+import { ref, watch } from 'vue';
 
-<style>
-</style>
+const selectedOptions = ref([]);
+
+watch(selectedOptions, (newValue, oldValue) => {
+  console.log(oldValue, newValue);
+});
+</script>

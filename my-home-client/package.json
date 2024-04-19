@@ -9,6 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "element-china-area-data": "^6.1.0",
         "element-plus": "^2.7.0",
         "vue": "^3.4.21",
         "vue-router": "4"

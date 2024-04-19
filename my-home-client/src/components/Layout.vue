@@ -92,14 +92,4 @@ import MoreFunc from './more/index.vue';
   font-size: 100%; // 继承父元素的字体大小
   color: DarkRed;
 }
-
-.my-content {
-  margin-top: 5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 100%; // 继承父元素的字体大小
-  color: DarkRed;
-}
 </style>

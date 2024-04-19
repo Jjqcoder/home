@@ -20,7 +20,7 @@ public class WeatherController {
     @GetMapping("/weather/{cityCode}")
     public Object getWeatherByCity(@PathVariable String cityCode) {
 
-        return myService.getDataFromExternalService(cityCode, "53d29f89e746948e6e67559c22429e5b");
+        return myService.getDataFromExternalService(cityCode);
 
     }
 

@@ -23,7 +23,6 @@
           <router-link to="/about">
             <el-dropdown-item>🤟关于我</el-dropdown-item>
           </router-link>
-
         </el-dropdown-menu>
       </template>
     </el-dropdown>

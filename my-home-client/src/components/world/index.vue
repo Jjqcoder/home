@@ -1,5 +1,5 @@
 <template>
-  world
+  逛地球
 </template>
 
 <script>

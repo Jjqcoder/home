@@ -35,6 +35,13 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+<!--        引入easyexcel-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>3.3.4</version>
+        </dependency>
+
         <!--MySQL-->
         <dependency>
             <groupId>mysql</groupId>

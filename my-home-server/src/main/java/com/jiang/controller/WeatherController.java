@@ -1,12 +1,14 @@
 package com.jiang.controller;
 
-import com.jiang.config.MyEnvProperties;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.context.AnalysisContext;
+import com.alibaba.excel.event.AnalysisEventListener;
+import com.alibaba.excel.read.builder.ExcelReaderBuilder;
+import com.alibaba.excel.read.builder.ExcelReaderSheetBuilder;
+import com.jiang.entity.WeatherData;
 import com.jiang.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
 * @author Jiangjianqing
@@ -37,7 +39,36 @@ public class WeatherController {
         // 首先，需要将前端传递过来的省份、城市名称对应编码，然后调用服务层获取天气信息，再将信息返回到前端进行渲染
         // 使用城市、查询对应城市的天气信息
 
-        return "你好";
+        // 预先定义城市编码
+        final String[] adCode = {""};
+
+        // 开始读Excel
+        // readWeatherBook是工作簿对象，后续需要获取工作表
+        ExcelReaderBuilder readWeatherBook = EasyExcel.read("AMap_adcode_citycode.xlsx", WeatherData.class, new AnalysisEventListener<WeatherData>(){
+            @Override
+            public void invoke(WeatherData weatherData, AnalysisContext analysisContext) {
+                if (city.equals(weatherData.getName())) {
+                    adCode[0] = weatherData.getAdcCode();
+//                    System.out.println(adCode[0]);
+
+                }
+            }
+
+            @Override
+            public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+
+            }
+        } );
+        // 获取数据表！
+        ExcelReaderSheetBuilder sheet = readWeatherBook.sheet();
+        // 开始读取！
+        sheet.doRead();
+        // 读取完毕，成功获取到地区编码
+//        System.out.println("外部获取！"+adCode[0]);
+        // 返回adCode，由前端进行第二次请求——天气信息
+        return adCode[0];
+
     }
+
 
 }

@@ -19,17 +19,27 @@ const selectedOptions = ref([]);
 
 // 监听所选的内容
 watch(selectedOptions, (newValue, oldValue) => {
-  console.log(newValue[0], newValue[1]);
+  // console.log(newValue[0], newValue[1]);
+
+  // 提前编码，解决乱码问题
+  // const provinceCode = encodeURIComponent(newValue[0]) + '';
+  // const cityCode = encodeURIComponent(newValue[1]) + '';
+
   // 请求后端接口，获取天气数据
   axios
     .get('http://127.0.0.1:8080/weather', {
       params: {
-        provinceCode: newValue[0],
-        cityCode: newValue[1],
+        province: newValue[0],
+        city: newValue[1],
       },
     })
     .then((res) => {
-      console.log(res);
+      console.log(res.data);
+      // 获取到编码之后，开始第二个请求！
+      axios.get(`http://127.0.0.1:8080/weather/${res.data}`).then((res) => {
+        // console.log(res.data.lives[0]);
+        alert(JSON.stringify(res.data.lives[0]));
+      });
     })
     .catch((err) => {
       console.log(err);

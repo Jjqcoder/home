@@ -6,7 +6,15 @@
 
   </div>
   <div class="search">
-    <el-button type="primary" plain>点击查询！</el-button>
+    <!-- <el-button type="primary" plain>点击查询！</el-button> -->
+
+  </div>
+
+  <!-- 分割线 -->
+  <el-divider />
+  <!-- {{ MyWeatherData }} -->
+  <div class="weatherData">
+    <listCom :fatherDataToSon="MyWeatherData"></listCom>
   </div>
 </template>
 
@@ -14,8 +22,13 @@
 import { pcTextArr } from 'element-china-area-data';
 import { ref, watch } from 'vue';
 import axios from 'axios';
+import listCom from './../list/index.vue';
 
+// 保存选择的城市信息
 const selectedOptions = ref([]);
+
+// 定义用于存储天气数据的变量,后续将实时渲染到子组件list中
+let MyWeatherData = ref([]);
 
 // 监听所选的内容
 watch(selectedOptions, (newValue, oldValue) => {
@@ -38,7 +51,10 @@ watch(selectedOptions, (newValue, oldValue) => {
       // 获取到编码之后，开始第二个请求！
       axios.get(`http://127.0.0.1:8080/weather/${res.data}`).then((res) => {
         // console.log(res.data.lives[0]);
-        alert(JSON.stringify(res.data.lives[0]));
+        // alert(JSON.stringify(res.data.lives[0]));
+        // const weatherData = JSON.stringify(res.data.lives[0]);
+        // console.log('res.data:', res.data.lives[0]);
+        MyWeatherData.value.push(res.data.lives[0]);
       });
     })
     .catch((err) => {

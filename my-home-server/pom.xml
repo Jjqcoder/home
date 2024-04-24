@@ -83,6 +83,7 @@
 
     <build>
         <plugins>
+<!--            该插件用于打包-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

@@ -26,6 +26,7 @@ public class WeatherController {
     MyService myService;
 
     // 传入市区id，返回对应的市区天气
+    // 如： http://120.27.159.194:8080/weather/110000
     @GetMapping("/weather/{cityCode}")
     public Object getWeatherByCity(@PathVariable String cityCode) {
 

@@ -1,5 +1,7 @@
 package com.jiang.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jiang.entity.Blog;
 import com.jiang.mapper.BlogMapper;
 import com.jiang.service.BlogService;
@@ -35,6 +37,16 @@ public class BlogServiceImpl implements BlogService {
         blogMapper.deleteBlogById(id);
 
         return;
+    }
 
+    @Override
+    public Page<Blog> selectPage(int current, int size) {
+        Page<Blog> page = new Page<>(current, size);
+//        System.out.println("current"+current);
+//        System.out.println("size"+size);
+        QueryWrapper<Blog> queryWrapper = new QueryWrapper<>();
+
+        // 开始添加查询条件，此处我先不加
+        return blogMapper.selectPage(page, queryWrapper);
     }
 }

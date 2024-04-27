@@ -15,15 +15,15 @@ public class Blog {
 
     @TableId(type = IdType.AUTO) // 默认主键字段，主键策略为自增
     private Integer id;
-    @TableField("user_name") // 指定字段名与数据库字段
+    @TableField("BLOG_CREATE_TIME") // 指定字段名与数据库字段
     private Date blogCreateTime;
-    @TableField("blogUpdateTime")
+    @TableField("BLOG_UPDATE_TIME")
     private Date blogUpdateTime;
-    @TableField("blogTitle")
+    @TableField("BLOG_TITLE")
     private String blogTitle;
-    @TableField("blogContent")
+    @TableField("BLOG_CONTENT")
     private String blogContent;
-    @TableField("isDelete")
+    @TableField("IS_DELETE")
     private String isDelete;
 
 }

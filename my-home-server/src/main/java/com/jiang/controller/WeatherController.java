@@ -7,8 +7,11 @@ import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.alibaba.excel.read.builder.ExcelReaderSheetBuilder;
 import com.jiang.entity.WeatherData;
 import com.jiang.service.MyService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.logging.Logger;
 
 /**
 * @author Jiangjianqing
@@ -20,7 +23,9 @@ import org.springframework.web.bind.annotation.*;
  * 4. 省/地区不空，城市不空，允许
 */
 @RestController
+@Slf4j // 引入日志
 public class WeatherController {
+
     // 首先需要对前端传递来的信息进行校验
     @Autowired
     MyService myService;
@@ -37,6 +42,9 @@ public class WeatherController {
     // 传入省、市的中文名称，返回城市对应的城市信息
     @GetMapping("/weather")
     public String getWeatherByProvinceAndCity(@RequestParam("province") String province, @RequestParam("city") String city) {
+        // 引入日志
+        log.info("hello logback");
+
         // 首先，需要将前端传递过来的省份、城市名称对应编码，然后调用服务层获取天气信息，再将信息返回到前端进行渲染
         // 使用城市、查询对应城市的天气信息
 

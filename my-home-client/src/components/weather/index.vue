@@ -25,7 +25,8 @@ import axios from 'axios';
 import listCom from './../list/index.vue';
 
 // console.log('测试！！！！！', import.meta.env.VITE_PROD_BASE_URL);
-const prob_base_url = import.meta.env.VITE_PROD_BASE_URL;
+// const prob_base_url = import.meta.env.VITE_PROD_BASE_URL;
+const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL;
 
 // 保存选择的城市信息
 const selectedOptions = ref([]);
@@ -43,7 +44,7 @@ watch(selectedOptions, (newValue, oldValue) => {
 
   // 请求后端接口，获取天气数据
   axios
-    .get(`http://${prob_base_url}:8080/weather`, {
+    .get(`http://${in_use_base_url}:8080/weather`, {
       params: {
         province: newValue[0],
         city: newValue[1],
@@ -54,7 +55,7 @@ watch(selectedOptions, (newValue, oldValue) => {
 
       // 获取到编码之后，开始第二个请求！
       axios
-        .get(`http://${prob_base_url}:8080/weather/${res.data}`)
+        .get(`http://${in_use_base_url}:8080/weather/${res.data}`)
         .then((res) => {
           // console.log(res.data.lives[0]);
           // alert(JSON.stringify(res.data.lives[0]));

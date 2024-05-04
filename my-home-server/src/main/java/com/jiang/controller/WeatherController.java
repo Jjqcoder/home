@@ -51,10 +51,10 @@ public class WeatherController {
         // 预先定义城市编码
         final String[] adCode = {""};
 
-        // 定义文件名
-//        String fileName = this.getClass().getClassLoader().getResource("AMap_adcode_citycode.xlsx").getPath();
-        // 下面这一种方法获取文件，在项目打包上线后依然是生效的
-        String fileName = this.getClass().getResourceAsStream("/AMap_adcode_citycode.xlsx").toString();
+        // 定义文件名(开发状态下有效)
+        String fileName = this.getClass().getClassLoader().getResource("AMap_adcode_citycode.xlsx").getPath();
+        // 下面这一种方法获取文件，在项目打包上线后是生效的
+//        String fileName = this.getClass().getResourceAsStream("/AMap_adcode_citycode.xlsx").toString();
         // 开始读Excel
         // readWeatherBook是工作簿对象，后续需要获取工作表
         ExcelReaderBuilder readWeatherBook = EasyExcel.read(fileName, WeatherData.class, new AnalysisEventListener<WeatherData>(){

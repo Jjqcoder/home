@@ -1,5 +1,10 @@
 <template>
-
+  <!-- 写博客开始(写博客功能放到后台管理中) -->
+  <!-- <div class="write">
+    <router-link to="/writeBlog">
+      <el-link type="primary" icon="Star">写一篇✍️</el-link>
+    </router-link>
+  </div> -->
   <div>
     <!-- 获取来的数据：{{ pageSelectData }} -->
     <fixedList class="my-blog" :pageSelectData="pageSelectData"></fixedList>
@@ -92,5 +97,15 @@ const handleCurrentChange = (val) => {
 
 .my-blog {
   margin-top: 1%;
+}
+
+.demo-pagination-block {
+  width: 430px;
+}
+.write {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  margin-top: 10px;
 }
 </style>

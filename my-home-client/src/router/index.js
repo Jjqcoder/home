@@ -9,7 +9,7 @@ import BlogCom from './../components/blog/index.vue';
 import EnglishCom from './../components/english/index.vue';
 import AboutCom from './../components/about/index.vue';
 import WeatherCom from './../components/weather/index.vue';
-import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs';
+// import WriteBlogCom from './../components/writeBlog/index.vue'
 
 // 定义路由  
 const routes = [{
@@ -41,6 +41,11 @@ const routes = [{
     name: 'weather',
     component: WeatherCom
   }
+    // , {
+    //   path: 'writeBlog',
+    //   name: 'writeBlog',
+    //   component: WriteBlogCom
+    // }
   ]
 }];
 

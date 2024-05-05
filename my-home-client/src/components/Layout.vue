@@ -69,7 +69,7 @@ import MoreFunc from './more/index.vue';
 
 // 新增样式
 .content {
-  height: 100vb;
+  min-height: 100vb; // 使用min-height 以确保当内容超过视口高度时，元素能够扩展以适应内容。着需要其父元素的高度为100%
 }
 
 .grid-content {

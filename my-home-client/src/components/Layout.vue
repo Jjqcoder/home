@@ -3,6 +3,8 @@
 <script setup>
 // 引入`更多功能`组件
 import MoreFunc from './more/index.vue';
+// 引入页脚组件
+import FooterCom from './footer/index.vue';
 </script>
 
 <template>
@@ -43,11 +45,23 @@ import MoreFunc from './more/index.vue';
         <router-view></router-view>
       </span>
       <!-- 存放主体内容 -->
-
       <div class="grid-content" />
+
     </el-col>
     <!-- 右边留白 -->
     <el-col :span="2" style="background:white" class="content">
+      <div class="grid-content" />
+    </el-col>
+  </el-row>
+  <!-- 页脚开始 -->
+  <el-row>
+    <el-col :span="2" style="background:white">
+      <div class="grid-content" />
+    </el-col>
+    <el-col :span="20">
+      <FooterCom></FooterCom>
+    </el-col>
+    <el-col :span="2" style="background:white">
       <div class="grid-content" />
     </el-col>
   </el-row>

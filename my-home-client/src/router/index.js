@@ -9,11 +9,12 @@ import BlogCom from './../components/blog/index.vue';
 import EnglishCom from './../components/english/index.vue';
 import AboutCom from './../components/about/index.vue';
 import WeatherCom from './../components/weather/index.vue';
-// import WriteBlogCom from './../components/writeBlog/index.vue'
+import TimelineCom from './../components/timeline/index.vue';
 
 // 定义路由  
 const routes = [{
   path: '/',
+  redirect: '/timeline', // 默认重定向到counter组件处
   name: 'layout',
   component: Layout,
   children: [{
@@ -40,12 +41,11 @@ const routes = [{
     path: 'weather',
     name: 'weather',
     component: WeatherCom
+  }, {
+    path: 'timeline',
+    name: 'timeline',
+    component: TimelineCom
   }
-    // , {
-    //   path: 'writeBlog',
-    //   name: 'writeBlog',
-    //   component: WriteBlogCom
-    // }
   ]
 }];
 

@@ -14,7 +14,9 @@ import MoreFunc from './more/index.vue';
     </el-col>
     <!-- 导航栏左侧-LOGO -->
     <el-col :span="6" style="background:Beige">
-      <div class="grid-content ep-bg-purple-dark my-home"><span class="my-logo">Home</span></div>
+      <div class="grid-content ep-bg-purple-dark my-home"><router-link to="/">
+          <span class="my-logo">Home</span>
+        </router-link></div>
     </el-col>
     <!-- 导航栏中心 -->
     <el-col :span="8" style="background:Beige">

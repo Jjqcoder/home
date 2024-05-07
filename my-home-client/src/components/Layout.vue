@@ -13,21 +13,21 @@ import MenuCom from './../components/menu/index.vue';
   <el-row>
     <!-- 一共有24份 -->
     <!-- 左边留白 -->
-    <el-col :span="2" style="background:white">
+    <el-col :span="1" style="background:white">
       <div class="grid-content" />
     </el-col>
     <!-- 导航栏左侧-LOGO -->
-    <el-col :span="6" style="background:Beige">
+    <el-col :span="5" style="background:Beige">
       <div class="grid-content ep-bg-purple-dark my-home"><router-link to="/">
           <span class="my-logo">Home</span>
         </router-link></div>
     </el-col>
     <!-- 导航栏中心 -->
-    <el-col :span="8" style="background:Beige">
+    <!-- <el-col :span="4" style="background:Beige">
       <div class="grid-content"><span class="my-search">搜索本站</span></div>
-    </el-col>
+    </el-col> -->
     <!-- 导航栏右侧-存放下拉框，放入网站相关信息、功能 -->
-    <el-col :span="6" style="background:Beige">
+    <el-col :span="17" style="background:Beige">
       <div class="grid-content"><span class="my-more">
           <!-- <MoreFunc /> -->
           <!-- 菜单 -->
@@ -35,15 +35,15 @@ import MenuCom from './../components/menu/index.vue';
         </span></div>
     </el-col>
     <!-- 右边留白 -->
-    <el-col :span="2" style="background:Khaki2">
+    <el-col :span="1" style="background:Khaki2">
       <div class="grid-content" />
     </el-col>
   </el-row>
   <el-row>
-    <el-col :span="2" style="background:white" class="content">
+    <el-col :span="1" style="background:white" class="content">
       <div class="grid-content" />
     </el-col>
-    <el-col :span="20" style="background:Cornsilk" class="content">
+    <el-col :span="22" style="background:Cornsilk" class="content">
       <span class="my-content">
         <!-- 主体内容 -->
         <router-view></router-view>
@@ -53,19 +53,19 @@ import MenuCom from './../components/menu/index.vue';
 
     </el-col>
     <!-- 右边留白 -->
-    <el-col :span="2" style="background:white" class="content">
+    <el-col :span="1" style="background:white" class="content">
       <div class="grid-content" />
     </el-col>
   </el-row>
   <!-- 页脚开始 -->
   <el-row>
-    <el-col :span="2" style="background:white">
+    <el-col :span="1" style="background:white">
       <div class="grid-content" />
     </el-col>
-    <el-col :span="20">
+    <el-col :span="22">
       <FooterCom></FooterCom>
     </el-col>
-    <el-col :span="2" style="background:white">
+    <el-col :span="1" style="background:white">
       <div class="grid-content" />
     </el-col>
   </el-row>
@@ -111,5 +111,26 @@ import MenuCom from './../components/menu/index.vue';
 .my-more {
   font-size: 100%; // 继承父元素的字体大小
   color: DarkRed;
+}
+
+// 消除超链接的默认属性
+/* 消除a标签的默认样式 */
+a {
+  text-decoration: none; /* 移除下划线 */
+  color: inherit; /* 继承父元素的文本颜色 */
+  /* 其他你想要重置的样式 */
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none; /* 移除鼠标悬停、激活和聚焦时的下划线 */
+  /* 其他你想要重置的样式 */
+}
+
+/* 重新设置 hover 格式 */
+a:hover {
+  /* border: 1px solid black; */
+  border-bottom: 3px solid rgba(171, 4, 4, 0.941);
 }
 </style>

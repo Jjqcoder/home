@@ -42,7 +42,7 @@ const routes = [{
     name: 'weather',
     component: WeatherCom
   }, {
-    path: 'timeline',
+    path: '',
     name: 'timeline',
     component: TimelineCom
   }

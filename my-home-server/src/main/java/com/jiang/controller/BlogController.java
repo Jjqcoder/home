@@ -1,7 +1,9 @@
 package com.jiang.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jiang.entity.Blog;
 import com.jiang.service.BlogService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -29,10 +31,19 @@ public class BlogController {
         blogService.insertBlog(blog);
         return null;
     }
-    // 按照id删除博客文章
+
+//根据id删除指定的文章
+
     @DeleteMapping("/blog/{id}")
     public Void deleteBlogById(@PathVariable Integer id){
         blogService.deleteBlogById(id);
         return null;
+    }
+
+    // 开始进行分页查询
+    @GetMapping("/getBlogByPage")
+    public Page<Blog> selectPage(@Param("current") int current, @Param("size") int size) {
+//        System.out.println(current+"|||"+size);
+        return blogService.selectPage(current, size);
     }
 }

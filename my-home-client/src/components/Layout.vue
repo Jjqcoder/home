@@ -2,9 +2,11 @@
 
 <script setup>
 // 引入`更多功能`组件
-import MoreFunc from './more/index.vue';
+// import MoreFunc from './more/index.vue';
 // 引入页脚组件
 import FooterCom from './footer/index.vue';
+// 引入菜单组件-用于代替更多功能组件
+import MenuCom from './../components/menu/index.vue';
 </script>
 
 <template>
@@ -27,7 +29,9 @@ import FooterCom from './footer/index.vue';
     <!-- 导航栏右侧-存放下拉框，放入网站相关信息、功能 -->
     <el-col :span="6" style="background:Beige">
       <div class="grid-content"><span class="my-more">
-          <MoreFunc />
+          <!-- <MoreFunc /> -->
+          <!-- 菜单 -->
+          <MenuCom />
         </span></div>
     </el-col>
     <!-- 右边留白 -->

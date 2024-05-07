@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap items-center">
+  <div class="flex flex-wrap items-center my-font-style">
     <el-dropdown>
       <el-button type="primary">
         更多<el-icon class="el-icon--right">

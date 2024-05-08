@@ -99,4 +99,8 @@ const handleCurrentChange = (val) => {
   justify-content: center;
   font-size: large;
 }
+
+.my-blog {
+  border-top: 0.1px solid rgb(116, 38, 5);
+}
 </style>

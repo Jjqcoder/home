@@ -20,7 +20,7 @@
     <el-table-column prop="province" label="省/市" width=""></el-table-column>
     <el-table-column prop="city" label="地区" width=""></el-table-column>
     <el-table-column prop="weather" label="天气" width=""></el-table-column>
-    <el-table-column prop="reporttime" label="查询日期" width=""></el-table-column>
+    <el-table-column prop="reporttime" label="发布时间" width=""></el-table-column>
     <el-table-column prop="temperature" label="气温(摄氏度)" width=""></el-table-column>
 
     <!-- <el-table-column prop="name" label="Name" width="" /> -->
@@ -164,24 +164,25 @@ const dataTobeEdit = ref(null);
 const rowDblclickHandler = (val) => {
   // 取值方式： val.name
   // 首先需要获取当前双击选中的数据在dataFromFather中下下标是什么
-  console.log('长度：', dataFromFather.value.length);
+  // console.log('长度：', dataFromFather.value.length);
 
   for (let i = 0; i < dataFromFather.value.length; i++) {
     if (objCompare(dataFromFather.value[i], val)) {
-      console.log('这两个对象是一样的！！');
+      // console.log('这两个对象是一样的！！');
       // 定义当前双击的数据下标为当前的i
       dbclickIndex.value = i;
       // 给dataTobeEdit赋值,注意，需要深拷贝！
       dataTobeEdit.value = _.cloneDeep(dataFromFather.value[i]);
       // 结束循环
       break;
-    } else {
-      console.log('不一样！！');
     }
+    //  else {
+    // console.log('不一样！！');
+    // }
   }
-  console.log('双击事件产生了！！！！', val.name);
+  // console.log('双击事件产生了！！！！', val.name);
   dialogFormVisible.value = true;
-  console.log(dialogTableVisible.value);
+  // console.log(dialogTableVisible.value);
 };
 // 弹出框内容结束===========
 

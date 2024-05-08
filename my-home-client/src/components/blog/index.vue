@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- 获取来的数据：{{ pageSelectData }} -->
     <fixedList class="my-blog" :pageSelectData="pageSelectData"></fixedList>
   </div>
 
@@ -25,7 +24,6 @@ import fixedList from './../fixedList/index.vue';
 
 // 引入环境变量
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL;
-console.log(in_use_base_url);
 
 // 记录一共有多少条数据
 const totalDataCount = ref(100);
@@ -51,7 +49,6 @@ onMounted(() => {
       totalDataCount.value = res.data.total;
       // 赋值当前分页获取到的数据
       pageSelectData.value = res.data.records;
-      console.log(pageSelectData.value);
     });
 });
 
@@ -78,8 +75,6 @@ const handleCurrentChange = (val) => {
     .then((res) => {
       pageSelectData.value = res.data.records;
     });
-
-  console.log(res);
 };
 </script>
 
@@ -99,7 +94,6 @@ const handleCurrentChange = (val) => {
   justify-content: center;
   font-size: large;
 }
-
 .my-blog {
   border-top: 0.1px solid rgb(116, 38, 5);
 }

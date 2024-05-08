@@ -41,7 +41,6 @@ public class BlogController {
     // 开始进行分页查询
     @GetMapping("/getBlogByPage")
     public Page<Blog> selectPage(@Param("current") int current, @Param("size") int size) {
-//        System.out.println(current+"|||"+size);
         return blogService.selectPage(current, size);
     }
 }

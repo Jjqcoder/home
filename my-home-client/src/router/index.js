@@ -15,7 +15,6 @@ import menuCom from './../components/menu/index.vue';
 // 定义路由  
 const routes = [{
   path: '/',
-  redirect: '/timeline', // 默认重定向到counter组件处
   name: 'layout',
   component: Layout,
   children: [{

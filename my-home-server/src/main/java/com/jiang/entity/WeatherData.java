@@ -9,7 +9,6 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class WeatherData {
     // 用于Easy Excel的使用
-
     private String name;
     private String adcCode;
     private String cityCode;

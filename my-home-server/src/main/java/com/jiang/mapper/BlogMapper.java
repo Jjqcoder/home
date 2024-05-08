@@ -1,6 +1,8 @@
 package com.jiang.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jiang.entity.Blog;
 import org.apache.ibatis.annotations.*;
 import java.util.List;

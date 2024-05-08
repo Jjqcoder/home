@@ -7,5 +7,9 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="less">
+#app {
+  font-family: my-font !important;
+}
 </style>
+

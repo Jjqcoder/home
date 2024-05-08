@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### my add
+target
+target.zip
+*.log
+logs
+*.zip

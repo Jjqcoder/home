@@ -8,6 +8,9 @@ import BlogCom from './../components/blog/index.vue';
 import EnglishCom from './../components/english/index.vue';
 import AboutCom from './../components/about/index.vue';
 import WeatherCom from './../components/weather/index.vue';
+import TimelineCom from './../components/timeline/index.vue';
+import blogContentCom from './../components/blogContent/index.vue';
+import menuCom from './../components/menu/index.vue';
 
 // 定义路由  
 const routes = [{
@@ -38,6 +41,14 @@ const routes = [{
     path: 'weather',
     name: 'weather',
     component: WeatherCom
+  }, {
+    path: '', // 默认子路由
+    name: 'timeline',
+    component: TimelineCom
+  }, {
+    path: 'blogContent',
+    name: 'blogContent',
+    component: blogContentCom
   }
   ]
 }];

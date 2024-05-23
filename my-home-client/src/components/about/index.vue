@@ -6,11 +6,13 @@
     <p><a href="https://juejin.cn/user/4051056254523991">1. 掘金⛏️</a></p>
     <p><a href="https://github.com/Jjqcoder">2. GitHub🎈</a></p>
     <p><a href="https://leetcode.cn/u/windy0_0/">3. 力扣🧐</a></p>
-    <p>4. 公众号(主要用来记录学英语的过程)
+
+    <p>
+      4. 公众号(主要用来记录学英语的过程)
+      <img class="qrcode" src="../../assets/qrcode.jpg" alt="">
+      <span class="small">[看不见我看不见我🙈]</span>
     </p>
-    <div>
-      <img class="qrcode" src="./../../assets/qrcode.jpg" alt="">
-    </div>
+    <span class="qrcode"></span>
   </div>
 </template>
 
@@ -26,6 +28,7 @@ export default {};
   p {
     font-size: 2em;
   }
+  height: 3em;
 }
 
 .center-text {
@@ -41,9 +44,17 @@ export default {};
   transform: scale(0.9); /* 放大10% */
   transition: transform 0.3s ease; /* 添加过渡效果，使变化更平滑 */
 }
-
 // 二维码
 .qrcode {
-  width: 3em;
+  height: 1em;
+}
+
+.qrcode:hover {
+  transform: scale(5); /* 放大10% */
+  transition: transform 0.5s ease; /* 添加过渡效果，使变化更平滑 */
+}
+
+.small {
+  font-size: 0.2em;
 }
 </style>

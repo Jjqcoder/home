@@ -1,29 +1,26 @@
 <template>
-  <div class="center-text">
-    <h1>🤟</h1>
-  </div>
-  <div class="container">
-    <p><a href="https://juejin.cn/user/4051056254523991">1. 掘金⛏️</a></p>
-    <p><a href="https://github.com/Jjqcoder">2. GitHub🎈</a></p>
-    <p><a href="https://leetcode.cn/u/windy0_0/">3. 力扣🧐</a></p>
 
-    <p>
-      4. 公众号(主要用来记录学英语的过程)
+  <div class="aboutcontainer">
+    <div class="center-text">
+      <h1>🤟</h1>
+    </div>
+    <div><a href="https://juejin.cn/user/4051056254523991">✨掘金⛏️</a></div>
+    <div><a href="https://github.com/Jjqcoder">✨GitHub🎈</a></div>
+    <div><a href="https://leetcode.cn/u/windy0_0/">✨力扣🧐</a></div>
+
+    <div>
+      ✨公众号(主要用来记录学英语的过程)
       <img class="qrcode" src="../../assets/qrcode.jpg" alt="">
       <span class="small">[看不见我看不见我🙈]</span>
-    </p>
-    <span class="qrcode"></span>
+    </div>
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped lang="less">
-.container {
+.aboutcontainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-content: center;
   p {
     font-size: 2em;
@@ -50,11 +47,15 @@ export default {};
 }
 
 .qrcode:hover {
-  transform: scale(5); /* 放大10% */
-  transition: transform 0.5s ease; /* 添加过渡效果，使变化更平滑 */
+  transform: scale(6);
+  transition: transform 1s ease; /* 添加过渡效果，使变化更平滑 */
 }
 
 .small {
   font-size: 0.2em;
+}
+
+div {
+  text-align: center;
 }
 </style>

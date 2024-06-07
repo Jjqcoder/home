@@ -1,8 +1,8 @@
 <template>
   <!-- {{ pageSelectData }} -->
   <el-table :data="pageSelectData" style="width: 100%" height="100%">
-    <el-table-column fixed prop="id" label="博客序号" width="80%" />
-    <el-table-column prop="blogTitle" label="博客标题" width="" />
+    <el-table-column fixed prop="id" label="日志序号" width="80%" />
+    <el-table-column prop="blogTitle" label="日志标题" width="" />
     <el-table-column prop="blogCreateTime" label="创建时间" width="" />
     <el-table-column prop="blogUpdateTime" label="更新时间" width="" />
     <el-table-column label="操作">

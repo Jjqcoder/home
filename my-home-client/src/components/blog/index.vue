@@ -8,9 +8,8 @@
     <div class="demonstration"></div>
     <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize"
       :page-sizes="[5, 8, 10]" :small="small" :disabled="disabled" :background="background"
-      :pager-count="4" layout="sizes, pager" :total="totalDataCount" @size-change="handleSizeChange"
+      :pager-count="4" layout="prev, next" :total="totalDataCount" @size-change="handleSizeChange"
       @current-change="handleCurrentChange" />
-
     <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
   </div>
 </template>
@@ -102,5 +101,9 @@ const handleCurrentChange = (val) => {
 
 .my-blog {
   border-top: 0.1px solid rgb(116, 38, 5);
+}
+
+.demo-pagination-block {
+  width: 50%;
 }
 </style>

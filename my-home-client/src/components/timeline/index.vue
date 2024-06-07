@@ -48,6 +48,12 @@ const activities = [
     icon: MoreFilled,
   },
   {
+    content: '🐋前端代码使用Docker进行管理',
+    timestamp: '🗓️2024-05-25',
+    type: 'primary',
+    hollow: true,
+  },
+  {
     content: '⏱️引入时间线',
     timestamp: '🗓️2024-05-06',
     type: 'primary',

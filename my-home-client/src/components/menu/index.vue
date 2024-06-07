@@ -1,16 +1,16 @@
 <template>
   <div class="menu">
-    <router-link to="/world">
+    <!-- <router-link to="/world">
       <span>世界</span>
     </router-link>
-    <pre>|</pre>
+    <pre>|</pre> -->
     <router-link to="/blog">
-      <span>博客</span>
+      <span>日志</span>
     </router-link>
-    <pre>|</pre>
+    <!-- <pre>|</pre>
     <router-link to="/english">
       <span>英语</span>
-    </router-link>
+    </router-link> -->
     <pre>|</pre>
     <router-link to="/weather">
       <span>天气</span>

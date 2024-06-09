@@ -10,7 +10,6 @@ import EnglishCom from './../components/english/index.vue';
 import AboutCom from './../components/about/index.vue';
 import WeatherCom from './../components/weather/index.vue';
 import TimelineCom from './../components/timeline/index.vue';
-import blogContentCom from './../components/blogContent/index.vue';
 import menuCom from './../components/menu/index.vue';
 import ArticleView from '../views/ArticleView.vue';
 
@@ -48,10 +47,6 @@ const routes = [{
     path: '', // 默认子路由
     name: 'timeline',
     component: TimelineCom
-  }, {
-    path: 'blogContent',
-    name: 'blogContent',
-    component: blogContentCom
   }, {
     path: 'articleView',
     name: 'articleView',

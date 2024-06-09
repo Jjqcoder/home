@@ -1,10 +1,5 @@
 <template>
-  <!-- 显示文章的具体信息  -->
-  <!-- {{ id }} -->
-  <!-- {{ blogData.blogContent }} -->
-  <!-- {{ dataFromDatabase }} -->
-  <!-- {{ htmlContent }} -->
-  <!-- {{ blogData.blogContent }} -->
+
   <div class="content" v-html="renderedMarkdown"></div>
 </template>
 
@@ -60,5 +55,8 @@ watch(blogData, (newValue, oldValue) => {
 <style scoped>
 .content {
   padding: 0.5em;
+  overflow: scroll !important;
+
+  /* word-wrap: break-word; */
 }
 </style>

@@ -55,8 +55,10 @@ watch(blogData, (newValue, oldValue) => {
 <style scoped>
 .content {
   padding: 0.5em;
-  overflow: scroll !important;
-
+  /* 内容溢出才显示滚动条 */
+  overflow: auto;
   /* word-wrap: break-word; */
 }
+
+/* 基于WebKit内核浏览器（如Chrome和Safari）美化滚动条 */
 </style>

@@ -15,6 +15,7 @@ public class BlogController {
     private BlogService blogService;
 
     // 根据id获取一条博客
+    // http://127.0.0.1:8080/blog?id=1
     @GetMapping("/blog/{id}")
     public Blog getBlogById(@PathVariable Integer id) {
         return blogService.getBlogById(id);

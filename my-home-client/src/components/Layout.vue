@@ -17,7 +17,7 @@ import MenuCom from './../components/menu/index.vue';
       <div class="grid-content" />
     </el-col>
     <!-- 导航栏左侧-LOGO -->
-    <el-col :span="10" style="background:Beige">
+    <el-col :span="11" style="background:Beige">
       <div class="grid-content ep-bg-purple-dark my-home"><router-link to="/">
           <span class="my-logo">Home</span>
         </router-link></div>
@@ -27,7 +27,7 @@ import MenuCom from './../components/menu/index.vue';
       <div class="grid-content"><span class="my-search">搜索本站</span></div>
     </el-col> -->
     <!-- 导航栏右侧-存放下拉框，放入网站相关信息、功能 -->
-    <el-col :span="12" style="background:Beige">
+    <el-col :span="11" style="background:Beige">
       <div class="grid-content"><span class="my-more">
           <!-- <MoreFunc /> -->
           <!-- 菜单 -->

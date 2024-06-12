@@ -51,7 +51,7 @@ watch(selectedOptions, (newValue, oldValue) => {
       },
     })
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
 
       // 获取到编码之后，开始第二个请求！
       axios

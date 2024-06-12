@@ -19,9 +19,9 @@ let blogData = ref('## hello');
 axios
   .get(`http://${in_use_base_url}:8080/blog/${id}`)
   .then((res) => {
-    console.log(res.data);
+    // console.log(res.data);
     blogData.value = res.data;
-    console.log(blogData.value.id);
+    // console.log(blogData.value.id);
   })
   .catch((err) => {
     console.log(err);

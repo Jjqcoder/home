@@ -24,7 +24,7 @@ import fixedList from './../fixedList/index.vue';
 
 // 引入环境变量
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL;
-console.log(in_use_base_url);
+// console.log(in_use_base_url);
 
 // 记录一共有多少条数据
 const totalDataCount = ref(100);
@@ -50,7 +50,7 @@ onMounted(() => {
       totalDataCount.value = res.data.total;
       // 赋值当前分页获取到的数据
       pageSelectData.value = res.data.records;
-      console.log(pageSelectData.value);
+      // console.log(pageSelectData.value);
     });
 });
 
@@ -63,8 +63,8 @@ const handleSizeChange = (val) => {
 
 // 页码发生改变触发的回调
 const handleCurrentChange = (val) => {
-  console.log(`current page: ${val}`);
-  console.log(`current pageSize: ${pageSize.value}`);
+  // console.log(`current page: ${val}`);
+  // console.log(`current pageSize: ${pageSize.value}`);
 
   // 当页码发生变化的时候，触发分页查询
   const res = axios
@@ -78,7 +78,7 @@ const handleCurrentChange = (val) => {
       pageSelectData.value = res.data.records;
     });
 
-  console.log(res);
+  // console.log(res);
 };
 </script>
 

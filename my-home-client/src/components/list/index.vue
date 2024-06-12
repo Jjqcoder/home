@@ -93,11 +93,11 @@ const dataFromFather = ref(myProps.fatherDataToSon); // 注意，此处不需要
 //   return [...new Set(objects.map(JSON.stringify))].map(JSON.parse);
 // }
 
-watch(dataFromFather.value, (newVal, oldVal) => {
-  // dataFromFather.value = removeDuplicates(dataFromFather.value);
-  // dataFromFather.value =
-  console.log(newVal, oldVal);
-});
+// watch(dataFromFather.value, (newVal, oldVal) => {
+// dataFromFather.value = removeDuplicates(dataFromFather.value);
+// dataFromFather.value =
+// console.log(newVal, oldVal);
+// });
 
 // 开始实现新增功能，点击新增之后，dataFromFather会产生一个新对象
 const AddData = () => {

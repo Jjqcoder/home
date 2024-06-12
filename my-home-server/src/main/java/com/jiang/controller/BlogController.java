@@ -26,24 +26,24 @@ public class BlogController {
     public List<Blog> getAllBlog() {
         return blogService.getAllBlog();
     }
-    // 插入一条博客信息
-    @PostMapping("/blog")
-    public Void insertBlog(@RequestBody Blog blog) {
-//        System.out.println(insertBlogDto);
-        blogService.insertBlog(blog);
-        return null;
-    }
-//根据id删除指定的文章
-    @DeleteMapping("/blog/{id}")
-    public Void deleteBlogById(@PathVariable Integer id){
-        blogService.deleteBlogById(id);
-        return null;
-    }
+
+    // 插入一条博客信息（关闭，防止恶意请求）
+//    @PostMapping("/blog")
+//    public Void insertBlog(@RequestBody Blog blog) {
+//        blogService.insertBlog(blog);
+//        return null;
+//    }
+
+//根据id删除指定的文章（关闭，防止恶意请求）
+//    @DeleteMapping("/blog/{id}")
+//    public Void deleteBlogById(@PathVariable Integer id){
+//        blogService.deleteBlogById(id);
+//        return null;
+//    }
 
     // 开始进行分页查询
     @GetMapping("/getBlogByPage")
     public Page<Blog> selectPage(@Param("current") int current, @Param("size") int size) {
-//        System.out.println(current+"|||"+size);
         return blogService.selectPage(current, size);
     }
 }

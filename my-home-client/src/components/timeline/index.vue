@@ -48,6 +48,10 @@ const activities = [
     icon: MoreFilled,
   },
   {
+    content: '📏本站后台管理项目初始化[React+Nest]',
+    timestamp: '🗓️2024-06-12',
+  },
+  {
     content: '📋Markdown形式显示日志内容',
     timestamp: '🗓️2024-06-09',
     type: 'primary',
@@ -55,7 +59,7 @@ const activities = [
   },
   {
     content: '🐋前端代码使用Docker进行管理',
-    timestamp: '🗓️2024-06-10',
+    timestamp: '🗓️2024-06-7',
     type: 'primary',
     hollow: true,
   },
@@ -78,7 +82,7 @@ const activities = [
     hollow: true,
   },
   {
-    content: '🎈项目初始化',
+    content: '🎈项目初始化[Vue3+SpringBoot]',
     timestamp: '🗓️2024-04-11',
     // type: 'primary',
     // hollow: true,

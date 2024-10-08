@@ -1,5 +1,6 @@
 package com.manageserverspringboot.controller;
 
+import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
 import com.manageserverspringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class UserController {
 //    功能:获取全部的用户信息
 //    url示例:http://localhost:8090/getAllUser
     @GetMapping("/getAllUser")
-    public List<User> getAllUser() {
-        return userService.getAllUsers();
+    public R getAllUser() {
+        return R.success(userService.getAllUsers());
     }
 }

@@ -1,5 +1,5 @@
 // 导入 Vue Router  
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 
 // 导入需要路由的组件  
 // import HelloWorld from './../components/HelloWorld.vue' // 欢迎组件
@@ -10,8 +10,8 @@ import EnglishCom from './../components/english/index.vue';
 import AboutCom from './../components/about/index.vue';
 import WeatherCom from './../components/weather/index.vue';
 import TimelineCom from './../components/timeline/index.vue';
-import blogContentCom from './../components/blogContent/index.vue';
 import menuCom from './../components/menu/index.vue';
+import ArticleView from '../views/ArticleView.vue';
 
 // 定义路由  
 const routes = [{
@@ -48,17 +48,18 @@ const routes = [{
     name: 'timeline',
     component: TimelineCom
   }, {
-    path: 'blogContent',
-    name: 'blogContent',
-    component: blogContentCom
+    path: 'articleView',
+    name: 'articleView',
+    component: ArticleView
   }
   ]
 }];
 
 // 创建 router 实例  
 const router = createRouter({
-  history: createWebHistory(),
-  routes // (缩写) 相当于 routes: routes  
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
+  routes // (缩写) 相当于 routes: routes
 });
 
 export default router;

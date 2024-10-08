@@ -8,9 +8,8 @@
     <div class="demonstration"></div>
     <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize"
       :page-sizes="[5, 8, 10]" :small="small" :disabled="disabled" :background="background"
-      :pager-count="4" layout="sizes, pager" :total="totalDataCount" @size-change="handleSizeChange"
-      @current-change="handleCurrentChange" />
-
+      :pager-count="4" layout="prev, pager, next" :total="totalDataCount"
+      @size-change="handleSizeChange" @current-change="handleCurrentChange" />
     <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
   </div>
 </template>
@@ -25,7 +24,7 @@ import fixedList from './../fixedList/index.vue';
 
 // 引入环境变量
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL;
-console.log(in_use_base_url);
+// console.log(in_use_base_url);
 
 // 记录一共有多少条数据
 const totalDataCount = ref(100);
@@ -51,7 +50,7 @@ onMounted(() => {
       totalDataCount.value = res.data.total;
       // 赋值当前分页获取到的数据
       pageSelectData.value = res.data.records;
-      console.log(pageSelectData.value);
+      // console.log(pageSelectData.value);
     });
 });
 
@@ -64,8 +63,8 @@ const handleSizeChange = (val) => {
 
 // 页码发生改变触发的回调
 const handleCurrentChange = (val) => {
-  console.log(`current page: ${val}`);
-  console.log(`current pageSize: ${pageSize.value}`);
+  // console.log(`current page: ${val}`);
+  // console.log(`current pageSize: ${pageSize.value}`);
 
   // 当页码发生变化的时候，触发分页查询
   const res = axios
@@ -79,7 +78,7 @@ const handleCurrentChange = (val) => {
       pageSelectData.value = res.data.records;
     });
 
-  console.log(res);
+  // console.log(res);
 };
 </script>
 
@@ -98,5 +97,13 @@ const handleCurrentChange = (val) => {
   display: flex;
   justify-content: center;
   font-size: large;
+}
+
+.my-blog {
+  border-top: 0.1px solid rgb(116, 38, 5);
+}
+
+.demo-pagination-block {
+  width: 50%;
 }
 </style>

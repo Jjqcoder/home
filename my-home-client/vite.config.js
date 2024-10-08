@@ -16,4 +16,12 @@ export default defineConfig({
     resolvers: [ElementPlusResolver()],
   }),
   ],
+  css: {
+    // 预处理器配置项
+    preprocessorOptions: {
+      less: {
+        math: "always",
+      },
+    },
+  },
 })

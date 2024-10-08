@@ -14,6 +14,7 @@ public class BlogController {
     private BlogService blogService;
 
     // 根据id获取一条博客
+    // http://127.0.0.1:8080/blog?id=1
     @GetMapping("/blog/{id}")
     public Blog getBlogById(@PathVariable Integer id) {
         return blogService.getBlogById(id);
@@ -40,10 +41,24 @@ public class BlogController {
         return null;
     }
 
+    // 插入一条博客信息（关闭，防止恶意请求）
+//    @PostMapping("/blog")
+//    public Void insertBlog(@RequestBody Blog blog) {
+//        blogService.insertBlog(blog);
+//        return null;
+//    }
+
+//根据id删除指定的文章（关闭，防止恶意请求）
+//    @DeleteMapping("/blog/{id}")
+//    public Void deleteBlogById(@PathVariable Integer id){
+//        blogService.deleteBlogById(id);
+//        return null;
+//    }
+
+
     // 开始进行分页查询
     @GetMapping("/getBlogByPage")
     public Page<Blog> selectPage(@Param("current") int current, @Param("size") int size) {
-//        System.out.println(current+"|||"+size);
         return blogService.selectPage(current, size);
     }
 }

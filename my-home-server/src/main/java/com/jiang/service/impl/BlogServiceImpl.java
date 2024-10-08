@@ -26,7 +26,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Void insertBlog(Blog blog) {
         blogMapper.insertBlog(blog);
-
         return null;
     }
 
@@ -39,8 +38,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Page<Blog> selectPage(int current, int size) {
         Page<Blog> page = new Page<>(current, size);
-//        System.out.println("current"+current);
-//        System.out.println("size"+size);
         QueryWrapper<Blog> queryWrapper = new QueryWrapper<>();
 
         // 开始添加查询条件，此处我先不加

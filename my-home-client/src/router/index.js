@@ -11,12 +11,10 @@ import AboutCom from './../components/about/index.vue';
 import WeatherCom from './../components/weather/index.vue';
 import TimelineCom from './../components/timeline/index.vue';
 import menuCom from './../components/menu/index.vue';
-import ArticleView from '../views/ArticleView.vue';
 
 // 定义路由  
 const routes = [{
   path: '/',
-  redirect: '/timeline', // 默认重定向到counter组件处
   name: 'layout',
   component: Layout,
   children: [{

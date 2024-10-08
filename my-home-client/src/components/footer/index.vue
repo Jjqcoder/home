@@ -26,13 +26,11 @@ export default {};
 a {
   text-decoration: none; /* 移除下划线 */
   color: inherit; /* 继承父元素的文本颜色 */
-  /* 其他你想要重置的样式 */
 }
 
 a:hover,
 a:active,
 a:focus {
   text-decoration: none; /* 移除鼠标悬停、激活和聚焦时的下划线 */
-  /* 其他你想要重置的样式 */
 }
 </style>

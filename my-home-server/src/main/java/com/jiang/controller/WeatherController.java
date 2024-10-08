@@ -50,7 +50,7 @@ public class WeatherController {
 
         // 预先定义城市编码
         final String[] adCode = {""};
-        String fileName = "/opt/apps/target/classes/AMap_adcode_citycode.xlsx";// 将路径写死
+        String fileName = "/opt/apps/target/classes/AMap_adcode_citycode.xlsx";// 将路径写死——生产环境地址
         // 定义文件名(开发状态下有效)
 //        String fileName = this.getClass().getClassLoader().getResource("AMap_adcode_citycode.xlsx").getPath();
         // 下面这一种方法获取文件，在项目打包上线后是生效的
@@ -62,22 +62,17 @@ public class WeatherController {
             public void invoke(WeatherData weatherData, AnalysisContext analysisContext) {
                 if (city.equals(weatherData.getName())) {
                     adCode[0] = weatherData.getAdcCode();
-//                    System.out.println(adCode[0]);
-
                 }
             }
 
             @Override
             public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-
             }
         } );
         // 获取数据表！
         ExcelReaderSheetBuilder sheet = readWeatherBook.sheet();
         // 开始读取！
         sheet.doRead();
-        // 读取完毕，成功获取到地区编码
-//        System.out.println("外部获取！"+adCode[0]);
         // 返回adCode，由前端进行第二次请求——天气信息
         return adCode[0];
 

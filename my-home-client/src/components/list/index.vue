@@ -23,8 +23,6 @@
     <el-table-column prop="reporttime" label="发布时间" width=""></el-table-column>
     <el-table-column prop="temperature" label="气温(摄氏度)" width=""></el-table-column>
 
-    <!-- <el-table-column prop="name" label="Name" width="" /> -->
-
   </el-table>
   <!-- ======列表内容结束====== -->
 
@@ -87,17 +85,11 @@ const dataFromFather = ref(myProps.fatherDataToSon); // 注意，此处不需要
 // dataFromFather.value是一个数组!!!!
 // console.log('dataFromFather.value', dataFromFather.value);
 
-// 时刻监听dataFromFather,保证数据中不存在重复的数据
-// 定义将对象数组做去重操作的函数
-// function removeDuplicates(objects) {
-//   return [...new Set(objects.map(JSON.stringify))].map(JSON.parse);
-// }
-
-// watch(dataFromFather.value, (newVal, oldVal) => {
-// dataFromFather.value = removeDuplicates(dataFromFather.value);
-// dataFromFather.value =
-// console.log(newVal, oldVal);
-// });
+watch(dataFromFather.value, (newVal, oldVal) => {
+  // dataFromFather.value = removeDuplicates(dataFromFather.value);
+  // dataFromFather.value =
+  console.log(newVal, oldVal);
+});
 
 // 开始实现新增功能，点击新增之后，dataFromFather会产生一个新对象
 const AddData = () => {
@@ -130,7 +122,6 @@ const objCompare = (o1, o2) => JSON.stringify(o1) === JSON.stringify(o2);
 // 点击删除按钮，触发下方的函数
 // 需要进行比对的两个数组分别是：dataToBeDel.value   dataFromFather.value
 const deleteData = () => {
-  // console.log("删除数据！！！！！！");
   let i = 0; // dataToBeDel.value的下标
   let j = 0; // dataFromFather.value的下标
   // 定义一个数组，用于存放剩余的
@@ -162,13 +153,9 @@ const dbclickIndex = ref(-1);
 // 创建一个对象，用于实现数据的编辑
 const dataTobeEdit = ref(null);
 const rowDblclickHandler = (val) => {
-  // 取值方式： val.name
   // 首先需要获取当前双击选中的数据在dataFromFather中下下标是什么
-  // console.log('长度：', dataFromFather.value.length);
-
   for (let i = 0; i < dataFromFather.value.length; i++) {
     if (objCompare(dataFromFather.value[i], val)) {
-      // console.log('这两个对象是一样的！！');
       // 定义当前双击的数据下标为当前的i
       dbclickIndex.value = i;
       // 给dataTobeEdit赋值,注意，需要深拷贝！
@@ -176,13 +163,8 @@ const rowDblclickHandler = (val) => {
       // 结束循环
       break;
     }
-    //  else {
-    // console.log('不一样！！');
-    // }
   }
-  // console.log('双击事件产生了！！！！', val.name);
   dialogFormVisible.value = true;
-  // console.log(dialogTableVisible.value);
 };
 // 弹出框内容结束===========
 

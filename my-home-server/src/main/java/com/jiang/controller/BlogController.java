@@ -32,9 +32,13 @@ public class BlogController {
         blogService.insertBlog(blog);
         return null;
     }
+<<<<<<< HEAD
 
 //根据id删除指定的文章
 
+=======
+//根据id删除指定的文章
+>>>>>>> 03e53ad326ffb13e0d1b1c4ca8955b37f827f83f
     @DeleteMapping("/blog/{id}")
     public Void deleteBlogById(@PathVariable Integer id){
         blogService.deleteBlogById(id);

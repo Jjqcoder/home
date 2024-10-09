@@ -28,24 +28,17 @@ public class R<T> implements Serializable {
         this.data = data;
     }
 
-    // 静态方法，用于生成成功的响应
-    public static <T> R<T> success(T data) {
-        return new R<>(200, "Success", data);
+    public R(int code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    // 静态方法，用于生成成功的响应（无数据）
-    public static <T> R<T> success() {
-        return new R<>(200, "Success", null);
-    }
-
-    // 静态方法，用于生成成功的响应（有消息，有数据）
     public static <T> R<T> success(String message, T data) {
         return new R<>(200, message, data);
     }
 
-    // 静态方法，用于生成失败的响应
-    public static <T> R<T> error(int code, String message) {
-        return new R<>(code, message, null);
+    public static <T> R<T> error(String message, T data) {
+        return new R<>(400, message, data);
     }
 
 }

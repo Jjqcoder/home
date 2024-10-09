@@ -57,4 +57,19 @@ public class UserServiceImpl implements UserService {
             return false;// 插入失败
         }
     }
+
+    @Override
+    public Boolean login(String username, String password) {
+        QueryWrapper<User> queryWrapper = Wrappers.query();
+
+        queryWrapper.eq("username", username);
+        queryWrapper.eq("password", password);
+
+        List<User> userList = userMapper.selectList(queryWrapper);
+
+        if (userList.size() == 1) {
+            return true;// 成功
+        }
+        return false;// 失败:可能是不存在该用户 也可能存在多个 即错误
+    }
 }

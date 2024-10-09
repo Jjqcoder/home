@@ -72,4 +72,24 @@ public class UserController {
             return R.success("该用户已经存在了", null);
         }
     }
+
+//     功能:传入username和password 进行登录
+//     示例url:http://localhost:8090/login
+    @GetMapping("/login")
+    public R login(HttpServletRequest httpServletRequest) {
+        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
+        // 获取用户名和密码
+        String username = parameterMap.get("username")[0];
+        String password = parameterMap.get("password")[0];
+
+        // 开始校验
+        Boolean isLoginOk = userService.login(username, password);
+
+        if (isLoginOk) {
+            return R.success("用户名密码正确!", null);
+        } else {
+            return R.error("用户名或密码错误!", null);
+        }
+
+    }
 }

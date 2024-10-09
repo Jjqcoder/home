@@ -12,6 +12,9 @@ public interface UserService {
 //    获取指定username的用户信息
     User getUserById(String username);
 
-    //   // 根据用户名和密码插入用户数据
+    //   根据用户名和密码插入用户数据
     Boolean insertUserByUsernameAndPassword(String username, String password);
+
+    // 判断用户名和密码是否正确
+    Boolean login(String username, String password);
 }

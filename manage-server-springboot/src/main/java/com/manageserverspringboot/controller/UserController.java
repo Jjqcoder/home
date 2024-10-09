@@ -20,6 +20,6 @@ public class UserController {
 //    url示例:http://localhost:8090/getAllUser
     @GetMapping("/getAllUser")
     public R getAllUser() {
-        return R.success(userService.getAllUsers());
+        return R.success("成功获取全部的用户信息",userService.getAllUsers());
     }
 }

@@ -21,8 +21,8 @@ import { ref } from 'vue';
 const username = ref('');
 const password = ref('');
 
-// 引入api函数
-import { fetchData, postData } from './../utils/api';
+import { fetchData, postData } from './../utils/api'; // 引入api函数
+import { ElMessage } from 'element-plus'; // 弹窗
 
 // 登录
 const log_in = function () {
@@ -32,6 +32,17 @@ const log_in = function () {
   )
     .then((response) => {
       console.log(response);
+      if (response.data.code === 400) {
+        ElMessage({
+          message: '用户名或密码错误',
+          type: 'warning',
+        });
+      } else if (response.data.code === 200) {
+        ElMessage({
+          message: '登录成功',
+          type: 'success',
+        });
+      }
     })
     .catch((error) => {
       console.log(error);

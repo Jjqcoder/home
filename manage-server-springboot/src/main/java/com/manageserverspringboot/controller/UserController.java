@@ -6,6 +6,7 @@ import com.manageserverspringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,13 +47,15 @@ public class UserController {
 //    功能:传入username和password,插入用户信息
 //    url示例:http://localhost:8090/insertUserByUsernameAndPassword
     @PostMapping("/insertUserByUsernameAndPassword")
-    public R insertUserByUsernameAndPassword(HttpServletRequest httpServletRequest) {
-        // 获取传入的username和password
-        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
-
+    public R insertUserByUsernameAndPassword(@RequestBody User u) {
+        /**
+        * @author Jiangjianqing
+        * @date 2024/10/11 20:19
+        * @description HttpServletRequest.getParameterMap()获取参数，这通常用于处理表单数据或URL查询参数
+        */
         // 获取用户名和密码
-        String username = parameterMap.get("username")[0];
-        String password = parameterMap.get("password")[0];
+        String username = u.getUsername();
+        String password = u.getPassword();
 
         // 判断指定的用户名是否存在
         User user = userService.getUserById(username);
@@ -69,7 +72,7 @@ public class UserController {
             }
         } else {
             // 该用户已经存在了
-            return R.success("该用户已经存在了", null);
+            return R.error("该用户已经存在了", null);
         }
     }
 

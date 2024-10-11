@@ -46,11 +46,13 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
 
              // 如果验证失败 则将其转发到token过期专属的路由
             if (!isValid) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/tokenErr");// 转发到此路由
-                if (dispatcher != null) {
-                    dispatcher.forward(request, response);
-                    return false;
-                }
+//                RequestDispatcher dispatcher = request.getRequestDispatcher("/tokenErr");// 转发到此路由
+//                if (dispatcher != null) {
+//                    dispatcher.forward(request, response);
+//                    return false;
+//                }
+                // 因为无法判断get和post方法,此处暂时统一拒绝访问,而不进行路由跳转
+                return false;
             }
 
             System.out.println("校验结果"+isValid);
@@ -63,8 +65,10 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
 
             // 如果token有效或者你不打算在这里验证它，继续处理请求
             return true;
+        } else {
+            // 没有token,拒绝访问
+            return false;
         }
-        return true;// true:允许访问
     }
 
     @Override

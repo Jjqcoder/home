@@ -25,12 +25,15 @@ public class TokenImpl implements TokenService {
         Map<String, Object> claims = new HashMap<>();
         claims.put("subject", "登录成功后返回的token"); // 将用户ID或其他标识作为JWT的主题
 
-        return Jwts.builder()
+        String compact = Jwts.builder()
                 .setClaims(claims) // 设置JWT的负载
                 .setIssuedAt(new Date()) // 设置签发时间
-                .setExpiration(new Date(System.currentTimeMillis() + 1000*60*1)) // 设置过期时间（单位为毫秒1000ms = 1s）
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 1)) // 设置过期时间（单位为毫秒1000ms = 1s）
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY) // 使用HS256算法和密钥签名JWT
-                .compact(); // 生成JWT的字符串形式
+                .compact();// 生成JWT的字符串形式
+
+        System.out.println(compact);
+        return compact;
     }
 
 //    验证传入的token是否合法

@@ -19,4 +19,5 @@ public class ErrorController {
     public R tokenErr() {
         return R.error("token过期了,请重新登录!", null);
     }
+
 }

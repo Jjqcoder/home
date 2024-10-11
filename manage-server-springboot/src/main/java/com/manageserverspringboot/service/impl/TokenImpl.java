@@ -1,8 +1,7 @@
 package com.manageserverspringboot.service.impl;
 
 import com.manageserverspringboot.service.TokenService;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +36,31 @@ public class TokenImpl implements TokenService {
 //    验证传入的token是否合法
     @Override
     public Boolean isTokenValid(String token) {
+
+        Claims body = null;// 取出其载荷部分（即所有的声明信息）
+
+        try {
+            body = Jwts.parser()
+                    .setSigningKey(SECRET_KEY)
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+            return false;
+        } catch (UnsupportedJwtException e) {
+            return false;
+        } catch (MalformedJwtException e) {
+            return false;
+        } catch (SignatureException e) {
+            return false;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+
+        Date expiration = body.getExpiration();
+        if (expiration.before(new Date())) {
+            return false;// 已经过期
+        }
+
         return true;
     }
 }

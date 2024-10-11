@@ -2,6 +2,7 @@ package com.manageserverspringboot.controller;
 
 import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
+import com.manageserverspringboot.service.TokenService;
 import com.manageserverspringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ public class UserController {
     // 依赖注入
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TokenService tokenService;
 
 //    功能:获取全部的用户信息
 //    url示例:http://localhost:8090/getAllUser
@@ -65,14 +69,14 @@ public class UserController {
             Boolean isInsertOk = userService.insertUserByUsernameAndPassword(username, password);
             if (isInsertOk) {
                 // 成功
-                return R.success("数据插入成功", null);
+                return R.success("注册成功!", null);
             } else {
                 // 失败
-                return R.error("插入数据失败", null);
+                return R.error("注册失败!", null);
             }
         } else {
             // 该用户已经存在了
-            return R.error("该用户已经存在了", null);
+            return R.error("该用户名已存在", null);
         }
     }
 
@@ -89,7 +93,9 @@ public class UserController {
         Boolean isLoginOk = userService.login(username, password);
 
         if (isLoginOk) {
-            return R.success("用户名密码正确!", null);
+            // 生成token并发回前端
+            String token = tokenService.getToken();
+            return R.success("用户名密码正确,登录成功！", token);
         } else {
             return R.error("用户名或密码错误!", null);
         }

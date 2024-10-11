@@ -15,7 +15,11 @@ async function fetchData(url: string): Promise<AxiosResponse> {
 // 定义一个函数来发起 POST 请求  
 async function postData(url: string, data: object): Promise<AxiosResponse> {  
     try {  
-        const response = await axios.post(url, data);  
+        const response = await axios.post(url, data,{
+            headers: {  
+                'Content-Type': 'application/json'  
+            } 
+        });  
         return response;  
     } catch (error) {  
         console.error('Error posting data:', error);  

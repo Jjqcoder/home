@@ -34,13 +34,39 @@ const log_in = function () {
       console.log(response);
       if (response.data.code === 400) {
         ElMessage({
-          message: '用户名或密码错误',
+          message: '用户名或密码错误🫏',
           type: 'warning',
         });
       } else if (response.data.code === 200) {
         ElMessage({
-          message: '登录成功',
+          message: '登录成功✨',
           type: 'success',
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+// 注册
+const sign_in = function () {
+  console.log(`注册！username${username.value} password${password.value}`);
+  postData('http://localhost:8090/insertUserByUsernameAndPassword', {
+    username: username.value,
+    password: password.value,
+  })
+    .then((response) => {
+      if (response.data.code === 200) {
+        console.log(response);
+        ElMessage({
+          message: '注册成功✨',
+          type: 'success',
+        });
+      } else if (response.data.code === 400) {
+        ElMessage({
+          message: '此户名已经存在了,换一个吧🫏',
+          type: 'warning',
         });
       }
     })

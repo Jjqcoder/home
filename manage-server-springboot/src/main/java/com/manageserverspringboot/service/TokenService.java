@@ -14,4 +14,7 @@ public interface TokenService {
 //     获取token(默认)
     String getToken();
 
+//    验证传入的token是否合法,合法返回true,不合法返回false
+    Boolean isTokenValid(String token);
+
 }

@@ -24,4 +24,9 @@ public class TokenController {
     public String getToken() {
         return tokenService.getToken();
     }
+
+    @GetMapping("/isTokenValid")
+    public Boolean isTokenValid(String token) {
+        return true;
+    }
 }

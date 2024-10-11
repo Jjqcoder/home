@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class getTokenImpl implements TokenService {
+public class TokenImpl implements TokenService {
 
     // 密钥
     @Value("${app.tokenKey}")
@@ -32,5 +32,11 @@ public class getTokenImpl implements TokenService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000*60*1)) // 设置过期时间（单位为毫秒1000ms = 1s）
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY) // 使用HS256算法和密钥签名JWT
                 .compact(); // 生成JWT的字符串形式
+    }
+
+//    验证传入的token是否合法
+    @Override
+    public Boolean isTokenValid(String token) {
+        return true;
     }
 }

@@ -34,12 +34,12 @@ const log_in = function () {
       console.log(response);
       if (response.data.code === 400) {
         ElMessage({
-          message: '用户名或密码错误🫏',
+          message: response.data.message,
           type: 'warning',
         });
       } else if (response.data.code === 200) {
         ElMessage({
-          message: '登录成功✨',
+          message: response.data.message,
           type: 'success',
         });
       }
@@ -60,12 +60,12 @@ const sign_in = function () {
       if (response.data.code === 200) {
         console.log(response);
         ElMessage({
-          message: '注册成功✨',
+          message: response.data.message,
           type: 'success',
         });
       } else if (response.data.code === 400) {
         ElMessage({
-          message: '此户名已经存在了,换一个吧🫏',
+          message: response.data.message,
           type: 'warning',
         });
       }

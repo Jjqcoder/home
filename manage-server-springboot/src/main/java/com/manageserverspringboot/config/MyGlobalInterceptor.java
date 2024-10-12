@@ -64,6 +64,17 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
         } else if (url.indexOf("Err") != -1) {
             // 如果是错误处理的url,放行
             return true;
+        } else if ("OPTIONS".equals(request.getMethod())) {
+            /**
+            * @author Jiangjianqing
+            * @date 2024/10/12 21:01
+            * @description 在前端使用XMLHttpRequest或fetch API 发起跨域请求时，
+             * 如果请求方法不是简单的GET、HEAD或POST（且POST请求的Content-Type为text/plain、multipart/form-data
+             * 或application/x-www-form-urlencoded），或者请求中包含了自定义头（Custom Headers），
+             * 浏览器会首先发送一个OPTIONS请求（也称为“预检请求”或“preflight request”）到目标服务器。
+            */
+            // 放行预检请求
+            return true;
         }
         // 从请求头中获取Authorization信息
         String authorizationHeader = request.getHeader("Authorization");

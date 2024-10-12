@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ErrorController {
 
 //    url示例:http://localhost:8090/tokenErr
-    @PostMapping("/tokenErr")// 注意 如果是从外部转发来的请求,请求方法(POST和GET)需要和原本的一样!!
-    public R tokenErr() {
+    @PostMapping("/tokenPostErr")// 注意 如果是从外部转发来的请求,请求方法(POST和GET)需要和原本的一样!!
+    public R tokenPostErr() {
+        return R.error("token过期了,请重新登录!", null);
+    }
+
+    @GetMapping("/tokenGetErr")// 注意 如果是从外部转发来的请求,请求方法(POST和GET)需要和原本的一样!!
+    public R tokenGetErr() {
         return R.error("token过期了,请重新登录!", null);
     }
 

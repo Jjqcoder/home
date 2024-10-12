@@ -7,8 +7,10 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @description: 拦截器配置
@@ -19,6 +21,34 @@ import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class MyGlobalInterceptor implements HandlerInterceptor {
+
+    // 传入request 根据请求非法跳转至对应的错误处理控制器
+    public void jumpToErr(HttpServletRequest request, HttpServletResponse response) {
+        // GET请求token非法
+        if ("GET".equals(request.getMethod())) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/tokenGetErr");// 转发到此路由
+                if (dispatcher != null) {
+                    try {
+                        dispatcher.forward(request, response);
+                    } catch (ServletException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+        } else if ("POST".equals(request.getMethod())) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/tokenPostErr");// 转发到此路由
+            if (dispatcher != null) {
+                try {
+                    dispatcher.forward(request, response);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     @Autowired
     TokenService tokenService;
@@ -44,29 +74,19 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
             // 在这里你可以对token进行验证，比如调用isTokenValid方法
              boolean isValid = tokenService.isTokenValid(token);
 
-             // 如果验证失败 则将其转发到token过期专属的路由
-            if (!isValid) {
-//                RequestDispatcher dispatcher = request.getRequestDispatcher("/tokenErr");// 转发到此路由
-//                if (dispatcher != null) {
-//                    dispatcher.forward(request, response);
-//                    return false;
-//                }
-                // 因为无法判断get和post方法,此处暂时统一拒绝访问,而不进行路由跳转
-                return false;
-            }
-
             System.out.println("校验结果"+isValid);
 
-            // 如果token无效，你可以返回false来阻止请求进一步处理
-             if (!isValid) {
-            //     response.setStatus(HttpServletResponse.SC_FORBIDDEN); // 403 Forbidden
-                 return false;
-             }
+             // 如果验证失败 则将其转发到token过期专属的路由
+            if (!isValid) {
+                jumpToErr(request, response);
+                return false;
+            }
 
             // 如果token有效或者你不打算在这里验证它，继续处理请求
             return true;
         } else {
             // 没有token,拒绝访问
+            jumpToErr(request, response);
             return false;
         }
     }

@@ -3,8 +3,14 @@ import axios, { AxiosResponse } from 'axios';
   
 // 定义一个函数来发起 GET 请求  
 async function fetchData(url: string): Promise<AxiosResponse> {  
+    const token = localStorage.getItem('token')
     try {  
-        const response = await axios.get(url);  
+        const response = await axios.get(url,{
+            headers: {  
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`  // 请求携带token
+            }  
+        });  
         return response;  
     } catch (error) {  
         console.error('Error fetching data:', error);  
@@ -13,11 +19,13 @@ async function fetchData(url: string): Promise<AxiosResponse> {
 }  
   
 // 定义一个函数来发起 POST 请求  
-async function postData(url: string, data: object): Promise<AxiosResponse> {  
+async function postData(url: string, data: object): Promise<AxiosResponse> { 
+    const token = localStorage.getItem('token') 
     try {  
         const response = await axios.post(url, data,{
             headers: {  
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`  // 请求携带token
             } 
         });  
         return response;  

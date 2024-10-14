@@ -18,15 +18,18 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { fetchData, postData } from './../utils/api'; // 引入api函数
+import { ElMessage } from 'element-plus'; // 弹窗
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 const username = ref('');
 const password = ref('');
 
-import { fetchData, postData } from './../utils/api'; // 引入api函数
-import { ElMessage } from 'element-plus'; // 弹窗
-
 // 登录
 const log_in = function () {
-  console.log('登录' + username.value + password.value);
+  // console.log('登录' + username.value + password.value);
   fetchData(
     `http://localhost:8090/login?username=${username.value}&password=${password.value}`
   )
@@ -38,10 +41,16 @@ const log_in = function () {
           type: 'warning',
         });
       } else if (response.data.code === 200) {
+        // 登录成功之后,将token存储在本地
+        localStorage.setItem('token', response.data.data);
+
         ElMessage({
           message: response.data.message,
           type: 'success',
         });
+
+        // 路由跳转
+        router.push('/main');
       }
     })
     .catch((error) => {

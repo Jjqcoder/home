@@ -3,6 +3,9 @@
   展示全部用户信息：
   <br>
   {{ userData }}
+  <br>
+  message如下:
+  {{ message }}
 
 </template>
 
@@ -37,6 +40,16 @@ onMounted(() => {
       console.log(error);
     });
 });
+
+// websocket相关
+import { webSocketService } from '../services/webSocketService';  
+const message = ref('');  
+const handleMessage = (msg) => {  
+      message.value = msg;  
+}; 
+onMounted(() => {  
+      webSocketService.onMessage(handleMessage);  
+}); 
 </script>
 
 <style>

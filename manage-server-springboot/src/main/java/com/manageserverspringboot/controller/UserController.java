@@ -1,5 +1,6 @@
 package com.manageserverspringboot.controller;
 
+import com.manageserverspringboot.config.WebSocketHandler;
 import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
 import com.manageserverspringboot.service.TokenService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,16 @@ public class UserController {
     @Autowired
     private TokenService tokenService;
 
-//    功能:获取全部的用户信息
+//    websocket相关
+    private final WebSocketHandler webSocketHandler;
+
+    @Autowired
+    public UserController(WebSocketHandler webSocketHandler) {
+        this.webSocketHandler = webSocketHandler;
+    }
+
+
+    //    功能:获取全部的用户信息
 //    url示例:http://localhost:8090/getAllUser
     @GetMapping("/getAllUser")
     public R getAllUser() {
@@ -95,6 +106,12 @@ public class UserController {
         if (isLoginOk) {
             // 生成token并发回前端
             String token = tokenService.getToken();
+            // 广播信息
+            try {
+                webSocketHandler.broadcastMessage(username+"登录了！");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return R.success("用户名密码正确,登录成功！", token);
         } else {
             return R.error("用户名或密码错误!", null);

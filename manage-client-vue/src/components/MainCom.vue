@@ -46,6 +46,10 @@ import { webSocketService } from '../services/webSocketService';
 const message = ref('');  
 const handleMessage = (msg) => {  
       message.value = msg;  
+      ElMessage({
+          message: msg,
+          type: 'info',
+        });
 }; 
 onMounted(() => {  
       webSocketService.onMessage(handleMessage);  

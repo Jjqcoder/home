@@ -22,7 +22,11 @@ import java.io.IOException;
 @Component
 public class MyGlobalInterceptor implements HandlerInterceptor {
 
-    // 传入request 根据请求非法跳转至对应的错误处理控制器
+    // 依赖注入
+    @Autowired
+    TokenService tokenService;
+
+    // 传入request 根据非法请求的类型（GET 或 POST）跳转至对应的错误处理控制器
     public void jumpToErr(HttpServletRequest request, HttpServletResponse response) {
         // GET请求token非法
         if ("GET".equals(request.getMethod())) {
@@ -50,8 +54,6 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
         }
     }
 
-    @Autowired
-    TokenService tokenService;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String url = request.getRequestURL().toString();
@@ -82,7 +84,7 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
                 return false;
             }
 
-            // 如果token有效或者你不打算在这里验证它，继续处理请求
+            // token有效 允许访问 放行
             return true;
         } else {
             // 没有token,拒绝访问

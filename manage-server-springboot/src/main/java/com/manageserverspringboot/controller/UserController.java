@@ -5,6 +5,7 @@ import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
 import com.manageserverspringboot.service.TokenService;
 import com.manageserverspringboot.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
+@Slf4j
 @RestController
 public class UserController {
 
@@ -39,6 +40,7 @@ public class UserController {
 //    url示例:http://localhost:8090/getAllUser
     @GetMapping("/getAllUser")
     public R getAllUser() {
+        log.info("有人调用我！");
         return R.success("成功获取全部的用户信息", userService.getAllUsers());
     }
 

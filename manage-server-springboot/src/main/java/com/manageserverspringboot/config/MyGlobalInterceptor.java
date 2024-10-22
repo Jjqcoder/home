@@ -80,6 +80,9 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
         } else if (url.indexOf("swagger") != -1) {
             // 放行 swagegr 相关的路由
             return true;
+        } else if (url.indexOf("test") != -1) {
+            // 放行测试路由
+            return true;
         }
         // 从请求头中获取Authorization信息
         String authorizationHeader = request.getHeader("Authorization");

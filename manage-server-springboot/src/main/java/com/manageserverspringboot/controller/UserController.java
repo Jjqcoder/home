@@ -5,6 +5,8 @@ import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
 import com.manageserverspringboot.service.TokenService;
 import com.manageserverspringboot.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+@Api(tags = "用户相关")// 用在控制器上
 @Slf4j
 @RestController
 public class UserController {
@@ -38,6 +41,7 @@ public class UserController {
 
     //    功能:获取全部的用户信息
 //    url示例:http://localhost:8090/getAllUser
+    @ApiOperation(value = "获取全部的用户信息")
     @GetMapping("/getAllUser")
     public R getAllUser() {
         log.info("有人调用我！");
@@ -46,6 +50,7 @@ public class UserController {
 
 //    功能:查询指定username的用户数据
 //    url示例:http://localhost:8090/getUserById?username=jiang
+    @ApiOperation(value = "查询指定username的用户数据")
     @GetMapping("/getUserById")
     public R getUserById(HttpServletRequest httpServletRequest) {
         Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
@@ -63,6 +68,7 @@ public class UserController {
 
 //    功能:传入username和password,插入用户信息
 //    url示例:http://localhost:8090/insertUserByUsernameAndPassword
+    @ApiOperation(value = "传入username和password,插入用户信息")
     @PostMapping("/insertUserByUsernameAndPassword")
     public R insertUserByUsernameAndPassword(@RequestBody User u) {
         /**
@@ -95,6 +101,7 @@ public class UserController {
 
 //     功能:传入username和password 进行登录
 //     示例url:http://localhost:8090/login
+    @ApiOperation(value = "传入username和password 进行登录")
     @GetMapping("/login")
     public R login(HttpServletRequest httpServletRequest) {
         Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();

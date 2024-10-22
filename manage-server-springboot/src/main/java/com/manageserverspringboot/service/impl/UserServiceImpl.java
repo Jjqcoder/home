@@ -3,6 +3,7 @@ package com.manageserverspringboot.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.manageserverspringboot.entity.User;
 import com.manageserverspringboot.mapper.UserMapper;
 import com.manageserverspringboot.service.UserService;
@@ -18,7 +19,7 @@ import java.util.List;
 */
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 //    注入依赖
     @Autowired

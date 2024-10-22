@@ -1,10 +1,11 @@
 package com.manageserverspringboot.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.manageserverspringboot.entity.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends IService<User> {
 
 //    获取全部的用户信息
     List<User> getAllUsers();

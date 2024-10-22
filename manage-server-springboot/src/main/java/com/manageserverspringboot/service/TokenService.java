@@ -1,5 +1,6 @@
 package com.manageserverspringboot.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.beans.factory.annotation.Value;
 
 /**

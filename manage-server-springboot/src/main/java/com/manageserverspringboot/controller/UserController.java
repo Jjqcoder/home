@@ -1,5 +1,6 @@
 package com.manageserverspringboot.controller;
 
+import cn.dev33.satoken.secure.SaSecureUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import com.manageserverspringboot.config.WebSocketHandler;
 import com.manageserverspringboot.entity.R;
@@ -10,10 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -79,7 +77,7 @@ public class UserController {
         */
         // 获取用户名和密码
         String username = u.getUsername();
-        String password = u.getPassword();
+        String password = SaSecureUtil.sha256(u.getPassword());// 加密(摘要加密) https://sa-token.cc/doc.html#/up/password-secure?id=%e6%91%98%e8%a6%81%e5%8a%a0%e5%af%86
 
         // 判断指定的用户名是否存在
         User user = userService.getUserById(username);
@@ -103,15 +101,11 @@ public class UserController {
 //     功能:传入username和password 进行登录
 //     示例url:http://localhost:8090/login
     @ApiOperation(value = "传入username和password 进行登录")
-    @GetMapping("/login")
-    public R login(HttpServletRequest httpServletRequest) {
-        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
-        // 获取用户名和密码
-        String username = parameterMap.get("username")[0];
-        String password = parameterMap.get("password")[0];
+    @PostMapping("/login")
+    public R login(@RequestParam String username, @RequestParam String password) {
 
         // 开始校验
-        Boolean isLoginOk = userService.login(username, password);
+        Boolean isLoginOk = userService.login(username, SaSecureUtil.sha256(password));
 
         if (isLoginOk) {
             // 生成token并发回前端

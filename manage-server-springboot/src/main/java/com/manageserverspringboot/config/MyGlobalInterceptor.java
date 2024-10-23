@@ -1,5 +1,6 @@
 package com.manageserverspringboot.config;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.manageserverspringboot.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -57,6 +58,7 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String url = request.getRequestURL().toString();
+        // 获取
         if (url.equals("http://localhost:8090/login")) {
             // 如果是登录的接口 则直接放行
             return true;
@@ -82,6 +84,9 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
             return true;
         } else if (url.indexOf("test") != -1) {
             // 放行测试路由
+            return true;
+        } else if (StpUtil.isLogin()) {
+            // 如果是sa-token认证通过了 就放行
             return true;
         }
         // 从请求头中获取Authorization信息

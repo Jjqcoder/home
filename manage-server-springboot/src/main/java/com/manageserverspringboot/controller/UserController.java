@@ -1,5 +1,6 @@
 package com.manageserverspringboot.controller;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.manageserverspringboot.config.WebSocketHandler;
 import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
@@ -115,6 +116,8 @@ public class UserController {
         if (isLoginOk) {
             // 生成token并发回前端
             String token = tokenService.getToken();
+            // 使用sa-token进行token的颁发
+            StpUtil.login(username);
             // 广播信息
             try {
                 webSocketHandler.broadcastMessage(username+"登录了！");

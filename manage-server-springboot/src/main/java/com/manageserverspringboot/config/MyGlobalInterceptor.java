@@ -85,7 +85,7 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
         } else if (url.indexOf("test") != -1) {
             // 放行测试路由
             return true;
-        } else if (StpUtil.isLogin()) {
+        } else if (StpUtil.isLogin()) {// StpUtil.isLogin() => 判断当前会话是否已经登录，返回true=已登录，false=未登录
             // 如果是sa-token认证通过了 就放行
             return true;
         }

@@ -102,7 +102,9 @@ public class UserController {
 //     示例url:http://localhost:8090/login
     @ApiOperation(value = "传入username和password 进行登录")
     @PostMapping("/login")
-    public R login(@RequestParam String username, @RequestParam String password) {
+    public R login(@RequestBody User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
 
         // 开始校验
         Boolean isLoginOk = userService.login(username, SaSecureUtil.sha256(password));

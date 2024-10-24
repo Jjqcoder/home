@@ -28,33 +28,59 @@ const username = ref('');
 const password = ref('');
 
 // 登录
+// const log_in = function () {
+//   // console.log('登录' + username.value + password.value);
+//   fetchData(
+//     `http://localhost:8090/login?username=${username.value}&password=${password.value}`
+//   )
+//     .then((response) => {
+//       console.log(response);
+//       if (response.data.code === 400) {
+//         ElMessage({
+//           message: response.data.message,
+//           type: 'warning',
+//         });
+//       } else if (response.data.code === 200) {
+//         // 登录成功之后,将token存储在本地
+//         localStorage.setItem('token', response.data.data);
+
+//         ElMessage({
+//           message: response.data.message,
+//           type: 'success',
+//         });
+
+//         // 路由跳转
+//         router.push('/main');
+//       }
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
+// login变成post请求
 const log_in = function () {
-  // console.log('登录' + username.value + password.value);
-  fetchData(
-    `http://localhost:8090/login?username=${username.value}&password=${password.value}`
-  )
+  postData('http://localhost:8090/login', {
+    username: username.value,
+    password: password.value,
+  })
     .then((response) => {
-      console.log(response);
       if (response.data.code === 400) {
         ElMessage({
           message: response.data.message,
           type: 'warning',
         });
       } else if (response.data.code === 200) {
-        // 登录成功之后,将token存储在本地
-        localStorage.setItem('token', response.data.data);
-
         ElMessage({
           message: response.data.message,
           type: 'success',
         });
-
         // 路由跳转
         router.push('/main');
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log('失败：' + error);
     });
 };
 

@@ -89,30 +89,7 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
             // 如果是sa-token认证通过了 就放行
             return true;
         }
-        // 从请求头中获取Authorization信息
-        String authorizationHeader = request.getHeader("Authorization");
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            // 提取token
-            String token = authorizationHeader.substring(7); // 7是"Bearer "的长度
-
-            // 在这里你可以对token进行验证，比如调用isTokenValid方法
-             boolean isValid = tokenService.isTokenValid(token);
-
-            System.out.println("校验结果"+isValid);
-
-             // 如果验证失败 则将其转发到token过期专属的路由
-            if (!isValid) {
-                jumpToErr(request, response);
-                return false;
-            }
-
-            // token有效 允许访问 放行
-            return true;
-        } else {
-            // 没有token,拒绝访问
-            jumpToErr(request, response);
-            return false;
-        }
+        return true;
     }
 
     @Override

@@ -70,8 +70,10 @@ const log_in = function () {
     .then((response) => {
       if (response.data.code === 200) {
         // 将tokenName和tokenValue存储在本地
-        localStorage.setItem('tokenName', response.data.tokenName);
-        localStorage.setItem('tokenValue', response.data.tokenValue);
+        localStorage.setItem('tokenName', response.data.data.data.tokenName);
+        localStorage.setItem('tokenValue', response.data.data.data.tokenValue);
+        console.log('demo', response.data.data.data.tokenName);
+
         ElMessage({
           message: response.data.message,
           type: 'success',

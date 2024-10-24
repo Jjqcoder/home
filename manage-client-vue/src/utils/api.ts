@@ -5,13 +5,12 @@ import axios, { AxiosResponse } from 'axios';
 async function fetchData(url: string): Promise<AxiosResponse> {  
     try {  
         // 每次请求都带上tokenName和tokenValue
-        const tokenName = localStorage.getItem('tokenName');
         const tokenValue = localStorage.getItem('tokenValue');
+        // console.log(tokenName,tokenValue);
         const response = await axios.get(url,{
             headers: {  
                 'Content-Type': 'application/json',
-                'tokenName':tokenName,
-                'tokenValue':tokenValue
+                'satoken':tokenValue,
             }  
         });  
         return response;  
@@ -25,13 +24,15 @@ async function fetchData(url: string): Promise<AxiosResponse> {
 async function postData(url: string, data: object): Promise<AxiosResponse> { 
     try {  
         // 每次请求都带上tokenName和tokenValue
-        const tokenName = localStorage.getItem('tokenName');
+        // const tokenName = localStorage.getItem('tokenName');
         const tokenValue = localStorage.getItem('tokenValue');
+        // console.log(tokenName,tokenValue);
+        
         const response = await axios.post(url, data,{
             headers: {  
                 'Content-Type': 'application/json',
-                'tokenName':tokenName,
-                'tokenValue':tokenValue
+                // 注意键名为satoken！！
+                'satoken':tokenValue,
             } 
         });  
         return response;  

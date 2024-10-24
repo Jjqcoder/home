@@ -60,23 +60,28 @@ const password = ref('');
 
 // login变成post请求
 const log_in = function () {
+  console.log(username.value);
+  console.log(password.value);
+
   postData('http://localhost:8090/login', {
     username: username.value,
     password: password.value,
   })
     .then((response) => {
-      if (response.data.code === 400) {
-        ElMessage({
-          message: response.data.message,
-          type: 'warning',
-        });
-      } else if (response.data.code === 200) {
+      if (response.data.code === 200) {
+        // 将tokenName和tokenValue存储在本地
+        localStorage.setItem('tokenName', response.data.tokenName);
+        localStorage.setItem('tokenValue', response.data.tokenValue);
         ElMessage({
           message: response.data.message,
           type: 'success',
         });
-        // 路由跳转
         router.push('/main');
+      } else if (response.data.code === 400) {
+        ElMessage({
+          message: response.data.message,
+          type: 'warning',
+        });
       }
     })
     .catch((error) => {

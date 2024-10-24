@@ -89,7 +89,8 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
             // 如果是sa-token认证通过了 就放行
             return true;
         }
-        return true;
+        jumpToErr(request, response);
+        return false;
     }
 
     @Override

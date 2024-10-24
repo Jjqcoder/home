@@ -1,7 +1,9 @@
 package com.manageserverspringboot.controller;
 
 import cn.dev33.satoken.secure.SaSecureUtil;
+import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 import com.manageserverspringboot.config.WebSocketHandler;
 import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
@@ -111,7 +113,7 @@ public class UserController {
 
         if (isLoginOk) {
             // 生成token并发回前端
-            String token = tokenService.getToken();
+//            String token = tokenService.getToken();
             // 使用sa-token进行token的颁发
             StpUtil.login(username);
             // 广播信息
@@ -120,7 +122,9 @@ public class UserController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return R.success("用户名密码正确,登录成功！", token);
+            // 将token返回前端
+            SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
+            return R.success("用户名密码正确,登录成功！", SaResult.data(tokenInfo));
         } else {
             return R.error("用户名或密码错误!", null);
         }

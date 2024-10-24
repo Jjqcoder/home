@@ -3,12 +3,15 @@ import axios, { AxiosResponse } from 'axios';
   
 // 定义一个函数来发起 GET 请求  
 async function fetchData(url: string): Promise<AxiosResponse> {  
-    const token = localStorage.getItem('token')
     try {  
+        // 每次请求都带上tokenName和tokenValue
+        const tokenName = localStorage.getItem('tokenName');
+        const tokenValue = localStorage.getItem('tokenValue');
         const response = await axios.get(url,{
             headers: {  
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`  // 请求携带token
+                'tokenName':tokenName,
+                'tokenValue':tokenValue
             }  
         });  
         return response;  
@@ -20,12 +23,15 @@ async function fetchData(url: string): Promise<AxiosResponse> {
   
 // 定义一个函数来发起 POST 请求  
 async function postData(url: string, data: object): Promise<AxiosResponse> { 
-    const token = localStorage.getItem('token') 
     try {  
+        // 每次请求都带上tokenName和tokenValue
+        const tokenName = localStorage.getItem('tokenName');
+        const tokenValue = localStorage.getItem('tokenValue');
         const response = await axios.post(url, data,{
             headers: {  
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`  // 请求携带token
+                'tokenName':tokenName,
+                'tokenValue':tokenValue
             } 
         });  
         return response;  

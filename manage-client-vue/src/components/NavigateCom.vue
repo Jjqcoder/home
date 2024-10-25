@@ -2,7 +2,7 @@
  * @Author: 江建清 1810422805@qq.com
  * @Date: 2024-10-25 22:04:51
  * @LastEditors: 江建清 1810422805@qq.com
- * @LastEditTime: 2024-10-25 22:36:47
+ * @LastEditTime: 2024-10-25 22:39:22
  * @FilePath: \manage-client-vue\src\components\NavigateCom.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -24,14 +24,16 @@
               <el-icon><icon-menu /></el-icon>工具栏
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">
-                <router-link to="/main/article">
+              <router-link to="/main/article">
+                <el-menu-item index="1-1">
                   文章管理
-                </router-link>
-              </el-menu-item>
-              <el-menu-item index="1-2"><router-link to="/main/demo">
+                </el-menu-item>
+              </router-link>
+              <router-link to="/main/demo">
+                <el-menu-item index="1-2">
                   待定
-                </router-link></el-menu-item>
+                </el-menu-item>
+              </router-link>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
@@ -89,5 +91,10 @@
   justify-content: center;
   height: 100%;
   right: 20px;
+}
+/* 消除router-link的默认样式 */
+a {
+  text-decoration: none;
+  color: #000000;
 }
 </style>

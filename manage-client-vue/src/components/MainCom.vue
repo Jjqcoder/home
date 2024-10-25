@@ -1,11 +1,20 @@
+<!--
+ * @Author: 江建清 1810422805@qq.com
+ * @Date: 2024-10-12 20:14:38
+ * @LastEditors: 江建清 1810422805@qq.com
+ * @LastEditTime: 2024-10-25 22:07:12
+ * @FilePath: \manage-client-vue\src\components\MainCom.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
-  main页面
+  <!-- main页面
   展示全部用户信息：
   <br>
   {{ userData }}
   <br>
   message如下:
-  {{ message }}
+  {{ message }} -->
+  <NavigateCom />
 
 </template>
 
@@ -42,18 +51,26 @@ onMounted(() => {
 });
 
 // websocket相关
-import { webSocketService } from '../services/webSocketService';  
-const message = ref('');  
-const handleMessage = (msg) => {  
-      message.value = msg;  
-      ElMessage({
-          message: msg,
-          type: 'info',
-        });
-}; 
-onMounted(() => {  
-      webSocketService.onMessage(handleMessage);  
-}); 
+import { webSocketService } from '../services/webSocketService';
+const message = ref('');
+
+import { h } from 'vue';
+import { ElNotification } from 'element-plus';
+
+const handleMessage = (msg) => {
+  message.value = msg;
+  ElNotification({
+    title: '提示信息',
+    message: h('i', { style: 'color: teal' }, msg),
+  });
+};
+onMounted(() => {
+  webSocketService.onMessage(handleMessage);
+});
+
+// 引入导航组件
+import { defineComponent } from 'vue';
+import NavigateCom from './NavigateCom.vue';
 </script>
 
 <style>

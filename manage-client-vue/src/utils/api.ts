@@ -1,3 +1,11 @@
+/*
+ * @Author: 江建清 1810422805@qq.com
+ * @Date: 2024-10-10 20:40:48
+ * @LastEditors: 江建清 1810422805@qq.com
+ * @LastEditTime: 2024-10-25 21:09:21
+ * @FilePath: \manage-client-vue\src\utils\api.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // 引入 Axios  
 import axios, { AxiosResponse } from 'axios';  
   
@@ -15,7 +23,7 @@ async function fetchData(url: string): Promise<AxiosResponse> {
         });  
         return response;  
     } catch (error) {  
-        console.error('Error fetching data:', error);  
+        console.error('[api出错:发起GET请求的时候发生了错误!]', error);  
         throw error;  
     }  
 }  
@@ -37,7 +45,7 @@ async function postData(url: string, data: object): Promise<AxiosResponse> {
         });  
         return response;  
     } catch (error) {  
-        console.error('Error posting data:', error);  
+        console.error('[api出错:发起POST请求的时候发生了错误!]', error);  
         throw error;  
     }  
 }  

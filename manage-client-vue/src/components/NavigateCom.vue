@@ -1,62 +1,38 @@
+<!--
+ * @Author: 江建清 1810422805@qq.com
+ * @Date: 2024-10-25 22:04:51
+ * @LastEditors: 江建清 1810422805@qq.com
+ * @LastEditTime: 2024-10-25 22:36:47
+ * @FilePath: \manage-client-vue\src\components\NavigateCom.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!--
+ * @Author: 江建清 1810422805@qq.com
+ * @Date: 2024-10-25 22:04:51
+ * @LastEditors: 江建清 1810422805@qq.com
+ * @LastEditTime: 2024-10-25 22:19:08
+ * @FilePath: \manage-client-vue\src\components\NavigateCom.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <template>
   <el-container class="layout-container-demo" style="height: 500px">
     <el-aside width="200px">
       <el-scrollbar>
-        <el-menu :default-openeds="['1', '3']">
+        <el-menu>
           <el-sub-menu index="1">
             <template #title>
-              <el-icon>
-                <message />
-              </el-icon>Navigator One
+              <el-icon><icon-menu /></el-icon>工具栏
             </template>
             <el-menu-item-group>
-              <template #title>Group 1</template>
-              <el-menu-item index="1-1">Option 1</el-menu-item>
-              <el-menu-item index="1-2">Option 2</el-menu-item>
+              <el-menu-item index="1-1">
+                <router-link to="/main/article">
+                  文章管理
+                </router-link>
+              </el-menu-item>
+              <el-menu-item index="1-2"><router-link to="/main/demo">
+                  待定
+                </router-link></el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="Group 2">
-              <el-menu-item index="1-3">Option 3</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="1-4">
-              <template #title>Option4</template>
-              <el-menu-item index="1-4-1">Option 4-1</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>
-          <el-sub-menu index="2">
-            <template #title>
-              <el-icon><icon-menu /></el-icon>Navigator Two
-            </template>
-            <el-menu-item-group>
-              <template #title>Group 1</template>
-              <el-menu-item index="2-1">Option 1</el-menu-item>
-              <el-menu-item index="2-2">Option 2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Group 2">
-              <el-menu-item index="2-3">Option 3</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="2-4">
-              <template #title>Option 4</template>
-              <el-menu-item index="2-4-1">Option 4-1</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>
-          <el-sub-menu index="3">
-            <template #title>
-              <el-icon>
-                <setting />
-              </el-icon>Navigator Three
-            </template>
-            <el-menu-item-group>
-              <template #title>Group 1</template>
-              <el-menu-item index="3-1">Option 1</el-menu-item>
-              <el-menu-item index="3-2">Option 2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Group 2">
-              <el-menu-item index="3-3">Option 3</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="3-4">
-              <template #title>Option 4</template>
-              <el-menu-item index="3-4-1">Option 4-1</el-menu-item>
-            </el-sub-menu>
           </el-sub-menu>
         </el-menu>
       </el-scrollbar>
@@ -82,28 +58,13 @@
       </el-header>
 
       <el-main>
-        <el-scrollbar>
-          <el-table :data="tableData">
-            <el-table-column prop="date" label="Date" width="140" />
-            <el-table-column prop="name" label="Name" width="120" />
-            <el-table-column prop="address" label="Address" />
-          </el-table>
-        </el-scrollbar>
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { Menu as IconMenu, Message, Setting } from '@element-plus/icons-vue';
-
-const item = {
-  date: '2016-05-02',
-  name: 'Tom',
-  address: 'No. 189, Grove St, Los Angeles',
-};
-const tableData = ref(Array.from({ length: 20 }).fill(item));
 </script>
 
 <style scoped>

@@ -105,6 +105,7 @@ public class UserController {
     @ApiOperation(value = "传入username和password 进行登录")
     @PostMapping("/login")
     public R login(@RequestBody User user) {
+        log.info("login接口收到信息！参数:{}",user.toString());
         String username = user.getUsername();
         String password = user.getPassword();
 

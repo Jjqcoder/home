@@ -2,6 +2,7 @@ package com.manageserverspringboot.config;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.manageserverspringboot.service.TokenService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -21,6 +22,7 @@ import java.io.IOException;
  */
 
 @Component
+@Slf4j
 public class MyGlobalInterceptor implements HandlerInterceptor {
 
     // 依赖注入
@@ -59,10 +61,10 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String url = request.getRequestURL().toString();
         // 获取
-        if (url.equals("http://localhost:8090/login")) {
+        if (url.indexOf("/login") != -1) {
             // 如果是登录的接口 则直接放行
             return true;
-        } else if (url.equals("http://localhost:8090/insertUserByUsernameAndPassword")) {
+        } else if (url.indexOf("/insertUserByUsernameAndPassword") != -1) {
             // 如果是注册接口 则直接跳过
             return true;
         } else if (url.indexOf("Err") != -1) {
@@ -89,6 +91,7 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
             // 如果是sa-token认证通过了 就放行
             return true;
         }
+        log.error("被拦截！{}",request.toString());
         jumpToErr(request, response);
         return false;
     }

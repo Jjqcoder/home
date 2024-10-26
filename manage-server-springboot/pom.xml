@@ -129,7 +129,8 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.manageserverspringboot.ManageServerSpringbootApplication</mainClass>
-                    <skip>true</skip>
+<!--                    使得打包生效-->
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>

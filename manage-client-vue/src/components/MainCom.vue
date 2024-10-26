@@ -2,7 +2,7 @@
  * @Author: 江建清 1810422805@qq.com
  * @Date: 2024-10-12 20:14:38
  * @LastEditors: 江建清 1810422805@qq.com
- * @LastEditTime: 2024-10-26 20:54:53
+ * @LastEditTime: 2024-10-26 22:24:03
  * @FilePath: \manage-client-vue\src\components\MainCom.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -14,7 +14,7 @@
   <br>
   message如下:
   {{ message }} -->
-  <NavigateCom />
+  <NavigateCom class="navigate-com" />
 
 </template>
 

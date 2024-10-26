@@ -1,4 +1,5 @@
 package com.manageserverspringboot.config;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -11,11 +12,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
+@Slf4j
 public class WebSocketHandler extends TextWebSocketHandler {
     private final Set<WebSocketSession> sessions = Collections.synchronizedSet(new HashSet<>());
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        log.error("会话建立！会话id为{}", session.getId());
         sessions.add(session);
     }
 
@@ -26,6 +29,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        log.error("会话结束！会话id为{}",session.getId());
         sessions.remove(session);
     }
 

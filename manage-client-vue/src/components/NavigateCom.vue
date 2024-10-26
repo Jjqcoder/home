@@ -2,7 +2,7 @@
  * @Author: 江建清 1810422805@qq.com
  * @Date: 2024-10-25 22:04:51
  * @LastEditors: 江建清 1810422805@qq.com
- * @LastEditTime: 2024-10-26 20:57:16
+ * @LastEditTime: 2024-10-26 22:06:11
  * @FilePath: \manage-client-vue\src\components\NavigateCom.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -43,19 +43,8 @@
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
         <div class="toolbar">
-          <el-dropdown>
-            <el-icon style="margin-right: 8px; margin-top: 1px">
-              <setting />
-            </el-icon>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>View</el-dropdown-item>
-                <el-dropdown-item>Add</el-dropdown-item>
-                <el-dropdown-item>Delete</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-          <span>Tom</span>
+          <el-button type="primary" :icon="Sunny" circle></el-button>
+          <el-button type="primary" :icon="Moon" circle></el-button>
         </div>
       </el-header>
 
@@ -67,6 +56,8 @@
 </template>
 
 <script lang="ts" setup>
+// 图标
+import { Sunny, Moon } from '@element-plus/icons-vue';
 </script>
 
 <style scoped>

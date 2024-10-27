@@ -80,11 +80,15 @@ public class UserController {
         */
         // 获取用户名和密码
         String username = u.getUsername();
-        String password = SaSecureUtil.sha256(u.getPassword());// 加密(摘要加密) https://sa-token.cc/doc.html#/up/password-secure?id=%e6%91%98%e8%a6%81%e5%8a%a0%e5%af%86
+        String password = u.getPassword();// 加密(摘要加密) https://sa-token.cc/doc.html#/up/password-secure?id=%e6%91%98%e8%a6%81%e5%8a%a0%e5%af%86
 
         // 校验用户名密码是否合法
-        if (!ValidationUtils.isUsernameAndPasswordValid(username) || !ValidationUtils.isUsernameAndPasswordValid(username)) {
-            return R.error("用户名与密码只允许包含字母、数字、下划线，并且长度不为空且小于6的字符串", null);
+        if (!ValidationUtils.isUsernameAndPasswordValid(username) || !ValidationUtils.isUsernameAndPasswordValid(password)) {
+            log.info("【注册用户】格式不符合需求,用户名{},密码{}",username, password);
+            return R.error("用户名与密码只允许包含字母、数字、下划线，并且长度不为空且小于10的字符串", null);
+        } else {
+            // 校验通过
+            log.info("【注册用户】格式符合需求,用户名{},密码{}",username, password);
         }
 
         // 判断指定的用户名是否存在
@@ -92,7 +96,7 @@ public class UserController {
 
         if (user == null) {
             // 开始进行数据插入
-            Boolean isInsertOk = userService.insertUserByUsernameAndPassword(username, password);
+            Boolean isInsertOk = userService.insertUserByUsernameAndPassword(username, SaSecureUtil.sha256(password));
             if (isInsertOk) {
                 // 成功
                 return R.success("注册成功!", null);

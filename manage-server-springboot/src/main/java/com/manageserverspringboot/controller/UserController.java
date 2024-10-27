@@ -9,6 +9,7 @@ import com.manageserverspringboot.entity.R;
 import com.manageserverspringboot.entity.User;
 import com.manageserverspringboot.service.TokenService;
 import com.manageserverspringboot.service.UserService;
+import com.manageserverspringboot.utils.ValidationUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -80,6 +81,11 @@ public class UserController {
         // 获取用户名和密码
         String username = u.getUsername();
         String password = SaSecureUtil.sha256(u.getPassword());// 加密(摘要加密) https://sa-token.cc/doc.html#/up/password-secure?id=%e6%91%98%e8%a6%81%e5%8a%a0%e5%af%86
+
+        // 校验用户名密码是否合法
+        if (!ValidationUtils.isUsernameAndPasswordValid(username) || !ValidationUtils.isUsernameAndPasswordValid(username)) {
+            return R.error("用户名与密码只允许包含字母、数字、下划线，并且长度不为空且小于6的字符串", null);
+        }
 
         // 判断指定的用户名是否存在
         User user = userService.getUserById(username);

@@ -1,12 +1,13 @@
 package com.manageserverspringboot.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.manageserverspringboot.service.ReadFileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
 * @author Jiangjianqing
@@ -18,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "☕测试路由")
 @RequestMapping("/test")
 public class TestController {
+
+    // 读取文件内容
+    @Autowired
+    private ReadFileService readFileService;
 
     @ApiOperation(value = "测试get方法传参")
     @GetMapping("/hello")
@@ -38,6 +43,12 @@ public class TestController {
     @GetMapping("/isLogin")
     public Boolean isLogin(String username) {
         return StpUtil.isLogin(username);
+    }
+
+    @ApiOperation(value = "读取指定文件的内容", notes = "传入resource文件夹下的一个文件名,返回其内容")
+    @GetMapping("/readFile")
+    public String readFileTest(String filename) {
+        return readFileService.readFile(filename);
     }
 
 }

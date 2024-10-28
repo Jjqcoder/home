@@ -1,0 +1,10 @@
+[
+	{
+		"field": "NAME",
+		"appType": 1
+	},
+	{
+		"field": "AGE",
+		"appType": 2
+	}
+]

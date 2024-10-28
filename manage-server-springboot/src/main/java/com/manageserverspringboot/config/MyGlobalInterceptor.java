@@ -22,7 +22,7 @@ import java.io.IOException;
  */
 
 @Component
-@Slf4j
+@Slf4j(topic = "[拦截器日志-MyGlobalInterceptor]")
 public class MyGlobalInterceptor implements HandlerInterceptor {
 
     // 依赖注入

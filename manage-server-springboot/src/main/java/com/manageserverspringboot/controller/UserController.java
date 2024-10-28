@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 @Api(tags = "用户相关")// 用在控制器上
-@Slf4j
+@Slf4j(topic = "[user控制器日志-UserController]")
 @RestController
 public class UserController {
 

@@ -11,7 +11,7 @@ public class ValidationUtils {
 
 //    用户名与密码只允许包含字母、数字、下划线，并且长度不为空且小于10的字符串
     public static Boolean isUsernameAndPasswordValid(String username) {
-        String pattern = "^[a-zA-Z0-9_]{1,9}$";
+        String pattern = "^[a-zA-Z0-9_]{5,9}$";
         return ReUtil.isMatch(pattern, username);
     }
 }

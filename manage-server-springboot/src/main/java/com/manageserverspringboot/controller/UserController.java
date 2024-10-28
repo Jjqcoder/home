@@ -85,7 +85,7 @@ public class UserController {
         // 校验用户名密码是否合法
         if (!ValidationUtils.isUsernameAndPasswordValid(username) || !ValidationUtils.isUsernameAndPasswordValid(password)) {
             log.info("【注册用户】格式不符合需求,用户名{},密码{}",username, password);
-            return R.error("用户名与密码只允许包含字母、数字、下划线，并且长度不为空且小于10的字符串", null);
+            return R.error("用户名与密码只允许包含字母、数字、下划线，并且长度为5~9的字符串", null);
         } else {
             // 校验通过
             log.info("【注册用户】格式符合需求,用户名{},密码{}",username, password);

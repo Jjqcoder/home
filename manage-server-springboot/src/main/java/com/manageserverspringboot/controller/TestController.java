@@ -1,7 +1,7 @@
 package com.manageserverspringboot.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
-import com.manageserverspringboot.service.ReadFileService;
+import com.manageserverspringboot.service.MyFileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class TestController {
 
     // 读取文件内容
     @Autowired
-    private ReadFileService readFileService;
+    private MyFileService myFileService;
 
     @ApiOperation(value = "测试get方法传参")
     @GetMapping("/hello")
@@ -48,7 +48,7 @@ public class TestController {
     @ApiOperation(value = "读取指定文件的内容", notes = "传入resource文件夹下的一个文件名,返回其内容")
     @GetMapping("/readFile")
     public String readFileTest(String filename) {
-        return readFileService.readFile(filename);
+        return myFileService.readFile(filename);
     }
 
 }

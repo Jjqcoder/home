@@ -14,14 +14,19 @@ import java.io.InputStreamReader;
 /**
 * @author Jiangjianqing
 * @date 2024/10/28 21:17
-* @description 传入resource文件夹下的文件名,返回指定文件名的值
+* @description 文件相关操作
 */
 @Service
-@Slf4j(topic = "[读文件服务]")
-public class ReadFileService {
+@Slf4j(topic = "[文件服务]")
+public class MyFileService {
     @Autowired
     private ResourceLoader resourceLoader;
 
+    /**
+    * @author Jiangjianqing
+    * @date 2024/10/29 0:31
+    * @description 传入resource文件夹下的文件名, 返回文件内容
+    */
     public String readFile(String filename) {
 //        return "文件内容";
         // 获取resource文件夹下的方法
@@ -45,5 +50,14 @@ public class ReadFileService {
         // 定义json
 //        JSONArray jsonArray = JSONUtil.parseArray(content);
         return content.toString();
+    }
+
+    // TODO 传入指定的配置文件和键值,插入或更新配置
+
+    public boolean upsertConfig(String filename, String key, String value) {
+        // 首先读数据
+        // 修改
+        // 存入数据
+        return false;
     }
 }

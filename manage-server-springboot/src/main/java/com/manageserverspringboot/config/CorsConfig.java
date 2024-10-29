@@ -21,7 +21,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 添加拦截器，并指定要拦截的路径
         // 此处拦截所有的请求，所以使用"/**"
-        registry.addInterceptor(myGlobalInterceptor).addPathPatterns("/**");
+//        registry.addInterceptor(myGlobalInterceptor).addPathPatterns("/**");
     }
 
     @Override

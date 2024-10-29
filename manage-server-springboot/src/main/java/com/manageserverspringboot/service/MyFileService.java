@@ -1,5 +1,7 @@
 package com.manageserverspringboot.service;
 
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -50,14 +52,5 @@ public class MyFileService {
         // 定义json
 //        JSONArray jsonArray = JSONUtil.parseArray(content);
         return content.toString();
-    }
-
-    // TODO 传入指定的配置文件和键值,插入或更新配置
-
-    public boolean upsertConfig(String filename, String key, String value) {
-        // 首先读数据
-        // 修改
-        // 存入数据
-        return false;
     }
 }

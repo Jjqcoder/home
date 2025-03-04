@@ -38,3 +38,6 @@ target.zip
 *.log
 logs
 *.zip
+
+# private date
+application.properties

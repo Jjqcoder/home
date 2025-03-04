@@ -2,7 +2,7 @@
  * @Author: 江建清 1810422805@qq.com
  * @Date: 2024-10-12 20:14:38
  * @LastEditors: 江建清 1810422805@qq.com
- * @LastEditTime: 2024-10-26 22:24:03
+ * @LastEditTime: 2024-11-05 20:13:09
  * @FilePath: \manage-client-vue\src\components\MainCom.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -31,7 +31,7 @@ const router = useRouter();
 onMounted(() => {
   fetchData('http://localhost:8090/getAllUser')
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       if (response.data.code === 400) {
         ElMessage({
           message: response.data.message,
@@ -71,7 +71,15 @@ onMounted(() => {
 // 引入导航组件
 import { defineComponent } from 'vue';
 import NavigateCom from './NavigateCom.vue';
-</script>
 
+// 尝试获取剪贴板内容
+// const text = null;
+// try {
+//   // 浏览器会进行限制 需要是https才可以
+//   text = await navigator.clipboard.readText();
+// } catch (error) {
+//   console.log('剪贴板内容如下', text);
+// }
+</script>
 <style>
 </style>

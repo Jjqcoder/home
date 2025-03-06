@@ -1,12 +1,18 @@
-import express from "express";
+import express from 'express';
+import { RegisterRoutes } from './routes/routes';
+import swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger/swagger.json';
 
 const app = express();
-const port = 3000;
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello, TypeScript Express!");
-});
+// 注册 tsoa 生成的路由
+RegisterRoutes(app);
 
+// 提供 Swagger UI
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}/users?name=江建清`);
 });

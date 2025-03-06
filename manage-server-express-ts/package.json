@@ -1,28 +1,34 @@
 {
-  "name": "manage-server-express-ts",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
-    "build": "webpack"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "express": "^4.21.2"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.13.9",
-    "nodemon": "^3.1.9",
-    "ts-loader": "^9.5.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1"
-  }
+    "name": "manage-server-express-ts",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsoa spec-and-routes",
+        "start": "node dist/index.js",
+        "dev": "ts-node src/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@prisma/client": "^6.4.1",
+        "@tsoa/runtime": "^6.6.0",
+        "express": "^4.21.2",
+        "swagger-ui-express": "^5.0.1"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.13.9",
+        "@types/swagger-ui-express": "^4.1.8",
+        "nodemon": "^3.1.9",
+        "prisma": "^6.4.1",
+        "ts-loader": "^9.5.2",
+        "ts-node": "^10.9.2",
+        "tsoa": "^6.6.0",
+        "typescript": "^5.8.2",
+        "webpack": "^5.98.0",
+        "webpack-cli": "^6.0.1"
+    }
 }

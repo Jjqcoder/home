@@ -18,7 +18,7 @@ myRouter.get('/', (req, res) => {
 // 测试路由：获取所有用户
 myRouter.get('/users', async (req, res) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.users.findMany();
     res.json(users);
   } catch (error) {
     console.error(error);

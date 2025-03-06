@@ -1,5 +1,7 @@
-![home](./markdown_media/home.png)
-# HOME
+<div align="center">
+    <img src="./markdown_media/home.png" alt="Home" style="width:30%; height:auto;">
+</div>
+<h1 align="center">HOME🏠</h1>
 
 ## ✨my-home-client-vue
 ### 项目概述

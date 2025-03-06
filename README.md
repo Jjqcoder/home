@@ -1,4 +1,4 @@
-![home](./markdown_media/home.svg)
+![home](./markdown_media/home.png)
 # HOME
 
 ## ✨my-home-client-vue

@@ -6,6 +6,8 @@ const myRouter = require('./src/routes/index.js');
 // 引入日志中间件
 const loggerMiddleware = require('./src/middlewares/loggerMiddleware.js');
 
+// 指定 public 目录为静态资源目录 ctrl+f5强制刷新页面
+app.use(express.static('./src/public'));
 // 注册日志中间件(需要在路由的前面注册)
 app.use(loggerMiddleware);
 // 注册路由

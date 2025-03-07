@@ -1,5 +1,6 @@
 package com.manageserverspringboot.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data // getter setter
 @AllArgsConstructor // 全参数构造器
 @NoArgsConstructor// 无参构造
-@TableName("users")
+@TableName("USERS")
 public class User {
 /**
 * @author Jiangjianqing
@@ -23,8 +24,10 @@ public class User {
  * 但是，一旦你在类中定义了任何构造器（无论是全参的还是带部分参数的），编译器就不会再自动提供这个默认的无参构造器。
 */
     // 用户名
+    @TableField("USERNAME")
     String username;
     // 密码
+    @TableField("PASSWORD")
     String password;
 
 }

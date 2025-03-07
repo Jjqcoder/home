@@ -4,15 +4,13 @@
     <el-table-column prop="blogTitle" label="日志标题" width="" />
     <el-table-column prop="blogCreateTime" label="创建时间" width="" />
     <el-table-column prop="blogUpdateTime" label="更新时间" width="" />
-    <<<<<<< HEAD <el-table-column fixed="right" label="操作" width="">
+    <el-table-column fixed="right" label="操作" width="">
       <template v-slot="scope">
         <el-button @click="row_click(scope.row)" size="small">查看</el-button>
       </template>
       </el-table-column>
       <!-- <el-table-column prop="blogContent" label="文章内容" width="600" /> -->
-      =======
-      <el-table-column prop="blogTitle" label="文章标题" width="" />
-      >>>>>>> 03e53ad326ffb13e0d1b1c4ca8955b37f827f83f
+    
   </el-table>
 </template>
 
@@ -26,4 +24,10 @@ const myProps = defineProps({
     required: true,
   },
 });
+
+// 点击查看文章所触发的回调
+const row_click = (row) => {
+  // 点击查看文章所触发的回调
+  console.log(row);
+};
 </script>

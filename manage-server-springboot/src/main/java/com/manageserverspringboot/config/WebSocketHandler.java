@@ -18,7 +18,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        log.error("会话建立！会话id为{}", session.getId());
+//        log.error("会话建立！会话id为{}", session.getId());
         sessions.add(session);
     }
 
@@ -29,7 +29,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        log.error("会话结束！会话id为{}",session.getId());
+//        log.error("会话结束！会话id为{}",session.getId());
         sessions.remove(session);
     }
 

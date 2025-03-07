@@ -9,7 +9,7 @@ import java.util.Date;
 * @date 2024/4/15 23:32
 */
 @Data// 无需手动编写getter、setter、equals、hashCode和toString方法
-@TableName("blog")
+@TableName("BLOG")
 public class Blog {
     @TableId(type = IdType.AUTO) // 默认主键字段，主键策略为自增
     private Integer id;

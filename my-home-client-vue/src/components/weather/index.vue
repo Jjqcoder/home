@@ -41,28 +41,25 @@ const selectedOptionsForecast = ref([]); // 预报
 let MyWeatherData = ref([]);
 
 // 监听所选的内容
-watch(selectedOptions, (newValue, oldValue) => {
-  // 请求后端接口，获取天气数据
-  axios
-    .get(`http://${in_use_base_url}:8080/weather`, {
+watch(selectedOptions, async (newValue, oldValue) => {
+  try {
+    // 请求后端接口，获取天气数据
+    const response = await axios.get(`http://${in_use_base_url}:8080/weather`, {
       params: {
         province: newValue[0],
         city: newValue[1],
       },
-    })
-    .then((res) => {
-      // console.log(res.data);
-
-      // 获取到编码之后，开始第二个请求！
-      axios
-        .get(`http://${in_use_base_url}:8080/weather/${res.data}`)
-        .then((res) => {
-          MyWeatherData.value.push(res.data.lives[0]);
-        });
-    })
-    .catch((err) => {
-      console.log(err);
     });
+    console.log('接收到的编码' + response.data);
+
+    // 获取到编码之后，开始第二个请求
+    const secondResponse = await axios.get(
+      `http://${in_use_base_url}:8080/weather/${response.data}`
+    );
+    MyWeatherData.value.push(secondResponse.data.lives[0]);
+  } catch (err) {
+    console.log('查询天气出现错误！' + err);
+  }
 });
 
 // 开始天气预报信息的查询。

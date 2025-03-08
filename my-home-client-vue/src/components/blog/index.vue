@@ -59,7 +59,12 @@ onMounted(() => {
       // 赋值博客的总条数
       totalDataCount.value = res.data.total;
       // 赋值当前分页获取到的数据
-      pageSelectData.value = res.data.records;
+      pageSelectData.value = res.data.records.map((data) => {
+        // 格式化日期
+        data.blogCreateTime = new Date(data.blogCreateTime).toLocaleString();
+        data.blogUpdateTime = new Date(data.blogUpdateTime).toLocaleString();
+        return data;
+      });
     });
 });
 

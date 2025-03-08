@@ -133,4 +133,13 @@ a:hover {
   /* border: 1px solid black; */
   border-bottom: 3px solid rgba(171, 4, 4, 0.941);
 }
+/* 隐藏全局滚动条 */
+::-webkit-scrollbar {
+  display: none; /* 针对 Chrome、Safari 和 Opera */
+}
+
+body {
+  -ms-overflow-style: none; /* 针对 IE 和 Edge */
+  scrollbar-width: none; /* 针对 Firefox */
+}
 </style>

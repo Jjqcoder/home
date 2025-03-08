@@ -6,11 +6,16 @@
     <el-table-column prop="blogUpdateTime" label="更新时间" width="" />
     <el-table-column fixed="right" label="操作" width="">
       <template v-slot="scope">
-        <el-button @click="row_click(scope.row)" size="small">查看</el-button>
+        <!-- <el-button @click="row_click(scope.row)" size="small">
+          <router-link to="/blogDetail">查看</router-link>
+        </el-button> -->
+        <el-button @click="row_click(scope.row)" size="small">
+          查看
+        </el-button>
       </template>
-      </el-table-column>
-      <!-- <el-table-column prop="blogContent" label="文章内容" width="600" /> -->
-    
+    </el-table-column>
+    <!-- <el-table-column prop="blogContent" label="文章内容" width="600" /> -->
+
   </el-table>
 </template>
 
@@ -24,10 +29,12 @@ const myProps = defineProps({
     required: true,
   },
 });
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 // 点击查看文章所触发的回调
 const row_click = (row) => {
   // 点击查看文章所触发的回调
+  router.push({ name: 'blogDetail', params: { row: JSON.stringify(row) } });
   console.log(row);
 };
 </script>

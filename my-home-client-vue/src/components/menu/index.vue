@@ -4,6 +4,7 @@
       <span>世界</span>
     </router-link>
     <pre>|</pre> -->
+    <OnlineCount />
     <router-link to="/blog">
       <span>日志</span>
     </router-link>
@@ -23,7 +24,13 @@
 </template>
 
 <script>
-export default {};
+import OnlineCount from '../OnlineCount/index.vue';
+
+export default {
+  components: {
+    OnlineCount,
+  },
+};
 </script>
 
 <style scoped>

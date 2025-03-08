@@ -27,7 +27,19 @@ const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL;
 // 记录一共有多少条数据
 const totalDataCount = ref(100);
 const currentPage = ref(1);
-const pageSize = ref(5);
+// 判断是手机端还是PC端
+import { isMobileDevice } from '../../utils/index.js';
+
+let pageSize;
+
+if (isMobileDevice()) {
+  // 手机端
+  pageSize = ref(5);
+} else {
+  // PC端
+  pageSize = ref(15);
+}
+
 const small = ref(false);
 const background = ref(false);
 const disabled = ref(false);

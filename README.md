@@ -11,8 +11,7 @@ Vue 3、Element Plus、Axios、Vue Router、Less、Lodash、ECharts、Three.js�
 ### 后端主要依赖
 Spring Boot、MyBatis-Plus、EasyExcel、MySQL、Lombok、Logback、Java 11
 
-### 管理端-前端
+### 管理端-前端[TODO]
 
-### 管理端-后端
+### 管理端-后端[TODO]
 
-## 功能模块

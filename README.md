@@ -3,26 +3,16 @@
 </div>
 <h1 align="center">HOME🏠</h1>
 
-## ✨my-home-client-vue
-### 项目概述
-### 功能模块
-### 技术选型
-### 快速启动
-### 项目结构
-### 开源许可证书
 
+## 技术栈
+### 前端主要依赖
+Vue 3、Element Plus、Axios、Vue Router、Less、Lodash、ECharts、Three.js、Stomp.js、SockJS、Vite
 
-## ✨my-home-server-express-js
-### TODO
+### 后端主要依赖
+Spring Boot、MyBatis-Plus、EasyExcel、MySQL、Lombok、Logback、Java 11
 
-## ✨my-home-server-springboot
-### TODO
+### 管理端-前端
 
-### ✨manage-client-vue
-### TODO
+### 管理端-后端
 
-### ✨manage-server-express-ts
-### TODO
-
-### ✨manage-server-springboot
-### TODO
+## 功能模块

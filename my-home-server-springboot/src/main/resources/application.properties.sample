@@ -29,3 +29,6 @@ mybatis-plus.type-aliases-package=com.jiang.entity
 # a map conf
 # P.S.do not to add ""
 home.weather.key=53d29f89e746948e6e67559c22429e5b
+
+# 指定允许访问的IP地址
+cors.allowed-origins=http://x.x.x.x

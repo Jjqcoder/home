@@ -5,10 +5,10 @@
 
 
 ## 技术栈
-### 前端主要依赖
+### 前端
 Vue 3、Element Plus、Axios、Vue Router、Less、Lodash、ECharts、Three.js、Stomp.js、SockJS、Vite
 
-### 后端主要依赖
+### 后端
 Spring Boot、MyBatis-Plus、EasyExcel、MySQL、Lombok、Logback、Java 11
 
 ### 管理端-前端[TODO]

@@ -23,29 +23,13 @@ const activities = [
     icon: MoreFilled,
   },
   {
-    content: '📏本站后台管理项目初始化[React+Nest]',
-    timestamp: '🗓️2024-06-12',
-  },
-  {
-    content: '📋Markdown形式显示日志内容',
-    timestamp: '🗓️2024-06-09',
-    type: 'primary',
-    hollow: true,
-  },
-  {
-    content: '🐋前端代码使用Docker进行管理',
-    timestamp: '🗓️2024-06-7',
-    type: 'primary',
-    hollow: true,
-  },
-  {
     content: '⏱️引入时间线',
     timestamp: '🗓️2024-05-06',
     type: 'primary',
     hollow: true,
   },
   {
-    content: '✍️完成博客分页查询',
+    content: '✍️完成日志列表',
     timestamp: '🗓️2024-04-27',
     type: 'primary',
     hollow: true,

@@ -9,7 +9,7 @@
         <prudent>false</prudent>
 
         <!--要写入文件的名称,该名称不会受滚动策略影响。如果文件不存在，则新建，该标签只含有滚动策略触发节点前的日志信息，经过某次轮转后，该文件被置为空，原内容被重命名或压缩-->
-        <file>/opt/myApp.log</file>
+        <file>/myJavaAppData/myApp.log</file>
 
         <!-- SizeAndTimeBasedRollingPolicy是基于时间和大小的滚动策略，几乎可以涵盖所有日志滚动需求场景，也是使用最多的策略 -->
         <!-- 该策略适用于1.1.7版本及之后的版本，之前的版本继续采用TimeBasedRollingPolicy加SizeAndTimeBasedFNATP组件实现 -->
@@ -19,7 +19,7 @@
             <!-- %d决定以什么时间维度轮转(但实际轮转时机取决于日志事件的到达时间)，比如%d{yyyy/MM}:每个月开始的时候轮转,%d默认为 yyyy-MM-dd：按天轮转 -->
             <!-- %i为文件按照maxFileSize大小规定轮转后的序号 -->
             <!-- 后缀以".zip"或".gz"结尾，则开启日志文件压缩 -->
-            <fileNamePattern>/opt/myApp-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <fileNamePattern>/myJavaAppData/myApp-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
             <!-- 单个日志文件最大大小，当文件达到该大小则触发截断（以及压缩）-->
             <maxFileSize>10MB</maxFileSize>
             <!-- 日志文件保留最大时间滚动周期，比如当filaNamePattern中%d以为dd结尾时，则保留60天，也就是dd会影响到此处maxHistory的效果-->

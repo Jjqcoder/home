@@ -50,7 +50,8 @@ public class WeatherController {
 
         // 预先定义城市编码
         final String[] adCode = {""};
-        String fileName = "/opt/apps/target/classes/AMap_adcode_citycode.xlsx";// 将路径写死——生产环境地址
+//        String fileName = "/opt/apps/target/classes/AMap_adcode_citycode.xlsx";// 将路径写死——生产环境地址
+        String fileName = "/myJavaAppData/AMap_adcode_citycode.xlsx";// 将路径写死——生产环境地址 后续进行卷挂载
         // 定义文件名(开发状态下有效)
 //        String fileName = this.getClass().getClassLoader().getResource("AMap_adcode_citycode.xlsx").getPath();
         // 下面这一种方法获取文件，在项目打包上线后是生效的

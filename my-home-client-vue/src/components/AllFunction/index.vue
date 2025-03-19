@@ -25,6 +25,9 @@
           <router-link to="/weather">
             <el-dropdown-item>🌤️查天气</el-dropdown-item>
           </router-link>
+          <router-link to="/visitorStatistics">
+            <el-dropdown-item>🔢看数据</el-dropdown-item>
+          </router-link>
           <router-link to="/about">
             <el-dropdown-item>🤟关于我</el-dropdown-item>
           </router-link>

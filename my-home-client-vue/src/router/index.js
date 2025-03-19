@@ -20,6 +20,7 @@ import WeatherCom from './../components/weather/index.vue';
 import TimelineCom from './../components/timeline/index.vue';
 import menuCom from './../components/menu/index.vue';
 import blogDetail from '../components/blogDetail//index.vue'
+import VisitorStatistics from '../components/visitorStatistics/index.vue'
 
 // 定义路由  
 const routes = [{
@@ -27,38 +28,42 @@ const routes = [{
     name: 'layout',
     component: Layout,
     children: [{
-            path: 'world',
-            name: 'world',
-            component: WorldCom
-        },
-        {
-            path: 'blog',
-            name: 'blog',
-            component: BlogCom
-        },
-        {
-            path: 'english',
-            name: 'english',
-            component: EnglishCom
-        },
-        {
-            path: 'about',
-            name: 'about',
-            component: AboutCom
-        },
-        {
-            path: 'weather',
-            name: 'weather',
-            component: WeatherCom
-        }, {
-            path: '', // 默认子路由
-            name: 'timeline',
-            component: TimelineCom
-        }, {
-            path: 'blogDetail/:row',
-            name: 'blogDetail',
-            component: blogDetail
-        }
+        path: 'world',
+        name: 'world',
+        component: WorldCom
+    },
+    {
+        path: 'blog',
+        name: 'blog',
+        component: BlogCom
+    },
+    {
+        path: 'english',
+        name: 'english',
+        component: EnglishCom
+    },
+    {
+        path: 'about',
+        name: 'about',
+        component: AboutCom
+    },
+    {
+        path: 'weather',
+        name: 'weather',
+        component: WeatherCom
+    }, {
+        path: '', // 默认子路由
+        name: 'timeline',
+        component: TimelineCom
+    }, {
+        path: 'blogDetail/:row',
+        name: 'blogDetail',
+        component: blogDetail
+    }, {
+        path: 'visitorStatistics',
+        name: 'visitorStatistics',
+        component: VisitorStatistics
+    }
     ]
 }];
 

@@ -52,4 +52,16 @@ import { Watermelon } from '@element-plus/icons-vue';
 a {
   text-decoration: none;
 }
+/* 改变全部功能按钮的样式 */
+.el-button {
+  background-color: #8d1717; /* 设置背景颜色 */
+  border-color: #8b0000; /* 设置边框颜色 */
+  color: white; /* 设置文字颜色 */
+}
+
+.el-button:hover {
+  background-color: #8b00005c; /* 鼠标悬停时的背景颜色 */
+  border-color: #8b00005c; /* 鼠标悬停时的边框颜色 */
+  color: white; /* 鼠标悬停时的文字颜色 */
+}
 </style>

@@ -2,21 +2,26 @@
   <div class="flex flex-wrap items-center my-font-style">
     <el-dropdown>
       <el-button type="primary">
-        更多<el-icon class="el-icon--right">
+        全部功能<el-icon class="el-icon--right">
           <Watermelon />
         </el-icon>
       </el-button>
       <template #dropdown>
         <el-dropdown-menu>
-          <router-link active-class="" to="/world">
+          <!-- <router-link active-class="" to="/world">
             <el-dropdown-item>🌏逛地球</el-dropdown-item>
+          </router-link> -->
+
+          <router-link to="/">
+            <el-dropdown-item>🏠回首页</el-dropdown-item>
           </router-link>
+
           <router-link to="/blog">
-            <el-dropdown-item>✍️写博客</el-dropdown-item>
+            <el-dropdown-item>✍️看日志</el-dropdown-item>
           </router-link>
-          <router-link to="/english">
+          <!-- <router-link to="/english">
             <el-dropdown-item>🔠学英语</el-dropdown-item>
-          </router-link>
+          </router-link> -->
           <router-link to="/weather">
             <el-dropdown-item>🌤️查天气</el-dropdown-item>
           </router-link>

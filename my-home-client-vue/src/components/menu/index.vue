@@ -5,30 +5,41 @@
     </router-link>
     <pre>|</pre> -->
     <OnlineCount />
-    <router-link to="/blog">
+    <!-- <router-link to="/blog">
       <span>日志</span>
-    </router-link>
+    </router-link> -->
+
     <!-- <pre>|</pre>
     <router-link to="/english">
       <span>英语</span>
     </router-link> -->
-    <pre>|</pre>
-    <router-link to="/weather">
+
+    <!-- <pre>|</pre> -->
+
+    <!-- <router-link to="/weather">
       <span>天气</span>
-    </router-link>
-    <pre>|</pre>
-    <router-link to="/about">
+    </router-link> -->
+
+    <!-- <pre>|</pre> -->
+
+    <!-- <router-link to="/about">
       <span>关于</span>
-    </router-link>
+    </router-link> -->
+    <!-- 展示全部功能 -->
+    <AllFunction />
+
   </div>
 </template>
 
 <script>
+// 挂载在线人数组件
 import OnlineCount from '../OnlineCount/index.vue';
+import AllFunction from '../AllFunction/index.vue';
 
 export default {
   components: {
     OnlineCount,
+    AllFunction,
   },
 };
 </script>

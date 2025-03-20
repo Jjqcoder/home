@@ -14,7 +14,7 @@ export default {
 
     onMounted(() => {
       socket = new WebSocket(
-        `ws://${import.meta.env.VITE_IN_USE_BASE_URL}:8080/online-users`
+        `ws://${import.meta.env.VITE_IN_USE_BASE_URL}/online-users`
       );
 
       socket.onmessage = (event) => {

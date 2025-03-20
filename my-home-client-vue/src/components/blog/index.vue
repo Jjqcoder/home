@@ -49,7 +49,7 @@ const pageSelectData = ref(null);
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(() => {
   axios
-    .get(`http://${in_use_base_url}:8080/getBlogByPage`, {
+    .get(`http://${in_use_base_url}/getBlogByPage`, {
       params: {
         current: currentPage.value,
         size: pageSize.value,
@@ -86,7 +86,7 @@ const handleCurrentChange = (val) => {
 
   // 当页码发生变化的时候，触发分页查询
   const res = axios
-    .get(`http://${in_use_base_url}:8080/getBlogByPage`, {
+    .get(`http://${in_use_base_url}/getBlogByPage`, {
       params: {
         current: currentPage.value,
         size: pageSize.value,

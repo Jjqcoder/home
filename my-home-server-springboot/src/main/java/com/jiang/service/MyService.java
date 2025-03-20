@@ -18,7 +18,7 @@ public class MyService {
 
     public String getDataFromExternalService(String cityCode) {
         String url = "https://restapi.amap.com/v3/weather/weatherInfo?city="+cityCode+"&key="+myEnvProperties.getAMapWeatherKey();
-        System.out.println(url);
+//        System.out.println(url);
         return restTemplate.getForObject(url, String.class);
     }
 }

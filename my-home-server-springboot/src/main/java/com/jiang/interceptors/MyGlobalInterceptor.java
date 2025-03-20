@@ -20,7 +20,7 @@ public class MyGlobalInterceptor implements HandlerInterceptor {
         // 如果返回false，则请求将不会继续传递给控制器
         // 这里简单地返回true，表示请求可以继续
 //        System.out.println("我是拦截器");
-        System.out.println(getClientIP(request));
+//        System.out.println(getClientIP(request));
         intercepterService.insertIp(getClientIP(request));
         return true;
     }

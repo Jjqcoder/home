@@ -43,7 +43,7 @@ public class WeatherController {
     @GetMapping("/weather")
     public String getWeatherByProvinceAndCity(@RequestParam("province") String province, @RequestParam("city") String city) {
         // 引入日志
-        log.info("hello logback");
+//        log.info("hello logback");
 
         // 首先，需要将前端传递过来的省份、城市名称对应编码，然后调用服务层获取天气信息，再将信息返回到前端进行渲染
         // 使用城市、查询对应城市的天气信息

@@ -23,6 +23,12 @@ const activities = [
     icon: MoreFilled,
   },
   {
+    content: '🔢引入访客统计功能',
+    timestamp: '🗓️2025-03-20',
+    type: 'primary',
+    hollow: true,
+  },
+  {
     content: '⏱️引入时间线',
     timestamp: '🗓️2024-05-06',
     type: 'primary',

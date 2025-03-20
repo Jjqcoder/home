@@ -4,6 +4,7 @@
   <div class="left">
     <el-button class="leftAdd" @click="AddData" type="primary">新增</el-button>
     <el-button class="leftDel" type="danger" @click="deleteData">删除</el-button>
+    <el-button class="export" type="success" @click="exportTableAsImage">导出</el-button>
   </div>
   <el-table :data="dataFromFather" style="width: 100%" @selection-change="handleSelectionChange"
     ref="myTable" id="myTable" @row-dblclick="rowDblclickHandler">
@@ -174,6 +175,19 @@ const submitHandler = () => {
   dialogFormVisible.value = false; // 首先将对话框设置为不可见
   // 再将修改后的数据覆盖到子组件本地的数据
   dataFromFather.value[dbclickIndex.value] = dataTobeEdit.value;
+};
+
+// 将天气数据导出为图片
+// 导出表格为图片
+import html2canvas from 'html2canvas';
+const exportTableAsImage = () => {
+  const tableElement = document.getElementById('myTable'); // 获取表格元素
+  html2canvas(tableElement).then((canvas) => {
+    const link = document.createElement('a'); // 创建一个 a 标签
+    link.href = canvas.toDataURL('image/png'); // 将 canvas 转换为图片的 Base64 数据
+    link.download = 'myWeatherData.png'; // 设置下载文件名
+    link.click(); // 模拟点击下载
+  });
 };
 </script>
 

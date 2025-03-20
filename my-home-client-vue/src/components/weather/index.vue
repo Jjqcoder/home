@@ -1,28 +1,28 @@
 <template>
-  <div class="weather-container" :style="lightEffect">
-    <div class="weather-content">
-      <!-- 今日天气查询 -->
-      <div class="weather">
-        <span class="search">今日天气查询🔍</span>
-        <el-cascader size="large" :options="pcTextArr" v-model="selectedOptions"
-          class="city-selector" />
-      </div>
 
-      <!-- 分割线 -->
-      <el-divider class="divider" />
+  <div class="weather">
+    <span class="search">今日天气查询🔍</span><el-cascader size="large" :options="pcTextArr"
+      v-model="selectedOptions">
+    </el-cascader>
 
-      <!-- 天气数据显示 -->
-      <div class="weatherData">
-        <listCom :fatherDataToSon="MyWeatherData" />
-      </div>
-
-      <!-- 下面开始显示预报信息 -->
-      <!-- <div class="forecst">
-        <span class="search">未来天气查询🔍</span>
-        <el-cascader size="large" :options="pcTextArr" v-model="selectedOptionsForecast" />
-      </div> -->
-    </div>
   </div>
+  <!-- <div class="search"> -->
+  <!-- <el-button type="primary" plain>点击查询！</el-button> -->
+  <!-- </div> -->
+
+  <!-- 分割线 -->
+  <el-divider />
+  <!-- {{ MyWeatherData }} -->
+  <div class="weatherData">
+    <listCom :fatherDataToSon="MyWeatherData"></listCom>
+  </div>
+
+  <!-- 下面开始显示预报信息 -->
+  <!-- <div class="forecst">
+    <span class="search">未来天气查询🔍</span>
+    <el-cascader size="large" :options="pcTextArr" v-model="selectedOptionsForecast">
+    </el-cascader>
+  </div> -->
 </template>
 
 <script setup>
@@ -62,79 +62,33 @@ watch(selectedOptions, async (newValue, oldValue) => {
   }
 });
 
-// 背景渐变效果
-const mouseX = ref(0);
-const mouseY = ref(0);
-
-const updateMousePosition = (event) => {
-  mouseX.value = event.clientX;
-  mouseY.value = event.clientY;
-};
-
-const lightEffect = {
-  background: `radial-gradient(circle at ${
-    (mouseX.value / window.innerWidth) * 100
-  }% ${(mouseY.value / window.innerHeight) * 100}%, #ffecd2, #fcb69f)`,
-};
-
-window.addEventListener('mousemove', updateMousePosition);
+// 开始天气预报信息的查询。
 </script>
 
-<style scoped>
-.weather-container {
-  min-height: 100vh;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background 0.3s ease;
-}
-
-.weather-content {
-  max-width: 800px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.weather-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
+<style>
 .weather {
   display: flex;
+  margin-top: 5%;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+}
+.search {
+  display: flex;
+  /* 1%代表父元素宽度的百分比 */
+  margin-top: 1%;
+  justify-content: center;
 }
 
+/* 放大镜 */
 .search {
   font-size: 25px;
-  margin-right: 15px;
-  color: #333;
 }
 
-.city-selector {
-  width: 300px;
-}
-
-.divider {
-  margin: 20px 0;
-}
-
-.weatherData {
-  margin-top: 20px;
-}
-
-/* 未来天气查询部分 */
+/* 天气预报 */
 .forecst {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5%;
 }
 </style>

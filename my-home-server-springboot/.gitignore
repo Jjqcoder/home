@@ -41,3 +41,10 @@ logs
 
 # private date
 application.properties
+# ssl
+keystore.p12
+wbeishangw.top.crt
+wbeishangw.top.pem
+wbeishangw.top.key
+wbeishangw.top.p12
+wbeishangw.top.jks

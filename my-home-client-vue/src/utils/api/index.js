@@ -9,7 +9,7 @@ import axios from 'axios';
 
 // 创建 axios 实例
 const http = axios.create({
-    baseURL: `http://${import.meta.env.VITE_IN_USE_BASE_URL}`, // 设置请求的基础路径
+    baseURL: `${import.meta.env.VITE_IN_USE_BASE_URL}`, // 设置请求的基础路径
     timeout: 5000, // 设置超时时间
 });
 

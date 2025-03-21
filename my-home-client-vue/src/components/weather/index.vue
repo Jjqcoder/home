@@ -44,7 +44,7 @@ let MyWeatherData = ref([]);
 watch(selectedOptions, async (newValue, oldValue) => {
   try {
     // 请求后端接口，获取天气数据
-    const response = await axios.get(`http://${in_use_base_url}/weather`, {
+    const response = await axios.get(`${in_use_base_url}/weather`, {
       params: {
         province: newValue[0],
         city: newValue[1],
@@ -54,7 +54,7 @@ watch(selectedOptions, async (newValue, oldValue) => {
 
     // 获取到编码之后，开始第二个请求
     const secondResponse = await axios.get(
-      `http://${in_use_base_url}/weather/${response.data}`
+      `${in_use_base_url}/weather/${response.data}`
     );
     MyWeatherData.value.push(secondResponse.data.lives[0]);
   } catch (err) {

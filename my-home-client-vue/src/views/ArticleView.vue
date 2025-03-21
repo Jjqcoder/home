@@ -17,7 +17,7 @@ let blogData = ref('## hello');
 // watch(id, (newValue, oldValue) => {
 // 获取指定 id 的内容
 axios
-  .get(`http://${in_use_base_url}/blog/${id}`)
+  .get(`${in_use_base_url}/blog/${id}`)
   .then((res) => {
     console.log(res.data);
     blogData.value = res.data.blogContent;

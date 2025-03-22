@@ -23,6 +23,12 @@ const activities = [
     icon: MoreFilled,
   },
   {
+    content: '🔐网站升级为https',
+    timestamp: '🗓️2025-03-21',
+    type: 'primary',
+    hollow: true,
+  },
+  {
     content: '🔢引入访客统计功能',
     timestamp: '🗓️2025-03-20',
     type: 'primary',

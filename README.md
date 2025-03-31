@@ -8,6 +8,9 @@
     <a href="https://www.wbeishangw.top/" target="_blank" rel="noopener noreferrer">在线预览</a>
 </h2>
 
+## 项目简介
+本项目为本人的个人网站，主要模块有**日志模块**、**天气模块**、**在线人数模块**、**访客数据可视化模块**
+
 ## 技术栈
 ### 前端
 Vue 3、Element Plus、Axios、Vue Router、Less、Lodash、ECharts、Three.js、Stomp.js、SockJS、Vite

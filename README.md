@@ -12,10 +12,10 @@
 本项目为本人的个人网站，主要模块有**日志模块**、**天气模块**、**在线人数模块**、**访客数据可视化模块**
 
 ## 技术栈
-### 前端
-Vue 3、Element Plus、Axios、Vue Router、Less、Lodash、ECharts、Three.js、Stomp.js、SockJS、Vite
+### 前端（my-home-client-vue）
+Vue 3、Element Plus、Axios、Vue Router、Less、Lodash、ECharts、SockJS、Vite
 
-### 后端
+### 后端（my-home-server-springboot）
 Spring Boot、MyBatis-Plus、EasyExcel、MySQL、Lombok、Logback
 
 ### 运行效果预览

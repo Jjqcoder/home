@@ -23,6 +23,13 @@ const activities = [
     icon: MoreFilled,
   },
   {
+    content:
+      '🔧正式决定使用[my-home-server-express-js]重构[my-home-server-springboot]',
+    timestamp: '🗓️2025-04-11',
+    type: 'primary',
+    hollow: true,
+  },
+  {
     content: '🔐网站升级为https',
     timestamp: '🗓️2025-03-21',
     type: 'primary',

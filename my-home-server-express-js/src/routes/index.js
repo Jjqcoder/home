@@ -8,7 +8,11 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+// 引入中间件类
+const Middleware = require('./../middlewares/index.js')
+
+// 使用中间件
+router.get('/', Middleware.logger, (req, res) => {
     res.send('hello express')
 })
 

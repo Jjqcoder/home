@@ -38,7 +38,7 @@ log4js.configure({
 // 日志示例
 const logger = log4js.getLogger()
 
-function loggerMiddleware(req, res, next) {
+module.exports = loggerMiddleware = (req, res, next) => {
     // 获取请求方的 IP 地址
     /**
      *
@@ -62,5 +62,3 @@ function loggerMiddleware(req, res, next) {
 
     next() // 继续处理请求
 }
-
-module.exports = loggerMiddleware

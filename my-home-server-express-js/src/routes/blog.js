@@ -1,0 +1,16 @@
+const express = require('express')
+const router = express.Router()
+
+// 引入express-ws模块
+const expressWs = require('express-ws')
+
+expressWs(router)
+
+router.ws('/ws', (ws, req) => {
+    // 处理WebSocket连接
+    ws.on('message', msg => {
+        ws.send(msg) // 回环测试
+    })
+})
+
+module.exports = router

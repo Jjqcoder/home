@@ -3,9 +3,12 @@
 
 const express = require('express') // 引入 Express 模块
 const app = express() // 创建一个 Express 应用实例
-const port = 3000 // 定义服务器运行的端口号
+const port = 8080 // 定义服务器运行的端口号
 const expressWs = require('express-ws')
+const cors = require('cors')
 expressWs(app) // 注意 项目入口需要使用expressWs(app) 子路由中的ws配置才会生效！
+// 全局启用 CORS
+app.use(cors())
 // 引入自定义路由
 const router = require('./src/routes/index.js')
 // 指定 public 目录为静态资源目录

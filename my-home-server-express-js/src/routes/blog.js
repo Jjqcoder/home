@@ -14,6 +14,11 @@ const expressWs = require('express-ws')
 
 expressWs(router)
 
+router.get('/getBlogByPage', (req, res) => {
+    console.log(1)
+    res.send('Hello World!')
+})
+
 router.ws('/ws', (ws, req) => {
     // 处理WebSocket连接
     ws.on('message', msg => {

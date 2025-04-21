@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon app.js"
+        "dev": "npx prisma db pull && npx prisma generate && nodemon app.js"
     },
     "keywords": [],
     "author": "",

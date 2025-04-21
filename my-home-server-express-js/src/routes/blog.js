@@ -15,11 +15,10 @@ const controller = require('../../controller//index.js')
 expressWs(router)
 
 router.get('/getBlogByPage', async (req, res) => {
-    console.log(1)
+    // console.log(req)
     let data = await controller.blogController.getBlogByPage(req, res)
-    console.log(data)
 
-    res.send({data: data})
+    res.send(data)
 })
 
 router.ws('/ws', (ws, req) => {

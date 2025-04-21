@@ -1,0 +1,11 @@
+'use strict'
+
+/**
+ * 创建时间: 2025-04-21
+ * 作者: jjq
+ * 描述: service 主类
+ */
+
+module.exports = class Service {
+    static blogService = require('./blogService.js')
+}

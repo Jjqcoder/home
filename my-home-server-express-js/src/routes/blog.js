@@ -8,15 +8,18 @@
 
 const express = require('express')
 const router = express.Router()
-
 // 引入express-ws模块
 const expressWs = require('express-ws')
+const controller = require('../../controller//index.js')
 
 expressWs(router)
 
-router.get('/getBlogByPage', (req, res) => {
+router.get('/getBlogByPage', async (req, res) => {
     console.log(1)
-    res.send('Hello World!')
+    let data = await controller.blogController.getBlogByPage(req, res)
+    console.log(data)
+
+    res.send({data: data})
 })
 
 router.ws('/ws', (ws, req) => {

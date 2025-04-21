@@ -1,3 +1,5 @@
+'use strict'
+
 /**
  * 创建时间: 2025-03-06
  * 作者: jjq
@@ -38,7 +40,7 @@ log4js.configure({
 // 日志示例
 const logger = log4js.getLogger()
 
-module.exports = loggerMiddleware = (req, res, next) => {
+const loggerMiddleware = (req, res, next) => {
     // 获取请求方的 IP 地址
     /**
      *
@@ -62,3 +64,5 @@ module.exports = loggerMiddleware = (req, res, next) => {
 
     next() // 继续处理请求
 }
+
+module.exports = loggerMiddleware

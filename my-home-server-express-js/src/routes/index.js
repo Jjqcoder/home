@@ -15,7 +15,6 @@ const Middleware = require('./../middlewares/index.js')
 const blog = require('./blog.js')
 
 /* 路由挂载开始 */
-// 使用中间件
 router.use(
     '/',
     Middleware.logger, // 日志中间件

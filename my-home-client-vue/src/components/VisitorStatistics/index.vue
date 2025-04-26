@@ -1,8 +1,7 @@
 <template>
-  <!-- <div>我是访客统计组件</div> -->
-  <h1 style="text-align:center">访客统计</h1>
-  <ChartComponent />
-
+    <!-- <div>我是访客统计组件</div> -->
+    <h1 style="text-align: center">访客统计</h1>
+    <ChartComponent />
 </template>
 
 <script setup>
@@ -14,8 +13,7 @@
 // };
 // console.log(await getVisitorStatistics());
 
-import ChartComponent from './../ChartComponent/index.vue';
+import ChartComponent from './../ChartComponent/index.vue'
 </script>
-    
-<style>
-</style>
+
+<style></style>

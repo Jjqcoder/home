@@ -1,70 +1,70 @@
 <template>
-  <div class="flex flex-wrap items-center my-font-style">
-    <el-dropdown>
-      <el-button type="primary">
-        全部功能<el-icon class="el-icon--right">
-          <Watermelon />
-        </el-icon>
-      </el-button>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <!-- <router-link active-class="" to="/world">
-            <el-dropdown-item>🌏逛地球</el-dropdown-item>
-          </router-link> -->
+    <div class="flex flex-wrap items-center my-font-style">
+        <el-dropdown>
+            <el-button type="primary">
+                全部功能<el-icon class="el-icon--right">
+                    <Watermelon />
+                </el-icon>
+            </el-button>
+            <template #dropdown>
+                <el-dropdown-menu>
+                    <!-- <router-link active-class="" to="/world">
+                      <el-dropdown-item>🌏逛地球</el-dropdown-item>
+                    </router-link> -->
 
-          <router-link to="/">
-            <el-dropdown-item>🏠回首页</el-dropdown-item>
-          </router-link>
+                    <router-link to="/">
+                        <el-dropdown-item>🏠回首页</el-dropdown-item>
+                    </router-link>
 
-          <router-link to="/blog">
-            <el-dropdown-item>✍️看日志</el-dropdown-item>
-          </router-link>
-          <!-- <router-link to="/english">
-            <el-dropdown-item>🔠学英语</el-dropdown-item>
-          </router-link> -->
-          <router-link to="/weather">
-            <el-dropdown-item>🌤️查天气</el-dropdown-item>
-          </router-link>
-          <router-link to="/visitorStatistics">
-            <el-dropdown-item>🔢看数据</el-dropdown-item>
-          </router-link>
-          <router-link to="/about">
-            <el-dropdown-item>🤟关于我</el-dropdown-item>
-          </router-link>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
-  </div>
+                    <router-link to="/blog">
+                        <el-dropdown-item>✍️看日志</el-dropdown-item>
+                    </router-link>
+                    <!-- <router-link to="/english">
+                      <el-dropdown-item>🔠学英语</el-dropdown-item>
+                    </router-link> -->
+                    <router-link to="/weather">
+                        <el-dropdown-item>🌤️查天气</el-dropdown-item>
+                    </router-link>
+                    <router-link to="/visitorStatistics">
+                        <el-dropdown-item>🔢看数据</el-dropdown-item>
+                    </router-link>
+                    <router-link to="/about">
+                        <el-dropdown-item>🤟关于我</el-dropdown-item>
+                    </router-link>
+                </el-dropdown-menu>
+            </template>
+        </el-dropdown>
+    </div>
 </template>
 
 <script lang="ts" setup>
-import { Watermelon } from '@element-plus/icons-vue';
+import {Watermelon} from '@element-plus/icons-vue'
 </script>
 <style scoped>
 .example-showcase .el-dropdown + .el-dropdown {
-  margin-left: 15px;
+    margin-left: 15px;
 }
 .example-showcase .el-dropdown-link {
-  cursor: pointer;
-  color: var(--el-color-primary);
-  display: flex;
-  align-items: center;
+    cursor: pointer;
+    color: var(--el-color-primary);
+    display: flex;
+    align-items: center;
 }
 
 /* 改变router-link的默认样式:去掉超链接下面的下划线 */
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 /* 改变全部功能按钮的样式 */
 .el-button {
-  background-color: #8d1717; /* 设置背景颜色 */
-  border-color: #8b0000; /* 设置边框颜色 */
-  color: white; /* 设置文字颜色 */
+    background-color: #8d1717; /* 设置背景颜色 */
+    border-color: #8b0000; /* 设置边框颜色 */
+    color: white; /* 设置文字颜色 */
 }
 
 .el-button:hover {
-  background-color: #8b00005c; /* 鼠标悬停时的背景颜色 */
-  border-color: #8b00005c; /* 鼠标悬停时的边框颜色 */
-  color: white; /* 鼠标悬停时的文字颜色 */
+    background-color: #8b00005c; /* 鼠标悬停时的背景颜色 */
+    border-color: #8b00005c; /* 鼠标悬停时的边框颜色 */
+    color: white; /* 鼠标悬停时的文字颜色 */
 }
 </style>

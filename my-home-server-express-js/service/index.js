@@ -9,4 +9,5 @@
 module.exports = class Service {
     static blogService = require('./blogService.js')
     static visitService = require('./visitService.js')
+    static weatherService = require('./weatherService.js')
 }

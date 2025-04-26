@@ -10,7 +10,7 @@ const express = require('express')
 const router = express.Router()
 // 引入express-ws模块
 const expressWs = require('express-ws')
-const controller = require('../../controller//index.js')
+const controller = require('../../controller/index.js')
 
 expressWs(router)
 

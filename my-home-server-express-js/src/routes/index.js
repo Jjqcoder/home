@@ -19,6 +19,8 @@ router.use(
     require('./blog.js')
 )
 router.use('/visit', require('./visit.js'))
+
+router.use('/weather', require('./weather.js'))
 /* 路由挂载结束 */
 
 // 导出路由

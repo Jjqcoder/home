@@ -15,7 +15,7 @@ module.exports = class XlsxUtils {
         // console.log('获取城市代码', city)
         // 读取 Excel 文件
         // 构建文件路径
-        const filePath = path.join(__dirname, 'AMap_adcode_citycode.xlsx')
+        const filePath = path.join(__dirname, '../resource/weather/AMap_adcode_citycode.xlsx')
         const workbook = XLSX.readFile(filePath) // 文件名
         const sheetName = workbook.SheetNames[0] // 获取第一个工作表的名称
         const worksheet = workbook.Sheets[sheetName] // 获取工作表对象

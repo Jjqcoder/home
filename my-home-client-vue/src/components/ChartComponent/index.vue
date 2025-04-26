@@ -10,7 +10,7 @@ import {get} from '../../utils/api/index.js'
 // 获取全部的访客信息
 const getVisitorStatistics = async () => {
     try {
-        const res = await get('/visit')
+        const res = await get('/visit/allVisit')
         return res
     } catch (error) {
         console.error('Failed to fetch visitor statistics:', error)
@@ -29,7 +29,7 @@ onBeforeMount(async () => {
     if (allVisitors.value && allVisitors.value.data) {
         const map = new Map()
         for (let obj of allVisitors.value.data) {
-            const key = obj.createTime.slice(0, 13).replace('T', ' ') + '点'
+            const key = obj.CREATE_TIME.slice(0, 13).replace('T', ' ') + '点'
             if (!map.has(key)) {
                 map.set(key, 1)
             } else {

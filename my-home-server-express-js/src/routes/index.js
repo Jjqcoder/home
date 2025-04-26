@@ -11,15 +11,14 @@ const router = express.Router()
 
 // 引入中间件类
 const Middleware = require('./../middlewares/index.js')
-// 引入博客路由
-const blog = require('./blog.js')
 
 /* 路由挂载开始 */
 router.use(
     '/blog',
     Middleware.logger, // 日志中间件
-    blog // 博客路由
+    require('./blog.js')
 )
+router.use('/visit', require('./visit.js'))
 /* 路由挂载结束 */
 
 // 导出路由

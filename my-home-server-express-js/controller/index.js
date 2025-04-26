@@ -7,5 +7,5 @@
  */
 
 module.exports = class Controller {
-    static blogController = require('../controller/blogController.js')
+    static blogController = require('./blogController.js')
 }

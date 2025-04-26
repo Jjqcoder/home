@@ -16,7 +16,7 @@ const blog = require('./blog.js')
 
 /* 路由挂载开始 */
 router.use(
-    '/',
+    '/blog',
     Middleware.logger, // 日志中间件
     blog // 博客路由
 )

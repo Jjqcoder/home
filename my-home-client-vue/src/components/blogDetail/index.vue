@@ -1,9 +1,9 @@
 <template>
     <div class="blog-container" :style="lightEffect">
         <div class="blog-content">
-            <h1 class="blog-title">{{ blogData.blogTitle }}</h1>
-            <p class="blog-meta">创建时间: {{ blogData.blogCreateTime }} | 更新时间: {{ blogData.blogUpdateTime }}</p>
-            <div class="blog-body">{{ blogData.blogContent }}</div>
+            <h1 class="blog-title">{{ blogData.BLOG_TITLE }}</h1>
+            <p class="blog-meta">创建时间: {{ blogData.BLOG_CREATE_TIME }} | 更新时间: {{ blogData.BLOG_UPDATE_TIME }}</p>
+            <div class="blog-body">{{ blogData.BLOG_CONTENT }}</div>
         </div>
     </div>
 </template>

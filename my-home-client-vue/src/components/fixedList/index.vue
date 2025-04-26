@@ -2,10 +2,10 @@
     <div class="blog-list-container" :style="lightEffect">
         <div class="blog-list-content">
             <el-table :data="pageSelectData" style="width: 100%" height="100%" class="blog-table">
-                <el-table-column fixed prop="id" label="日志标识" width="" />
-                <el-table-column prop="blogTitle" label="日志标题" width="" />
-                <el-table-column prop="blogCreateTime" label="创建时间" width="" />
-                <el-table-column prop="blogUpdateTime" label="更新时间" width="" />
+                <el-table-column fixed prop="ID" label="日志标识" width="" />
+                <el-table-column prop="BLOG_TITLE" label="日志标题" width="" />
+                <el-table-column prop="BLOG_CREATE_TIME" label="创建时间" width="" />
+                <el-table-column prop="BLOG_UPDATE_TIME" label="更新时间" width="" />
                 <el-table-column fixed="right" label="操作" width="">
                     <template v-slot="scope">
                         <el-button @click="row_click(scope.row)" size="small" class="view-button"> 查看 </el-button>

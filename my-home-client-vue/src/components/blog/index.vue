@@ -58,7 +58,7 @@ const pageSelectData = ref(null)
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(() => {
     axios
-        .get(`${in_use_base_url}/getBlogByPage`, {
+        .get(`${in_use_base_url}/blog/getBlogByPage`, {
             params: {
                 current: currentPage.value,
                 size: pageSize.value
@@ -70,10 +70,11 @@ onMounted(() => {
             // 赋值当前分页获取到的数据
             pageSelectData.value = res.data.records.map(data => {
                 // 格式化日期
-                data.blogCreateTime = new Date(new Date(data.blogCreateTime).getTime() - 8 * 60 * 60 * 1000).toLocaleString()
-                data.blogUpdateTime = new Date(new Date(data.blogUpdateTime).getTime() - 8 * 60 * 60 * 1000).toLocaleString()
+                // data.blogCreateTime = new Date(new Date(data.blogCreateTime).getTime() - 8 * 60 * 60 * 1000).toLocaleString()
+                // data.blogUpdateTime = new Date(new Date(data.blogUpdateTime).getTime() - 8 * 60 * 60 * 1000).toLocaleString()
                 return data
             })
+            console.log('数据', pageSelectData.value)
         })
 })
 
@@ -91,7 +92,7 @@ const handleCurrentChange = val => {
 
     // 当页码发生变化的时候，触发分页查询
     const res = axios
-        .get(`${in_use_base_url}/getBlogByPage`, {
+        .get(`${in_use_base_url}/blog/getBlogByPage`, {
             params: {
                 current: currentPage.value,
                 size: pageSize.value

@@ -25,7 +25,6 @@ module.exports = class XlsxUtils {
         // 查找第一列数据为 'xxx' 的行，并获取第二列的数据
         for (let row of data) {
             if (row['中文名'] === city) {
-                console.log(row.adcode)
                 return row.adcode
             }
         }

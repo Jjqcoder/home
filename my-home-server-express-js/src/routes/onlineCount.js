@@ -7,6 +7,10 @@
 const onlineUsers = new Set() // 用于存储在线用户
 
 module.exports = (ws, req) => {
+    // 手动处理跨域
+    ws.on('headers', headers => {
+        headers.push('Access-Control-Allow-Origin: *')
+    })
     // console.log('客户端已连接')
 
     // 将当前客户端加入在线用户集合

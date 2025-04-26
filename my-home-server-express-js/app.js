@@ -7,9 +7,16 @@ const port = 8080 // 定义服务器运行的端口号
 const expressWs = require('express-ws')
 const cors = require('cors')
 const bodyParser = require('body-parser') // 引入 body-parser 模块
+app.use(
+    cors({
+        origin: true, // 或指定具体域名 ['http://example.com', 'https://example.com']
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true // 如果需要跨域携带凭证
+    })
+)
 expressWs(app) // 注意 项目入口需要使用expressWs(app) 子路由中的ws配置才会生效！
 // 全局启用 CORS
-app.use(cors())
 // 解析 JSON 格式的请求体
 app.use(bodyParser.json())
 // 引入自定义路由

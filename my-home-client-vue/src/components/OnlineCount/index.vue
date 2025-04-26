@@ -16,9 +16,11 @@ export default {
         let socket = null
 
         onMounted(() => {
-            socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/online-users`)
+            socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/onlineCount`)
 
             socket.onmessage = event => {
+                console.log(event.data)
+
                 onlineCount.value = parseInt(event.data)
             }
 

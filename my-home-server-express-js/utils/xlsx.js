@@ -12,7 +12,6 @@ module.exports = class XlsxUtils {
      * @returns {string} 城市代码
      */
     static async getCityCode(city) {
-        // console.log('获取城市代码', city)
         // 读取 Excel 文件
         // 构建文件路径
         const filePath = path.join(__dirname, '../resource/weather/AMap_adcode_citycode.xlsx')

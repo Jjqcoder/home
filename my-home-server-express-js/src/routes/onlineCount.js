@@ -13,9 +13,8 @@ module.exports = (ws, req) => {
     ws.on('headers', headers => {
         headers.push('Access-Control-Allow-Origin: *')
     })
-    // console.log('客户端已连接')
 
-    // 将当前客户端加入在线用户集合
+    // 触发连接事件！将当前客户端加入在线用户集合
     onlineUsers.add(ws)
 
     // 通知所有客户端当前在线人数

@@ -11,8 +11,6 @@ const service = require('../service/index.js')
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {
         try {
-            console.log(req.query)
-
             return service.blogService.getBlogByPage(req, res)
         } catch (error) {}
     }

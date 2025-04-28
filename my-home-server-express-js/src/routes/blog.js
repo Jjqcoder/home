@@ -15,9 +15,7 @@ const controller = require('../../controller/index.js')
 expressWs(router)
 
 router.get('/getBlogByPage', async (req, res) => {
-    // console.log(req)
     let data = await controller.blogController.getBlogByPage(req, res)
-
     res.send(data)
 })
 

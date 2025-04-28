@@ -13,7 +13,6 @@ module.exports = class BlogService {
         try {
             // 从请求中获取分页参数
             let {current = 1, size = 10} = req.query // 默认第一页，每页10条数据
-            console.log('current: ', current, 'size:', size)
             // 转换为数字类型
             current = parseInt(current) // 转换为整数
             size = parseInt(size) // 转换为整数

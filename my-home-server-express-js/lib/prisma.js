@@ -1,3 +1,5 @@
+'use strict'
+
 // prismaClient.js
 const {PrismaClient} = require('@prisma/client')
 

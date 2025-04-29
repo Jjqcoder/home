@@ -10,6 +10,8 @@ const {prisma} = require('../lib/index.js')
 
 module.exports = class VisitService {
     static async getAllVisit(req, res) {
-        return await prisma.vISIT_RECORDER.findMany()
+        try {
+            return await prisma.vISIT_RECORDER.findMany()
+        } catch (error) {}
     }
 }

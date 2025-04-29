@@ -10,6 +10,8 @@ const Service = require('./../service/index.js')
 
 module.exports = class VisitController {
     static async getAllVisit(req, res) {
-        return Service.visitService.getAllVisit(req, res)
+        try {
+            return res.send(await Service.visitService.getAllVisit(req, res))
+        } catch (error) {}
     }
 }

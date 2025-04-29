@@ -11,7 +11,7 @@ const service = require('../service/index.js')
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {
         try {
-            return service.blogService.getBlogByPage(req, res)
+            return res.send(await service.blogService.getBlogByPage(req, res))
         } catch (error) {}
     }
 }

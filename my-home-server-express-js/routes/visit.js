@@ -11,9 +11,6 @@ const router = express.Router()
 
 const controller = require('../controller/index.js')
 
-router.get('/allVisit', async (req, res) => {
-    const data = await controller.visitController.getAllVisit()
-    res.send(data)
-})
+router.get('/allVisit', controller.visitController.getAllVisit)
 
 module.exports = router

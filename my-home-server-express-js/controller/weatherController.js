@@ -9,6 +9,8 @@
 const Service = require('./../service/index.js')
 module.exports = class WeatherController {
     static async getWeather(req, res) {
-        return Service.weatherService.getWeather(req, res)
+        try {
+            return res.send(await Service.weatherService.getWeather(req, res))
+        } catch (error) {}
     }
 }

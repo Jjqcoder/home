@@ -10,9 +10,6 @@ const express = require('express')
 const router = express.Router()
 const controller = require('../controller/index.js')
 
-router.post('/getWeather', async (req, res) => {
-    const data = await controller.weatherController.getWeather(req, res)
-    res.send(data)
-})
+router.post('/getWeather', controller.weatherController.getWeather)
 
 module.exports = router

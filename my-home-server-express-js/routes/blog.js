@@ -14,16 +14,6 @@ const controller = require('../controller/index.js')
 
 expressWs(router)
 
-router.get('/getBlogByPage', async (req, res) => {
-    let data = await controller.blogController.getBlogByPage(req, res)
-    res.send(data)
-})
-
-router.ws('/ws', (ws, req) => {
-    // 处理WebSocket连接
-    ws.on('message', msg => {
-        ws.send(msg) // 回环测试
-    })
-})
+router.get('/getBlogByPage', controller.blogController.getBlogByPage)
 
 module.exports = router

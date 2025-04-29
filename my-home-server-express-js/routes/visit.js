@@ -9,7 +9,7 @@
 const express = require('express')
 const router = express.Router()
 
-const controller = require('./../../controller/index.js')
+const controller = require('../controller/index.js')
 
 router.get('/allVisit', async (req, res) => {
     const data = await controller.visitController.getAllVisit()

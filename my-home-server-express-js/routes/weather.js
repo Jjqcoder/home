@@ -8,7 +8,7 @@
 
 const express = require('express')
 const router = express.Router()
-const controller = require('./../../controller/index.js')
+const controller = require('../controller/index.js')
 
 router.post('/getWeather', async (req, res) => {
     const data = await controller.weatherController.getWeather(req, res)

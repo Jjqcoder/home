@@ -20,9 +20,9 @@ expressWs(app) // 注意 项目入口需要使用expressWs(app) 子路由中的w
 // 解析 JSON 格式的请求体
 app.use(bodyParser.json())
 // 引入自定义路由
-const router = require('./src/routes/index.js')
+const router = require('./routes/index.js')
 // 指定 public 目录为静态资源目录
-app.use(express.static('./src/public'))
+app.use(express.static('./public'))
 // 注册路由
 app.use('/', router)
 

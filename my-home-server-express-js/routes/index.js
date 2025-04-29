@@ -12,15 +12,8 @@ const expressWs = require('express-ws')
 
 expressWs(router)
 
-// 引入中间件类
-const Middleware = require('./../middlewares/index.js')
-
 /* 路由挂载开始 */
-router.use(
-    '/blog',
-    Middleware.logger, // 日志中间件
-    require('./blog.js')
-)
+router.use('/blog', require('./blog.js'))
 router.use('/visit', require('./visit.js'))
 
 router.use('/weather', require('./weather.js'))

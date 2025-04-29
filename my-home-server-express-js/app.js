@@ -7,6 +7,7 @@ const port = 8080 // 定义服务器运行的端口号
 const expressWs = require('express-ws')
 const cors = require('cors')
 const bodyParser = require('body-parser') // 引入 body-parser 模块
+const middlewares = require('./middlewares/index.js') // 引入自定义中间件
 app.use(
     cors({
         origin: true, // 或指定具体域名 ['http://example.com', 'https://example.com']
@@ -24,7 +25,12 @@ const router = require('./routes/index.js')
 // 指定 public 目录为静态资源目录
 app.use(express.static('./public'))
 // 注册路由
-app.use('/', router)
+app.use(
+    '/',
+    middlewares.logger, // 日志中间件
+    middlewares.recordVisitors, // 记录访问者IP的中间件
+    router
+)
 
 // 启动服务器
 app.listen(port, () => {

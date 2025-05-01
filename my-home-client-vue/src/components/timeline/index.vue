@@ -30,49 +30,55 @@ const activities = [
         icon: MoreFilled
     },
     {
+        content: '🌒引入「暗色模式」',
+        timestamp: '🗓️2025-05-01',
+        type: 'primary',
+        hollow: true
+    },
+    {
         content: '💞引入「微服务」',
         timestamp: '🗓️2025-04-22',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔧正式决定使用[my-home-server-express-js]重构[my-home-server-springboot]',
+        content: '🔧正式决定使用「my-home-server-express-js」重构「my-home-server-springboot」',
         timestamp: '🗓️2025-04-11',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔐网站升级为https',
+        content: '🔐网站升级为「https」',
         timestamp: '🗓️2025-03-21',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔢引入访客统计功能',
+        content: '🔢引入「访客统计」功能',
         timestamp: '🗓️2025-03-20',
         type: 'primary',
         hollow: true
     },
     {
-        content: '⏱️引入时间线',
+        content: '⏱️引入「时间线」功能',
         timestamp: '🗓️2024-05-06',
         type: 'primary',
         hollow: true
     },
     {
-        content: '✍️完成日志列表',
+        content: '✍️完成「日志列表」功能',
         timestamp: '🗓️2024-04-27',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🌤️完成天气查询功能',
+        content: '🌤️完成「天气查询」功能',
         timestamp: '🗓️2024-04-22',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🎈项目初始化[Vue3+SpringBoot]',
+        content: '🎈项目初始化「Vue3+SpringBoot」',
         timestamp: '🗓️2024-04-11'
     }
 ]

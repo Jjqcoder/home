@@ -17,7 +17,9 @@ module.exports = async (req, res, next) => {
         // 将此 ip 插入到VISIT_RECORDER中
         const res = await prisma.VISIT_RECORDER.create({
             data: {
-                IP: ip
+                IP: ip,
+                // 时间格式为timestamp
+                CREATE_TIME: new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString()
             }
         })
         console.log('插入访客记录' + JSON.stringify(res))

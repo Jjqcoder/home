@@ -6,3 +6,19 @@
 -   `npx prisma db pull`拉取数据库结构到本项目
 -   `npx prisma generate`生成`prisma`客户端
 -   `pnpm start`
+
+## 部署须知
+
+1. 拉取`node`镜像
+
+```sh
+sudo docker pull node:18-alpine
+```
+
+2. 创建容器并运行
+
+```sh
+sudo docker run -d --restart=always --name my-express-app -p 8080:8080 -v /myProject/home/my-home-server-express-js:/usr/src/app -w /usr/src/app node:18-alpine sh -c "npm install && npm run dev"
+```
+
+3. 将文件上传到`/myProject/home/my-home-server-express-js`即可

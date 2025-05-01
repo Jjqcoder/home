@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import {defineProps, ref} from 'vue'
+import {ref} from 'vue'
 import {useRouter} from 'vue-router'
 
 const myProps = defineProps({
@@ -77,19 +77,19 @@ window.addEventListener('mousemove', updateMousePosition)
     background: transparent;
 }
 
-.blog-table::v-deep .el-table__header-wrapper,
-.blog-table::v-deep .el-table__body-wrapper {
+.blog-table:deep(.el-table__header-wrapper),
+.blog-table:deep(.el-table__body-wrapper) {
     background: transparent;
 }
 
-.blog-table::v-deep .el-table__row {
+.blog-table:deep(.el-table__row) {
     background: rgba(255, 255, 255, 0.9);
     margin-bottom: 10px;
     border-radius: 10px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.blog-table::v-deep .el-table__row:hover {
+.blog-table:deep(.el-table__row:hover) {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

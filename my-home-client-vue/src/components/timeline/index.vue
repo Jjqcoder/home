@@ -130,31 +130,31 @@ window.addEventListener('mousemove', updateMousePosition)
     margin: 0;
 }
 
-::v-deep .el-timeline-item {
+:deep(.el-timeline-item) {
     padding-bottom: 20px;
 }
 
-::v-deep .el-timeline-item__node {
+:deep(.el-timeline-item__node) {
     background-color: #fcb69f;
     border-color: #fcb69f;
 }
 
-::v-deep .el-timeline-item__tail {
+:deep(.el-timeline-item__tail) {
     border-left: 2px solid #fcb69f;
 }
 
-::v-deep .el-timeline-item__timestamp {
+:deep(.el-timeline-item__timestamp) {
     color: #666;
     font-size: 0.9rem;
 }
 
-::v-deep .el-timeline-item__content {
+:deep(.el-timeline-item__content) {
     font-size: 1.1rem;
     color: #333;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-::v-deep .el-timeline-item__content:hover {
+:deep(.el-timeline-item__content:hover) {
     color: #fcb69f;
     transform: translateX(5px);
 }

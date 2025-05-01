@@ -65,7 +65,7 @@
 </template>
 <script lang="" setup>
 // 引入相关依赖
-import {ref, defineProps, watch} from 'vue'
+import {ref, watch} from 'vue'
 import _ from 'lodash'
 
 // 开始定义props，用于接收父组件传递来的数据、后续需要将器渲染到页面上然后进行响应式的修改。

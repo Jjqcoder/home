@@ -1,0 +1,17 @@
+# 基于 Node.js 18 镜像
+FROM node:18-alpine
+
+# 设置工作目录
+WORKDIR /usr/src/app
+
+# 将本地代码复制到容器中
+COPY . .
+
+# 安装依赖
+RUN npm install
+
+# 启动应用
+CMD ["npm", "run", "dev"]
+
+# sudo docker build -t my-express-app-image .
+# sudo docker run -d --restart=always --name my-express-app -p 8080:8080 -v /myProject/home/my-home-server-express-js:/usr/src/app my-express-app-image 

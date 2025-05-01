@@ -15,9 +15,7 @@ expressWs(router)
 /* 路由挂载开始 */
 router.use('/blog', require('./blog.js'))
 router.use('/visit', require('./visit.js'))
-
 router.use('/weather', require('./weather.js'))
-
 router.ws('/onlineCount', require('../service/ws/onlineCountService.js'))
 /* 路由挂载结束 */
 

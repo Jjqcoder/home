@@ -40,17 +40,10 @@ let MyWeatherData = ref([])
 // 监听所选的内容
 watch(selectedOptions, async (newValue, oldValue) => {
     try {
-        // console.log('开始查询天气信息' + newValue[1])
-
         // 请求后端接口，获取天气数据
         const response = await axios.post(`${in_use_base_url}/weather/getWeather`, {
             city: newValue[1]
         })
-
-        // 获取到编码之后，开始第二个请求
-        // const secondResponse = await axios.get(`${in_use_base_url}/weather/${response.data}`)
-        // console.log('response' + JSON.stringify(toRaw(response).data[0]))
-
         MyWeatherData.value.push(toRaw(response).data[0])
     } catch (err) {
         console.log('查询天气出现错误！' + err)

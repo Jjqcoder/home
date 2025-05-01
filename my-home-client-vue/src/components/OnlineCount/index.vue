@@ -16,22 +16,30 @@ export default {
         let socket = null
 
         onMounted(() => {
-            socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/onlineCount`)
+            try {
+                socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/onlineCount`)
 
-            socket.onmessage = event => {
-                console.log(event.data)
+                socket.onmessage = event => {
+                    console.log(event.data)
 
-                onlineCount.value = parseInt(event.data)
-            }
+                    onlineCount.value = parseInt(event.data)
+                }
 
-            socket.onclose = () => {
-                console.log('WebSocket connection closed')
+                socket.onclose = () => {
+                    console.log('WebSocket connection closed')
+                }
+            } catch (error) {
+                console.error('获取在线人数失败')
             }
         })
 
         onUnmounted(() => {
-            if (socket) {
-                socket.close()
+            try {
+                if (socket) {
+                    socket.close()
+                }
+            } catch (error) {
+                console.error('关闭WebSocket连接失败')
             }
         })
 

@@ -80,11 +80,8 @@ const myProps = defineProps({
 // 为了确保每一条数据的唯一性,为每一个对象都附上一个随机值,并且该随机值不进行渲染,后续只需要使用delete进行删除接即可,后面是具体操作的网址:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete
 const dataFromFather = ref(myProps.fatherDataToSon) // 注意，此处不需要点vlaue就可以在页面上使用{{}}渲染出值，但是在script页面，因为数据是被ref包裹的，所以在访问这个变量的时候需要加上.value才能访问到值！！！
 // dataFromFather.value是一个数组!!!!
-// console.log('dataFromFather.value', dataFromFather.value);
 
 watch(dataFromFather.value, (newVal, oldVal) => {
-    // dataFromFather.value = removeDuplicates(dataFromFather.value);
-    // dataFromFather.value =
     // console.log(newVal, oldVal)
 })
 

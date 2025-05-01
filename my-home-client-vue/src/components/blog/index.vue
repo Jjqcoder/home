@@ -56,51 +56,48 @@ const disabled = ref(false)
 const pageSelectData = ref(null)
 
 // 配合onMounted，页面加载完成后就开始获取数据的条数
-onMounted(() => {
-    axios
-        .get(`${in_use_base_url}/blog/getBlogByPage`, {
+onMounted(async () => {
+    try {
+        let res = await axios.get(`${in_use_base_url}/blog/getBlogByPage`, {
             params: {
                 current: currentPage.value,
                 size: pageSize.value
             }
         })
-        .then(res => {
-            // 赋值博客的总条数
-            totalDataCount.value = res.data.total
-            // 赋值当前分页获取到的数据
-            pageSelectData.value = res.data.records.map(data => {
-                // 格式化日期
-                // data.blogCreateTime = new Date(new Date(data.blogCreateTime).getTime() - 8 * 60 * 60 * 1000).toLocaleString()
-                // data.blogUpdateTime = new Date(new Date(data.blogUpdateTime).getTime() - 8 * 60 * 60 * 1000).toLocaleString()
-                return data
-            })
-            console.log('数据', pageSelectData.value)
-        })
+        // 赋值博客的总条数
+        totalDataCount.value = res.data.total
+        // 赋值分页查询到的数据
+        pageSelectData.value = res.data.records
+    } catch (error) {
+        console.error('分页获取博客数据失败！')
+    }
 })
 
 // size发生变化发生的回调
-const handleSizeChange = val => {
-    // console.log(`${val} items per page`);
-    pageSize.value = val
-    handleCurrentChange()
+const handleSizeChange = async val => {
+    try {
+        pageSize.value = val
+        await handleCurrentChange()
+    } catch (error) {
+        console.error('更换页码过程发生异常')
+    }
 }
 
 // 页码发生改变触发的回调
-const handleCurrentChange = val => {
-    // console.log(`current page: ${val}`);
-    // console.log(`current pageSize: ${pageSize.value}`);
-
-    // 当页码发生变化的时候，触发分页查询
-    const res = axios
-        .get(`${in_use_base_url}/blog/getBlogByPage`, {
+const handleCurrentChange = async val => {
+    try {
+        // 当页码发生变化的时候，触发分页查询
+        const res = await axios.get(`${in_use_base_url}/blog/getBlogByPage`, {
             params: {
                 current: currentPage.value,
                 size: pageSize.value
             }
         })
-        .then(res => {
-            pageSelectData.value = res.data.records
-        })
+
+        pageSelectData.value = res.data.records
+    } catch (error) {
+        console.error('更换页码过程发生异常')
+    }
 }
 </script>
 

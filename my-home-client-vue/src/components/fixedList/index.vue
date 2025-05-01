@@ -32,7 +32,6 @@ const mouseY = ref(0)
 
 const row_click = row => {
     router.push({name: 'blogDetail', params: {row: JSON.stringify(row)}})
-    console.log(row)
 }
 
 const updateMousePosition = event => {

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {ref, onMounted, onUnmounted} from 'vue'
+import {onMounted, onUnmounted, ref} from 'vue'
 
 export default {
     setup() {
@@ -20,7 +20,7 @@ export default {
                 socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/onlineCount`)
 
                 socket.onmessage = event => {
-                    console.log(event.data)
+                    // console.log(event.data)
 
                     onlineCount.value = parseInt(event.data)
                 }

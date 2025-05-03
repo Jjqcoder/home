@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-import {useRoute} from 'vue-router'
 import {ref, watch} from 'vue'
+import {useRoute} from 'vue-router'
 const route = useRoute()
 const id = route.query.id
 
@@ -18,7 +18,7 @@ let blogData = ref('## hello')
 axios
     .get(`${in_use_base_url}/blog/${id}`)
     .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         blogData.value = res.data.blogContent
         // console.log(blogData.value.id);
     })

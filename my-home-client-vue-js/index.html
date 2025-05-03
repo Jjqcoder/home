@@ -93,21 +93,6 @@
                 margin-bottom: 10px;
             }
 
-            .mouse-wheel {
-                width: 24px;
-                height: 40px;
-                border: 2px solid rgba(255, 255, 255, 0.8); /* 增加对比度 */
-                border-radius: 12px;
-                position: relative;
-                animation: wheelScroll 1.5s infinite;
-                /* 垂直居中 */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                /* 设置文字不可选中 */
-                user-select: none;
-            }
-
             @keyframes wheelScroll {
                 0% {
                     transform: translateY(0);
@@ -170,10 +155,7 @@
         <div class="loading-screen">
             <img src="/windy.jpg" class="loading-logo" alt="windy" />
             <div class="loading-text">Hello, traveler!🍃</div>
-            <div class="scroll-hint">
-                <!-- <span>Scroll to continue</span> -->
-                <div class="mouse-wheel">V</div>
-            </div>
+            <div class="scroll-hint"></div>
         </div>
         <!-- 入场动画结构结束 -->
 
@@ -189,24 +171,29 @@
                 const loadingScreen = document.querySelector('.loading-screen')
                 let isAnimationDone = false
 
-                // 首次滚动处理
-                function handleFirstScroll(e) {
+                // 隐藏滚动条
+                document.body.style.overflow = 'hidden'
+
+                // 首次点击处理
+                function handleFirstClick() {
                     if (!isAnimationDone) {
-                        e.preventDefault()
                         loadingScreen.classList.add('hide')
                         setTimeout(() => {
                             loadingScreen.remove()
                             isAnimationDone = true
+                            // 恢复滚动条
+                            document.body.style.overflow = 'auto'
                             // 显示暗色模式按钮
-                            document.getElementById('eye-protection-toggle').style.display = 'block' // 退出动画才显示暗色模式的按钮
+                            document.getElementById('eye-protection-toggle').style.display = 'block'
                         }, 1000)
-                        window.removeEventListener('wheel', handleFirstScroll)
+                        document.removeEventListener('click', handleFirstClick)
                     }
                 }
 
                 // 等待1秒后允许滚动关闭
                 setTimeout(() => {
-                    window.addEventListener('wheel', handleFirstScroll, {passive: false})
+                    // window.addEventListener('wheel', handleFirstScroll, {passive: false})
+                    document.addEventListener('click', handleFirstClick)
                 }, 1000)
             })
         </script>

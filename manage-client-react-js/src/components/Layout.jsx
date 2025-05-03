@@ -26,6 +26,18 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
         setCurrent(e.key)
     }
 
+    // 使用 switch 语句渲染内容
+    const renderContent = () => {
+        switch (current) {
+            case '1':
+                return <Content1 />
+            case '2':
+                return <Content2 />
+            default:
+                return <div>No content available</div>
+        }
+    }
+
     return (
         <div style={{display: 'flex'}}>
             <div style={{width: 256}}>
@@ -53,7 +65,7 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
             </div>
             <div style={{flex: 1, padding: '20px'}}>
                 <h2>Selected Content</h2>
-                {current === '1' ? <Content1 /> : current === '2' ? <Content2 /> : <div>No content available</div>}
+                {renderContent()}
             </div>
         </div>
     )

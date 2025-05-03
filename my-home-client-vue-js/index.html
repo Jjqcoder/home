@@ -2,12 +2,128 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <!-- 注意 不需要加 /public 前缀 -->
         <link rel="icon" type="image/svg+xml" href="/home.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>home</title>
+
         <style>
-            /* 暗色护眼模式样式 - 使用!important确保最高优先级 */
+            /* 新增入场动画样式 */
+            .loading-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #1a1a1a;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 2147483646; /* 仅次于护眼模式的层级 */
+                transition: 1s ease;
+            }
+
+            .loading-screen.hide {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+
+            .loading-logo {
+                width: 280px;
+                height: 280px;
+                border-radius: 50%; /* 使logo变为圆形 */
+                animation: logoFloat 2s ease-in-out infinite, glowEffect 3s ease-in-out infinite;
+                /* 添加金色的渐变光晕效果 */
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)) /* 金色光晕 */ drop-shadow(0 0 15px rgba(255, 215, 0, 0.2)); /* 金色光晕 */
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); /* 金色光晕 */
+                /* 设置图片不可选中 */
+                user-select: none;
+                /* 设置图片不可拖动 */
+                pointer-events: none;
+            }
+
+            /* 添加一个动画效果，使光晕动态变化 */
+            @keyframes glowEffect {
+                0% {
+                    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
+                }
+                50% {
+                    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.35)) drop-shadow(0 0 17px rgba(255, 215, 0, 0.25));
+                }
+                100% {
+                    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
+                }
+            }
+
+            .loading-logo {
+                animation: logoFloat 2s ease-in-out infinite, glowEffect 3s ease-in-out infinite;
+            }
+
+            .loading-text {
+                color: white;
+                margin-top: 30px;
+                font-size: 1.2em;
+                letter-spacing: 2px;
+                opacity: 0.8;
+                animation: textPulse 1.5s ease-in-out infinite;
+                /* 设置内容不可选中 */
+                user-select: none;
+            }
+
+            @keyframes textPulse {
+                0%,
+                100% {
+                    opacity: 0.6;
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
+
+            .scroll-hint {
+                position: absolute;
+                bottom: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .scroll-hint span {
+                margin-bottom: 10px;
+            }
+
+            .mouse-wheel {
+                width: 24px;
+                height: 40px;
+                border: 2px solid rgba(255, 255, 255, 0.8); /* 增加对比度 */
+                border-radius: 12px;
+                position: relative;
+                animation: wheelScroll 1.5s infinite;
+                /* 垂直居中 */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* 设置文字不可选中 */
+                user-select: none;
+            }
+
+            @keyframes wheelScroll {
+                0% {
+                    transform: translateY(0);
+                    opacity: 0.5;
+                }
+                30% {
+                    transform: translateY(10px);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(20px);
+                    opacity: 0.5;
+                }
+            }
+
+            /* 原有样式保持不变 */
             .eye-protection-mode {
                 position: fixed;
                 top: 0;
@@ -19,8 +135,9 @@
                 pointer-events: none !important; /* 确保不影响用户操作 */
             }
 
-            /* 护眼模式切换按钮样式 */
+            /* 护眼模式切换按钮样式 - 初始隐藏 */
             #eye-protection-toggle {
+                display: none; /* 初始隐藏 */
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
@@ -49,13 +166,54 @@
     </head>
 
     <body>
+        <!-- 入场动画结构开始 -->
+        <div class="loading-screen">
+            <img src="/windy.jpg" class="loading-logo" alt="windy" />
+            <div class="loading-text">Hello, traveler!🍃</div>
+            <div class="scroll-hint">
+                <!-- <span>Scroll to continue</span> -->
+                <div class="mouse-wheel">V</div>
+            </div>
+        </div>
+        <!-- 入场动画结构结束 -->
+
+        <!-- 原有内容开始 -->
         <div id="app"></div>
         <script type="module" src="/src/main.js"></script>
+        <!-- 原有内容结束 -->
 
-        <!-- ================================护眼模式相关内容开始================================ -->
-        <!-- 护眼模式切换按钮 -->
+        <!-- 入场动画控制脚本开始 -->
+        <script>
+            // 入场动画控制
+            document.addEventListener('DOMContentLoaded', () => {
+                const loadingScreen = document.querySelector('.loading-screen')
+                let isAnimationDone = false
+
+                // 首次滚动处理
+                function handleFirstScroll(e) {
+                    if (!isAnimationDone) {
+                        e.preventDefault()
+                        loadingScreen.classList.add('hide')
+                        setTimeout(() => {
+                            loadingScreen.remove()
+                            isAnimationDone = true
+                            // 显示暗色模式按钮
+                            document.getElementById('eye-protection-toggle').style.display = 'block' // 退出动画才显示暗色模式的按钮
+                        }, 1000)
+                        window.removeEventListener('wheel', handleFirstScroll)
+                    }
+                }
+
+                // 等待1秒后允许滚动关闭
+                setTimeout(() => {
+                    window.addEventListener('wheel', handleFirstScroll, {passive: false})
+                }, 1000)
+            })
+        </script>
+        <!-- 入场动画控制脚本结束 -->
+
+        <!-- ================================护眼模式相关内容（保持不变）================================ -->
         <button id="eye-protection-toggle">暗色护眼</button>
-
         <script>
             // 初始化时检查LocalStorage中的设置
             document.addEventListener('DOMContentLoaded', function () {
@@ -96,6 +254,5 @@
                 }
             })
         </script>
-        <!-- ================================护眼模式相关内容结束================================ -->
     </body>
 </html>

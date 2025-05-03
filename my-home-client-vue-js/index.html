@@ -123,14 +123,14 @@
                 }
             }
 
-            /* 原有样式保持不变 */
+            /* 暗色模式开启后的样式 */
             .eye-protection-mode {
                 position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(0, 0, 0, 0.3) !important; /* 黑色半透明遮罩 */
+                background-color: rgba(0, 0, 0, 0.5) !important; /* 黑色半透明遮罩 */
                 z-index: 2147483647 !important; /* 最大z-index值 */
                 pointer-events: none !important; /* 确保不影响用户操作 */
             }
@@ -159,8 +159,8 @@
 
             /* 暗色模式下按钮样式变化 */
             body.eye-protection-active #eye-protection-toggle {
-                background-color: #666;
-                box-shadow: 0 2px 12px 0 rgba(255, 255, 255, 0.1);
+                background-color: #000; /* 纯黑色 */
+                box-shadow: 0 0 20px 15px rgba(0, 0, 0, 1); /* 增大模糊半径和扩展半径 */
             }
         </style>
     </head>

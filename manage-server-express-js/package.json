@@ -1,0 +1,16 @@
+{
+    "name": "manage-server-express-js",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.5.2",
+    "dependencies": {
+        "express": "^5.1.0"
+    }
+}

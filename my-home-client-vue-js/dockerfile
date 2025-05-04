@@ -1,0 +1,18 @@
+# 基于官方 Nginx 镜像
+FROM nginx:latest
+
+# 将本地的配置文件复制到容器的 /etc/nginx 目录
+COPY myNginxConf/ /etc/nginx/
+
+# 将本地的 HTML 文件复制到容器的 /usr/share/nginx/html 目录
+COPY myNginxHtml/ /usr/share/nginx/html/
+
+# 暴露 80 和 443 端口
+EXPOSE 80 443
+
+# 启动 Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
+# 权限记得设置chmod -R 777 ./*
+# 构建镜像：docker build -t my-nginx .
+# 运行容器：docker run -d -p 80:80 -p 443:443 my-nginx

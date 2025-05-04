@@ -50,27 +50,22 @@ class RabbitMQConsumer {
      */
     async initialize() {
         try {
-            // 创建连接
+            // 创建连接和通道
             this.connection = await amqp.connect(this.getConnectionUrl())
-
-            // 创建通道
             this.channel = await this.connection.createChannel()
 
             // 声明交换机
             await this.channel.assertExchange(this.options.exchangeName, this.options.exchangeType, {durable: this.options.durable})
 
-            // 声明队列 - 使用空队列名让RabbitMQ生成随机名称
-            this.queue = await this.channel.assertQueue('', {
-                exclusive: this.options.exclusive,
-                durable: this.options.durable
+            // 将队列名称固定为 shared-queue，并且设置 exclusive: false，这意味着多个订阅者实例可以共享同一个队列。
+            // 当消息到达共享队列时，RabbitMQ 会根据消费者之间的负载均衡机制，将消息分发给其中一个消费者实例。因此，一条消息只会被一个消费者实例处理一次。
+            this.queue = await this.channel.assertQueue('shared-queue', {
+                durable: this.options.durable,
+                exclusive: false // 不是独占队列
             })
 
             // 绑定队列到交换机
-            await this.channel.bindQueue(
-                this.queue.queue,
-                this.options.exchangeName,
-                '' // fanout类型不需要路由键
-            )
+            await this.channel.bindQueue(this.queue.queue, this.options.exchangeName, '')
 
             console.log(`RabbitMQ 订阅者初始化完成，监听交换机: ${this.options.exchangeName}`)
         } catch (error) {

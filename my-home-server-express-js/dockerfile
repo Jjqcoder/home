@@ -1,5 +1,5 @@
-# 基于 Node.js 18 镜像
-FROM node:18-alpine
+# 改为使用 20 版本
+FROM node:20-alpine
 
 # 设置工作目录
 WORKDIR /usr/src/app
@@ -10,8 +10,9 @@ COPY . .
 # 安装依赖
 RUN npm install
 
-# 启动应用
-CMD ["npm", "run", "dev"]
+# 启动应用 注意 不要使用dev！！否则生成 prisma 客户端的过程中会报依赖错误
+CMD ["npm", "run", "prod"]
 
+# 记得给权限chmod -R 777 ./*
 # sudo docker build -t my-express-app-image .
-# sudo docker run -d --restart=always --name my-express-app -p 8080:8080 -v /myProject/home/my-home-server-express-js:/usr/src/app my-express-app-image 
+# sudo docker run -d --restart=always --name my-express-app -p 8080:8080 -v /myProject/my-home-server-express-js:/usr/src/app my-express-app-image 

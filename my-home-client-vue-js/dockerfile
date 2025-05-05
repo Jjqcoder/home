@@ -14,5 +14,5 @@ EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
 
 # 权限记得设置chmod -R 777 ./*
-# 构建镜像：docker build -t my-nginx .
+# 构建镜像(注意 构建镜像后再将打包后的文件复制到myNginxConf是不会生效的!需要在构建镜像前复制)：docker build -t my-nginx .
 # 运行容器：docker run -d -p 80:80 -p 443:443 my-nginx

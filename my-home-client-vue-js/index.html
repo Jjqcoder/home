@@ -186,7 +186,7 @@
 
                         // 拖尾粒子动画
                         let opacity = 0.6
-                        const lifetime = 500 + Math.random() * 300 // 0.5-0.8秒
+                        const lifetime = 300 + Math.random() * 300 // 0.3-0.6秒
                         const startTime = Date.now()
 
                         function animate() {
@@ -220,8 +220,29 @@
 
             // 使用
             addClickEffects({
-                colors: ['#FF9E7D', '#FFBB7C', '#FFD67F', '#A4DC85', '#6CC3D5'],
-                particleCount: 10,
+                colors: [
+                    '#FF5733',
+                    '#FFC371',
+                    '#FF70A6',
+                    '#7BED9F',
+                    '#33C1FF',
+                    '#8E44AD',
+                    '#FFD700',
+                    '#FF6347',
+                    '#90EE90',
+                    '#ADD8E6',
+                    '#FFB6C1',
+                    '#FFFF99',
+                    '#FF4500',
+                    '#87CEEB',
+                    '#FF69B4',
+                    '#FFDAB9',
+                    '#FF1493',
+                    '#FF8C00',
+                    '#FFA07A',
+                    '#FFB90F'
+                ],
+                particleCount: 5,
                 trailDensity: 0.4
             })
             /* ==========点击事件美化结束========== */

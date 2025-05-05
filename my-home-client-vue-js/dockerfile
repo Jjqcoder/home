@@ -5,7 +5,8 @@ FROM nginx:latest
 COPY myNginxConf/ /etc/nginx/
 
 # 将本地的 HTML 文件复制到容器的 /usr/share/nginx/html 目录
-COPY myNginxHtml/ /usr/share/nginx/html/
+# COPY myNginxHtml/ /usr/share/nginx/html/
+COPY dist/ /usr/share/nginx/html/
 
 # 暴露 80 和 443 端口
 EXPOSE 80 443

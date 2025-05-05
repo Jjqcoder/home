@@ -1,0 +1,16 @@
+/* ==========美化全局的文字选中效果开始========== */
+::selection {
+    color: rgb(255, 0, 0); /* 字体颜色 */
+    background-color: rgb(254, 213, 162); /* 背景颜色 */
+    text-decoration: wavy underline; /* 波浪线 */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 文字阴影 */
+}
+/* ==========美化全局的文字选中效果结束========== */
+
+/* ==========鼠标样式美化开始========== */
+/* 设置指定的鼠标样式 */
+* {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text x='0' y='32' font-size='32'>👆</text></svg>"),
+        auto !important;
+}
+/* ==========鼠标样式美化结束========== */

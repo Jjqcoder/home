@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "dev": "npx prisma db pull && npx prisma generate && node app.js",
-        "prod": "node app.js"
+        "dev": "npx prisma db pull && npx prisma generate && npx pm2 start ecosystem.config.js",
+        "prod": "pm2-runtime start ecosystem.config.js"
     },
     "keywords": [],
     "author": "",
@@ -20,6 +20,7 @@
         "express-ws": "^5.0.2",
         "log4js": "^6.9.1",
         "mysql": "^2.18.1",
+        "pm2": "^6.0.5",
         "prisma": "^6.4.1",
         "xlsx": "^0.18.5"
     },

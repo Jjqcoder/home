@@ -1,0 +1,40 @@
+module.exports = {
+    apps: [
+        {
+            // 应用的名称，用于在 PM2 中标识应用
+            name: 'my-home-server-express-js',
+
+            // 入口文件路径，相对于项目根目录
+            script: './app.js',
+
+            // 传递给入口文件的命令行参数，如果不需要可以留空
+            args: '',
+
+            // 实例数量，'max' 表示根据 CPU 核心数自动分配实例数量
+            instances: 4,
+
+            // 是否自动重启应用，如果应用崩溃或达到内存限制
+            autorestart: true,
+
+            // 是否开启文件监控自动重启，生产环境中通常设置为 false
+            watch: false,
+
+            // 当应用占用内存超过指定值时自动重启，单位可以是 MB 或 GB
+            max_memory_restart: '200M',
+
+            // 环境变量配置，这里设置了 NODE_ENV 为 production
+            env: {
+                NODE_ENV: 'production'
+            }
+        }
+    ]
+}
+
+// 关闭所有应用
+// pm2 stop all
+
+// 查看所有应用状态
+// pm2 list
+
+// 删除所有应用
+// pm2 delete all

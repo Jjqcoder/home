@@ -29,7 +29,7 @@
                         <el-dropdown-item>🔢看数据</el-dropdown-item>
                     </router-link>
                     <!-- 跳转到本站的管理后台 后续将开放游客模式让游客体验后台的功能（功能会限制） -->
-                    <a href="https://www.baidu.com" target="_blank">
+                    <a href="http://wbeishangw.top:81/" target="_blank">
                         <el-dropdown-item>🎛️管后台</el-dropdown-item>
                     </a>
                     <router-link to="/about">

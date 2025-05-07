@@ -129,21 +129,23 @@ class RabbitMQRequester {
     }
 }
 
+module.exports = RabbitMQRequester
+
 // 使用示例
-setInterval(async () => {
-    const requester = new RabbitMQRequester({
-        queueName: 'rpc_queue'
-    })
+// setInterval(async () => {
+//     const requester = new RabbitMQRequester({
+//         queueName: 'rpc_queue'
+//     })
 
-    try {
-        await requester.initialize()
+//     try {
+//         await requester.initialize()
 
-        const response = await requester.sendRequest('Hello, RabbitMQ RPC!')
-        console.log(`收到响应: ${response}`)
+//         const response = await requester.sendRequest('Hello, RabbitMQ RPC!')
+//         console.log(`收到响应: ${response}`)
 
-        // await requester.close()
-    } catch (error) {
-        console.error('运行请求者出错:', error)
-        await requester.close()
-    }
-}, 1000)
+//         // await requester.close()
+//     } catch (error) {
+//         console.error('运行请求者出错:', error)
+//         await requester.close()
+//     }
+// }, 1000)

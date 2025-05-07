@@ -1,3 +1,3 @@
 # MANAGE-SERVER-EXPRESS-JS🍃
 
-本服务会将消息发布给 rabbitmq 的指定主题，由 DB-SERVICE 服务订阅并进行持久层操作
+本服务将会利用 rabbitmq 的请求响应机制，用于与数据库操作相关的服务进行交互。

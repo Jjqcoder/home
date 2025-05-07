@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-require('./lib/rabbitmq/publisher.js')
+require('./lib/rabbitmq/index.js')
 
 app.listen(port, () => {
     console.log(`发布者发布信息！`)

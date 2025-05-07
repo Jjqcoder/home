@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       amqplib:
-        specifier: ^0.10.7
-        version: 0.10.7
+        specifier: ^0.10.8
+        version: 0.10.8
       express:
         specifier: ^5.1.0
         version: 5.1.0
@@ -21,8 +21,8 @@ packages:
     resolution: {integrity: sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng==}
     engines: {node: '>= 0.6'}
 
-  amqplib@0.10.7:
-    resolution: {integrity: sha512-7xPSYKSX2kj/bT6iHZ3MlctzxdCW1Ds9xyN0EmuRi2DZxHztwwoG1YkZrgmLyuPNjfxlRiMdWJPQscmoa3Vgdg==}
+  amqplib@0.10.8:
+    resolution: {integrity: sha512-Tfn1O9sFgAP8DqeMEpt2IacsVTENBpblB3SqLdn0jK2AeX8iyCvbptBc8lyATT9bQ31MsjVwUSQ1g8f4jHOUfw==}
     engines: {node: '>=10'}
 
   body-parser@2.2.0:
@@ -298,7 +298,7 @@ snapshots:
       mime-types: 3.0.1
       negotiator: 1.0.0
 
-  amqplib@0.10.7:
+  amqplib@0.10.8:
     dependencies:
       buffer-more-ints: 1.0.0
       url-parse: 1.5.10

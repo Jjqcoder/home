@@ -10,6 +10,8 @@ const Login = () => {
     const handleLogin = () => {
         console.log('用户名:', username)
         console.log('密码:', password)
+        // 路由跳转到 /main
+        window.location.href = '/main'
     }
 
     return (

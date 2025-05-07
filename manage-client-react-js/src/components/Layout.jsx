@@ -11,12 +11,12 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
     const changeTheme = value => {
         setTheme(value ? 'dark' : 'light')
         if (value) {
-            document.body.style.backgroundColor = '#121212' // 暗色背景
+            document.body.style.backgroundColor = '#1f1f1f' // 暗色背景
             document.body.style.color = '#d9d9d9' // 亮色文字
             localStorage.setItem('theme', 'dark')
         } else {
             document.body.style.backgroundColor = '#FFFFFF' // 亮色背景
-            document.body.style.color = '#121212' // 暗色文字
+            document.body.style.color = '#1f1f1f' // 暗色文字
             localStorage.setItem('theme', 'light')
         }
     }

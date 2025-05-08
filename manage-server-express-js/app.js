@@ -9,28 +9,19 @@
 const express = require('express')
 const app = express()
 const port = 3001
-const RabbitMQRequester = require('./lib/rabbitmq/index.js')
+const Requester = require('./lib/rabbitmq/requester.js')
 
 app.get('/', async (req, res) => {
     res.send('Hello World!')
 
-    const requester = new RabbitMQRequester({
-        queueName: 'rpc_queue'
-    })
-
     try {
-        await requester.initialize()
-
-        const response = await requester.sendRequest('Hello, RabbitMQ RPC!')
+        const response = await Requester.sendRequest('rpc_queue', 'Hello, RabbitMQ RPC!')
         console.log(`收到响应: ${response}`)
-
-        // await requester.close()
     } catch (error) {
-        console.error('运行请求者出错:', error)
-        await requester.close()
+        console.error('发送请求出错:', error)
     }
 })
 
 app.listen(port, () => {
-    console.log(`server runnning at http://localhost:3000`)
+    console.log(`server runnning at http://localhost:3001`)
 })

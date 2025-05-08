@@ -1,5 +1,5 @@
 /**
- * 创建时间: 2025-04-225-07
+ * 创建时间: 2025-04-05-07
  * 描述: RabbitMQ RPC 服务器类实现
  */
 
@@ -125,28 +125,30 @@ class RabbitMQServer {
     }
 }
 
+module.exports = RabbitMQServer
+
 // 使用示例
-;(async () => {
-    const server = new RabbitMQServer({
-        queueName: 'rpc_queue',
-        requestHandler: request => {
-            console.log(`[收到请求]: ${request}`)
-            // 这里可以添加自定义的请求处理逻辑
-            return `响应: ${request}`
-        }
-    })
+// ;(async () => {
+//     const server = new RabbitMQServer({
+//         queueName: 'rpc_queue',
+//         requestHandler: request => {
+//             console.log(`[收到请求]: ${request}`)
+//             // 这里可以添加自定义的请求处理逻辑
+//             return `响应: ${request}`
+//         }
+//     })
 
-    try {
-        await server.initialize()
-        await server.startProcessing()
+//     try {
+//         await server.initialize()
+//         await server.startProcessing()
 
-        // 保持连接，直到手动停止
-        process.on('SIGINT', async () => {
-            await server.close()
-            process.exit(0)
-        })
-    } catch (error) {
-        console.error('运行服务器出错:', error)
-        await server.close()
-    }
-})()
+//         // 保持连接，直到手动停止
+//         process.on('SIGINT', async () => {
+//             await server.close()
+//             process.exit(0)
+//         })
+//     } catch (error) {
+//         console.error('运行服务器出错:', error)
+//         await server.close()
+//     }
+// })()

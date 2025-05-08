@@ -1,0 +1,23 @@
+# 使用 Node.js 官方镜像作为基础镜像
+FROM node:18-alpine
+
+# 设置工作目录
+WORKDIR /app
+
+# 将项目代码拷贝到工作目录中
+COPY . .
+
+# 安装项目依赖
+RUN npm install
+
+# 暴露应用的端口（根据应用实际情况设置）
+EXPOSE 3001
+
+# 启动应用
+CMD ["npm", "run", "prod"]
+
+    # chmod -R 777 ./*
+# 构建镜像
+# docker build -t manage-server-express-js-image .
+# 运行容器
+# docker run -d -p 3001:3001 manage-server-express-js-image

@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-import {onMounted, ref, onBeforeMount, watch} from 'vue'
 import {Chart, registerables} from 'chart.js'
+import {onBeforeMount, ref, watch} from 'vue'
 import {get} from '../../utils/api/index.js'
 
 // 获取全部的访客信息
@@ -36,8 +36,9 @@ onBeforeMount(async () => {
                 map.set(key, map.get(key) + 1)
             }
         }
-        labels.value = Array.from(map.keys())
-        data.value = Array.from(map.values())
+        // 保留最后60条 否则页面太挤了
+        labels.value = Array.from(map.keys()).slice(-60)
+        data.value = Array.from(map.values()).slice(-60)
     } else {
         console.warn('No visitor data available')
     }

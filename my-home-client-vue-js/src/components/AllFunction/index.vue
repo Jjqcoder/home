@@ -19,9 +19,9 @@
                     <router-link to="/blog">
                         <el-dropdown-item>✍️看日志</el-dropdown-item>
                     </router-link>
-                    <!-- <router-link to="/english">
-                      <el-dropdown-item>🔠学英语</el-dropdown-item>
-                    </router-link> -->
+                    <router-link to="/english">
+                        <el-dropdown-item>🔠学英语</el-dropdown-item>
+                    </router-link>
                     <router-link to="/weather">
                         <el-dropdown-item>🌤️查天气</el-dropdown-item>
                     </router-link>

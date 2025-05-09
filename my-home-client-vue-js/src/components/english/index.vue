@@ -1,4 +1,4 @@
-<template>学英语</template>
+<template>每日一句英语句子</template>
 
 <script>
 export default {}

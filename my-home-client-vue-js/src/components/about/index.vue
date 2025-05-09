@@ -3,10 +3,10 @@
         <div class="about-content">
             <div class="center-text">
                 <h1>你好啊 旅行者！</h1>
-                <span>最后更新时间：2025年4月6日</span>
+                <span>最后更新时间：2025年5月9日</span>
             </div>
 
-            <p>我叫江建清，来自福建莆田。23年毕业后来到泉州工作了近两年。目前在深圳工作！</p>
+            <p>我叫江建清，来自福建莆田。</p>
             <p>
                 我接触过的开发框架主要有 <span>Express</span>（最最最喜欢的框架！！）、 <span>Koa</span>（大学毕设用过）、
                 <span>Egg</span>（大学毕设用过）、 <span>SpringBoot</span>（找蛙必备神器）、 <span>Vue</span>（大学毕设用过vue2，工作用vue3）、

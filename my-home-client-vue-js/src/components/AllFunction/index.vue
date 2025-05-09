@@ -38,6 +38,9 @@
                     <router-link to="/login">
                         <el-dropdown-item>📲去登录</el-dropdown-item>
                     </router-link>
+                    <router-link to="/feedback">
+                        <el-dropdown-item>📮去反馈</el-dropdown-item>
+                    </router-link>
                     <router-link to="/about">
                         <el-dropdown-item>🤟关于我</el-dropdown-item>
                     </router-link>

@@ -44,4 +44,4 @@ docker-compose.override.yml
 # .dockerignore
 
 # 打包文件
-.zip
+*.zip

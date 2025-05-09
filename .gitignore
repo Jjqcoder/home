@@ -40,7 +40,8 @@ package-lock.json
 # 忽略其他特定于项目的文件或目录  
 # 例如，如果你使用 Docker，你可能想要忽略以下文件：  
 docker-compose.override.yml  
-.dockerignore
+# 允许跟踪.dockerignore
+# .dockerignore
 
 # 打包文件
 .zip

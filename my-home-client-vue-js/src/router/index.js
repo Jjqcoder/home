@@ -1,82 +1,67 @@
 // 导入 Vue Router
 import {createRouter, createWebHashHistory} from 'vue-router'
 
-// 导入需要路由的组件
-// import HelloWorld from './../components/HelloWorld.vue' // 欢迎组件
-import blogDetail from '../components/blogDetail//index.vue'
-import VersionCom from '../components/version/index.vue'
-import VisitorStatistics from '../components/visitorStatistics/index.vue'
-import AboutCom from './../components/about/index.vue'
-import BlogCom from './../components/blog/index.vue'
-import EnglishCom from './../components/english/index.vue'
-import ErrorPage from './../components/err/index.vue'
-import FeedbackCom from './../components/feedback/index.vue'
-import Layout from './../components/Layout.vue' // 布局组件
-import TimelineCom from './../components/timeline/index.vue'
-import WeatherCom from './../components/weather/index.vue'
-import WorldCom from './../components/world/index.vue'
-
 // 定义路由
 const routes = [
     {
         path: '/',
         name: 'layout',
-        component: Layout,
+        component: () => import('../components/Layout.vue'), // 布局组件
         children: [
             {
                 path: 'world',
                 name: 'world',
-                component: WorldCom
+                component: () => import('../components/world/index.vue')
             },
             {
                 path: 'blog',
                 name: 'blog',
-                component: BlogCom
+                component: () => import('../components/blog/index.vue')
             },
             {
                 path: 'english',
                 name: 'english',
-                component: EnglishCom
+                component: () => import('../components/english/index.vue')
             },
             {
                 path: 'about',
                 name: 'about',
-                component: AboutCom
+                component: () => import('../components/about/index.vue')
             },
             {
                 path: 'weather',
                 name: 'weather',
-                component: WeatherCom
+                component: () => import('../components/weather/index.vue')
             },
             {
                 path: '', // 默认子路由
                 name: 'timeline',
-                component: TimelineCom
+                component: () => import('../components/timeline/index.vue')
             },
             {
                 path: 'blogDetail/:row',
                 name: 'blogDetail',
-                component: blogDetail
+                component: () => import('../components/blogDetail/index.vue')
             },
             {
                 path: 'visitorStatistics',
                 name: 'visitorStatistics',
-                component: VisitorStatistics
+                component: () => import('../components/visitorStatistics/index.vue')
             },
             {
                 path: 'version',
                 name: 'version',
-                component: VersionCom
+                component: () => import('../components/version/index.vue')
             },
             {
                 path: 'feedback',
                 name: 'feedback',
-                component: FeedbackCom
+                component: () => import('../components/feedback/index.vue')
             },
             {
                 path: '/:pathMatch(.*)*', // 捕获所有路径
                 name: 'error',
-                component: ErrorPage
+                component: () => import('../components/err/index.vue')
             }
         ]
     }
@@ -84,7 +69,6 @@ const routes = [
 
 // 创建 router 实例
 const router = createRouter({
-    // history: createWebHistory(),
     history: createWebHashHistory(),
     routes // (缩写) 相当于 routes: routes
 })

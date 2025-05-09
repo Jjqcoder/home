@@ -4,6 +4,7 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 // 导入需要路由的组件
 // import HelloWorld from './../components/HelloWorld.vue' // 欢迎组件
 import blogDetail from '../components/blogDetail//index.vue'
+import VersionCom from '../components/version/index.vue'
 import VisitorStatistics from '../components/visitorStatistics/index.vue'
 import AboutCom from './../components/about/index.vue'
 import BlogCom from './../components/blog/index.vue'
@@ -59,6 +60,11 @@ const routes = [
                 path: 'visitorStatistics',
                 name: 'visitorStatistics',
                 component: VisitorStatistics
+            },
+            {
+                path: 'version',
+                name: 'version',
+                component: VersionCom
             }
         ]
     }

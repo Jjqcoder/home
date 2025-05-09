@@ -32,6 +32,9 @@
                     <a href="http://wbeishangw.top:81/" target="_blank">
                         <el-dropdown-item>🎛️管后台</el-dropdown-item>
                     </a>
+                    <router-link to="/version">
+                        <el-dropdown-item>👓看版本</el-dropdown-item>
+                    </router-link>
                     <router-link to="/about">
                         <el-dropdown-item>🤟关于我</el-dropdown-item>
                     </router-link>

@@ -9,6 +9,7 @@ import VisitorStatistics from '../components/visitorStatistics/index.vue'
 import AboutCom from './../components/about/index.vue'
 import BlogCom from './../components/blog/index.vue'
 import EnglishCom from './../components/english/index.vue'
+import ErrorPage from './../components/err/index.vue'
 import Layout from './../components/Layout.vue' // 布局组件
 import LoginCom from './../components/login/index.vue'
 import TimelineCom from './../components/timeline/index.vue'
@@ -71,6 +72,11 @@ const routes = [
                 path: 'login',
                 name: 'login',
                 component: LoginCom
+            },
+            {
+                path: '/:pathMatch(.*)*', // 捕获所有路径
+                name: 'error',
+                component: ErrorPage
             }
         ]
     }

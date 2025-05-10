@@ -10,7 +10,7 @@ import {get} from '../../utils/api/index.js'
 // 获取全部的访客信息
 const getVisitorStatistics = async () => {
     try {
-        const res = await get('/visit/allVisit')
+        const res = await get('/visit/someVisit')
         return res
     } catch (error) {
         console.error('Failed to fetch visitor statistics:', error)

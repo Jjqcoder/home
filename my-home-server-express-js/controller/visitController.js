@@ -14,4 +14,9 @@ module.exports = class VisitController {
             return res.send(await Service.visitService.getAllVisit(req, res))
         } catch (error) {}
     }
+    static async getVisitByLimit(req, res) {
+        try {
+            return res.send(await Service.visitService.getVisitByLimit(req, res))
+        } catch (error) {}
+    }
 }

@@ -14,4 +14,20 @@ module.exports = class VisitService {
             return await prisma.vISIT_RECORDER.findMany()
         } catch (error) {}
     }
+
+    // 获取指定数量的数据 默认为500条（前端不会发送limit数量）
+    static async getVisitByLimit(req, res) {
+        try {
+            // const limit = req.query.limit || 500 // 默认为500条
+            const limit = 500 // 默认为500条
+            return await prisma.vISIT_RECORDER.findMany({
+                take: limit, // 限制返回的记录数
+                orderBy: {
+                    ID: 'desc' // 按id降序排序
+                }
+            })
+        } catch (error) {
+            console.error('Error fetching visits:', error) // 打印错误信息
+        }
+    }
 }

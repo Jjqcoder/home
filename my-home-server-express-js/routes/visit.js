@@ -12,5 +12,6 @@ const router = express.Router()
 const controller = require('../controller/index.js')
 
 router.get('/allVisit', controller.visitController.getAllVisit)
+router.get('/someVisit', controller.visitController.getVisitByLimit)
 
 module.exports = router

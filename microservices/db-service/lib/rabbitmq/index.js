@@ -72,13 +72,15 @@ class RabbitMQServer {
                 msg => {
                     if (msg) {
                         try {
+                            console.log(`收到请求: ${msg.content.toString()}`)
+
                             // 处理请求
                             const response = this.options.requestHandler(msg.content.toString())
 
                             // 发送响应
                             this.channel.sendToQueue(msg.properties.replyTo, Buffer.from(response), {correlationId: msg.properties.correlationId})
 
-                            console.log(`响应已发送: ${response}`)
+                            console.log(`响应已发送: ${JSON.stringify(response)}`)
                         } catch (error) {
                             console.error('处理请求时出错:', error)
                         } finally {

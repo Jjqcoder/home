@@ -10,6 +10,10 @@ const RabbitMQRequester = require('./index.js')
 
 class Requester {
     static async sendRequest(queueName, requestData) {
+        // 注意 requestData 不能是对象 可以是字符串
+        // 此处约定 发送的时候均使用对象做发送
+        requestData = JSON.stringify(requestData)
+
         const requester = new RabbitMQRequester({
             queueName: queueName
         })

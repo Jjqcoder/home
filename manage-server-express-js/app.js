@@ -15,8 +15,8 @@ app.get('/', async (req, res) => {
     res.send('Hello World!')
 
     try {
-        const response = await Requester.sendRequest('rpc_queue', 'Hello, RabbitMQ RPC!')
-        console.log(`收到响应: ${response}`)
+        const response = await Requester.sendRequest('rpc_queue', {data: 'hello!'})
+        console.log(`收到响应: ${JSON.parse(response).data}`)
     } catch (error) {
         console.error('发送请求出错:', error)
     }

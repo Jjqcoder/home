@@ -1,13 +1,16 @@
 {
     "name": "my-home-server-express",
-    "version": "1.0.0",
+    "author": {
+        "name": "江建清",
+        "email": "1810422805@qq.com"
+    },
+    "version": "1.0.1",
     "main": "index.js",
     "scripts": {
         "dev": "npx prisma db pull && npx prisma generate && npx pm2 start ecosystem.config.js",
         "prod": "pm2-runtime start ecosystem.config.js"
     },
     "keywords": [],
-    "author": "",
     "license": "ISC",
     "description": "",
     "dependencies": {

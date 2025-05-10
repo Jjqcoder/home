@@ -10,4 +10,5 @@ module.exports = class Controller {
     static blogController = require('./blogController.js')
     static visitController = require('./visitController.js')
     static weatherController = require('./weatherController.js')
+    static versionController = require('./versionController.js')
 }

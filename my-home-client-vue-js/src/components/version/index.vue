@@ -8,16 +8,20 @@
 import DataDisplay from '../../components/DataDisplay/index.vue'
 import {ref, watch} from 'vue'
 import {get} from './../../utils/api/index.js'
+import {version as clientVersion} from './../../../package.json'
 
 // 获取前端版本信息
-import {version as clientVersion} from './../../../package.json'
 let serverVersion = ref(null)
 
 let getServerVersion = async () => {
-    serverVersion.value = await get('/version/getVersion')
-    // Proxy(Object) {data: '1.0.1', status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
-    serverVersion.value = serverVersion.value.data
-    // console.log(serverVersion.value) // 1.0.1
+    try {
+        serverVersion.value = await get('/version/getVersion')
+        // Proxy(Object) {data: '1.0.1', status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
+        serverVersion.value = serverVersion.value.data
+        // console.log(serverVersion.value) // 1.0.1
+    } catch (error) {
+        serverVersion.value = '后端版本获取失败'
+    }
 }
 
 getServerVersion()

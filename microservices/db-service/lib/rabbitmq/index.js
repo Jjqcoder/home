@@ -150,7 +150,10 @@ class RabbitMQResponder {
 
             // 保持连接，直到手动停止
             process.on('SIGINT', async () => {
+                // Signal Interrupt，即“中断信号”
+                // 在控制台按下 Ctrl + C 时触发
                 await responder.close()
+                console.log('Responder 已停止')
                 process.exit(0) // 退出进程
             })
         } catch (error) {

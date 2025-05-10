@@ -59,6 +59,11 @@ const routes = [
                 component: () => import('../components/feedback/index.vue')
             },
             {
+                path: 'login',
+                name: 'login',
+                component: () => import('../components/login/index.vue')
+            },
+            {
                 path: '/:pathMatch(.*)*', // 捕获所有路径
                 name: 'error',
                 component: () => import('../components/err/index.vue')

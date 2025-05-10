@@ -22,9 +22,11 @@
         "express": "^4.21.2",
         "express-ws": "^5.0.2",
         "log4js": "^6.9.1",
+        "morgan": "^1.10.0",
         "mysql": "^2.18.1",
         "pm2": "^6.0.5",
         "prisma": "^6.4.1",
+        "response-time": "^2.3.3",
         "xlsx": "^0.18.5"
     },
     "devDependencies": {

@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
                 CREATE_TIME: new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString()
             }
         })
-        console.log('插入访客记录' + JSON.stringify(res))
+        // console.log('插入访客记录' + JSON.stringify(res))
     } catch (error) {
         console.log('插入访客记录失败', error)
     } finally {

@@ -9,17 +9,20 @@
 const express = require('express')
 const app = express()
 const port = 3001
-const Requester = require('./lib/rabbitmq/requester.js')
+const RabbitMQRequester = require('./lib/rabbitmq/index.js') // 导入RabbitMQRequester类
+
+app.use(express.json()) // 解析JSON请求体
+
+/**
+ * 发送请求的路由
+ */
 
 app.get('/', async (req, res) => {
     res.send('Hello World!')
 
-    try {
-        const response = await Requester.sendRequest('rpc_queue', {data: 'hello!'})
-        console.log(`收到响应: ${JSON.parse(response).data}`)
-    } catch (error) {
-        console.error('发送请求出错:', error)
-    }
+    RabbitMQRequester.sendRequest('rpc_queue', {message: '发起请求！!'}).then(response => {
+        console.log('Received response:', response)
+    })
 })
 
 app.listen(port, () => {

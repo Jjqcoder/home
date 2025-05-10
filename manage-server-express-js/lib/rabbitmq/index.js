@@ -1,21 +1,14 @@
 'use strict'
 
-/**
- * 创建时间: 2025-05-07
- * 作者: jjq
- * 描述: RabbitMQ RPC 请求者类实现
- */
-
 const amqp = require('amqplib')
 const config = require('../../config/index.js')
 
 class RabbitMQRequester {
     /**
      * 构造函数
-     * @param {Object} options 配置选项
-     * @param {string} options.queueName 队列名称
+     * @param {string} queueName 队列名称
      */
-    constructor(options = {}) {
+    constructor(queueName) {
         // RabbitMQ 连接配置
         this.connectionConfig = {
             protocol: 'amqp',
@@ -27,10 +20,7 @@ class RabbitMQRequester {
         }
 
         // 请求者配置
-        this.options = {
-            queueName: 'rpc_queue', // 默认队列名称
-            ...options
-        }
+        this.queueName = queueName
 
         this.connection = null
         this.channel = null
@@ -61,25 +51,28 @@ class RabbitMQRequester {
 
     /**
      * 发送请求并等待响应
-     * @param {string} message 请求消息
+     * @param {Object} requestData 请求数据对象
      * @returns {Promise<string>} 服务器的响应
      */
-    async sendRequest(message) {
+    async sendRequest(requestData) {
         if (!this.channel) {
             throw new Error('Channel not initialized. Call initialize() first.')
         }
 
         try {
+            // 将请求数据对象转换为字符串（配合后面的Buffer.from） 接收消息的时候将其转换为对象！
+            const message = JSON.stringify(requestData)
+
             // 生成唯一的 correlationId
             this.correlationId = Math.random().toString()
 
             // 发送请求
-            this.channel.sendToQueue(this.options.queueName, Buffer.from(message), {
+            this.channel.sendToQueue(this.queueName, Buffer.from(message), {
                 correlationId: this.correlationId,
                 replyTo: this.responseQueue.queue
             })
 
-            console.log(`请求已发送到队列 ${this.options.queueName}: ${message}`)
+            console.log(`请求已发送到队列 ${this.queueName}: ${message}`)
 
             // 等待响应
             return new Promise((resolve, reject) => {
@@ -129,25 +122,32 @@ class RabbitMQRequester {
         const {protocol, hostname, port, username, password, vhost} = this.connectionConfig
         return `${protocol}://${username}:${password}@${hostname}:${port}${vhost}`
     }
+
+    /**
+     * 静态方法：发送请求
+     * @param {string} queueName 队列名称
+     * @param {Object} requestData 请求数据对象
+     * @returns {Promise<string>} 服务器的响应
+     */
+    static async sendRequest(queueName, requestData) {
+        const requester = new RabbitMQRequester(queueName)
+
+        try {
+            await requester.initialize()
+
+            const response = await requester.sendRequest(requestData)
+
+            return response
+        } catch (error) {
+            console.error('运行请求者出错:', error)
+            throw error
+        } finally {
+            // 延迟关闭通道，确保响应已经返回
+            setTimeout(async () => {
+                await requester.close()
+            }, 1000) // 延迟1秒关闭通道
+        }
+    }
 }
 
 module.exports = RabbitMQRequester
-
-// 使用示例
-// setInterval(async () => {
-//     const requester = new RabbitMQRequester({
-//         queueName: 'rpc_queue'
-//     })
-
-//     try {
-//         await requester.initialize()
-
-//         const response = await requester.sendRequest('Hello, RabbitMQ RPC!')
-//         console.log(`收到响应: ${response}`)
-
-//         // await requester.close()
-//     } catch (error) {
-//         console.error('运行请求者出错:', error)
-//         await requester.close()
-//     }
-// }, 1000)

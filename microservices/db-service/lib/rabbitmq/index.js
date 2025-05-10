@@ -1,12 +1,9 @@
-/**
- * 创建时间: 2025-04-05-07
- * 描述: RabbitMQ RPC 服务器类实现
- */
+'use strict'
 
 const amqp = require('amqplib')
 const config = require('../../config/index.js')
 
-class RabbitMQServer {
+class RabbitMQResponder {
     /**
      * 构造函数
      * @param {Object} options 配置选项
@@ -49,9 +46,9 @@ class RabbitMQServer {
             // 声明队列
             await this.channel.assertQueue(this.options.queueName, {durable: true})
 
-            console.log(`RabbitMQ 服务器初始化完成，监听队列: ${this.options.queueName}`)
+            console.log(`RabbitMQ Responder 初始化完成，监听队列: ${this.options.queueName}`)
         } catch (error) {
-            console.error('初始化 RabbitMQ 服务器失败:', error)
+            console.error('初始化 RabbitMQ Responder 失败:', error)
             throw error
         }
     }
@@ -74,13 +71,21 @@ class RabbitMQServer {
                         try {
                             console.log(`收到请求: ${msg.content.toString()}`)
 
+                            // 将请求数据字符串转换为对象
+                            const requestData = JSON.parse(msg.content.toString()) // 将请求数据字符串转换为对象
+
                             // 处理请求
-                            const response = this.options.requestHandler(msg.content.toString())
+                            const response = this.options.requestHandler(requestData)
+
+                            // 将响应数据对象转换为字符串
+                            const responseString = JSON.stringify(response)
 
                             // 发送响应
-                            this.channel.sendToQueue(msg.properties.replyTo, Buffer.from(response), {correlationId: msg.properties.correlationId})
+                            this.channel.sendToQueue(msg.properties.replyTo, Buffer.from(responseString), {
+                                correlationId: msg.properties.correlationId
+                            })
 
-                            console.log(`响应已发送: ${JSON.stringify(response)}`)
+                            console.log(`响应已发送: ${responseString}`)
                         } catch (error) {
                             console.error('处理请求时出错:', error)
                         } finally {
@@ -125,32 +130,34 @@ class RabbitMQServer {
         const {protocol, hostname, port, username, password, vhost} = this.connectionConfig
         return `${protocol}://${username}:${password}@${hostname}:${port}${vhost}`
     }
+
+    /**
+     * 静态方法：启动 Responder
+     * @param {string} queueName 队列名称
+     * @param {Function} requestHandler 请求处理函数
+     */
+    static async startResponder(queueName, requestHandler) {
+        const responder = new RabbitMQResponder({
+            queueName,
+            requestHandler
+        })
+
+        try {
+            await responder.initialize()
+            await responder.startProcessing()
+
+            console.log(`Responder 已启动，监听队列: ${queueName}`)
+
+            // 保持连接，直到手动停止
+            process.on('SIGINT', async () => {
+                await responder.close()
+                process.exit(0) // 退出进程
+            })
+        } catch (error) {
+            console.error('Responder 启动失败:', error)
+            await responder.close()
+        }
+    }
 }
 
-module.exports = RabbitMQServer
-
-// 使用示例
-// ;(async () => {
-//     const server = new RabbitMQServer({
-//         queueName: 'rpc_queue',
-//         requestHandler: request => {
-//             console.log(`[收到请求]: ${request}`)
-//             // 这里可以添加自定义的请求处理逻辑
-//             return `响应: ${request}`
-//         }
-//     })
-
-//     try {
-//         await server.initialize()
-//         await server.startProcessing()
-
-//         // 保持连接，直到手动停止
-//         process.on('SIGINT', async () => {
-//             await server.close()
-//             process.exit(0)
-//         })
-//     } catch (error) {
-//         console.error('运行服务器出错:', error)
-//         await server.close()
-//     }
-// })()
+module.exports = RabbitMQResponder

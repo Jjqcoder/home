@@ -172,15 +172,35 @@ const submitHandler = () => {
 
 // 将天气数据导出为图片
 // 导出表格为图片
+// 部分手机浏览器还是无法下载：如小米自带浏览器
+// Edge手机浏览器就可以
 import html2canvas from 'html2canvas'
 const exportTableAsImage = () => {
     const tableElement = document.getElementById('myTable') // 获取表格元素
-    html2canvas(tableElement).then(canvas => {
-        const link = document.createElement('a') // 创建一个 a 标签
-        link.href = canvas.toDataURL('image/png') // 将 canvas 转换为图片的 Base64 数据
-        link.download = 'myWeatherData.png' // 设置下载文件名
-        link.click() // 模拟点击下载
+
+    html2canvas(tableElement, {
+        scale: 2, // 缩放比例，可以根据设备调整
+        useCORS: true, // 允许跨域图片
+        logging: true // 打印日志，方便调试
     })
+        .then(canvas => {
+            const link = document.createElement('a') // 创建一个 a 标签
+            link.href = canvas.toDataURL('image/png') // 将 canvas 转换为图片的 Base64 数据
+            link.download = 'myWeatherData.png' // 设置下载文件名
+
+            // 检查浏览器是否支持download属性
+            if (link.download !== undefined) {
+                document.body.appendChild(link) // 将链接添加到文档中
+                link.click() // 模拟点击下载
+                document.body.removeChild(link) // 下载完成后移除链接
+            } else {
+                alert('当前浏览器不支持直接下载图片，请手动保存图片。')
+            }
+        })
+        .catch(error => {
+            console.error('生成图片失败:', error)
+            alert('生成图片失败，请检查浏览器设置或尝试其他浏览器。')
+        })
 }
 </script>
 

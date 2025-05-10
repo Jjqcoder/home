@@ -11,7 +11,7 @@ import {get} from '../../utils/api/index.js'
 const getVisitorStatistics = async () => {
     try {
         const res = await get('/visit/someVisit')
-        return res
+        return res.data
     } catch (error) {
         console.error('Failed to fetch visitor statistics:', error)
         return null

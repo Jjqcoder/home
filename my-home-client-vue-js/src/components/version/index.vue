@@ -15,7 +15,9 @@ let serverVersion = ref(null)
 
 let getServerVersion = async () => {
     try {
-        serverVersion.value = await get('/version/getVersion')
+        const data = await get('/version/getVersion')
+
+        serverVersion.value = data.data
         // Proxy(Object) {data: '1.0.1', status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
         serverVersion.value = serverVersion.value.data
         // console.log(serverVersion.value) // 1.0.1

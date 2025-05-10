@@ -22,11 +22,10 @@
 </template>
 
 <script setup>
-import {pcTextArr} from 'element-china-area-data'
-import {ref, watch} from 'vue'
 import axios from 'axios'
+import {pcTextArr} from 'element-china-area-data'
+import {ref, toRaw, watch} from 'vue'
 import listCom from './../list/index.vue'
-import {toRaw} from 'vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
 
@@ -44,7 +43,7 @@ watch(selectedOptions, async (newValue, oldValue) => {
         const response = await axios.post(`${in_use_base_url}/weather/getWeather`, {
             city: newValue[1]
         })
-        MyWeatherData.value.push(toRaw(response).data[0])
+        MyWeatherData.value.push(toRaw(response).data.data[0])
     } catch (err) {
         console.log('查询天气出现错误！' + err)
     }

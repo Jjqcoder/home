@@ -25,13 +25,15 @@
 <script lang="" setup>
 import {ref, onMounted} from 'vue'
 // 引入axios
-import axios from 'axios'
+// import axios from 'axios'
 
 // 引入fixedList组件
 import fixedList from './../fixedList/index.vue'
 
 // 引入环境变量
-const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
+// const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
+
+import {get} from './../../utils/api/index.js'
 
 // 记录一共有多少条数据
 const totalDataCount = ref(100)
@@ -58,16 +60,14 @@ const pageSelectData = ref(null)
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(async () => {
     try {
-        let res = await axios.get(`${in_use_base_url}/blog/getBlogByPage`, {
-            params: {
-                current: currentPage.value,
-                size: pageSize.value
-            }
+        let res = await get(`/blog/getBlogByPage`, {
+            current: currentPage.value,
+            size: pageSize.value
         })
         // 赋值博客的总条数
-        totalDataCount.value = res.data.total
+        totalDataCount.value = res.data.data.total
         // 赋值分页查询到的数据
-        pageSelectData.value = res.data.records
+        pageSelectData.value = res.data.data.records
     } catch (error) {
         console.error('分页获取博客数据失败！')
     }
@@ -87,14 +87,12 @@ const handleSizeChange = async val => {
 const handleCurrentChange = async val => {
     try {
         // 当页码发生变化的时候，触发分页查询
-        const res = await axios.get(`${in_use_base_url}/blog/getBlogByPage`, {
-            params: {
-                current: currentPage.value,
-                size: pageSize.value
-            }
+        const res = await get(`${in_use_base_url}/blog/getBlogByPage`, {
+            current: currentPage.value,
+            size: pageSize.value
         })
 
-        pageSelectData.value = res.data.records
+        pageSelectData.value = res.data.data.records
     } catch (error) {
         console.error('更换页码过程发生异常')
     }

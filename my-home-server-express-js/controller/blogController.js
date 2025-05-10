@@ -7,11 +7,14 @@
  */
 
 const service = require('../service/index.js')
+const R = require('./../utils/R.js')
 
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {
         try {
-            return res.send(await service.blogService.getBlogByPage(req, res))
-        } catch (error) {}
+            return res.send(R.ok(200, '获取成功', await service.blogService.getBlogByPage(req, res)))
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

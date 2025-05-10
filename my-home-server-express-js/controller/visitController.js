@@ -7,16 +7,17 @@
  */
 
 const Service = require('./../service/index.js')
+const R = require('./../utils/R.js')
 
 module.exports = class VisitController {
     static async getAllVisit(req, res) {
         try {
-            return res.send(await Service.visitService.getAllVisit(req, res))
+            return res.send(R.ok(200, '操作成功', await Service.visitService.getAllVisit(req, res)))
         } catch (error) {}
     }
     static async getVisitByLimit(req, res) {
         try {
-            return res.send(await Service.visitService.getVisitByLimit(req, res))
+            return res.send(R.ok(200, '操作成功', await Service.visitService.getVisitByLimit(req, res)))
         } catch (error) {}
     }
 }

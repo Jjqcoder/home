@@ -20,14 +20,26 @@ export default {
                 socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/onlineCount`)
 
                 socket.onmessage = event => {
-                    // console.log(event.data)
-
-                    onlineCount.value = parseInt(event.data)
+                    if (event.data === 'pong') {
+                        // 服务器发来的心跳
+                    } else {
+                        onlineCount.value = parseInt(event.data)
+                        console.log('服务器发来的在线人数', event.data)
+                    }
                 }
 
                 socket.onclose = () => {
                     console.log('WebSocket connection closed')
                 }
+
+                // 定时向服务器发送心跳包
+                setInterval(() => {
+                    if (socket.readyState === WebSocket.OPEN) {
+                        console.log('前端发送心跳包')
+
+                        socket.send('ping')
+                    }
+                }, 1000)
             } catch (error) {
                 console.error('获取在线人数失败')
             }

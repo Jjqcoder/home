@@ -12,9 +12,12 @@ const R = require('./../utils/R.js')
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {
         try {
-            return res.send(R.ok(200, '获取成功', await service.blogService.getBlogByPage(req, res)))
+            // if (1) {
+            //     throw '测试错误'
+            // }
+            return res.send(R.ok(200, '博客信息获取成功', await service.blogService.getBlogByPage(req, res)))
         } catch (error) {
-            console.log(error)
+            return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 博客信息获取失败 >>> 【${error}】`, error))
         }
     }
 }

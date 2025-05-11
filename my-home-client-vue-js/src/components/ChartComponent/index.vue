@@ -7,13 +7,32 @@ import {Chart, registerables} from 'chart.js'
 import {onBeforeMount, ref, watch} from 'vue'
 import {get} from '../../utils/api/index.js'
 
-// 获取全部的访客信息
+// 获取部分访客信息
 const getVisitorStatistics = async () => {
     try {
         const res = await get('/visit/someVisit')
+        // ================弹窗开始================
+        if (res.data.code === 200) {
+            ElMessage({
+                message: `${res.data.msg}`,
+                type: 'success' // success, warning, info, error
+            })
+        } else {
+            ElMessage({
+                message: `${res.data.msg}`,
+                type: 'error' // success, warning, info, error
+            })
+        }
+        // ================弹窗结束================
         return res.data
     } catch (error) {
         console.error('Failed to fetch visitor statistics:', error)
+        // ================弹窗开始================
+        ElMessage({
+            message: `${error}`,
+            type: 'error' // success, warning, info, error
+        })
+        // ================弹窗结束================
         return null
     }
 }

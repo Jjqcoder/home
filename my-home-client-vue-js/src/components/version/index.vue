@@ -15,14 +15,31 @@ let serverVersion = ref(null)
 
 let getServerVersion = async () => {
     try {
-        const data = await get('/version/getVersion')
+        const res = await get('/version/getVersion')
 
-        serverVersion.value = data.data
+        serverVersion.value = res.data.data
         // Proxy(Object) {data: '1.0.1', status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
-        serverVersion.value = serverVersion.value.data
-        // console.log(serverVersion.value) // 1.0.1
+        // ================弹窗开始================
+        if (res.data.code === 200) {
+            ElMessage({
+                message: `${res.data.msg}`,
+                type: 'success' // success, warning, info, error
+            })
+        } else {
+            ElMessage({
+                message: `${res.data.msg}`,
+                type: 'error' // success, warning, info, error
+            })
+        }
+        // ================弹窗结束================
     } catch (error) {
         serverVersion.value = '后端版本获取失败'
+        // ================弹窗开始================
+        ElMessage({
+            message: `${error}`,
+            type: 'error' // success, warning, info, error
+        })
+        // ================弹窗结束================
     }
 }
 

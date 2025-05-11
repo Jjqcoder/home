@@ -10,6 +10,10 @@ const R = require('./../utils/R.js')
 module.exports = class VersionController {
     // 获取版本号
     static async getVersion(req, res) {
-        return res.send(R.ok(200, '获取版本号成功', require('./../package.json').version))
+        try {
+            return res.send(R.ok(200, '获取后端版本号成功', require('./../package.json').version))
+        } catch (error) {
+            return res.send(R.err(500, `controller >>> versionController.js >>> getVersion >>> 获取后端版本号失败 >>> 【${error}】`, error))
+        }
     }
 }

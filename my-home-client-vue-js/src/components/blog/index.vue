@@ -68,8 +68,27 @@ onMounted(async () => {
         totalDataCount.value = res.data.data.total
         // 赋值分页查询到的数据
         pageSelectData.value = res.data.data.records
+        // ================弹窗开始================
+        // 消息提示
+        if (res.data.code === 200) {
+            ElMessage({
+                message: `${res.data.msg}`,
+                type: 'success' // success, warning, info, error
+            })
+        } else {
+            ElMessage({
+                message: `${res.data.msg}`,
+                type: 'error' // success, warning, info, error
+            })
+        }
+        // ================弹窗结束================
     } catch (error) {
-        console.error('分页获取博客数据失败！')
+        // ================弹窗开始================
+        ElMessage({
+            message: `error: ${error}`,
+            type: 'error' // success, warning, info, error
+        })
+        // ================弹窗结束================
     }
 })
 

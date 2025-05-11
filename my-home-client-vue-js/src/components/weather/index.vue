@@ -44,8 +44,26 @@ watch(selectedOptions, async (newValue, oldValue) => {
             city: newValue[1]
         })
         MyWeatherData.value.push(toRaw(response).data.data[0])
+        // ================弹窗开始================
+        if (response.data.code === 200) {
+            ElMessage({
+                message: `${response.data.msg}`,
+                type: 'success' // success, warning, info, error
+            })
+        } else {
+            ElMessage({
+                message: `${response.data.msg}`,
+                type: 'error' // success, warning, info, error
+            })
+        }
+        // ================弹窗结束================
     } catch (err) {
-        console.log('查询天气出现错误！' + err)
+        // ================弹窗开始================
+        ElMessage({
+            message: `${err}`,
+            type: 'error' // success, warning, info, error
+        })
+        // ================弹窗结束================
     }
 })
 

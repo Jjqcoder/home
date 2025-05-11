@@ -1,0 +1,18 @@
+/* ==========美化全局的文字选中效果开始========== */
+::selection {
+    color: rgb(255, 0, 0); /* 字体颜色 */
+    background-color: rgb(254, 213, 162); /* 背景颜色 */
+    text-decoration: wavy underline; /* 波浪线 */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 文字阴影 */
+}
+/* ==========美化全局的文字选中效果结束========== */
+
+/* ==========鼠标样式美化开始========== */
+/* 设置指定的鼠标样式 */
+/* 通过放大SVG画布、精调表情位置（居中+下移）并设置热点坐标为指尖位置（20,10），实现了手指光标点击精准对齐。 */
+* {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><text x='20' y='35' font-size='30' text-anchor='middle'>👆</text></svg>")
+            20 10,
+        auto !important;
+}
+/* ==========鼠标样式美化结束========== */

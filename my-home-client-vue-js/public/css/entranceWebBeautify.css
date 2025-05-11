@@ -1,0 +1,140 @@
+/* 新增入场动画样式 */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2147483646; /* 仅次于护眼模式的层级 */
+    transition: 1s ease;
+}
+
+.loading-screen.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.loading-logo {
+    width: 20%; /* 根据屏幕宽度调整 */
+    aspect-ratio: 1 / 1; /* 宽高比为1:1 */
+    border-radius: 50%; /* 使logo变为圆形 */
+    animation: logoFloat 2s ease-in-out infinite, glowEffect 3s ease-in-out infinite;
+    /* 添加金色的渐变光晕效果 */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)) /* 金色光晕 */ drop-shadow(0 0 15px rgba(255, 215, 0, 0.2)); /* 金色光晕 */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); /* 金色光晕 */
+    /* 设置图片不可选中 */
+    user-select: none;
+    /* 设置图片不可拖动 */
+    pointer-events: none;
+}
+
+/* 添加一个动画效果，使光晕动态变化 */
+@keyframes glowEffect {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
+    }
+    50% {
+        filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.35)) drop-shadow(0 0 17px rgba(255, 215, 0, 0.25));
+    }
+    100% {
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)) drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
+    }
+}
+
+.loading-logo {
+    animation: logoFloat 2s ease-in-out infinite, glowEffect 3s ease-in-out infinite;
+}
+
+.loading-text {
+    color: white;
+    margin-top: 30px;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    animation: textPulse 1.5s ease-in-out infinite;
+    /* 设置内容不可选中 */
+    user-select: none;
+}
+
+@keyframes textPulse {
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.scroll-hint span {
+    margin-bottom: 10px;
+}
+
+@keyframes wheelScroll {
+    0% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(20px);
+        opacity: 0.5;
+    }
+}
+
+/* 暗色模式开启后的样式 */
+.eye-protection-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5) !important; /* 黑色半透明遮罩 */
+    z-index: 2147483647 !important; /* 最大z-index值 */
+    pointer-events: none !important; /* 确保不影响用户操作 */
+}
+
+/* 护眼模式切换按钮样式 - 初始隐藏 */
+#eye-protection-toggle {
+    display: none; /* 初始隐藏 */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2147483647;
+    padding: 8px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    transition: all 0.3s ease;
+}
+
+#eye-protection-toggle:hover {
+    background-color: #555;
+}
+
+/* 暗色模式下按钮样式变化 */
+body.eye-protection-active #eye-protection-toggle {
+    background-color: #000; /* 纯黑色 */
+    box-shadow: 0 0 20px 15px rgba(0, 0, 0, 1); /* 增大模糊半径和扩展半径 */
+}

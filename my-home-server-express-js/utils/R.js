@@ -6,18 +6,18 @@
  */
 
 class R {
-    constructor(code, value = null, data = null) {
+    constructor(code, msg = null, data = null) {
         this.code = code
-        this.value = value
+        this.msg = msg
         this.data = data
     }
 
-    static ok(code, value, data) {
-        return new R(code, value, data)
+    static ok(code, msg, data) {
+        return new R(code, msg, data)
     }
 
-    static err(code, reason, data) {
-        return new R(code, reason, data)
+    static err(code, msg, data) {
+        return new R(code, msg, data)
     }
 }
 

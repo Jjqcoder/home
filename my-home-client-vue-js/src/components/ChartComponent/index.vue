@@ -55,9 +55,9 @@ onBeforeMount(async () => {
                 map.set(key, map.get(key) + 1)
             }
         }
-        // 保留最后60条 否则页面太挤了
-        labels.value = Array.from(map.keys()).slice(-60)
-        data.value = Array.from(map.values()).slice(-60)
+        // 在后端已经做了获取数量的限制
+        labels.value = Array.from(map.keys())
+        data.value = Array.from(map.values())
     } else {
         console.warn('No visitor data available')
     }

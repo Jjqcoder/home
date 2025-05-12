@@ -18,6 +18,7 @@ router.use('/visit', require('./visit.js'))
 router.use('/weather', require('./weather.js'))
 router.ws('/onlineCount', require('../service/ws/onlineCountService.js'))
 router.use('/version', require('./version.js'))
+router.use('/english', require('./english.js'))
 /* 路由挂载结束 */
 
 // 导出路由

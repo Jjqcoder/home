@@ -19,11 +19,11 @@ module.exports = class WeatherService {
             try {
                 adcode = await util.xlsx.getCityCode(city)
             } catch (error) {
-                console.log('获取城市代码失败:' + error)
+                throw error
             }
 
             if (!adcode) {
-                console.log('无效的城市代码' + adcode)
+                throw '城市代码无效'
             }
 
             // 根据adcode获取天气信息
@@ -32,8 +32,10 @@ module.exports = class WeatherService {
                 const weatherData = await axios.get(url)
                 return weatherData.data.lives
             } catch (error) {
-                console.log('获取天气信息失败:', error)
+                throw error
             }
-        } catch (error) {}
+        } catch (error) {
+            throw error
+        }
     }
 }

@@ -44,7 +44,7 @@ module.exports = class BlogService {
                 records
             }
         } catch (error) {
-            return {error: error.message}
+            throw error
         }
     }
 }

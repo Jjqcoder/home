@@ -12,7 +12,9 @@ module.exports = class VisitService {
     static async getAllVisit(req, res) {
         try {
             return await prisma.vISIT_RECORDER.findMany()
-        } catch (error) {}
+        } catch (error) {
+            throw error
+        }
     }
 
     // 获取指定数量的数据 默认为500条（前端不会发送limit数量）
@@ -27,7 +29,7 @@ module.exports = class VisitService {
                 }
             })
         } catch (error) {
-            console.error('Error fetching visits:', error) // 打印错误信息
+            throw error
         }
     }
 }

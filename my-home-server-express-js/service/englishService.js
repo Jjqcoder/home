@@ -1,5 +1,6 @@
 'use strict'
 
+const e = require('express')
 /**
  * 创建时间: 2025-05-12
  * 作者: jjq
@@ -18,6 +19,8 @@ module.exports = class EnglishService {
             LIMIT 1
           `
             return result[0]
-        } catch (error) {}
+        } catch (error) {
+            throw error
+        }
     }
 }

@@ -7,7 +7,7 @@
  */
 
 const config = new Map([
-    ['key', 'xxx']
+    ['key', 'xxx']/* 高德天气查询key */
     /* 保持此样式 */
 ])
 module.exports = config

@@ -30,6 +30,8 @@ module.exports = (ws, req) => {
         // 设置心跳检测
         // ws.on('pong') 表示客户端已经响应了 ping 消息，我们更新用户的 lastActive 时间和 isAlive 状态。
         ws.on('pong', () => {
+            console.log(`ws.on方法触发`)
+
             const user = onlineUsers.get(ws)
             if (user) {
                 user.lastActive = Date.now()

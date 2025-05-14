@@ -14,9 +14,11 @@ export default {
     setup() {
         const onlineCount = ref(0)
         let socket = null
-        const maxReconnectAttempts = 5 // 最大重连次数
-        let reconnectAttempts = 0 // 当前重连次数
-        const reconnectInterval = 3000 // 重连间隔（毫秒）
+        const MAX_RECONNECT_ATTEMPTS = 5 // 最大重连次数
+        // let reconnectAttempts = 0 // 当前重连次数
+        let RECONNECT_ATTEMPTS = 0 // 当前重连次数
+        const RECONNECT_INTERVAL = 3000 // 重连间隔（毫秒）
+        const PING_INTERVAL = 10000 // 心跳包间隔（毫秒）
 
         const connectWebSocket = () => {
             try {
@@ -25,7 +27,10 @@ export default {
                 socket.onmessage = event => {
                     if (event.data === 'pong') {
                         // 服务器发来的心跳
-                        reconnectAttempts = 0 // 重置重连次数
+                        RECONNECT_ATTEMPTS = 0 // 重置重连次数
+                    } else if (event.data === 'ping') {
+                        // 服务器发来的心跳请求，回复心跳
+                        socket.send('pong')
                     } else {
                         onlineCount.value = parseInt(event.data)
                         console.log('服务器发来的在线人数', event.data)
@@ -48,7 +53,7 @@ export default {
                         console.log('前端发送心跳包')
                         socket.send('ping')
                     }
-                }, 1000)
+                }, PING_INTERVAL)
             } catch (error) {
                 console.error('获取在线人数失败', error)
                 reconnectWebSocket()
@@ -56,10 +61,10 @@ export default {
         }
 
         const reconnectWebSocket = () => {
-            if (reconnectAttempts < maxReconnectAttempts) {
-                reconnectAttempts++
-                console.log(`尝试第 ${reconnectAttempts} 次重连...`)
-                setTimeout(connectWebSocket, reconnectInterval)
+            if (RECONNECT_ATTEMPTS < MAX_RECONNECT_ATTEMPTS) {
+                RECONNECT_ATTEMPTS++
+                console.log(`尝试第 ${RECONNECT_ATTEMPTS} 次重连...`)
+                setTimeout(connectWebSocket, RECONNECT_INTERVAL)
             } else {
                 console.error('达到最大重连次数，不再尝试重连')
             }

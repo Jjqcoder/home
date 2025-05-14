@@ -27,7 +27,7 @@ module.exports = class WeatherService {
             }
 
             // 根据adcode获取天气信息
-            const url = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${require('./../config/index.js').get('key')}`
+            const url = `https://restapi.amap.com/v3/weather/weatherInfo?city=${adcode}&key=${require('../config/index.js').get('key')}`
             try {
                 const weatherData = await axios.get(url)
                 return weatherData.data.lives

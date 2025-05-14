@@ -1,15 +1,13 @@
 'use strict'
 
 /**
- * 创建时间: 2025-04-26
+ * 创建时间: 2025-05-14
  * 作者: jjq
  * 描述: 基于ws+redis的在线人数（解决pm2多进程下各实例有各自的在线人数的问题）
  */
 
-'use strict'
-
 const Redis = require('ioredis')
-const redis = new Redis(require('./../../config/index.js').get('redisConf'))
+const redis = new Redis(require('../../config/index.js').get('redisConf'))
 
 const onlineUsers = new Map() // 使用Map存储用户及其最后活跃时间
 

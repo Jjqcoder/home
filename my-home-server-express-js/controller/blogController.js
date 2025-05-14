@@ -7,7 +7,7 @@
  */
 
 const service = require('../service/index.js')
-const R = require('./../utils/R.js')
+const R = require('../utils/R.js')
 
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {

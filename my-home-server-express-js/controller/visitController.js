@@ -6,8 +6,8 @@
  * 描述: 访客控制层
  */
 
-const Service = require('./../service/index.js')
-const R = require('./../utils/R.js')
+const Service = require('../service/index.js')
+const R = require('../utils/R.js')
 
 module.exports = class VisitController {
     static async getAllVisit(req, res) {

@@ -6,8 +6,8 @@
  * 描述: 天气控制层
  */
 
-const Service = require('./../service/index.js')
-const R = require('./../utils/R.js')
+const Service = require('../service/index.js')
+const R = require('../utils/R.js')
 
 module.exports = class WeatherController {
     static async getWeather(req, res) {

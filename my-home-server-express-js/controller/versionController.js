@@ -5,7 +5,7 @@
  * 作者: jjq
  * 描述: 版本号 controller 层
  */
-const R = require('./../utils/R.js')
+const R = require('../utils/R.js')
 
 module.exports = class VersionController {
     // 获取版本号

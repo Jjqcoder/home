@@ -6,9 +6,9 @@
  * 描述: 英语学习控制层
  */
 
-const R = require('./../utils/R.js')
+const R = require('../utils/R.js')
 
-const service = require('./../service/index.js')
+const service = require('../service/index.js')
 
 module.exports = class EnglishController {
     // 获取版本号

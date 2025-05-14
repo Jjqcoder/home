@@ -21,3 +21,5 @@ CMD ["npm", "run", "prod"]
 # docker build -t manage-server-express-js-image .
 # 运行容器
 # docker run -d -p 3001:3001 manage-server-express-js-image
+# 清理未使用的镜像和容器
+# docker system prune --volumes -f

@@ -11,7 +11,7 @@ module.exports = {
             args: '',
 
             // 实例数量，'max' 表示根据 CPU 核心数自动分配实例数量
-            instances: 1, // 此处先将实例设置为1 解决在线人数不一致的问题 后续可以使用redis解决
+            instances: 4, // 此处先将实例设置为1 解决在线人数不一致的问题 后续可以使用redis解决
 
             // 是否自动重启应用，如果应用崩溃或达到内存限制
             autorestart: true,

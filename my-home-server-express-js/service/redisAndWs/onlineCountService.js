@@ -3,8 +3,13 @@
 /**
  * 创建时间: 2025-04-26
  * 作者: jjq
- * 描述: 基于ws的在线人数
+ * 描述: 基于ws+redis的在线人数（解决pm2多进程下各实例有各自的在线人数的问题）
  */
+
+'use strict'
+
+const Redis = require('ioredis')
+const redis = new Redis(require('./../../config/index.js').get('redisConf'))
 
 const onlineUsers = new Map() // 使用Map存储用户及其最后活跃时间
 
@@ -83,13 +88,16 @@ module.exports = (ws, req) => {
 }
 
 // 更新在线人数并通知所有客户端
-function updateOnlineCount() {
+async function updateOnlineCount() {
     try {
         const count = onlineUsers.size
+        await redis.set('onlineCount', count) // 将在线人数存储到Redis中
+        const onlineCount = await redis.get('onlineCount') // 从Redis中获取在线人数
+
         onlineUsers.forEach((_, ws) => {
             try {
                 if (ws.readyState === ws.OPEN) {
-                    ws.send(count.toString())
+                    ws.send(onlineCount) // 向所有客户端发送在线人数
                 }
             } catch (error) {
                 console.error('向客户端发送在线人数时发生错误:', error)

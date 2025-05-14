@@ -7,7 +7,15 @@
  */
 
 const config = new Map([
-    ['key', 'xxx']/* 高德天气查询key */
+    ['key', 'xxx'] /* 高德天气查询key */,
+    [
+        'redisConf',
+        {
+            host: 'xxx', // Redis服务器IP地址
+            port: xx, // Redis服务器端口号，默认为6379
+            password: 'xx' // redis密码
+        }
+    ]
     /* 保持此样式 */
 ])
 module.exports = config

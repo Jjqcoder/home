@@ -17,7 +17,15 @@
     <body>
         <!-- 入场动画结构开始 -->
         <div class="loading-screen">
-            <img src="/windy.jpg" class="loading-logo" alt="windy" />
+            <!-- 将png图片转为webp格式
+             文件体积更小
+             加载速度更快
+             支持透明背景
+             支持无损压缩（即不会出现模糊）
+             支持渐进式加载(即加载图片的过程中，图片逐渐清晰，而不是一次性加载完毕)
+            -->
+
+            <img src="/windy.webp" class="loading-logo" alt="windy" />
             <div class="loading-text">Hello, traveler!🍃</div>
             <div class="scroll-hint"></div>
         </div>

@@ -14,6 +14,8 @@ const controller = require('../controller/index.js')
 
 expressWs(router)
 
+/* 路由挂在开始 */
 router.get('/getBlogByPage', controller.blogController.getBlogByPage)
+/* 路由挂载结束 */
 
 module.exports = router

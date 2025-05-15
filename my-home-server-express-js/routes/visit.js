@@ -11,7 +11,9 @@ const router = express.Router()
 
 const controller = require('../controller/index.js')
 
+/* 路由挂在开始 */
 router.get('/allVisit', controller.visitController.getAllVisit)
 router.get('/someVisit', controller.visitController.getVisitByLimit)
+/* 路由挂载结束 */
 
 module.exports = router

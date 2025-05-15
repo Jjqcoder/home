@@ -11,6 +11,8 @@ const router = express.Router()
 
 const controller = require('../controller/index.js')
 
+/* 路由挂在开始 */
 router.get('/getSentenceRandomOne', controller.englishController.getSentenceRandomOne)
+/* 路由挂载结束 */
 
 module.exports = router

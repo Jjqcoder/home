@@ -22,7 +22,7 @@ export default {
 
         const connectWebSocket = () => {
             try {
-                socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/onlineCount`)
+                socket = new WebSocket(`${import.meta.env.VITE_IN_USE_WS_URL}/ws/onlineCount`)
 
                 socket.onmessage = event => {
                     if (event.data === 'pong') {

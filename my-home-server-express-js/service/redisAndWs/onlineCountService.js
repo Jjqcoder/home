@@ -6,8 +6,10 @@
  * 描述: 基于ws+redis的在线人数（解决pm2多进程下各实例有各自的在线人数的问题）
  */
 
-const Redis = require('ioredis')
-const redis = new Redis(require('../../config/index.js').get('redisConf'))
+const RedisClient = require('../../lib/index.js').redis
+console.log('redisClient', RedisClient)
+
+const redis = new RedisClient(require('../../config/index.js').get('redisConf'))
 
 const onlineUsers = new Map() // 使用Map存储用户及其最后活跃时间
 
@@ -28,7 +30,6 @@ module.exports = (ws, req) => {
         })
 
         // 设置心跳检测
-        // ws.on('pong') 表示客户端已经响应了 ping 消息，我们更新用户的 lastActive 时间和 isAlive 状态。
         ws.on('pong', () => {
             console.log(`ws.on方法触发`)
 
@@ -91,8 +92,8 @@ module.exports = (ws, req) => {
 async function updateOnlineCount() {
     try {
         const count = onlineUsers.size
-        await redis.set('onlineCount', count) // 将在线人数存储到Redis中
-        const onlineCount = await redis.get('onlineCount') // 从Redis中获取在线人数
+        await redis.set('onlineCount', count) // 使用封装的set方法
+        const onlineCount = await redis.get('onlineCount') // 使用封装的get方法
 
         onlineUsers.forEach((_, ws) => {
             try {

@@ -17,7 +17,7 @@ router.use('/blog', require('./blog.js'))
 router.use('/visit', require('./visit.js'))
 router.use('/weather', require('./weather.js'))
 // router.ws('/onlineCount', require('../service/ws/onlineCountService.js'))// ws
-router.ws('/onlineCount', require('../service/redisAndWs/onlineCountService.js')) // ws+redis解决pm2部署各个进程在线人数不一致的问题
+router.ws('/onlineCount', require('../service/index.js').onlineCountService.wsAndRedis) // ws+redis解决pm2部署各个进程在线人数不一致的问题
 router.use('/version', require('./version.js'))
 router.use('/english', require('./english.js'))
 /* 路由挂载结束 */

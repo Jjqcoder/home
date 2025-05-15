@@ -11,4 +11,5 @@ module.exports = class Service {
     static visitService = require('./visitService.js')
     static weatherService = require('./weatherService.js')
     static englishService = require('./englishService.js')
+    static onlineCountService = require('./onlineCount/index.js')
 }

@@ -1,12 +1,14 @@
 // 布局组件
 // Layout.jsx
-import {MailOutlined} from '@ant-design/icons'
+import {MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons'
 import {Menu, Switch} from 'antd'
-import React from 'react'
+import {useState} from 'react'
 import Content1 from './Content1.jsx'
 import Content2 from './Content2.jsx'
 
 const Layout = ({theme, setTheme, current, setCurrent}) => {
+    const [collapsed, setCollapsed] = useState(false)
+
     // 切换主题的函数
     const changeTheme = value => {
         setTheme(value ? 'dark' : 'light')
@@ -38,17 +40,34 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
         }
     }
 
+    // 切换折叠状态的函数
+    const toggleCollapsed = () => {
+        setCollapsed(!collapsed)
+    }
+
     return (
         <div style={{display: 'flex'}}>
-            <div style={{width: 256}}>
-                <Switch checked={theme === 'dark'} onChange={changeTheme} checkedChildren='Dark' unCheckedChildren='Light' />
-                <br />
-                <br />
+            <div style={{width: collapsed ? 80 : 256, transition: 'width 0.2s'}}>
+                <div style={{display: 'flex', alignItems: 'center', padding: '0 16px', marginBottom: 8}}>
+                    <Switch checked={theme === 'dark'} onChange={changeTheme} checkedChildren='Dark' unCheckedChildren='Light' />
+                    <div
+                        onClick={toggleCollapsed}
+                        style={{
+                            marginLeft: 'auto',
+                            fontSize: 18,
+                            cursor: 'pointer',
+                            padding: '4px 8px'
+                        }}
+                    >
+                        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                    </div>
+                </div>
                 <Menu
                     theme={theme}
                     onClick={onClick}
-                    style={{width: 256}}
+                    style={{width: '100%'}}
                     mode='inline'
+                    inlineCollapsed={collapsed}
                     items={[
                         {
                             key: '1',

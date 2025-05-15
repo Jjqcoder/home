@@ -3,8 +3,10 @@
 import {MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons'
 import {Menu, Switch} from 'antd'
 import {useState} from 'react'
+/* ===============================引入组件开始=============================== */
 import Content1 from './Content1.jsx'
 import Content2 from './Content2.jsx'
+/* ===============================引入组件结束=============================== */
 
 const Layout = ({theme, setTheme, current, setCurrent}) => {
     const [collapsed, setCollapsed] = useState(false)
@@ -28,7 +30,7 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
         setCurrent(e.key)
     }
 
-    // 使用 switch 语句渲染内容
+    /* ===============================配置组件开始=============================== */
     const renderContent = () => {
         switch (current) {
             case '1':
@@ -39,6 +41,7 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
                 return <div>No content available</div>
         }
     }
+    /* ===============================配置组件结束=============================== */
 
     // 切换折叠状态的函数
     const toggleCollapsed = () => {
@@ -68,6 +71,7 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
                     style={{width: '100%'}}
                     mode='inline'
                     inlineCollapsed={collapsed}
+                    /* ===============================配置选项开始=============================== */
                     items={[
                         {
                             key: '1',
@@ -80,6 +84,7 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
                             icon: <MailOutlined />
                         }
                     ]}
+                    /* ===============================配置选项结束=============================== */
                 />
             </div>
             <div style={{flex: 1, padding: '20px'}}>

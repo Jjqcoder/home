@@ -3,7 +3,7 @@
 /**
  * 创建时间: 2025-05-15
  * 作者: jjq
- * 描述: 封装redis操作
+ * 描述: 封装redis操作(引入指数退让策略)
  */
 
 const Redis = require('ioredis')
@@ -40,6 +40,27 @@ class RedisClient {
     }
 
     /**
+     * 指数退让策略重试
+     * @param {Function} fn 要执行的函数
+     * @param {number} maxRetries 最大重试次数
+     * @param {number} baseDelay 基础延迟时间（毫秒）
+     * @returns {Promise<any>}
+     */
+    async _retryWithExponentialBackoff(fn, maxRetries = 3, baseDelay = 1000) {
+        let retries = 0
+        while (retries < maxRetries) {
+            try {
+                return await fn()
+            } catch (err) {
+                console.warn(`尝试第 ${retries + 1} 次失败，将在 ${Math.pow(2, retries) * baseDelay}ms 后重试`)
+                await new Promise(resolve => setTimeout(resolve, Math.pow(2, retries) * baseDelay))
+                retries++
+            }
+        }
+        throw new Error('重试次数已达上限')
+    }
+
+    /**
      * 设置键值
      * @param {string} key 键名
      * @param {string|number|Object} value 值
@@ -52,11 +73,15 @@ class RedisClient {
                 value = JSON.stringify(value)
             }
 
-            if (expire) {
-                await this.client.setex(key, expire, value)
-            } else {
-                await this.client.set(key, value)
+            const fn = async () => {
+                if (expire) {
+                    await this.client.setex(key, expire, value)
+                } else {
+                    await this.client.set(key, value)
+                }
             }
+
+            await this._retryWithExponentialBackoff(fn)
             return true
         } catch (err) {
             console.error('Redis set error:', err)
@@ -71,12 +96,16 @@ class RedisClient {
      */
     async get(key) {
         try {
-            const value = await this.client.get(key)
-            try {
-                return JSON.parse(value)
-            } catch {
-                return value
+            const fn = async () => {
+                const value = await this.client.get(key)
+                try {
+                    return JSON.parse(value)
+                } catch {
+                    return value
+                }
             }
+
+            return await this._retryWithExponentialBackoff(fn)
         } catch (err) {
             console.error('Redis get error:', err)
             return null
@@ -90,7 +119,11 @@ class RedisClient {
      */
     async del(key) {
         try {
-            await this.client.del(key)
+            const fn = async () => {
+                await this.client.del(key)
+            }
+
+            await this._retryWithExponentialBackoff(fn)
             return true
         } catch (err) {
             console.error('Redis del error:', err)
@@ -106,7 +139,11 @@ class RedisClient {
      */
     async expire(key, seconds) {
         try {
-            await this.client.expire(key, seconds)
+            const fn = async () => {
+                await this.client.expire(key, seconds)
+            }
+
+            await this._retryWithExponentialBackoff(fn)
             return true
         } catch (err) {
             console.error('Redis expire error:', err)
@@ -121,8 +158,12 @@ class RedisClient {
      */
     async exists(key) {
         try {
-            const result = await this.client.exists(key)
-            return result === 1
+            const fn = async () => {
+                const result = await this.client.exists(key)
+                return result === 1
+            }
+
+            return await this._retryWithExponentialBackoff(fn)
         } catch (err) {
             console.error('Redis exists error:', err)
             return false
@@ -137,11 +178,15 @@ class RedisClient {
      */
     async incr(key, increment = 1) {
         try {
-            if (increment === 1) {
-                return await this.client.incr(key)
-            } else {
-                return await this.client.incrby(key, increment)
+            const fn = async () => {
+                if (increment === 1) {
+                    return await this.client.incr(key)
+                } else {
+                    return await this.client.incrby(key, increment)
+                }
             }
+
+            return await this._retryWithExponentialBackoff(fn)
         } catch (err) {
             console.error('Redis incr error:', err)
             return null
@@ -156,11 +201,15 @@ class RedisClient {
      */
     async decr(key, decrement = 1) {
         try {
-            if (decrement === 1) {
-                return await this.client.decr(key)
-            } else {
-                return await this.client.decrby(key, decrement)
+            const fn = async () => {
+                if (decrement === 1) {
+                    return await this.client.decr(key)
+                } else {
+                    return await this.client.decrby(key, decrement)
+                }
             }
+
+            return await this._retryWithExponentialBackoff(fn)
         } catch (err) {
             console.error('Redis decr error:', err)
             return null
@@ -178,7 +227,12 @@ class RedisClient {
             if (typeof message === 'object') {
                 message = JSON.stringify(message)
             }
-            return await this.client.publish(channel, message)
+
+            const fn = async () => {
+                return await this.client.publish(channel, message)
+            }
+
+            return await this._retryWithExponentialBackoff(fn)
         } catch (err) {
             console.error('Redis publish error:', err)
             return 0

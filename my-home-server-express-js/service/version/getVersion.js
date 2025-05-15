@@ -6,6 +6,6 @@
  * 描述: 获取服务器版本号
  */
 
-module.exports = (function getVersion() {
+module.exports = function getVersion() {
     return require('../../package.json').version
-})() // 注意 此处为立即执行
+}

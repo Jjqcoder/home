@@ -11,57 +11,57 @@ const routes = [
             {
                 path: 'world',
                 name: 'world',
-                component: () => import('../components/world/index.vue')
+                component: () => import('../components/World/index.vue')
             },
             {
                 path: 'blog',
                 name: 'blog',
-                component: () => import('../components/blog/index.vue')
+                component: () => import('../components/Blog/index.vue')
             },
             {
                 path: 'english',
                 name: 'english',
-                component: () => import('../components/english/index.vue')
+                component: () => import('../components/English/index.vue')
             },
             {
                 path: 'about',
                 name: 'about',
-                component: () => import('../components/about/index.vue')
+                component: () => import('../components/About/index.vue')
             },
             {
                 path: 'weather',
                 name: 'weather',
-                component: () => import('../components/weather/index.vue')
+                component: () => import('../components/Weather/index.vue')
             },
             {
                 path: '', // 默认子路由
                 name: 'timeline',
-                component: () => import('../components/timeline/index.vue')
+                component: () => import('../components/Timeline/index.vue')
             },
             {
                 path: 'blogDetail/:row',
                 name: 'blogDetail',
-                component: () => import('../components/blogDetail/index.vue')
+                component: () => import('../components/BlogDetail/index.vue')
             },
             {
                 path: 'visitorStatistics',
                 name: 'visitorStatistics',
-                component: () => import('../components/visitorStatistics/index.vue')
+                component: () => import('../components/VisitorStatistics/index.vue')
             },
             {
                 path: 'version',
                 name: 'version',
-                component: () => import('../components/version/index.vue')
+                component: () => import('../components/Version/index.vue')
             },
             {
                 path: 'feedback',
                 name: 'feedback',
-                component: () => import('../components/feedback/index.vue')
+                component: () => import('../components/Feedback/index.vue')
             },
             {
                 path: 'login',
                 name: 'login',
-                component: () => import('../components/login/index.vue')
+                component: () => import('../components/Login/index.vue')
             },
             {
                 path: '/:pathMatch(.*)*', // 捕获所有路径

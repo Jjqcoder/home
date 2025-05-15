@@ -1,6 +1,6 @@
 <template>
     <div>
-        <fixedList class="my-blog" :pageSelectData="pageSelectData"></fixedList>
+        <FixedList class="my-blog" :pageSelectData="pageSelectData"></FixedList>
     </div>
 
     <div class="demo-pagination-block">
@@ -28,7 +28,7 @@ import {ref, onMounted} from 'vue'
 // import axios from 'axios'
 
 // 引入fixedList组件
-import fixedList from './../fixedList/index.vue'
+import FixedList from './../FixedList/index.vue'
 
 // 引入环境变量
 // const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL

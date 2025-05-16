@@ -1,10 +1,10 @@
 // 布局组件
 // Layout.jsx
-import {MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons'
+import {BookOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons'
 import {Menu, Switch} from 'antd'
 import {useState} from 'react'
 /* ===============================引入组件开始=============================== */
-import Content1 from './Content1.jsx'
+import {Blog} from './Blog.jsx'
 import Content2 from './Content2.jsx'
 /* ===============================引入组件结束=============================== */
 
@@ -34,7 +34,7 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
     const renderContent = () => {
         switch (current) {
             case '1':
-                return <Content1 />
+                return <Blog />
             case '2':
                 return <Content2 />
             default:
@@ -75,8 +75,8 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
                     items={[
                         {
                             key: '1',
-                            label: 'Option 1',
-                            icon: <MailOutlined />
+                            label: '日志管理',
+                            icon: <BookOutlined />
                         },
                         {
                             key: '2',

@@ -1,5 +1,5 @@
 import {Button, Form, Input, Space} from 'antd'
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 const Login = () => {
     // 定义状态用于存储用户名和密码
@@ -16,7 +16,7 @@ const Login = () => {
 
     return (
         <div style={{width: 300, margin: '50px auto'}}>
-            <h2 style={{color: '#FFA500', textAlign: 'center'}}>登录</h2>
+            <h2 style={{color: '#FFA500', textAlign: 'center'}}>manage-client-react-js</h2>
             <Form>
                 <Form.Item>
                     <Input placeholder='请输入用户名' value={username} onChange={e => setUsername(e.target.value)} />

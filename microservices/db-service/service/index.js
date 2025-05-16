@@ -1,10 +1,10 @@
 /**
  * 创建时间: 2025-05-16
  * 作者: jjq
- * 描述: service 即 routerHandler
+ * 描述: service类各项目共用，在controller层做项目的区分即可
  */
 
-const R = require('../../R.js') // 引入 R.js
+const R = require('../R.js') // 引入响应工具类
 
 module.exports = class service {
     static async add(req) {

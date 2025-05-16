@@ -3,7 +3,9 @@
         <div class="blog-content">
             <h1 class="blog-title">{{ blogData.BLOG_TITLE }}</h1>
             <p class="blog-meta">创建时间: {{ blogData.BLOG_CREATE_TIME }} | 更新时间: {{ blogData.BLOG_UPDATE_TIME }}</p>
-            <div class="blog-body">{{ blogData.BLOG_CONTENT }}</div>
+            <!-- <div class="blog-body">{{ blogData.BLOG_CONTENT }}</div> -->
+            <!-- 注：为了使换行符生效，此处引入v-html -->
+            <div class="blog-body" v-html="blogData.BLOG_CONTENT"></div>
         </div>
     </div>
 </template>

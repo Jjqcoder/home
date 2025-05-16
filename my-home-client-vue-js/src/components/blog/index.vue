@@ -69,12 +69,14 @@ onMounted(async () => {
         // 赋值分页查询到的数据
         pageSelectData.value = res.data.data.records
 
-        // 处理获取到的日期信息显示
+        // 处理获取到的日期信息显示、换行
         // 2025-03-09T15:01:38.000Z ==> 2025-03-09 15:01:38
         pageSelectData.value.forEach(item => {
             item.BLOG_CREATE_TIME = item.BLOG_CREATE_TIME.replace('T', ' ').replace('.000Z', '')
             item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
+            item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行
         })
+        console.log('content', pageSelectData.value)
         // ================弹窗开始================
         // 消息提示
         if (res.data.code === 200) {

@@ -4,7 +4,7 @@
  * 描述: service 即 routerHandler
  */
 
-const R = require('../R.js') // 引入 R.js
+const R = require('../../R.js') // 引入 R.js
 
 module.exports = class service {
     static async add(req) {

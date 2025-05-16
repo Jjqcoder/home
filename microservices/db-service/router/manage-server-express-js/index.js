@@ -4,7 +4,7 @@
  * 描述: 路由配置，使用map维护路由
  */
 
-const service = require('../service/index.js')
+const service = require('../../service/manage-server-express-js/index.js')
 
 const router = {
     '/add': service.add,

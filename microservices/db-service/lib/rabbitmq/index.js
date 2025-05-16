@@ -66,7 +66,7 @@ class RabbitMQResponder {
 
             this.channel.consume(
                 this.options.queueName,
-                msg => {
+                async msg => {
                     if (msg) {
                         try {
                             console.log(`收到请求: ${msg.content.toString()}`)
@@ -75,7 +75,7 @@ class RabbitMQResponder {
                             const requestData = JSON.parse(msg.content.toString()) // 将请求数据字符串转换为对象
 
                             // 处理请求
-                            const response = this.options.requestHandler(requestData)
+                            const response = await this.options.requestHandler(requestData)
 
                             // 将响应数据对象转换为字符串
                             const responseString = JSON.stringify(response)

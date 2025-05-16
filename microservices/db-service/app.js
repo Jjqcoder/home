@@ -7,14 +7,17 @@
  */
 
 const RabbitMQResponder = require('./lib/rabbitmq/index.js')
+const router = require('./router/index.js')
 
 ;(async () => {
     try {
-        const queueName = 'rpc_queue'
-        const requestHandler = requestData => {
+        const queueName = '/manage-server-express-js'
+        const requestHandler = async requestData => {
             console.log(`[收到请求]: ${JSON.stringify(requestData)}`)
             // 这里可以添加自定义的请求处理逻辑
-            return {response: `我是处理结果`}
+            const res = await router[requestData.route](requestData.data)
+
+            return res
         }
 
         await RabbitMQResponder.startResponder(queueName, requestHandler)

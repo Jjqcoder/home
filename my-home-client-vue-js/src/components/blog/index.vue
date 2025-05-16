@@ -76,7 +76,6 @@ onMounted(async () => {
             item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
             item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行
         })
-        console.log('content', pageSelectData.value)
         // ================弹窗开始================
         // 消息提示
         if (res.data.code === 200) {

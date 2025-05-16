@@ -4,15 +4,11 @@
  * 描述: 路由配置，使用map维护路由
  */
 
+const service = require('../service/index.js')
+
 const router = {
-    '/add': async req => {
-        const {a, b} = req
-        return a + b
-    },
-    '/subtract': async req => {
-        const {a, b} = req
-        return  a - b
-    }
+    '/add': service.add,
+    '/subtract': service.subtract
     // 可以继续添加更多方法
 }
 

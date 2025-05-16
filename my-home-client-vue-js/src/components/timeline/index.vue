@@ -30,6 +30,12 @@ const activities = [
         icon: MoreFilled
     },
     {
+        content: '🔤初步完成并上线「学英语」模块',
+        timestamp: '🗓️2025-05-17',
+        type: 'primary',
+        hollow: true
+    },
+    {
         content: '🌒引入「暗色模式」',
         timestamp: '🗓️2025-05-01',
         type: 'primary',

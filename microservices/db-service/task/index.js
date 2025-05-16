@@ -7,7 +7,10 @@
  */
 
 /* manage-server-express-js项目 */
-require('../utils/index.js').startQueueResponder('/manage-server-express-js', require('../router/manage-server-express-js/index.js'))
+require('../utils/index.js').startQueueResponder(
+    require('../constants/index.js').MANAGE_SERVER_EXPRESS_JS_QUEUE_NAME /* 队列名 */,
+    require('../router/manage-server-express-js/index.js') /* 路由 */
+)
 /* my-home-server-express-js项目 */
 /* 其他项目... */
 /* 其他项目... */

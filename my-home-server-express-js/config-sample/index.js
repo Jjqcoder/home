@@ -15,6 +15,10 @@ const config = new Map([
             port: xx, // Redis服务器端口号，默认为6379
             password: 'xx' // redis密码
         }
+    ],
+    [
+        'DB_SERVICE_KEY', // DB_SERVICE秘钥
+        'xxx'
     ]
     /* 保持此样式 */
 ])

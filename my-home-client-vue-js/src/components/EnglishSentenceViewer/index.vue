@@ -53,6 +53,8 @@ export default {
     font-size: 18px;
     line-height: 1.6;
     color: #333; /* 默认字体颜色 */
+    text-align: left; /* 内容左对齐 */
+    text-indent: 2em; /* 句首缩进 */
 }
 
 .button-group {

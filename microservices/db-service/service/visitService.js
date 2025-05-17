@@ -6,4 +6,7 @@
  * 描述: 访客服务层
  */
 
-module.exports = class visitService {}
+module.exports = class visitService {
+    static async getAllVisit() {}
+    static async getVisitByLimit() {}
+}

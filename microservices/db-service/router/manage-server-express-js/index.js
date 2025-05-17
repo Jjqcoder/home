@@ -6,8 +6,13 @@
 
 const controller = require('../../controller/manage-server-express-js/index.js')
 
+// 涉及数据库的操作均在此服务完成
 const router = {
-    '/add': controller.add
+    '/getBlogByPage': controller.getBlogByPage, // 分页获取日志
+    '/getSentenceRandomOne': controller.getSentenceRandomOne, // 随机获取一个英语句子
+    '/getAllVisit': controller.getAllVisit, // 获取所有访问记录
+    '/getVisitByLimit': controller.getVisitByLimit // 获取近期访问记录
+
     // 可以继续添加更多方法
 }
 

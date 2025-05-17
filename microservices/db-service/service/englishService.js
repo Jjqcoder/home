@@ -6,4 +6,6 @@
  * 描述: 英语学习服务层
  */
 
-module.exports = class englishService {}
+module.exports = class englishService {
+    static async getSentenceRandomOne() {}
+}

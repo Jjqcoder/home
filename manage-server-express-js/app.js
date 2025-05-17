@@ -20,9 +20,12 @@ app.use(express.json()) // 解析JSON请求体
 app.get('/', async (req, res) => {
     res.send('Hello World!')
 
-    RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getBlogByPage', data: {a: 1, b: 2}}).then(response => {
-        console.log('Received response:', response)
-    })
+    // RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getBlogByPage', data: {current: 1, size: 2}}).then(response => {
+    //     console.log('Received response:', response)
+    // })
+
+    const result = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getBlogByPage', data: {current: 1, size: 2}})
+    console.log('Received response:', result)
 })
 
 app.listen(port, () => {

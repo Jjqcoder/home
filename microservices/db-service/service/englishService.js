@@ -7,5 +7,16 @@
  */
 
 module.exports = class englishService {
-    static async getSentenceRandomOne() {}
+    static async getSentenceRandomOne(req) {
+        try {
+            const result = await prisma.$queryRaw`
+            SELECT * FROM ENGLISH
+            ORDER BY RAND()
+            LIMIT 1
+          `
+            return result[0]
+        } catch (error) {
+            throw error
+        }
+    }
 }

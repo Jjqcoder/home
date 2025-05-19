@@ -64,9 +64,14 @@ const routes = [
                 component: () => import('../components/Login/index.vue')
             },
             {
+                path: '/game',
+                name: 'game',
+                component: () => import('../components/Game/index.vue')
+            },
+            {
                 path: '/:pathMatch(.*)*', // 捕获所有路径
                 name: 'error',
-                component: () => import('../components/err/index.vue')
+                component: () => import('../components/Err/index.vue')
             }
         ]
     }

@@ -1,6 +1,6 @@
-require('@babel/register')({
-    presets: ['@babel/preset-react']
-})
+// require('@babel/register')({
+//     presets: ['@babel/preset-react']
+// })
 
 const {app, BrowserWindow} = require('electron')
 const path = require('path')

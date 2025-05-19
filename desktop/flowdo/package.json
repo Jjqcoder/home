@@ -3,9 +3,47 @@
     "version": "1.0.0",
     "main": "src/main.js",
     "scripts": {
-        "build": "node build.js",
-        "start": "electron .",
+        "build": "node build-main.js",
+        "start": "electron ./dist/main-compiled.js",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
         "dev": "yarn build && yarn start"
+    },
+    "config": {
+        "forge": {
+            "packagerConfig": {
+                "ignore": [
+                    "/\\.babelrc$",
+                    "/\\.eslintrc$",
+                    "/node_modules/@babel"
+                ]
+            },
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "flowdo",
+                        "authors": "你的名字",
+                        "description": "你的应用描述"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin",
+                        "linux"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
     },
     "dependencies": {
         "electron-squirrel-startup": "^1.0.1",

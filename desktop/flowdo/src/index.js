@@ -1,3 +1,4 @@
-// 不再使用import，直接使用全局的React对象
+// 使用全局的React对象（由CDN提供）
 const App = () => React.createElement('div', null, 'Hello Flowdo!')
-ReactDOM.render(React.createElement(App), document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(React.createElement(App))

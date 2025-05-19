@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Electron-Yarn 稳定版</title>
+    </head>
+    <body>
+        <h1>🚀 Electron 成功运行！</h1>
+        <p>正在使用：</p>
+        <ul>
+            <li>Electron <span id="electron-version"></span></li>
+            <li>Node.js <span id="node-version"></span></li>
+            <li>Chrome <span id="chrome-version"></span></li>
+        </ul>
+
+        <script>
+            document.getElementById('electron-version').textContent = window.electron.versions.electron
+            document.getElementById('node-version').textContent = window.electron.versions.node
+            document.getElementById('chrome-version').textContent = window.electron.versions.chrome
+        </script>
+    </body>
+</html>

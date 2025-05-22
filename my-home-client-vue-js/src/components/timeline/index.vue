@@ -30,6 +30,12 @@ const activities = [
         icon: MoreFilled
     },
     {
+        content: '🩵正式决定对「my-home-server-express-ts」与「my-home-server-express-js」进行同步开发与维护',
+        timestamp: '🗓️2025-05-22',
+        type: 'primary',
+        hollow: true
+    },
+    {
         content: '🔤初步完成并上线「学英语」模块',
         timestamp: '🗓️2025-05-17',
         type: 'primary',

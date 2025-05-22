@@ -40,6 +40,7 @@ const RichTextEditor = () => {
         content: editorContent,
         onUpdate: ({editor}) => {
             const html = editor.getHTML()
+            console.log('Editor content:', html)
             setEditorContent(html)
             // 这里可以添加保存到数据库的逻辑
         }

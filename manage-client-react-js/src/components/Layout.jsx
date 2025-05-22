@@ -6,6 +6,7 @@ import {useState} from 'react'
 /* ===============================引入组件开始=============================== */
 import {Blog} from './Blog.jsx'
 import Content2 from './Content2.jsx'
+import EditBlog from './EditBlog/index.jsx'
 /* ===============================引入组件结束=============================== */
 
 const Layout = ({theme, setTheme, current, setCurrent}) => {
@@ -37,6 +38,8 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
                 return <Blog />
             case '2':
                 return <Content2 />
+            case '3':
+                return <EditBlog />
             default:
                 return <div>No content available</div>
         }
@@ -81,6 +84,11 @@ const Layout = ({theme, setTheme, current, setCurrent}) => {
                         {
                             key: '2',
                             label: 'Option 2',
+                            icon: <MailOutlined />
+                        },
+                        {
+                            key: '3',
+                            label: '日志编辑',
                             icon: <MailOutlined />
                         }
                     ]}

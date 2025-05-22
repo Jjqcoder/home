@@ -62,6 +62,9 @@ importers:
       vue-router:
         specifier: '4'
         version: 4.5.0(vue@3.5.13)
+      vue-wangeditor:
+        specifier: ^1.3.10
+        version: 1.3.10
     devDependencies:
       '@types/scrollreveal':
         specifier: ^0.0.11
@@ -854,6 +857,10 @@ packages:
   is-what@3.14.1:
     resolution: {integrity: sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==}
 
+  jquery@2.2.4:
+    resolution: {integrity: sha512-lBHj60ezci2u1v2FqnZIraShGgEXq35qCzMv4lITyHGppTnA13rwR0MgwyNJh9TnDs3aXUvd1xjAotfraMHX/Q==}
+    deprecated: This version is deprecated. Please upgrade to the latest version or find support at https://www.herodevs.com/support/jquery-nes.
+
   js-tokens@9.0.1:
     resolution: {integrity: sha512-mxa9E9ITFOt0ban3j6L5MpjwegGz6lBQmM1IJkWeBZGcMxto50+eWdjC/52xDbS2vy0k7vIMK0Fe2wfL9OQSpQ==}
 
@@ -1254,6 +1261,9 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
+  vue-wangeditor@1.3.10:
+    resolution: {integrity: sha512-sEe9QChC/hYOW+6PSP+yY0v94p5uET44UMiAoGz/HG/T4YiJHVPvrKyiuZva8E64MxgfukJF/y7ICqaNh7LLcg==}
+
   vue@3.5.13:
     resolution: {integrity: sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==}
     peerDependencies:
@@ -1261,6 +1271,9 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  wangeditor@2.1.23:
+    resolution: {integrity: sha512-5YabT3AUkDPTbRljdHok+xMJWBmTeszIOOOnym8PQK6Y3RR10dXlK8hiMTdUUvGiNsmnyRnb2VRM+4R99sclWA==}
 
   webpack-virtual-modules@0.6.2:
     resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
@@ -1955,6 +1968,8 @@ snapshots:
 
   is-what@3.14.1: {}
 
+  jquery@2.2.4: {}
+
   js-tokens@9.0.1: {}
 
   katex@0.6.0:
@@ -2362,6 +2377,10 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13
 
+  vue-wangeditor@1.3.10:
+    dependencies:
+      wangeditor: 2.1.23
+
   vue@3.5.13:
     dependencies:
       '@vue/compiler-dom': 3.5.13
@@ -2369,6 +2388,10 @@ snapshots:
       '@vue/runtime-dom': 3.5.13
       '@vue/server-renderer': 3.5.13(vue@3.5.13)
       '@vue/shared': 3.5.13
+
+  wangeditor@2.1.23:
+    dependencies:
+      jquery: 2.2.4
 
   webpack-virtual-modules@0.6.2: {}
 

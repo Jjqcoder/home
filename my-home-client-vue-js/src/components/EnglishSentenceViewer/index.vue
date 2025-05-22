@@ -77,10 +77,12 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 0;
+    overflow: auto; /* 允许滚动 */
 }
 
 .sentence-viewer.immersive-mode .sentence-content {
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-size: clamp(10px, 5vw, 24px); /* 字体大小在10px到24px之间，根据屏幕宽度动态调整 */
     max-width: 80%;
     margin-bottom: 40px;
     color: #fff; /* 沉浸式模式下字体颜色为白色 */

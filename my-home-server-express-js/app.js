@@ -9,8 +9,8 @@ const cors = require('cors')
 const bodyParser = require('body-parser') // 引入 body-parser 模块
 const middlewares = require('./middlewares/index.js') // 引入自定义中间件
 const router = require('./routes/index.js') // 引入自定义路由
-// const morgan = require('morgan') // 引入 morgan 模块
-// const responseTime = require('response-time') // 引入 response-time 中间件
+const morgan = require('morgan') // 引入 morgan 模块
+const responseTime = require('response-time') // 引入 response-time 中间件
 app.use(
     cors({
         origin: true, // 或指定具体域名 ['http://example.com', 'https://example.com']
@@ -29,11 +29,11 @@ app.use(express.static('./public'))
 
 // 上线后依赖报错
 // 使用 response-time 中间件来计算请求的处理时间 时间信息位于响应头的 X-Response-Time 字段中
-// app.use(responseTime())
+app.use(responseTime())
 
 // 上线后会报依赖错误 暂不使用
 // 使用 morgan 中间件来记录请求日志
-// app.use(morgan('combined'))
+app.use(morgan('combined'))
 // 注册路由
 app.use(
     '/',

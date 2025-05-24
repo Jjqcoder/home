@@ -12,8 +12,15 @@ module.exports = class VersionController {
     // 获取版本号
     static async getVersion(req, res) {
         try {
-            // console.log('我被调用了' + require('../package.json').version)
-
+            /* 字段校验开始 */
+            const reqObj = req.query
+            for (const key in reqObj) {
+                switch (key) {
+                    default:
+                        return res.send(R.err(400, '请求参数错误', `入参【${key}】不合法`))
+                }
+            }
+            /* 字段校验结束 */
             return res.send(R.ok(200, '获取后端版本号成功', service.versionService.getVersion()))
         } catch (error) {
             return res.send(R.err(500, `controller >>> versionController.js >>> getVersion >>> 获取后端版本号失败 >>> 【${error}】`, error))

@@ -41,6 +41,9 @@
                     <router-link to="/game">
                         <el-dropdown-item>👻玩游戏</el-dropdown-item>
                     </router-link>
+                    <router-link to="/aboutWebsite">
+                        <el-dropdown-item>🧑‍💻关于本站</el-dropdown-item>
+                    </router-link>
                     <router-link to="/about">
                         <el-dropdown-item>🤟关于我</el-dropdown-item>
                     </router-link>

@@ -19,6 +19,8 @@ module.exports = class controller {
     }
     static async getSentenceRandomOne(req) {
         try {
+            console.log('获取随机句子')
+
             return R.ok(200, '获取句子成功', await service.englishService.getSentenceRandomOne(req))
         } catch (error) {
             return R.err(500, '获取句子失败', error)

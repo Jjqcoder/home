@@ -16,9 +16,6 @@ module.exports = class Utils {
     static async startQueueResponder(queueName, router) {
         try {
             const requestHandler = async requestData => {
-                console.log('👻', router)
-                console.log('👻', router[requestData.route])
-
                 const middlewaresLength = router[requestData.route].length
                 for (let i = 0; i < middlewaresLength; i++) {
                     let result = await router[requestData.route][i](requestData.data)

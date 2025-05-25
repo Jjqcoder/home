@@ -6,18 +6,15 @@
  * 描述: 访客 服务层(rpc)
  */
 
-const {prisma} = require('../../lib/index.js')
-
 module.exports = class VisitService {
     static async getAllVisit(req, res) {
         try {
-            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getAllVisit', data: {...req.query}})
+            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getAllVisit', data: {...req?.query}})
             res = JSON.parse(res)
             if (res.code === 200) {
-                console.log('结果:', res.data)
                 return res.data
             } else {
-                throw res.msg
+                throw JSON.stringify(res)
             }
         } catch (error) {
             throw error
@@ -30,7 +27,6 @@ module.exports = class VisitService {
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getVisitByLimit', data: {...req.query}})
             res = JSON.parse(res)
             if (res.code === 200) {
-                console.log('结果:', res.data)
                 return res.data
             } else {
                 throw res.msg

@@ -7,7 +7,6 @@ const e = require('express')
  * 描述: 英语学习服务层(rpc)
  */
 
-const {prisma} = require('../../lib/index.js')
 const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
 
 module.exports = class EnglishService {
@@ -18,8 +17,6 @@ module.exports = class EnglishService {
                 route: '/getSentenceRandomOne',
                 data: {...req?.query}
             })
-            console.log('获取随机句子结果:', res)
-
             res = JSON.parse(res)
             if (res.code === 200) {
                 return res.data

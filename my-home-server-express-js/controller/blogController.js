@@ -47,7 +47,7 @@ module.exports = class BlogController {
             res.send(R.ok(200, '获取博客信息成功', await service.rpcBlogService.getBlogByPage(req, res))) /* 注：改为rpc调用 */
             return await service.rpcBlogService.getBlogByPage(req, res)
         } catch (error) {
-            return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 博客信息获取失败 >>> 【${error}】`, error))
+            return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 博客信息获取失败 >>> 【${String(error)}】`, error))
         }
     }
 }

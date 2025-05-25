@@ -11,6 +11,8 @@ const R = require('../utils/R.js')
 
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {
+        console.log('controller >>> blogController.js >>> getBlogByPage >>> 博客信息获取开始')
+
         try {
             /* 字段校验开始 */
             const reqObj = req.query
@@ -34,6 +36,7 @@ module.exports = class BlogController {
                         return res.send(R.err(400, '请求参数错误', `入参【${key}】 不合法`))
                 }
             }
+
             if (!Object.prototype.hasOwnProperty.call(reqObj, 'current')) {
                 return res.send(R.err(400, '请求参数错误', '入参【current】不能为空'))
             }
@@ -41,7 +44,8 @@ module.exports = class BlogController {
                 return res.send(R.err(400, '请求参数错误', '入参【size】不能为空'))
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '博客信息获取成功', await service.blogService.getBlogByPage(req, res)))
+            res.send(R.ok(200, '获取博客信息成功', await service.rpcBlogService.getBlogByPage(req, res))) /* 注：改为rpc调用 */
+            return await service.rpcBlogService.getBlogByPage(req, res)
         } catch (error) {
             return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 博客信息获取失败 >>> 【${error}】`, error))
         }

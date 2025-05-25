@@ -11,6 +11,7 @@ const RabbitMQRequester = require('../rpc/rabbitmq/index.js')
 
 module.exports = class BlogService {
     static async getBlogByPage(req, res) {
+        // 使用rpc调用
         try {
             // rpc测试
             if (1) {

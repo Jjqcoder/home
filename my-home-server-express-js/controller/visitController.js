@@ -21,7 +21,8 @@ module.exports = class VisitController {
                 }
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '获取全部的访客信息成功', await Service.visitService.getAllVisit(req, res)))
+            // return res.send(R.ok(200, '获取全部的访客信息成功', await Service.visitService.getAllVisit(req, res)))
+            return res.send(R.ok(200, '获取全部的访客信息成功', await Service.rpcVisitService.getAllVisit(req, res)))
         } catch (error) {
             return res.send(R.err(500, `controller >>> visitController.js >>> getAllVisit >>>  获取全部的访客信息失败 >>> 【${error}】`, error))
         }

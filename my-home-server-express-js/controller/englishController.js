@@ -23,7 +23,8 @@ module.exports = class EnglishController {
                 }
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '获取英语句子成功', await service.englishService.getSentenceRandomOne()))
+            // return res.send(R.ok(200, '获取英语句子成功', await service.englishService.getSentenceRandomOne()))
+            return res.send(R.ok(200, '获取英语句子成功', await service.rpcEnglishService.getSentenceRandomOne())) /* 注：改为rpc调用 */
         } catch (error) {
             return res.send(
                 R.err(500, `controller >>> englishController.js >>> getSentenceRandomOne >>> 随机获取一条英语句子失败 >>> 【${error}】`, error)

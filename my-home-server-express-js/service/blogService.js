@@ -21,7 +21,7 @@ module.exports = class BlogService {
                     console.log('结果:', res.data)
                     return res.data
                 } else {
-                    throw res.msg
+                    throw JSON.stringify(res)
                 }
             }
             // 从请求中获取分页参数

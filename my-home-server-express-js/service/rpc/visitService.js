@@ -29,7 +29,7 @@ module.exports = class VisitService {
             if (res.code === 200) {
                 return res.data
             } else {
-                throw res.msg
+                throw JSON.stringify(res)
             }
         } catch (error) {
             throw error

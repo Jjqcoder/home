@@ -7,10 +7,22 @@
  */
 
 const {prisma} = require('../lib/index.js')
+const RabbitMQRequester = require('../rpc/rabbitmq/index.js')
 
 module.exports = class BlogService {
     static async getBlogByPage(req, res) {
         try {
+            // rpc测试
+            if (1) {
+                let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getBlogByPage', data: {current: 1, size: 2}})
+                res = JSON.parse(res)
+                if (res.code === 200) {
+                    console.log('结果:', res.data)
+                    return res.data
+                } else {
+                    throw res.msg
+                }
+            }
             // 从请求中获取分页参数
             let {current = 1, size = 10} = req.query // 默认第一页，每页10条数据
             // 转换为数字类型
@@ -44,6 +56,8 @@ module.exports = class BlogService {
                 records
             }
         } catch (error) {
+            console.log('获取分页数据失败:', error)
+
             throw error
         }
     }

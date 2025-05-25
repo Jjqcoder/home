@@ -36,6 +36,8 @@ module.exports = class blogService {
                 records
             }
         } catch (error) {
+            console.log('获取日志失败:', error)
+
             throw error
         }
     }

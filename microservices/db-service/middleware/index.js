@@ -13,8 +13,8 @@ module.exports = class Middleware {
     // 前置中间件
     static async securityMiddleware(req) {
         console.log('我是安全前置中间件，入参为' + JSON.stringify(req))
-        if (1) {
-            return R.err(400, '请求不合法', null)
-        }
+        // if (1) {
+        //     return R.err(400, '请求不合法', null)
+        // }
     }
 }

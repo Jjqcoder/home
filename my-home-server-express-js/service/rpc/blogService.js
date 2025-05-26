@@ -15,7 +15,10 @@ module.exports = class BlogService {
             // if (1) {
             //     throw '测试错误'
             // }
-            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getBlogByPage', data: {...req?.query}})
+            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
+                route: '/getBlogByPage',
+                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+            })
             res = JSON.parse(res)
             if (res.code === 200) {
                 return res.data

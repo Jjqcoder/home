@@ -117,14 +117,14 @@ const handleSizeChange = async val => {
 const handleCurrentChange = async val => {
     try {
         // 当页码发生变化的时候，触发分页查询
-        const res = await get(`${in_use_base_url}/blog/getBlogByPage`, {
+        const res = await get(`/blog/getBlogByPage`, {
             current: currentPage.value,
             size: pageSize.value
         })
 
         pageSelectData.value = res.data.data.records
     } catch (error) {
-        console.error('更换页码过程发生异常')
+        console.error('更换页码过程发生异常', error)
     }
 }
 </script>

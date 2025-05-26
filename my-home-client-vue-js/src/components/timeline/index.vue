@@ -31,8 +31,9 @@ const activities = [
     },
     {
         content: '🎯项目首次以微服务架构部署',
+        timestamp: '🗓️2025-05-26',
         type: 'primary',
-        icon: MoreFilled
+        hollow: true
     },
     {
         content: '🩵正式决定对「my-home-server-express-ts」与「my-home-server-express-js」进行同步开发与维护',

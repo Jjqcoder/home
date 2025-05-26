@@ -1,11 +1,14 @@
 'use strict'
 
-module.exports = {
-    // rabbitmq配置
-    ip: 'xxx',
-    rabbitmq_user: 'xx',
-    rabbitmq_password: 'xx',
-    rabbitmq_port: xx,
-    // DB-SERVICE服务秘钥
-    dbServiceKey: 'DB-SERVICE秘钥,用于校验请求是否合法'
-}
+module.exports = new Map([
+    [
+        'rabbitmqConf' /* rabbitmq配置 */,
+        {
+            ip: 'xx',
+            rabbitmq_user: 'xx',
+            rabbitmq_password: 'xx',
+            rabbitmq_port: xx
+        }
+    ],
+    ['dbServiceKey', 'xx'] /* DB-SERVICE服务秘钥 */
+])

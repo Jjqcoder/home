@@ -24,7 +24,10 @@ module.exports = class VisitService {
     // 获取指定数量的数据 默认为500条（前端不会发送limit数量）
     static async getVisitByLimit(req, res) {
         try {
-            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getVisitByLimit', data: {...req.query}})
+            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
+                route: '/getVisitByLimit',
+                data: {...req.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+            })
             res = JSON.parse(res)
             if (res.code === 200) {
                 return res.data

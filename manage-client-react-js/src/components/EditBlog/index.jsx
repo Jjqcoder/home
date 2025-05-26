@@ -12,6 +12,7 @@ import {useEffect, useState} from 'react'
 
 const RichTextEditor = () => {
     const [editorContent, setEditorContent] = useState('<p>加载中...</p>')
+    const [title, setTitle] = useState('')
 
     // 模拟从数据库获取数据
     useEffect(() => {
@@ -49,17 +50,6 @@ const RichTextEditor = () => {
     return (
         <div style={{maxWidth: '800px', margin: '0 auto', padding: '20px'}}>
             <h1 style={{textAlign: 'center'}}>富文本编辑器</h1>
-
-            {/* 编辑器工具栏可以在这里添加 */}
-            {editor && (
-                <div className='editor-toolbar'>
-                    <button onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive('bold') ? 'is-active' : ''}>
-                        加粗
-                    </button>
-                    {/* 添加更多工具栏按钮... */}
-                </div>
-            )}
-
             <div
                 style={{
                     border: '1px solid #ddd',
@@ -69,7 +59,42 @@ const RichTextEditor = () => {
                     marginBottom: '20px'
                 }}
             >
+                {/* 输入框的宽度继承父元素 */}
+                <input
+                    type='text'
+                    placeholder='请输入标题'
+                    style={{
+                        width: '100%',
+                        boxSizing: 'border-box',
+                        padding: '8px 12px',
+                        marginBottom: '10px',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px',
+                        fontSize: '16px'
+                    }}
+                    // 输入值绑定
+                    value={title}
+                    onChange={e => setTitle(e.target.value)} // Add this to update the title
+                />
                 <EditorContent editor={editor} />
+                {/* 提交 */}
+                <button
+                    onClick={() => {
+                        console.log('提交内容:', {title: title, content: editorContent})
+                        // 这里可以添加保存到数据库的逻辑
+                    }}
+                    style={{
+                        marginTop: '10px',
+                        padding: '10px 20px',
+                        backgroundColor: '#007bff',
+                        color: '#fff',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    提交
+                </button>
             </div>
 
             <h2>预览:</h2>

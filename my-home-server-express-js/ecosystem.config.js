@@ -11,7 +11,7 @@ module.exports = {
             args: '',
 
             // 实例数量，'max' 表示根据 CPU 核心数自动分配实例数量
-            instances: 4,
+            instances: 1,
 
             // 是否自动重启应用，如果应用崩溃或达到内存限制
             autorestart: true,

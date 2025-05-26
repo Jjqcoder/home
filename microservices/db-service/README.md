@@ -7,3 +7,19 @@
 ## 小贴士
 
 -   [prisma 文档](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-node-mysql)
+
+## 部署方式
+
+1. 拉取`node`镜像
+
+```sh
+sudo docker pull node:18-alpine
+```
+
+2. 创建容器并运行
+
+```sh
+sudo docker run -d --restart=always --name db-service -v /myProject/db-service:/usr/src/app -w /usr/src/app node:18-alpine sh -c "npm install && npm run prod"
+```
+
+3. 将文件上传到`/myProject/db-service`即可

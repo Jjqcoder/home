@@ -9,10 +9,13 @@ import Link from '@tiptap/extension-link'
 import {EditorContent, useEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import {useEffect, useState} from 'react'
+// 引入request
+import {get} from '../../utils/request.jsx'
 
 const RichTextEditor = () => {
     const [editorContent, setEditorContent] = useState('<p>加载中...</p>')
     const [title, setTitle] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false) // 添加加载状态
 
     // 模拟从数据库获取数据
     useEffect(() => {
@@ -47,6 +50,37 @@ const RichTextEditor = () => {
         }
     })
 
+    // 提交处理函数
+    const handleSubmit = async () => {
+        if (!title.trim()) {
+            alert('请输入标题')
+            return
+        }
+
+        if (!editorContent.trim() || editorContent === '<p></p>') {
+            alert('请输入内容')
+            return
+        }
+
+        try {
+            setIsSubmitting(true)
+            const response = await get('/', {
+                // 替换为你的实际API端点
+                title,
+                content: editorContent
+            })
+
+            console.log('提交成功:', response)
+            alert('提交成功！')
+            // 这里可以添加成功后的逻辑，比如跳转页面等
+        } catch (error) {
+            console.error('提交失败:', error)
+            alert('提交失败，请重试')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <div style={{maxWidth: '800px', margin: '0 auto', padding: '20px'}}>
             <h1 style={{textAlign: 'center'}}>富文本编辑器</h1>
@@ -74,26 +108,24 @@ const RichTextEditor = () => {
                     }}
                     // 输入值绑定
                     value={title}
-                    onChange={e => setTitle(e.target.value)} // Add this to update the title
+                    onChange={e => setTitle(e.target.value)}
                 />
                 <EditorContent editor={editor} />
                 {/* 提交 */}
                 <button
-                    onClick={() => {
-                        console.log('提交内容:', {title: title, content: editorContent})
-                        // 这里可以添加保存到数据库的逻辑
-                    }}
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
                     style={{
                         marginTop: '10px',
                         padding: '10px 20px',
-                        backgroundColor: '#007bff',
+                        backgroundColor: isSubmitting ? '#6c757d' : '#007bff',
                         color: '#fff',
                         border: 'none',
                         borderRadius: '4px',
-                        cursor: 'pointer'
+                        cursor: isSubmitting ? 'not-allowed' : 'pointer'
                     }}
                 >
-                    提交
+                    {isSubmitting ? '提交中...' : '提交'}
                 </button>
             </div>
 

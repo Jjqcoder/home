@@ -1,0 +1,20 @@
+# 使用官方 Node.js 镜像
+FROM node:18-alpine
+
+# 创建工作目录
+WORKDIR /usr/src/app
+
+# 复制必要的文件
+COPY package.json pnpm-lock.yaml ./
+
+# 安装依赖（生产环境）
+RUN npm install -g pnpm && pnpm install --production
+
+# 复制构建后的文件
+COPY dist/ ./dist/
+
+# 暴露端口（与你的 Express 端口一致）
+EXPOSE 8080
+
+# 启动命令
+CMD ["node", "dist/app.js"]

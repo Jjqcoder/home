@@ -2,15 +2,11 @@
     <div class="weather">
         <span class="search">今日天气查询🔍</span><el-cascader size="large" :options="pcTextArr" v-model="selectedOptions"> </el-cascader>
     </div>
-    <!-- <div class="search"> -->
-    <!-- <el-button type="primary" plain>点击查询！</el-button> -->
-    <!-- </div> -->
 
     <!-- 分割线 -->
     <el-divider />
-    <!-- {{ MyWeatherData }} -->
     <div class="weatherData">
-        <listCom :fatherDataToSon="MyWeatherData"></listCom>
+        <ListCom :fatherDataToSon="MyWeatherData"></ListCom>
     </div>
 
     <!-- 下面开始显示预报信息 -->
@@ -22,16 +18,16 @@
 </template>
 
 <script setup>
-import axios from 'axios'
 import {pcTextArr} from 'element-china-area-data'
 import {ref, toRaw, watch} from 'vue'
-import listCom from './../list/index.vue'
+import {post} from '../../utils/api/index.js'
+import ListCom from './../list/index.vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
 
 // 保存选择的城市信息
 const selectedOptions = ref([]) // 当日
-const selectedOptionsForecast = ref([]) // 预报
+// const selectedOptionsForecast = ref([]) // 预报:目前未启用
 
 // 定义用于存储天气数据的变量,后续将实时渲染到子组件list中
 let MyWeatherData = ref([])
@@ -40,7 +36,7 @@ let MyWeatherData = ref([])
 watch(selectedOptions, async (newValue, oldValue) => {
     try {
         // 请求后端接口，获取天气数据
-        const response = await axios.post(`${in_use_base_url}/weather/getWeather`, {
+        const response = await post(`/weather/getWeather`, {
             city: newValue[1]
         })
         MyWeatherData.value.push(toRaw(response).data.data[0])

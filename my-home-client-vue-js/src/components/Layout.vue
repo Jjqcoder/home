@@ -1,6 +1,4 @@
 <script setup>
-// 引入`更多功能`组件
-// import MoreFunc from './more/index.vue';
 // 引入页脚组件
 import FooterCom from './footer/index.vue'
 // 引入菜单组件-用于代替更多功能组件
@@ -30,7 +28,6 @@ import MenuCom from './../components/menu/index.vue'
         <el-col :span="11" style="background: Beige">
             <div class="grid-content">
                 <span class="my-more">
-                    <!-- <MoreFunc /> -->
                     <!-- 菜单 -->
                     <MenuCom />
                 </span>

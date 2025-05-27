@@ -45,7 +45,7 @@
                     <el-input v-model="dataTobeEdit.weather" autocomplete="off" />
                 </el-form-item>
 
-                <el-form-item label="查询日期" :label-width="formLabelWidth">
+                <el-form-item label="发布时间" :label-width="formLabelWidth">
                     <el-input v-model="dataTobeEdit.reporttime" autocomplete="off" />
                 </el-form-item>
 
@@ -55,8 +55,8 @@
             </el-form>
             <template #footer>
                 <div class="dialog-footer">
-                    <el-button @click="dialogFormVisible = false">Cancel</el-button>
-                    <el-button type="primary" @click="submitHandler"> Confirm </el-button>
+                    <el-button @click="dialogFormVisible = false">取消</el-button>
+                    <el-button type="primary" @click="submitHandler"> 确认 </el-button>
                 </div>
             </template>
         </el-dialog>

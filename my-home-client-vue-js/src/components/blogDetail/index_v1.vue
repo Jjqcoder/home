@@ -1,4 +1,4 @@
-<!-- 此组件暂不使用 -->
+<!-- 此组件为第一个版本的blog显示组件，目前使用富文本展示组件，此组件暂不使用 -->
 <template>
     <div class="blog-container" :style="lightEffect">
         <div class="blog-content">

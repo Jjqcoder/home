@@ -13,7 +13,15 @@ const route = useRoute()
 const blog = route.params.row
 /*
 console.log(blog)
-{"ID":1,"BLOG_CREATE_TIME":"2025-03-09 14:45:17","BLOG_UPDATE_TIME":"2025-03-09 15:01:38","BLOG_TITLE":"xx","BLOG_CONTENT":"xx","IS_DELETE":"0"}
+获取到的blog数据格式如下：
+{
+  "ID": 1,
+  "BLOG_CREATE_TIME": "2025-03-09 14:45:17",
+  "BLOG_UPDATE_TIME": "2025-03-09 15:01:38",
+  "BLOG_TITLE": "xx",
+  "BLOG_CONTENT": "xx",
+  "IS_DELETE": "0"
+}
 */
 </script>
 

@@ -56,31 +56,5 @@
 <script lang="ts" setup>
 import {Watermelon} from '@element-plus/icons-vue'
 </script>
-<style scoped>
-.example-showcase .el-dropdown + .el-dropdown {
-    margin-left: 15px;
-}
-.example-showcase .el-dropdown-link {
-    cursor: pointer;
-    color: var(--el-color-primary);
-    display: flex;
-    align-items: center;
-}
 
-/* 改变router-link的默认样式:去掉超链接下面的下划线 */
-a {
-    text-decoration: none;
-}
-/* 改变全部功能按钮的样式 */
-.el-button {
-    background-color: #8d1717; /* 设置背景颜色 */
-    border-color: #8b0000; /* 设置边框颜色 */
-    color: white; /* 设置文字颜色 */
-}
-
-.el-button:hover {
-    background-color: #8b00005c; /* 鼠标悬停时的背景颜色 */
-    border-color: #8b00005c; /* 鼠标悬停时的边框颜色 */
-    color: white; /* 鼠标悬停时的文字颜色 */
-}
-</style>
+<style scoped></style>

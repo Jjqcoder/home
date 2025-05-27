@@ -1,61 +1,40 @@
 <template>
     <div>
+        <!-- 渲染全部的文章列表 -->
         <FixedList class="my-blog" :pageSelectData="pageSelectData"></FixedList>
-    </div>
-
-    <div class="demo-pagination-block">
-        <div class="demonstration"></div>
-        <el-pagination
-            v-model:current-page="currentPage"
-            v-model:page-size="pageSize"
-            :page-sizes="[5, 8, 10]"
-            :small="small"
-            :disabled="disabled"
-            :background="background"
-            :pager-count="4"
-            layout="prev, pager, next"
-            :total="totalDataCount"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-        />
-        <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
+        <!-- 页码跳转 -->
+        <div class="demo-pagination-block">
+            <div class="demonstration"></div>
+            <el-pagination
+                v-model:current-page="currentPage"
+                v-model:page-size="pageSize"
+                :page-sizes="[5, 8, 10]"
+                :small="small"
+                :disabled="disabled"
+                :background="background"
+                :pager-count="4"
+                layout="prev, pager, next"
+                :total="totalDataCount"
+                @current-change="handleCurrentChange"
+            />
+            <!-- @size-change="handleSizeChange" 暂不启用 -->
+            <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
+        </div>
     </div>
 </template>
 
 <script lang="" setup>
 import {ref, onMounted} from 'vue'
-// 引入axios
-// import axios from 'axios'
-
-// 引入fixedList组件
-import FixedList from './../FixedList/index.vue'
-
-// 引入环境变量
-// const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
-
+import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
 import {get} from './../../utils/api/index.js'
-
-// 记录一共有多少条数据
-const totalDataCount = ref(100)
+import {isMobileDevice} from '../../utils/index.js' /* 判断是手机端还是PC端 */
+const totalDataCount = ref(100) /* 记录一共有多少条数据 */
 const currentPage = ref(1)
-// 判断是手机端还是PC端
-import {isMobileDevice} from '../../utils/index.js'
-
-let pageSize
-
-if (isMobileDevice()) {
-    // 手机端
-    pageSize = ref(5)
-} else {
-    // PC端
-    pageSize = ref(15)
-}
-
+let pageSize = isMobileDevice() ? ref(5) : ref(15) /* 根据设备类型设置每页显示的条数 */
 const small = ref(false)
 const background = ref(false)
 const disabled = ref(false)
-// 用于存储分页查询来的数据
-const pageSelectData = ref(null)
+const pageSelectData = ref(null) /* 用于存储分页查询来的数据 */
 
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(async () => {
@@ -75,7 +54,7 @@ onMounted(async () => {
             pageSelectData.value.forEach(item => {
                 item.BLOG_CREATE_TIME = item.BLOG_CREATE_TIME.replace('T', ' ').replace('.000Z', '')
                 item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
-                item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行
+                // item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行 注：目前使用富文本 不再需要手动处理换行
             })
         }
 
@@ -103,7 +82,8 @@ onMounted(async () => {
     }
 })
 
-// size发生变化发生的回调
+// size发生变化发生的回调(注：考虑到页面布局 目前暂未启用)
+/*
 const handleSizeChange = async val => {
     try {
         pageSize.value = val
@@ -112,6 +92,7 @@ const handleSizeChange = async val => {
         console.error('更换页码过程发生异常')
     }
 }
+*/
 
 // 页码发生改变触发的回调
 const handleCurrentChange = async val => {
@@ -129,27 +110,4 @@ const handleCurrentChange = async val => {
 }
 </script>
 
-<style scoped>
-.demo-pagination-block + .demo-pagination-block {
-    margin-top: 10px;
-}
-.demo-pagination-block .demonstration {
-    margin-bottom: 16px;
-}
-
-.demo-pagination-block {
-    width: 430px;
-}
-.write {
-    display: flex;
-    justify-content: center;
-    font-size: large;
-}
-.my-blog {
-    border-top: 0.1px solid rgb(116, 38, 5);
-}
-
-.demo-pagination-block {
-    width: 50%;
-}
-</style>
+<style scoped></style>

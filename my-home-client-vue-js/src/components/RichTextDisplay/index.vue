@@ -1,3 +1,4 @@
+<!-- 富文本展示组件，后续会将大部分的显示工作交给此组件 -->
 <template>
     <div v-html="editorContent"></div>
 </template>

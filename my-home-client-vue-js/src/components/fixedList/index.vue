@@ -1,3 +1,4 @@
+<!-- 此组件用于渲染博客列表 -->
 <template>
     <div class="blog-list-container" :style="lightEffect">
         <div class="blog-list-content">
@@ -35,22 +36,22 @@ const row_click = row => {
     router.push({name: 'blogDetail', params: {row: JSON.stringify(row)}})
 }
 
-const updateMousePosition = event => {
-    mouseX.value = event.clientX
-    mouseY.value = event.clientY
-}
+// const updateMousePosition = event => {
+//     mouseX.value = event.clientX
+//     mouseY.value = event.clientY
+// }
 
-const lightEffect = {
-    background: `radial-gradient(circle at ${(mouseX.value / window.innerWidth) * 100}% ${
-        (mouseY.value / window.innerHeight) * 100
-    }%, #ffecd2, #fcb69f)`
-}
+// const lightEffect = {
+//     background: `radial-gradient(circle at ${(mouseX.value / window.innerWidth) * 100}% ${
+//         (mouseY.value / window.innerHeight) * 100
+//     }%, #ffecd2, #fcb69f)`
+// }
 
-window.addEventListener('mousemove', updateMousePosition)
+// window.addEventListener('mousemove', updateMousePosition)
 </script>
 
 <style scoped>
-.blog-list-container {
+/* .blog-list-container {
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -105,5 +106,5 @@ window.addEventListener('mousemove', updateMousePosition)
 
 .view-button:hover {
     background-color: #ffecd2;
-}
+} */
 </style>

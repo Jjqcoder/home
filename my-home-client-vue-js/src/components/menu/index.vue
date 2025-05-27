@@ -1,46 +1,16 @@
 <template>
     <div class="menu">
-        <!-- <router-link to="/world">
-      <span>世界</span>
-    </router-link>
-    <pre>|</pre> -->
+        <!-- 在线人数 -->
         <OnlineCount />
-        <!-- <router-link to="/blog">
-      <span>日志</span>
-    </router-link> -->
-
-        <!-- <pre>|</pre>
-    <router-link to="/english">
-      <span>英语</span>
-    </router-link> -->
-
-        <!-- <pre>|</pre> -->
-
-        <!-- <router-link to="/weather">
-      <span>天气</span>
-    </router-link> -->
-
-        <!-- <pre>|</pre> -->
-
-        <!-- <router-link to="/about">
-      <span>关于</span>
-    </router-link> -->
         <!-- 展示全部功能 -->
         <AllFunction />
     </div>
 </template>
 
-<script>
+<script setup>
 // 挂载在线人数组件
 import OnlineCount from '../OnlineCount/index.vue'
 import AllFunction from '../AllFunction/index.vue'
-
-export default {
-    components: {
-        OnlineCount,
-        AllFunction
-    }
-}
 </script>
 
 <style scoped>

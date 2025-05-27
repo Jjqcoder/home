@@ -76,25 +76,4 @@ watch(serverVersion, () => {
 })
 </script>
 
-<style>
-.version-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; 使容器占满整个视口高度 */
-    font-size: 1.5em; /* 字体变大 */
-}
-
-.version-item {
-    margin: 10px 0; /* 上下外边距，使两个版本信息之间有间隔 */
-}
-
-.version-item .label {
-    font-weight: bold; /* 标签加粗 */
-}
-
-.version-item .value {
-    color: #555; /* 值的颜色稍浅 */
-}
-</style>
+<style></style>

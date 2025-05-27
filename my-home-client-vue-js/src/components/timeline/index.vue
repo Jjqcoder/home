@@ -1,5 +1,5 @@
 <template>
-    <div class="timeline-container" :style="lightEffect">
+    <div class="timeline-container">
         <div class="timeline-content">
             <el-timeline class="timeline">
                 <el-timeline-item
@@ -102,4 +102,11 @@ const activities = [
 ]
 </script>
 
-<style scoped></style>
+<style scoped>
+.timeline-container {
+    /* 时间线居中显示开始 */
+    display: flex;
+    justify-content: center;
+    /* 时间线居中显示结束 */
+}
+</style>

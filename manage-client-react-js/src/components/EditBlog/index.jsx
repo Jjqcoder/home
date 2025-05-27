@@ -10,7 +10,7 @@ import {EditorContent, useEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import {useEffect, useState} from 'react'
 // 引入request
-import {get} from '../../utils/request.jsx'
+import {post} from '../../utils/request'
 
 const RichTextEditor = () => {
     const [editorContent, setEditorContent] = useState('<p>加载中...</p>')
@@ -64,10 +64,10 @@ const RichTextEditor = () => {
 
         try {
             setIsSubmitting(true)
-            const response = await get('/', {
+            const response = await post('/blog/insertOne', {
                 // 替换为你的实际API端点
-                title,
-                content: editorContent
+                BLOG_TITLE: title,
+                BLOG_CONTENT: editorContent
             })
 
             console.log('提交成功:', response)

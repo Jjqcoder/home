@@ -4,4 +4,12 @@
  * 描述: blog控制层
  */
 
-module.exports = class BlogController {}
+const service = require('../service/blogService')
+
+module.exports = class BlogController {
+    static async insertOne(req, res) {
+        console.log('👻', req.body)
+
+        res.send(await service.insertOne(req, res))
+    }
+}

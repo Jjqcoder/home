@@ -23,19 +23,9 @@ app.use(
 
 app.use(express.json()) // 解析JSON请求体
 
-/**
- * 发送请求的路由
- */
-const service = require('./service/index.js') // 导入服务层入口
-app.get('/', async (req, res) => {
-    console.log('Received a request at /')
-
-    res.send('Hello World!')
-
-    // let result = await service.blogService.insertBlog()
-    // console.log(result)
-})
-
+/* 路由挂载开始 */
+app.use('/blog', require('./routes/index.js')) // 挂载博客相关路由
+/* 路由挂载结束 */
 app.listen(port, () => {
     console.log(`server runnning at http://localhost:8081`)
 })

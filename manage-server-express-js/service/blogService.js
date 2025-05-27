@@ -7,12 +7,12 @@
 const prisma = require('../lib/prisma/index.js')
 
 module.exports = class BlogService {
-    static async insertBlog() {
+    static async insertOne(req, res) {
         // 插入一条blog数据
         await prisma.BLOG.create({
             data: {
-                BLOG_TITLE: '测试！！！',
-                BLOG_CONTENT: '测试'
+                BLOG_TITLE: req.body.BLOG_TITLE,
+                BLOG_CONTENT: req.body.BLOG_CONTENT
             }
         })
     }

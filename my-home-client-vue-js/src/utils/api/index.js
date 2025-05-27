@@ -7,15 +7,21 @@
 // 引入 axios
 import axios from 'axios'
 
+/* 常量的定义开始 */
+const BASE_URL = import.meta.env.VITE_IN_USE_BASE_URL /* 基础 URL */
+const TIMEOUT = 10000 /* 请求超时时间，单位毫秒 */
+const MAX_RETRIES = 3 /* 最大重试次数 */
+/* 常量的定义结束 */
+
 // 创建 axios 实例
 const http = axios.create({
-    baseURL: `${import.meta.env.VITE_IN_USE_BASE_URL}`,
-    timeout: 10000
+    baseURL: BASE_URL,
+    timeout: TIMEOUT
 })
 
 // 带重试的请求函数 (内部使用)
 async function requestWithRetry(requestFn) {
-    const maxRetries = 3
+    const maxRetries = MAX_RETRIES
     let lastError
 
     for (let i = 0; i < maxRetries; i++) {

@@ -9,54 +9,42 @@ import axios from 'axios'
 
 // 创建 axios 实例
 const http = axios.create({
-    baseURL: `${import.meta.env.VITE_IN_USE_BASE_URL}`, // 设置请求的基础路径
-    timeout: 10000 // 设置超时时间
+    baseURL: `${import.meta.env.VITE_IN_USE_BASE_URL}`,
+    timeout: 10000
 })
 
-// 请求拦截器
-// http.interceptors.request.use(
-//     (config) => {
-//         // 在这里可以对请求头等进行统一处理
-//         // 例如添加 token
-//         // config.headers['Authorization'] = 'Bearer your-token';
-//         return config;
-//     },
-//     (error) => {
-//         return Promise.reject(error);
-//     }
-// );
+// 带重试的请求函数 (内部使用)
+async function requestWithRetry(requestFn) {
+    const maxRetries = 3
+    let lastError
 
-// 响应拦截器
-// http.interceptors.response.use(
-//     (response) => {
-//         // 对响应数据做点什么
-//         return response.data; // 假设后端返回的响应数据是 response.data
-//     },
-//     (error) => {
-//         // 对响应错误做点什么
-//         console.error('请求失败:', error);
-//         return Promise.reject(error);
-//     }
-// );
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            console.log(`最大请求次数为${maxRetries}，正在进行第${i + 1}次请求...`)
+
+            const response = await requestFn()
+            return response
+        } catch (error) {
+            lastError = error
+            // 只在网络错误或5xx错误时重试
+            if (!error.response || error.response.status >= 500) {
+                await new Promise(resolve => setTimeout(resolve, 1000)) // 等待1秒后重试
+                continue
+            }
+            throw error // 如果其他错误则直接抛出，不再重试
+        }
+    }
+    throw lastError
+}
 
 // 封装 GET 请求
 async function get(url, params = {}) {
-    try {
-        const response = await http.get(url, {params})
-        return response
-    } catch (error) {
-        throw error
-    }
+    return requestWithRetry(() => http.get(url, {params}))
 }
 
 // 封装 POST 请求
 async function post(url, data = {}) {
-    try {
-        const response = await http.post(url, data)
-        return response
-    } catch (error) {
-        throw error
-    }
+    return requestWithRetry(() => http.post(url, data))
 }
 
 // 导出方法

@@ -5,7 +5,7 @@ FROM node:18-alpine
 WORKDIR /usr/src/app
 
 # 复制必要的文件
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml ecosystem.config.js ./
 
 # 安装依赖（生产环境）
 RUN npm install -g pnpm && pnpm install --production
@@ -17,4 +17,4 @@ COPY dist/ ./dist/
 EXPOSE 8080
 
 # 启动命令
-CMD ["node", "dist/app.js"]
+CMD ["pnpm", "prod"]

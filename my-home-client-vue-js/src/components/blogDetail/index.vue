@@ -1,5 +1,5 @@
 <template>
-    <RichTextDisplay :blog="blog" />
+    <RichTextDisplay :DATA_TOBE_DISPLAY="DATA_TOBE_DISPLAY" />
 </template>
 
 <script setup>
@@ -10,7 +10,7 @@ import {useRoute} from 'vue-router'
 const route = useRoute()
 
 // 获取动态参数 row
-const blog = route.params.row
+const DATA_TOBE_DISPLAY = route.params.row
 /*
 console.log(blog)
 获取到的blog数据格式如下：

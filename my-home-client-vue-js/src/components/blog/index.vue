@@ -129,10 +129,11 @@ const handleSizeChange = async val => {
 // 页码发生改变触发的回调
 const handleCurrentChange = async val => {
     try {
-        // 当页码发生变化的时候，触发分页查询
-        const res = await get(`/blog/getBlogByPage`, {
+
+        let res = await get(`/blog/getBlogByPageAndTag`, {
             current: currentPage.value,
-            size: pageSize.value
+            size: pageSize.value,
+            tags: selectedTags.value.map(tag => tag.name).join('|')
         })
 
         pageSelectData.value = res.data.data.records

@@ -55,7 +55,14 @@ module.exports = class blogService {
 
             // 并行执行两个异步任务
             const [total, records] = await Promise.all([
-                prisma.BLOG.count(), // 查询总记录数
+                // prisma.BLOG.count(), // 查询指定tag的总记录数
+                prisma.BLOG.count({
+                    where: {
+                        BLOG_TAGS: {
+                            contains: tags // 查询BLOG_TAGS字段包含tags的记录数
+                        }
+                    }
+                }), // 查询总记录数
                 prisma.BLOG.findMany({
                     skip,
                     take: size,

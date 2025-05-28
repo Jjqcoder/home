@@ -46,16 +46,19 @@ watch(
     [() => clientVersion, serverVersion], // 监听的属性
     ([clientVer, serverVer]) => {
         displayData.value = {
-            CONTENT: `<div class="version-info">
-            <div class="version-item">
-                <span class="label">前端版本：</span>
-                <span class="value">${clientVer}</span>
-            </div>
-            <div class="version-item">
-                <span class="label">后端版本：</span>
-                <span class="value">${serverVer}</span>
-            </div>
-        </div>`
+            CONTENT: `
+            <div style="text-align: center;">
+                <div style="display: inline-block; font-family: Arial, sans-serif; background: #f5f5f5; padding: 12px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 0 auto;">
+                    <div style="margin-bottom: 8px; display: flex; justify-content: space-between;">
+                        <span style="font-weight: bold; color: #555;">前端版本：</span>
+                        <span style="color: #2196F3; font-weight: 500;">${clientVer}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-weight: bold; color: #555;">后端版本：</span>
+                        <span style="color: #4CAF50; font-weight: 500;">${serverVer}</span>
+                    </div>
+                </div>
+            </div>`
         }
     },
     {immediate: true} // 立即执行一次

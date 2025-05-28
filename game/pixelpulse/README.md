@@ -19,7 +19,7 @@ sudo docker pull node:18-alpine
 2. 创建容器并运行
 
 ```sh
-sudo docker run -d --restart=always --name pixelpulse -p 8082:3000 -v /myProject/pixelpulse:/usr/src/app -w /usr/src/app node:18-alpine sh -c "npm install && npm run dev"
+sudo docker run -d -e TZ=Asia/Shanghai --restart=always --name pixelpulse -p 8082:3000 -v /myProject/pixelpulse:/usr/src/app -w /usr/src/app node:18-alpine sh -c "npm install && npm run dev"
 ```
 
 3. 将文件上传到`/myProject/pixelpulse`

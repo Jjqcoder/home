@@ -17,6 +17,6 @@ CMD ["nginx", "-g", "daemon off;"]
 # pnpm build 打包项目,再将项目上传到服务器
 # 权限记得设置chmod -R 777 ./*
 # 构建镜像(注意 构建镜像后再将打包后的文件复制到myNginxConf是不会生效的!需要在构建镜像前复制)：docker build -t my-home-client-vue-js-image .
-# 运行容器：docker run -d --name my-home-client-vue-js-container --restart=always -p 80:80 -p 443:443 my-home-client-vue-js-image
+# 运行容器：docker run -d -e TZ=Asia/Shanghai --name my-home-client-vue-js-container --restart=always -p 80:80 -p 443:443 my-home-client-vue-js-image
 
 # 删除悬空镜像 docker rmi -f $(docker images -f "dangling=true" -q)

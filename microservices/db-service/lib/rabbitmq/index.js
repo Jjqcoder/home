@@ -26,7 +26,7 @@ class RabbitMQResponder {
         this.options = {
             queueName: 'rpc_queue', // 默认队列名称
             requestHandler: request => `响应: ${request}`, // 默认请求处理函数
-            connectionCheckInterval: 1000, // 新增：连接检查间隔（毫秒）
+            connectionCheckInterval: 15000, // 新增：连接检查间隔（毫秒）
             ...options
         }
 

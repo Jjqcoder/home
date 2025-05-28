@@ -32,3 +32,4 @@ sudo docker run -d \
 ```
 
 3. 将文件上传到`/myProject/my-home-server-express-js`即可
+4. 注：更新项目时，将文件上传到指定文件夹后重启容器即可。

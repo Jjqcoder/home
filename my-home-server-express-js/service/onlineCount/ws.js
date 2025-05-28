@@ -75,8 +75,8 @@ module.exports = (ws, req) => {
         })
 
         setInterval(() => {
-            console.log('当前在线人数' + onlineUsers.size)
-        }, 1000)
+            console.log(`当前在线人数【${onlineUsers.size}】，当前时间: 【${new Date().toLocaleString()}】`)
+        }, 10000) // 单位毫秒，答应当前在线人数
     } catch (error) {
         console.error('WebSocket连接处理时发生错误:', error)
     }

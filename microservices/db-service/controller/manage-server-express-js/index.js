@@ -21,6 +21,21 @@ module.exports = class controller {
             ) /* 注：Error 对象默认没有定义 toJSON() 方法，所以 JSON.stringify(error) 会返回 {}（空对象），导致无法看到错误信息。此处使用String(错误对象)来查看错误信息 */
         }
     }
+    // 分页+标签获取日志
+    static async getBlogByPageAndTag(req) {
+        console.log('我被调用了,demo1')
+
+        try {
+            return R.ok(200, '获取日志成功', await service.blogService.getBlogByPageAndTag(req))
+        } catch (error) {
+            return R.err(
+                500,
+                '获取日志失败',
+                String(error)
+            ) /* 注：Error 对象默认没有定义 toJSON() 方法，所以 JSON.stringify(error) 会返回 {}（空对象），导致无法看到错误信息。此处使用String(错误对象)来查看错误信息 */
+        }
+    }
+
     static async getSentenceRandomOne(req) {
         try {
             return R.ok(200, '获取句子成功', await service.englishService.getSentenceRandomOne(req))

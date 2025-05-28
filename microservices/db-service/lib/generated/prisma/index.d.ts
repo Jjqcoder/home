@@ -1054,6 +1054,7 @@ export namespace Prisma {
     BLOG_TITLE: string | null
     BLOG_CONTENT: string | null
     IS_DELETE: string | null
+    BLOG_TAGS: string | null
   }
 
   export type BLOGMaxAggregateOutputType = {
@@ -1063,6 +1064,7 @@ export namespace Prisma {
     BLOG_TITLE: string | null
     BLOG_CONTENT: string | null
     IS_DELETE: string | null
+    BLOG_TAGS: string | null
   }
 
   export type BLOGCountAggregateOutputType = {
@@ -1072,6 +1074,7 @@ export namespace Prisma {
     BLOG_TITLE: number
     BLOG_CONTENT: number
     IS_DELETE: number
+    BLOG_TAGS: number
     _all: number
   }
 
@@ -1091,6 +1094,7 @@ export namespace Prisma {
     BLOG_TITLE?: true
     BLOG_CONTENT?: true
     IS_DELETE?: true
+    BLOG_TAGS?: true
   }
 
   export type BLOGMaxAggregateInputType = {
@@ -1100,6 +1104,7 @@ export namespace Prisma {
     BLOG_TITLE?: true
     BLOG_CONTENT?: true
     IS_DELETE?: true
+    BLOG_TAGS?: true
   }
 
   export type BLOGCountAggregateInputType = {
@@ -1109,6 +1114,7 @@ export namespace Prisma {
     BLOG_TITLE?: true
     BLOG_CONTENT?: true
     IS_DELETE?: true
+    BLOG_TAGS?: true
     _all?: true
   }
 
@@ -1205,6 +1211,7 @@ export namespace Prisma {
     BLOG_TITLE: string | null
     BLOG_CONTENT: string | null
     IS_DELETE: string | null
+    BLOG_TAGS: string | null
     _count: BLOGCountAggregateOutputType | null
     _avg: BLOGAvgAggregateOutputType | null
     _sum: BLOGSumAggregateOutputType | null
@@ -1233,6 +1240,7 @@ export namespace Prisma {
     BLOG_TITLE?: boolean
     BLOG_CONTENT?: boolean
     IS_DELETE?: boolean
+    BLOG_TAGS?: boolean
   }, ExtArgs["result"]["bLOG"]>
 
 
@@ -1244,9 +1252,10 @@ export namespace Prisma {
     BLOG_TITLE?: boolean
     BLOG_CONTENT?: boolean
     IS_DELETE?: boolean
+    BLOG_TAGS?: boolean
   }
 
-  export type BLOGOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "BLOG_CREATE_TIME" | "BLOG_UPDATE_TIME" | "BLOG_TITLE" | "BLOG_CONTENT" | "IS_DELETE", ExtArgs["result"]["bLOG"]>
+  export type BLOGOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID" | "BLOG_CREATE_TIME" | "BLOG_UPDATE_TIME" | "BLOG_TITLE" | "BLOG_CONTENT" | "IS_DELETE" | "BLOG_TAGS", ExtArgs["result"]["bLOG"]>
 
   export type $BLOGPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BLOG"
@@ -1258,6 +1267,7 @@ export namespace Prisma {
       BLOG_TITLE: string | null
       BLOG_CONTENT: string | null
       IS_DELETE: string | null
+      BLOG_TAGS: string | null
     }, ExtArgs["result"]["bLOG"]>
     composites: {}
   }
@@ -1633,6 +1643,7 @@ export namespace Prisma {
     readonly BLOG_TITLE: FieldRef<"BLOG", 'String'>
     readonly BLOG_CONTENT: FieldRef<"BLOG", 'String'>
     readonly IS_DELETE: FieldRef<"BLOG", 'String'>
+    readonly BLOG_TAGS: FieldRef<"BLOG", 'String'>
   }
     
 
@@ -3773,7 +3784,8 @@ export namespace Prisma {
     BLOG_UPDATE_TIME: 'BLOG_UPDATE_TIME',
     BLOG_TITLE: 'BLOG_TITLE',
     BLOG_CONTENT: 'BLOG_CONTENT',
-    IS_DELETE: 'IS_DELETE'
+    IS_DELETE: 'IS_DELETE',
+    BLOG_TAGS: 'BLOG_TAGS'
   };
 
   export type BLOGScalarFieldEnum = (typeof BLOGScalarFieldEnum)[keyof typeof BLOGScalarFieldEnum]
@@ -3817,7 +3829,8 @@ export namespace Prisma {
   export const BLOGOrderByRelevanceFieldEnum: {
     BLOG_TITLE: 'BLOG_TITLE',
     BLOG_CONTENT: 'BLOG_CONTENT',
-    IS_DELETE: 'IS_DELETE'
+    IS_DELETE: 'IS_DELETE',
+    BLOG_TAGS: 'BLOG_TAGS'
   };
 
   export type BLOGOrderByRelevanceFieldEnum = (typeof BLOGOrderByRelevanceFieldEnum)[keyof typeof BLOGOrderByRelevanceFieldEnum]
@@ -3883,6 +3896,7 @@ export namespace Prisma {
     BLOG_TITLE?: StringNullableFilter<"BLOG"> | string | null
     BLOG_CONTENT?: StringNullableFilter<"BLOG"> | string | null
     IS_DELETE?: StringNullableFilter<"BLOG"> | string | null
+    BLOG_TAGS?: StringNullableFilter<"BLOG"> | string | null
   }
 
   export type BLOGOrderByWithRelationInput = {
@@ -3892,6 +3906,7 @@ export namespace Prisma {
     BLOG_TITLE?: SortOrderInput | SortOrder
     BLOG_CONTENT?: SortOrderInput | SortOrder
     IS_DELETE?: SortOrderInput | SortOrder
+    BLOG_TAGS?: SortOrderInput | SortOrder
     _relevance?: BLOGOrderByRelevanceInput
   }
 
@@ -3905,6 +3920,7 @@ export namespace Prisma {
     BLOG_TITLE?: StringNullableFilter<"BLOG"> | string | null
     BLOG_CONTENT?: StringNullableFilter<"BLOG"> | string | null
     IS_DELETE?: StringNullableFilter<"BLOG"> | string | null
+    BLOG_TAGS?: StringNullableFilter<"BLOG"> | string | null
   }, "ID">
 
   export type BLOGOrderByWithAggregationInput = {
@@ -3914,6 +3930,7 @@ export namespace Prisma {
     BLOG_TITLE?: SortOrderInput | SortOrder
     BLOG_CONTENT?: SortOrderInput | SortOrder
     IS_DELETE?: SortOrderInput | SortOrder
+    BLOG_TAGS?: SortOrderInput | SortOrder
     _count?: BLOGCountOrderByAggregateInput
     _avg?: BLOGAvgOrderByAggregateInput
     _max?: BLOGMaxOrderByAggregateInput
@@ -3931,6 +3948,7 @@ export namespace Prisma {
     BLOG_TITLE?: StringNullableWithAggregatesFilter<"BLOG"> | string | null
     BLOG_CONTENT?: StringNullableWithAggregatesFilter<"BLOG"> | string | null
     IS_DELETE?: StringNullableWithAggregatesFilter<"BLOG"> | string | null
+    BLOG_TAGS?: StringNullableWithAggregatesFilter<"BLOG"> | string | null
   }
 
   export type ENGLISHWhereInput = {
@@ -4034,6 +4052,7 @@ export namespace Prisma {
     BLOG_TITLE?: string | null
     BLOG_CONTENT?: string | null
     IS_DELETE?: string | null
+    BLOG_TAGS?: string | null
   }
 
   export type BLOGUncheckedCreateInput = {
@@ -4043,6 +4062,7 @@ export namespace Prisma {
     BLOG_TITLE?: string | null
     BLOG_CONTENT?: string | null
     IS_DELETE?: string | null
+    BLOG_TAGS?: string | null
   }
 
   export type BLOGUpdateInput = {
@@ -4051,6 +4071,7 @@ export namespace Prisma {
     BLOG_TITLE?: NullableStringFieldUpdateOperationsInput | string | null
     BLOG_CONTENT?: NullableStringFieldUpdateOperationsInput | string | null
     IS_DELETE?: NullableStringFieldUpdateOperationsInput | string | null
+    BLOG_TAGS?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BLOGUncheckedUpdateInput = {
@@ -4060,6 +4081,7 @@ export namespace Prisma {
     BLOG_TITLE?: NullableStringFieldUpdateOperationsInput | string | null
     BLOG_CONTENT?: NullableStringFieldUpdateOperationsInput | string | null
     IS_DELETE?: NullableStringFieldUpdateOperationsInput | string | null
+    BLOG_TAGS?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BLOGCreateManyInput = {
@@ -4069,6 +4091,7 @@ export namespace Prisma {
     BLOG_TITLE?: string | null
     BLOG_CONTENT?: string | null
     IS_DELETE?: string | null
+    BLOG_TAGS?: string | null
   }
 
   export type BLOGUpdateManyMutationInput = {
@@ -4077,6 +4100,7 @@ export namespace Prisma {
     BLOG_TITLE?: NullableStringFieldUpdateOperationsInput | string | null
     BLOG_CONTENT?: NullableStringFieldUpdateOperationsInput | string | null
     IS_DELETE?: NullableStringFieldUpdateOperationsInput | string | null
+    BLOG_TAGS?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BLOGUncheckedUpdateManyInput = {
@@ -4086,6 +4110,7 @@ export namespace Prisma {
     BLOG_TITLE?: NullableStringFieldUpdateOperationsInput | string | null
     BLOG_CONTENT?: NullableStringFieldUpdateOperationsInput | string | null
     IS_DELETE?: NullableStringFieldUpdateOperationsInput | string | null
+    BLOG_TAGS?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ENGLISHCreateInput = {
@@ -4228,6 +4253,7 @@ export namespace Prisma {
     BLOG_TITLE?: SortOrder
     BLOG_CONTENT?: SortOrder
     IS_DELETE?: SortOrder
+    BLOG_TAGS?: SortOrder
   }
 
   export type BLOGAvgOrderByAggregateInput = {
@@ -4241,6 +4267,7 @@ export namespace Prisma {
     BLOG_TITLE?: SortOrder
     BLOG_CONTENT?: SortOrder
     IS_DELETE?: SortOrder
+    BLOG_TAGS?: SortOrder
   }
 
   export type BLOGMinOrderByAggregateInput = {
@@ -4250,6 +4277,7 @@ export namespace Prisma {
     BLOG_TITLE?: SortOrder
     BLOG_CONTENT?: SortOrder
     IS_DELETE?: SortOrder
+    BLOG_TAGS?: SortOrder
   }
 
   export type BLOGSumOrderByAggregateInput = {

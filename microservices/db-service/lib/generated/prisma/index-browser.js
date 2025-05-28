@@ -126,7 +126,8 @@ exports.Prisma.BLOGScalarFieldEnum = {
   BLOG_UPDATE_TIME: 'BLOG_UPDATE_TIME',
   BLOG_TITLE: 'BLOG_TITLE',
   BLOG_CONTENT: 'BLOG_CONTENT',
-  IS_DELETE: 'IS_DELETE'
+  IS_DELETE: 'IS_DELETE',
+  BLOG_TAGS: 'BLOG_TAGS'
 };
 
 exports.Prisma.ENGLISHScalarFieldEnum = {
@@ -155,7 +156,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.BLOGOrderByRelevanceFieldEnum = {
   BLOG_TITLE: 'BLOG_TITLE',
   BLOG_CONTENT: 'BLOG_CONTENT',
-  IS_DELETE: 'IS_DELETE'
+  IS_DELETE: 'IS_DELETE',
+  BLOG_TAGS: 'BLOG_TAGS'
 };
 
 exports.Prisma.ENGLISHOrderByRelevanceFieldEnum = {

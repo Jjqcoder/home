@@ -16,6 +16,7 @@ model BLOG {
   BLOG_TITLE       String?   @db.VarChar(255)
   BLOG_CONTENT     String?   @db.Text
   IS_DELETE        String?   @db.VarChar(255)
+  BLOG_TAGS        String?   @db.VarChar(255)
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments

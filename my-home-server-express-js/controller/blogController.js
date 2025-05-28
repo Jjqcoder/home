@@ -50,4 +50,12 @@ module.exports = class BlogController {
             return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 博客信息获取失败 >>> 【${String(error)}】`, error))
         }
     }
+
+    static async getBlogByPageAndTag(req, res) {
+        console.log('👆')
+
+        console.log('controller >>> blogController.js >>> getBlogByPageAndTag >>> 博客信息获取开始')
+        res.send(R.ok(200, '根据标签博客信息成功', await service.rpcBlogService.getBlogByPageAndTag(req, res))) /* 注：改为rpc调用 */
+        return await service.rpcBlogService.getBlogByPageAndTag(req, res)
+    }
 }

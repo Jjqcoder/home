@@ -29,4 +29,26 @@ module.exports = class BlogService {
             throw error
         }
     }
+
+    static async getBlogByPageAndTag(req, res) {
+        console.log('👆')
+
+        try {
+            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
+                route: '/getBlogByPageAndTag',
+                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+            })
+            res = JSON.parse(res)
+            if (res.code === 200) {
+                return res.data
+            } else {
+                throw JSON.stringify(res)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    catch(error) {
+        throw error
+    }
 }

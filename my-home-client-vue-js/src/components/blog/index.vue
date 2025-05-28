@@ -135,13 +135,59 @@ const allTags = ref([
 ])
 
 // 用于存储已选择的标签 ID
-const selectedTagIds = ref([2, 4]) // 初始时选中 JavaScript 和 CSS
+const selectedTagIds = ref([]) // 初始时选中 JavaScript 和 CSS
 
 // 添加 watch 来监听 selectedTagIds 的变化
 watch(
     selectedTagIds,
-    newVal => {
+    async newVal => {
         console.log('当前选中的标签:', selectedTags.value.map(tag => tag.name).join(', '))
+
+        /* 重新获取数据开始 */
+        try {
+            let res = await get(`/blog/getBlogByPageAndTag`, {
+                current: currentPage.value,
+                size: pageSize.value,
+                tags: selectedTags.value.map(tag => tag.name).join('|')
+            })
+            // 赋值博客的总条数
+            totalDataCount.value = res.data.data.total
+            // 赋值分页查询到的数据
+            pageSelectData.value = res.data.data.records
+
+            // 处理获取到的日期信息显示、换行
+            // 2025-03-09T15:01:38.000Z ==> 2025-03-09 15:01:38
+            if (pageSelectData.value) {
+                pageSelectData.value.forEach(item => {
+                    item.BLOG_CREATE_TIME = item.BLOG_CREATE_TIME.replace('T', ' ').replace('.000Z', '')
+                    item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
+                    // item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行 注：目前使用富文本 不再需要手动处理换行
+                })
+            }
+
+            // ================弹窗开始================
+            // 消息提示
+            if (res.data.code === 200) {
+                ElMessage({
+                    message: `${res.data.msg}`,
+                    type: 'success' // success, warning, info, error
+                })
+            } else {
+                ElMessage({
+                    message: `${res.data.msg}`,
+                    type: 'error' // success, warning, info, error
+                })
+            }
+            // ================弹窗结束================
+        } catch (error) {
+            // ================弹窗开始================
+            ElMessage({
+                message: `error_: ${error}`,
+                type: 'error' // success, warning, info, error
+            })
+            // ================弹窗结束================
+        }
+        /* 重新获取数据结束 */
     },
     {deep: true}
 )

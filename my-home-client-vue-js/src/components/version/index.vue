@@ -1,79 +1,66 @@
 <template>
     <div>
-        <DataDisplay title="当前版本信息" subtitle="" :content="htmlContent" />
+        <RichTextDisplay :DATA_TOBE_DISPLAY="displayData" />
     </div>
 </template>
 
 <script setup>
 import {ref, watch} from 'vue'
-import DataDisplay from '../../components/DataDisplay/index.vue'
 import {version as clientVersion} from './../../../package.json'
 import {get} from './../../utils/api/index.js'
+import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
+import {ElMessage} from 'element-plus'
 
-// 获取前端版本信息
-let serverVersion = ref(null)
+const serverVersion = ref('获取中...')
+const displayData = ref({
+    CONTENT: ''
+})
 
-let getServerVersion = async () => {
+const getServerVersion = async () => {
     try {
         const res = await get('/version/getVersion')
 
-        serverVersion.value = res.data.data
-        // Proxy(Object) {data: '1.0.1', status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
-        // ================弹窗开始================
         if (res.data.code === 200) {
+            serverVersion.value = res.data.data
             ElMessage({
-                message: `${res.data.msg}`,
-                type: 'success' // success, warning, info, error
+                message: res.data.msg,
+                type: 'success'
             })
         } else {
             ElMessage({
-                message: `${res.data.msg}`,
-                type: 'error' // success, warning, info, error
+                message: res.data.msg,
+                type: 'error'
             })
         }
-        // ================弹窗结束================
     } catch (error) {
         serverVersion.value = '后端版本获取失败'
-        // ================弹窗开始================
         ElMessage({
-            message: `${error}`,
-            type: 'error' // success, warning, info, error
+            message: error.message || '获取版本信息失败',
+            type: 'error'
         })
-        // ================弹窗结束================
     }
 }
 
-getServerVersion()
-
-// 初始化需要渲染的内容
-let htmlContent = ref(`
-    <div class="version-info">
-        <div class="version-item">
-            <span class="label">前端版本：</span>
-            <span class="value">${clientVersion}</span>
-        </div>
-        <div class="version-item">
-            <span class="label">后端版本：</span>
-            <span class="value">${serverVersion.value}</span>
-        </div>
-    </div>
-`)
-
-// 使用watch 确保渲染的是最新的版本信息（避免网络延迟 导致渲染错误）
-watch(serverVersion, () => {
-    htmlContent.value = `
-        <div class="version-info">
+// 使用watch来监听版本变化
+watch(
+    [() => clientVersion, serverVersion], // 监听的属性
+    ([clientVer, serverVer]) => {
+        displayData.value = {
+            CONTENT: `<div class="version-info">
             <div class="version-item">
                 <span class="label">前端版本：</span>
-                <span class="value">${clientVersion}</span>
+                <span class="value">${clientVer}</span>
             </div>
             <div class="version-item">
                 <span class="label">后端版本：</span>
-                <span class="value">${serverVersion.value}</span>
+                <span class="value">${serverVer}</span>
             </div>
-        </div>
-    `
-})
-</script>
+        </div>`
+        }
+    },
+    {immediate: true} // 立即执行一次
+)
 
-<style></style>
+// 初始化获取版本信息
+getServerVersion()
+</script>

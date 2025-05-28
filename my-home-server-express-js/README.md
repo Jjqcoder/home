@@ -18,7 +18,7 @@ sudo docker pull node:18-alpine
 2. 创建容器并运行
 
 ```sh
-sudo docker run -d -e TZ=Asia/Shanghai --restart=always --name my-home-server-express-js -p 8080:8080 -v /myProject/my-home-server-express-js:/usr/src/app -w /usr/src/app node:18-alpine sh -c "npm install && npm run prod"
+sudo docker run -d --log-opt max-size=10m --log-opt max-file=3 -e TZ=Asia/Shanghai --restart=always --name my-home-server-express-js -p 8080:8080 -v /myProject/my-home-server-express-js:/usr/src/app -w /usr/src/app node:18-alpine sh -c "npm install && npm run prod"
 ```
 
 3. 将文件上传到`/myProject/my-home-server-express-js`即可

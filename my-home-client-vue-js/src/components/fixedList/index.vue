@@ -39,7 +39,9 @@ const row_click = row => {
 
 <style scoped>
 .blog-list-container {
-    border: 3px solid #f0f0f0;
-    border-radius: 8px;
+    border: 3px dashed #cccccc;
+    border-radius: 3px;
+    margin: 3px;
+    padding: 3px;
 }
 </style>

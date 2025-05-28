@@ -1,8 +1,21 @@
 <template>
     <div>
-        <!-- 渲染全部的文章列表 -->
+        <!-- 标签选择组件开始 -->
+        <div class="tag-selector-container">
+            <h1>标签选择器示例</h1>
+            <TagSelector :tags="allTags" v-model="selectedTagIds" />
+            <p>已选择的标签：</p>
+            <ul>
+                <li v-for="tag in selectedTags" :key="tag.id">
+                    {{ tag.name }}
+                </li>
+            </ul>
+        </div>
+        <!-- 标签选择组件结束 -->
+        <!-- 渲染全部的文章列表开始 -->
         <FixedList class="my-blog" :pageSelectData="pageSelectData"></FixedList>
-        <!-- 页码跳转 -->
+        <!-- 渲染全部的文章列表结束 -->
+        <!-- 页码跳转开始 -->
         <div class="demo-pagination-block">
             <div class="demonstration"></div>
             <el-pagination
@@ -20,11 +33,13 @@
             <!-- @size-change="handleSizeChange" 暂不启用 -->
             <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
         </div>
+        <!-- 页码跳转开始 -->
     </div>
 </template>
 
 <script lang="" setup>
-import {ref, onMounted} from 'vue'
+import TagSelector from '../TagSelector/index.vue' /* 引入标签选择组件 */
+import {ref, onMounted, computed, watch} from 'vue'
 import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
 import {get} from './../../utils/api/index.js'
 import {isMobileDevice} from '../../utils/index.js' /* 判断是手机端还是PC端 */
@@ -108,6 +123,41 @@ const handleCurrentChange = async val => {
         console.error('更换页码过程发生异常', error)
     }
 }
+
+/* ===================================标签选择相关的内容开始=================================== */
+// 模拟从后端获取的全部标签数据
+const allTags = ref([
+    {id: 1, name: 'Vue.js'},
+    {id: 2, name: 'JavaScript'},
+    {id: 3, name: 'HTML'},
+    {id: 4, name: 'CSS'},
+    {id: 5, name: 'Python'}
+])
+
+// 用于存储已选择的标签 ID
+const selectedTagIds = ref([2, 4]) // 初始时选中 JavaScript 和 CSS
+
+// 添加 watch 来监听 selectedTagIds 的变化
+watch(
+    selectedTagIds,
+    newVal => {
+        console.log('当前选中的标签:', selectedTags.value.map(tag => tag.name).join(', '))
+    },
+    {deep: true}
+)
+
+// 根据已选择的标签 ID 计算出已选择的标签对象
+const selectedTags = computed(() => allTags.value.filter(tag => selectedTagIds.value.includes(tag.id)))
+/* ===================================标签选择相关的内容结束=================================== */
 </script>
 
-<style scoped></style>
+<style scoped>
+/* 标签选择器样式开始 */
+.tag-selector-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+/* 标签选择器样式结束 */
+</style>

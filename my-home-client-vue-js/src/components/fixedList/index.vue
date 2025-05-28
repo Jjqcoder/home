@@ -15,7 +15,7 @@
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="100">
+            <el-table-column label="操作" width="100" fixed="right">
                 <template v-slot="scope">
                     <el-button @click="row_click(scope.row)" size="small">查看</el-button>
                 </template>

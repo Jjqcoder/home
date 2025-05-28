@@ -50,6 +50,7 @@ const small = ref(false)
 const background = ref(false)
 const disabled = ref(false)
 const pageSelectData = ref(null) /* 用于存储分页查询来的数据 */
+const allBlogType = ref([]) /* 存储博客全部的Tag */
 
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(async () => {
@@ -58,6 +59,22 @@ onMounted(async () => {
             current: currentPage.value,
             size: pageSize.value
         })
+        console.log('res', res)
+        /* 存全部的blog tag开始 */
+        res.data.data.records.forEach(item => {
+            console.log('item.BLOG_TAGS', item.BLOG_TAGS)
+
+            if (item.BLOG_TAGS && item.BLOG_TAGS.trim() !== '') {
+                // 将标签字符串转换为数组
+                const tagsArray = item.BLOG_TAGS.split('|').map(tag => tag.trim())
+                // 合并到 allBlogType 中，去重
+                allBlogType.value = [...new Set([...allBlogType.value, ...tagsArray])]
+            }
+        })
+        console.log('遍历完毕', allBlogType.value)
+
+        /* 存全部的blog tag结束 */
+
         // 赋值博客的总条数
         totalDataCount.value = res.data.data.total
         // 赋值分页查询到的数据
@@ -126,13 +143,26 @@ const handleCurrentChange = async val => {
 
 /* ===================================标签选择相关的内容开始=================================== */
 // 模拟从后端获取的全部标签数据
-const allTags = ref([
-    {id: 1, name: 'Vue.js'},
-    {id: 2, name: 'JavaScript'},
-    {id: 3, name: 'HTML'},
-    {id: 4, name: 'CSS'},
-    {id: 5, name: 'Python'}
-])
+// const allTags = ref([
+//     {id: 1, name: 'Vue.js'},
+//     {id: 2, name: 'JavaScript'},
+//     {id: 3, name: 'HTML'},
+//     {id: 4, name: 'CSS'},
+//     {id: 5, name: 'Python'}
+// ])
+const allTags = ref([]) // 用于存储从后端获取的全部标签数据
+// 将allBlogType中的标签转换为对象数组
+setInterval(() => {
+    console.log('❗️allBlogType.value', allBlogType.value)
+    console.log('❗️allTags.value', allTags.value)
+}, 1000)
+
+allTags.value = allBlogType.value.map((tag, index) => ({
+    id: index + 1, // 使用索引作为 ID
+    name: tag
+}))
+
+console.log(allTags.value, 'allTags.value')
 
 // 用于存储已选择的标签 ID
 const selectedTagIds = ref([]) // 初始时选中 JavaScript 和 CSS
@@ -192,8 +222,22 @@ watch(
     {deep: true}
 )
 
-// 根据已选择的标签 ID 计算出已选择的标签对象
-const selectedTags = computed(() => allTags.value.filter(tag => selectedTagIds.value.includes(tag.id)))
+// 计算已选择的标签
+const selectedTags = computed(() => {
+    return allTags.value.filter(tag => selectedTagIds.value.includes(tag.id))
+})
+
+// 监听 allBlogType 的变化，更新 allTags
+watch(
+    allBlogType,
+    () => {
+        allTags.value = allBlogType.value.map((tag, index) => ({
+            id: index + 1, // 使用索引作为 ID
+            name: tag
+        }))
+    },
+    {immediate: true}
+)
 /* ===================================标签选择相关的内容结束=================================== */
 </script>
 

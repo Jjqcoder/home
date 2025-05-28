@@ -16,10 +16,10 @@ EXPOSE 3001
 # 启动应用
 CMD ["npm", "run", "prod"]
 
-    # chmod -R 777 ./*
+# chmod -R 777 ./*
 # 构建镜像
 # docker build -t manage-server-express-js-image .
 # 运行容器
-# docker run -d -e TZ=Asia/Shanghai -p 3001:3001 manage-server-express-js-image
+# docker run -d --log-opt max-size=10m --log-opt max-file=3 -e TZ=Asia/Shanghai -p 3001:3001 manage-server-express-js-image
 # 清理未使用的镜像和容器
 # docker system prune --volumes -f

@@ -108,5 +108,8 @@ const activities = [
     display: flex;
     justify-content: center;
     /* 时间线居中显示结束 */
+    /* 设置padding-top，防止时间线紧贴顶部开始 */
+    padding-top: 20px;
+    /* 设置padding-top，防止时间线紧贴顶部结束 */
 }
 </style>

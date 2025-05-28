@@ -21,13 +21,18 @@
 
 <script lang="ts" setup>
 import {MoreFilled} from '@element-plus/icons-vue'
-import {ref} from 'vue'
 
 const activities = [
     {
         content: '👋至今',
         type: 'primary',
         icon: MoreFilled
+    },
+    {
+        content: '🍜初步完成Tag筛选Blog的功能',
+        timestamp: '🗓️2025-05-29',
+        type: 'primary',
+        hollow: true
     },
     {
         content: '🎯项目首次以微服务架构部署',

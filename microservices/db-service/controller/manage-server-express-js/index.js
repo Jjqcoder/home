@@ -23,8 +23,6 @@ module.exports = class controller {
     }
     // 分页+标签获取日志
     static async getBlogByPageAndTag(req) {
-        console.log('我被调用了,demo1')
-
         try {
             return R.ok(200, '获取日志成功', await service.blogService.getBlogByPageAndTag(req))
         } catch (error) {

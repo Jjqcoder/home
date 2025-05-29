@@ -6,9 +6,9 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
-import {get} from '../../utils/api/index.js' // 导入请求方法
-import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue' // 英语句子展示组件
+import { onMounted, ref } from 'vue';
+import { get } from '../../utils/api/index.js'; // 导入请求方法
+import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
 
 // 当前句子
 const currentSentence = ref(null)
@@ -29,7 +29,7 @@ const nextSentence = async () => {
         } else {
             // 弹窗
             ElMessage({
-                message: `${resRandomSentence.data.msg}`,
+                message: `${JSON.stringify(resRandomSentence.data)}`,
                 type: 'error' // success, warning, info, error
             })
         }

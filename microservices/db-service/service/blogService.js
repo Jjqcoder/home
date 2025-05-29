@@ -43,8 +43,6 @@ module.exports = class blogService {
     }
     static async getBlogByPageAndTag(req) {
         try {
-            console.log('我被调用了,demo1')
-
             // 从请求中获取分页参数
             let {current = 1, size = 10, tags} = req // 默认第一页，每页10条数据
             // 转换为数字类型
@@ -55,7 +53,6 @@ module.exports = class blogService {
 
             // 并行执行两个异步任务
             const [total, records] = await Promise.all([
-                // prisma.BLOG.count(), // 查询指定tag的总记录数
                 prisma.BLOG.count({
                     where: {
                         BLOG_TAGS: {
@@ -74,7 +71,6 @@ module.exports = class blogService {
                     }
                 }) // 查询分页数据
             ])
-            console.log('total:', total, 'records:', records)
 
             // 返回分页结果
             return {
@@ -84,7 +80,7 @@ module.exports = class blogService {
                 records
             }
         } catch (error) {
-            console.log('获取日志失败!', JSON.stringify(error))
+            console.log('获取日志失败!', String(error))
 
             throw error
         }

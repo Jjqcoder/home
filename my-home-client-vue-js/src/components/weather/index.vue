@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
-import {pcTextArr} from 'element-china-area-data'
-import {ref, toRaw, watch} from 'vue'
-import {post} from '../../utils/api/index.js'
+import { pcTextArr } from 'element-china-area-data'
+import { ref, toRaw, watch } from 'vue'
+import { post } from '../../utils/api/index.js'
 import ListCom from './../list/index.vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
@@ -48,7 +48,7 @@ watch(selectedOptions, async (newValue, oldValue) => {
             })
         } else {
             ElMessage({
-                message: `${response.data.msg}`,
+                message: `${JSON.stringify(response.data)}`,
                 type: 'error' // success, warning, info, error
             })
         }

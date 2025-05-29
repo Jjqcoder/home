@@ -14,6 +14,7 @@ const router = {
         require('../../middleware/index.js').securityMiddleware, // 安全前置中间件
         controller.getBlogByPage
     ],
+    /* 分页且根据TAG获取日志 */
     '/getBlogByPageAndTag': [
         require('../../middleware/index.js').securityMiddleware, // 安全前置中间件
         controller.getBlogByPageAndTag

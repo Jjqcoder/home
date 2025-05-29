@@ -99,7 +99,7 @@ onMounted(async () => {
             })
         } else {
             ElMessage({
-                message: `${res.data.msg}`,
+                message: `${JSON.stringify(res.data)}`,
                 type: 'error' // success, warning, info, error
             })
         }
@@ -143,27 +143,13 @@ const handleCurrentChange = async val => {
 }
 
 /* ===================================标签选择相关的内容开始=================================== */
-// 模拟从后端获取的全部标签数据
-// const allTags = ref([
-//     {id: 1, name: 'Vue.js'},
-//     {id: 2, name: 'JavaScript'},
-//     {id: 3, name: 'HTML'},
-//     {id: 4, name: 'CSS'},
-//     {id: 5, name: 'Python'}
-// ])
-const allTags = ref([]) // 用于存储从后端获取的全部标签数据
+// 用于存储从后端获取的全部标签数据
+const allTags = ref([])
 // 将allBlogType中的标签转换为对象数组
-setInterval(() => {
-    console.log('❗️allBlogType.value', allBlogType.value)
-    console.log('❗️allTags.value', allTags.value)
-}, 1000)
-
 allTags.value = allBlogType.value.map((tag, index) => ({
     id: index + 1, // 使用索引作为 ID
     name: tag
 }))
-
-console.log(allTags.value, 'allTags.value')
 
 // 用于存储已选择的标签 ID
 const selectedTagIds = ref([]) // 初始时选中 JavaScript 和 CSS
@@ -171,8 +157,8 @@ const selectedTagIds = ref([]) // 初始时选中 JavaScript 和 CSS
 // 添加 watch 来监听 selectedTagIds 的变化
 watch(
     selectedTagIds,
-    async newVal => {
-        console.log('当前选中的标签:', selectedTags.value.map(tag => tag.name).join(', '))
+    async () => {
+        // console.log('当前选中的标签:', selectedTags.value.map(tag => tag.name).join(', '))
 
         /* 重新获取数据开始 */
         try {
@@ -205,7 +191,7 @@ watch(
                 })
             } else {
                 ElMessage({
-                    message: `${res.data.msg}`,
+                    message: `${JSON.stringify(res.data)}`,
                     type: 'error' // success, warning, info, error
                 })
             }
@@ -213,7 +199,7 @@ watch(
         } catch (error) {
             // ================弹窗开始================
             ElMessage({
-                message: `error_: ${error}`,
+                message: `error: ${error}`,
                 type: 'error' // success, warning, info, error
             })
             // ================弹窗结束================

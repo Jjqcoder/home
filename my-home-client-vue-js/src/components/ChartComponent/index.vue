@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-import {Chart, registerables} from 'chart.js'
-import {onBeforeMount, ref, watch} from 'vue'
-import {get} from '../../utils/api/index.js'
+import { Chart, registerables } from 'chart.js'
+import { onBeforeMount, ref, watch } from 'vue'
+import { get } from '../../utils/api/index.js'
 
 // 获取部分访客信息
 const getVisitorStatistics = async () => {
@@ -19,7 +19,7 @@ const getVisitorStatistics = async () => {
             })
         } else {
             ElMessage({
-                message: `${res.data.msg}`,
+                message: `${JSON.stringify(res.data)}`,
                 type: 'error' // success, warning, info, error
             })
         }

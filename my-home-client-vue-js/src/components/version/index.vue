@@ -5,11 +5,11 @@
 </template>
 
 <script setup>
-import {ref, watch} from 'vue'
-import {version as clientVersion} from './../../../package.json'
-import {get} from './../../utils/api/index.js'
+import { ElMessage } from 'element-plus'
+import { ref, watch } from 'vue'
 import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
-import {ElMessage} from 'element-plus'
+import { version as clientVersion } from './../../../package.json'
+import { get } from './../../utils/api/index.js'
 
 const serverVersion = ref('获取中...')
 const displayData = ref({
@@ -28,7 +28,7 @@ const getServerVersion = async () => {
             })
         } else {
             ElMessage({
-                message: res.data.msg,
+                message: `${JSON.stringify(res.data)}`,
                 type: 'error'
             })
         }

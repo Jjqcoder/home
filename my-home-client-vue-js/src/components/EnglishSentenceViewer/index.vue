@@ -40,8 +40,23 @@ export default {
     }
 }
 </script>
-
 <style scoped>
+
+/* 
+    优化点：
+    
+    1. 增加了 padding-top: env(safe-area-inset-top, 20px) 来适配iPhone等有刘海屏的设备
+
+    2. 调整了沉浸式模式下的内边距和边距，确保内容不会被屏幕边缘切割
+
+    3. 增加了最小字体大小(16px)以确保小屏幕上的可读性
+
+    4. 调整了行高(1.8)和单词换行(word-break)以改善阅读体验
+
+    5. 在小屏幕媒体查询中进一步优化了顶部间距
+
+    6. 使用了 box-sizing: border-box 确保内边距不会导致布局问题
+*/
 .sentence-viewer {
     text-align: center;
     padding: 20px;
@@ -52,9 +67,9 @@ export default {
     margin-bottom: 20px;
     font-size: 18px;
     line-height: 1.6;
-    color: #333; /* 默认字体颜色 */
-    text-align: left; /* 内容左对齐 */
-    text-indent: 2em; /* 句首缩进 */
+    color: #333;
+    text-align: left;
+    text-indent: 2em;
 }
 
 .button-group {
@@ -70,36 +85,55 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2000; /* 确保高于Element Plus的组件 */
-    background-color: #121212; /* 暗色背景 */
+    z-index: 2000;
+    background-color: #121212;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
-    overflow: auto; /* 允许滚动 */
+    padding: 20px 0; /* 增加上下内边距 */
+    overflow: auto;
+    box-sizing: border-box; /* 确保内边距包含在高度内 */
 }
 
 .sentence-viewer.immersive-mode .sentence-content {
-    /* font-size: 24px; */
-    font-size: clamp(10px, 5vw, 24px); /* 字体大小在10px到24px之间，根据屏幕宽度动态调整 */
-    max-width: 80%;
-    margin-bottom: 40px;
-    color: #fff; /* 沉浸式模式下字体颜色为白色 */
+    font-size: clamp(16px, 5vw, 24px); /* 调整最小字体大小 */
+    line-height: 1.8; /* 增加行高提高可读性 */
+    max-width: 90%; /* 调整最大宽度 */
+    margin: 20px 0; /* 调整边距 */
+    color: #fff;
+    width: 100%; /* 确保宽度适应 */
+    padding: 0 5%; /* 水平内边距 */
+    box-sizing: border-box;
 }
 
 .sentence-viewer.immersive-mode .sentence-content p {
-    background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 25px 20px; /* 增加上下内边距 */
     border-radius: 8px;
-    box-shadow: 0 2px 12px 0 rgba(255, 255, 255, 0.1); /* 暗色模式下的阴影 */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* 文字阴影，增强可读性 */
+    box-shadow: 0 2px 12px 0 rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    word-break: break-word; /* 确保长单词换行 */
+}
+
+/* 针对小屏幕的额外调整 */
+@media (max-width: 480px) {
+    .sentence-viewer.immersive-mode {
+        padding-top: env(safe-area-inset-top, 20px); /* 考虑iPhone的刘海屏 */
+        justify-content: flex-start; /* 从顶部开始布局 */
+    }
+    
+    .sentence-viewer.immersive-mode .sentence-content {
+        margin-top: 20px;
+        max-width: 95%;
+    }
 }
 
 /* 全局样式，防止body滚动 */
 :global(.immersive-mode-active) {
     overflow: hidden !important;
-    background-color: #121212; /* 暗色背景 */
-    color: #fff; /* 全局字体颜色为白色 */
+    background-color: #121212;
+    color: #fff;
 }
 </style>

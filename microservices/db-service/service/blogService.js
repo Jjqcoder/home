@@ -48,30 +48,44 @@ module.exports = class blogService {
             // 转换为数字类型
             current = parseInt(current) // 转换为整数
             size = parseInt(size) // 转换为整数
-
             const skip = (current - 1) * size // 计算跳过的记录数
-
+    
+            // 将tags字符串分割成数组
+            const tagArray = tags.split('|').map(tag => tag.trim()).filter(tag => tag);
+            
+            // 构建查询条件
+            let whereCondition = {};
+            
+            if (tagArray.length === 1) {
+                // 单个标签的情况
+                whereCondition = {
+                    BLOG_TAGS: {
+                        contains: tagArray[0]
+                    }
+                };
+            } else {
+                // 多个标签的情况，需要同时包含所有标签
+                whereCondition = {
+                    AND: tagArray.map(tag => ({
+                        BLOG_TAGS: {
+                            contains: tag
+                        }
+                    }))
+                };
+            }
+    
             // 并行执行两个异步任务
             const [total, records] = await Promise.all([
                 prisma.BLOG.count({
-                    where: {
-                        BLOG_TAGS: {
-                            contains: tags // 查询BLOG_TAGS字段包含tags的记录数
-                        }
-                    }
+                    where: whereCondition
                 }), // 查询总记录数
                 prisma.BLOG.findMany({
                     skip,
                     take: size,
-                    // 获取数据库中BLOG_TAGS字段包含tags（多个会用|隔开 如A|B）中的记录
-                    where: {
-                        BLOG_TAGS: {
-                            contains: tags
-                        }
-                    }
+                    where: whereCondition
                 }) // 查询分页数据
             ])
-
+    
             // 返回分页结果
             return {
                 total,
@@ -81,7 +95,6 @@ module.exports = class blogService {
             }
         } catch (error) {
             console.log('获取日志失败!', String(error))
-
             throw error
         }
     }

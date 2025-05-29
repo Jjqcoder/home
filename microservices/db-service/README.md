@@ -20,6 +20,7 @@ sudo docker pull node:18-alpine
 
 ```sh
 sudo docker run -d \
+  --memory=1G --memory-swap=1.5G \
   --log-opt max-size=10m \
   --log-opt max-file=3 \
   -e TZ=Asia/Shanghai \

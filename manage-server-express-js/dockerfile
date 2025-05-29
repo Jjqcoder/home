@@ -20,6 +20,6 @@ CMD ["npm", "run", "prod"]
 # 构建镜像
 # docker build -t manage-server-express-js-image .
 # 运行容器
-# docker run -d --log-opt max-size=10m --log-opt max-file=3 -e TZ=Asia/Shanghai -p 3001:3001 manage-server-express-js-image
+# docker run -d --memory=1G --memory-swap=1.5G --log-opt max-size=10m --log-opt max-file=3 -e TZ=Asia/Shanghai -p 3001:3001 manage-server-express-js-image
 # 清理未使用的镜像和容器
 # docker system prune --volumes -f

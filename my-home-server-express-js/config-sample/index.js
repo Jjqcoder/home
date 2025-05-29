@@ -19,6 +19,15 @@ const config = new Map([
     [
         'DB_SERVICE_KEY', // DB_SERVICE秘钥
         'xxx'
+    ],
+    [
+        'rabbitmqConf',// rabbitmq配置
+        {
+            ip: 'xxx',
+            rabbitmq_user: 'xxx',
+            rabbitmq_password: 'xxx',
+            rabbitmq_port: xxx
+        }
     ]
     /* 保持此样式 */
 ])

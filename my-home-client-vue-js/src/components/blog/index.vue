@@ -59,36 +59,18 @@ onMounted(async () => {
             current: currentPage.value,
             size: pageSize.value
         })
-        
-        /* 存全部的blog tag开始 */
-        let allBlog = await get(`/blog/getAllBlog`, {})
-        if (allBlog.data.code === 200) {
-                allBlog.data.data.records.forEach(item => {
 
-                if (item.BLOG_TAGS && item.BLOG_TAGS.trim() !== '') {
-                    // 将标签字符串转换为数组
-                    const tagsArray = item.BLOG_TAGS.split('|').map(tag => tag.trim())
-                    // 合并到 allBlogType 中，去重
-                    allBlogType.value = [...new Set([...allBlogType.value, ...tagsArray])]
-                }
-            })
-            /* 获取全部的标签的弹窗开始 */
-            ElMessage({
-                message: `${allBlog.data.msg}`,
-                type: 'success' // success, warning, info, error
-            })
-            /* 获取全部的标签的弹窗结束 */
+        /* 获取全部的TAG开始 */
+        let allTagFromServer = await get('blog/getAllTag', {})
+        console.log('allTagFromServer', allTagFromServer);// ['随笔', '徒步', 'demo']
+        // 将其装换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
+        allTagFromServer.data.data.forEach((item, index) => {
+            allBlogType.value[index] = item
+            console.log('allBlogType.value👻', allBlogType.value);
+            
+        })
+        /* 获取全部的TAG结束 */
         
-        } else {
-            /* 获取全部的标签的弹窗开始 */
-            ElMessage({
-                message: `${JSON.stringify(allBlog.data)}`,
-                type: 'error' // success, warning, info, error
-            })
-            /* 获取全部的标签的弹窗结束 */
-        }
-        /* 存全部的blog tag结束 */
-
         // 赋值博客的总条数
         totalDataCount.value = res.data.data.total
         // 赋值分页查询到的数据
@@ -232,12 +214,16 @@ const selectedTags = computed(() => {
 watch(
     allBlogType,
     () => {
+        console.log('allBlogType变化了', allBlogType.value);
+        
         allTags.value = allBlogType.value.map((tag, index) => ({
             id: index + 1, // 使用索引作为 ID
             name: tag
         }))
+        console.log('allTags变化了', allTags.value);
+        
     },
-    {immediate: true}
+    {immediate: true, deep: true}
 )
 /* ===================================标签选择相关的内容结束=================================== */
 </script>

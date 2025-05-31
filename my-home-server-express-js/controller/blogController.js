@@ -93,7 +93,7 @@ module.exports = class BlogController {
                 return res.send(R.err(400, '请求参数错误', '入参【tags】不能为空')) 
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '根据标签博客信息成功', await service.rpcBlogService.getBlogByPageAndTag(req, res))) /* 注：改为rpc调用 */
+            return res.send(R.ok(200, '根据标签获取博客信息成功', await service.rpcBlogService.getBlogByPageAndTag(req, res))) /* 注：改为rpc调用 */
             // return await service.rpcBlogService.getBlogByPageAndTag(req, res)
         } catch (error) {
             return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPageAndTag >>> 根据TAG博客信息获取失败 >>> 【${String(error)}】`, error))

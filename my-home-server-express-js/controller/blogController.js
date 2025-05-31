@@ -121,6 +121,19 @@ module.exports = class BlogController {
 
     // 获取全部的tag
     static async getAllTag(req, res) {
-       return res.send(R.ok(200, '获取所有标签成功', await service.rpcBlogService.getAllTag(req, res))) 
+        try {
+            /* 字段校验开始 */
+            const reqObj = req.query
+            for (const key in reqObj) {
+                switch (key) {
+                    default:
+                        return res.send(R.err(400, '请求参数错误', `入参【${key}】不合法`))
+                }
+            }
+            /* 字段校验结束 */
+            return res.send(R.ok(200, '获取所有标签成功', await service.rpcBlogService.getAllTag(req, res))) 
+        } catch (error) {
+            return res.send(R.err(500, `controller >>> blgoController.js >>> getAllTag >>> 获取所有标签失败 >>> 【${String(error)}】`, error))
+        }
     }
 }

@@ -55,6 +55,7 @@ const allBlogType = ref([]) /* 存储博客全部的Tag */
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(async () => {
     try {
+        // 分页获取blog数据
         let res = await get(`/blog/getBlogByPage`, {
             current: currentPage.value,
             size: pageSize.value
@@ -62,11 +63,11 @@ onMounted(async () => {
 
         /* 获取全部的TAG开始 */
         let allTagFromServer = await get('blog/getAllTag', {})
-        console.log('allTagFromServer', allTagFromServer);// ['随笔', '徒步', 'demo']
+        // console.log('allTagFromServer', allTagFromServer);// ['随笔', '徒步', 'demo']
         // 将其装换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
         allTagFromServer.data.data.forEach((item, index) => {
             allBlogType.value[index] = item
-            console.log('allBlogType.value👻', allBlogType.value);
+            // console.log('allBlogType.value👻', allBlogType.value);
             
         })
         /* 获取全部的TAG结束 */
@@ -85,9 +86,8 @@ onMounted(async () => {
                 // item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行 注：目前使用富文本 不再需要手动处理换行
             })
         }
-
         // ================弹窗开始================
-        // 消息提示
+        // res的消息提示开始
         if (res.data.code === 200) {
             ElMessage({
                 message: `${res.data.msg}`,
@@ -99,6 +99,21 @@ onMounted(async () => {
                 type: 'error' // success, warning, info, error
             })
         }
+        // res的消息提示结束
+
+        // allTagFromServer的消息提示开始
+        if (allTagFromServer.data.code === 200) {
+            ElMessage({
+                message: `${allTagFromServer.data.msg}`,
+                type:'success' // success, warning, info, error
+            })
+        } else {
+            ElMessage({
+                message: `${JSON.stringify(allTagFromServer.data)}`,
+                type: 'error' // success, warning, info, error
+            })
+        }
+        // allTagFromServer的消息提示结束
         // ================弹窗结束================
     } catch (error) {
         // ================弹窗开始================

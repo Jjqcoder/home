@@ -19,6 +19,37 @@ const http = axios.create({
     timeout: TIMEOUT
 })
 
+// 响应拦截器 - 处理429状态码
+http.interceptors.response.use(
+    response => {
+        return response
+    },
+    error => {
+        if (error.response && error.response.status === 429) {
+            // console.log('error.response.data', JSON.stringify(error.response.data));// [object Object]
+            // 更详细的调试日志
+            // console.group('[429 Error Debug]')
+            // console.log('Full error:', error)
+            // console.log('Response data type:', typeof error.response.data)// string类型
+            // console.log('Response data raw:', error.response.data)
+            // 解析字符串为对象
+            // const parsedData = JSON.parse(error.response.data)
+            // console.log('Response data parsed:', parsedData)
+            // console.log('Response data type:', typeof parsedData)// object类型
+            
+            // 429错误处理
+            ElMessage({
+                message: `err.response.data: ${JSON.stringify(error.response.data)}`,
+                type: 'warning',
+                duration: 3000
+            })
+            // 返回一个pending的Promise，阻止后续的then或catch执行
+            return new Promise(() => {})
+        }
+        return Promise.reject(error)
+    }
+)
+
 // 带重试的请求函数 (内部使用)
 async function requestWithRetry(requestFn) {
     const maxRetries = MAX_RETRIES
@@ -54,4 +85,5 @@ async function post(url, data = {}) {
 }
 
 // 导出方法
-export {get, post}
+export { get, post }
+

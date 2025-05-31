@@ -11,6 +11,16 @@ const middlewares = require('./middlewares/index.js') // 引入自定义中间�
 const router = require('./routes/index.js') // 引入自定义路由
 const morgan = require('morgan') // 引入 morgan 模块
 const responseTime = require('response-time') // 引入 response-time 中间件
+const rateLimit = require('express-rate-limit')// 引入express-rate-limit模块
+const R = require('./utils/R.js')
+// 创建限流规则（一分钟一百请求）
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 单位时间（毫秒）
+    max: 20, // 每个IP在windowMs毫秒内最多max个请求
+    standardHeaders: true, // 返回速率限制信息在 `RateLimit-*` headers中
+    legacyHeaders: false, // 禁用 `X-RateLimit-*` headers
+    message: `${JSON.stringify(R.err(429, '您的请求太频繁🥲请一分钟后再试🤝', null))}`, // 超过限制时的响应消息
+  });
 app.use(
     cors({
         origin: true, // 或指定具体域名 ['http://example.com', 'https://example.com']
@@ -19,6 +29,7 @@ app.use(
         credentials: true // 如果需要跨域携带凭证
     })
 )
+app.use(limiter)// 使用限流规则
 expressWs(app) // 注意 项目入口需要使用expressWs(app) 子路由中的ws配置才会生效！
 // 全局启用 CORS
 // 解析 JSON 格式的请求体

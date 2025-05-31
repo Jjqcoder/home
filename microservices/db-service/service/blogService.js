@@ -108,6 +108,9 @@ module.exports = class blogService {
                 prisma.BLOG.findMany({
                 })
             ])
+            // if (1) {
+            //     throw "测试错误"
+            // }
 
             // 返回分页结果
             return {

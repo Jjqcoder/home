@@ -44,10 +44,10 @@ module.exports = class BlogController {
                 return res.send(R.err(400, '请求参数错误', '入参【size】不能为空'))
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '获取博客信息成功', await service.rpcBlogService.getBlogByPage(req, res))) /* 注：改为rpc调用 */
+            return res.send(R.ok(200, '分页获取博客信息成功', await service.rpcBlogService.getBlogByPage(req, res))) /* 注：改为rpc调用 */
             // return await service.rpcBlogService.getBlogByPage(req, res)
         } catch (error) {
-            return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 博客信息获取失败 >>> 【${String(error)}】`, error))
+            return res.send(R.err(500, `controller >>> blgoController.js >>> getBlogByPage >>> 分页博客信息获取失败 >>> 【${String(error)}】`, error))
         }
     }
 

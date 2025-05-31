@@ -62,15 +62,31 @@ onMounted(async () => {
         
         /* 存全部的blog tag开始 */
         let allBlog = await get(`/blog/getAllBlog`, {})
-        allBlog.data.data.records.forEach(item => {
+        if (allBlog.data.code === 200) {
+                allBlog.data.data.records.forEach(item => {
 
-            if (item.BLOG_TAGS && item.BLOG_TAGS.trim() !== '') {
-                // 将标签字符串转换为数组
-                const tagsArray = item.BLOG_TAGS.split('|').map(tag => tag.trim())
-                // 合并到 allBlogType 中，去重
-                allBlogType.value = [...new Set([...allBlogType.value, ...tagsArray])]
-            }
-        })
+                if (item.BLOG_TAGS && item.BLOG_TAGS.trim() !== '') {
+                    // 将标签字符串转换为数组
+                    const tagsArray = item.BLOG_TAGS.split('|').map(tag => tag.trim())
+                    // 合并到 allBlogType 中，去重
+                    allBlogType.value = [...new Set([...allBlogType.value, ...tagsArray])]
+                }
+            })
+            /* 获取全部的标签的弹窗开始 */
+            ElMessage({
+                message: `${allBlog.data.msg}`,
+                type: 'success' // success, warning, info, error
+            })
+            /* 获取全部的标签的弹窗结束 */
+        
+        } else {
+            /* 获取全部的标签的弹窗开始 */
+            ElMessage({
+                message: `${JSON.stringify(allBlog.data)}`,
+                type: 'error' // success, warning, info, error
+            })
+            /* 获取全部的标签的弹窗结束 */
+        }
         /* 存全部的blog tag结束 */
 
         // 赋值博客的总条数

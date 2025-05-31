@@ -4,7 +4,7 @@
         "name": "江建清",
         "email": "1810422805@qq.com"
     },
-    "version": "2.0.2",
+    "version": "2.0.3",
     "main": "index.js",
     "scripts": {
         "dev": "npx prisma db pull && npx prisma generate && nodemon app.js",

@@ -74,9 +74,7 @@ module.exports = class BlogController {
                         }
                         break
                     case'tags':
-                        if (!reqObj[key]) {
-                            return res.send(R.err(400, '请求参数错误', '入参【tags】不能为空'))
-                        } else if (typeof reqObj[key]!== 'string') {
+                        if (typeof reqObj[key]!== 'string') {
                             return res.send(R.err(400, '请求参数错误', '入参【tags】非法'))
                         }
                         break

@@ -120,4 +120,9 @@ module.exports = class BlogController {
             return res.send(R.err(500, `controller >>> blgoController.js >>> getAllBlog >>> 获取所有博客信息失败 >>> 【${String(error)}】`, error))
         }
     }
+
+    // 获取全部的tag
+    static async getAllTag(req, res) {
+       return res.send(R.ok(200, '获取所有标签成功', await service.rpcBlogService.getAllTag(req, res))) 
+    }
 }

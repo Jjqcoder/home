@@ -49,6 +49,14 @@ module.exports = class controller {
         
     }
 
+    // 获取日志表的全部标签
+    static async getAllTag() {
+        console.log('👻');
+        
+        return R.ok(200, '获取日志表的全部标签成功', await service.blogService.getAllTag())
+    }
+
+
     static async getSentenceRandomOne(req) {
         try {
             return R.ok(200, '获取句子成功', await service.englishService.getSentenceRandomOne(req))

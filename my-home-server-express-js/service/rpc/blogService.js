@@ -68,4 +68,21 @@ module.exports = class BlogService {
             throw error
         }
     }
+
+    static async getAllTag(req, res) {
+        try {
+            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
+                route: '/getAllTag',
+                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+            })
+            res = JSON.parse(res)
+            if (res.code === 200) {
+                return res.data
+            } else {
+                throw JSON.stringify(res)
+            }
+        } catch (error) {
+            throw error
+        }
+    }
 }

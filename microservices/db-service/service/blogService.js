@@ -123,4 +123,19 @@ module.exports = class blogService {
             throw error
         }
     }
+
+    static async getAllTag() {
+        // 获取BLOG表中的全TAGS字段的值 做去重处理(以数组方式返回)
+        let allTag = await prisma.$queryRaw`SELECT DISTINCT BLOG_TAGS FROM BLOG`
+        /* 去重处理开始 */
+        let uniqueTags = [];
+        allTag.forEach(tag => {
+            
+            let tagsArray = tag.BLOG_TAGS.split('|').map(t => t.trim());
+            uniqueTags.push(...tagsArray);
+        });
+        uniqueTags = [...new Set(uniqueTags)];
+        /* 去重处理结束 */
+        return uniqueTags
+    }
 }

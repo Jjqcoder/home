@@ -102,4 +102,8 @@ module.exports = class BlogController {
         }
         
     }
+
+    static async getAllBlog(req, res) {
+        return res.send(R.ok(200, '获取所有博客信息成功', await service.rpcBlogService.getAllBlog(req, res))) /* 注：改为rpc调用 */
+    }
 }

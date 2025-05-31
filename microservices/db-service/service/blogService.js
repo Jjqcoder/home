@@ -98,4 +98,26 @@ module.exports = class blogService {
             throw error
         }
     }
+
+    static async getAllBlog() {
+        try {
+
+            // 并行执行两个异步任务
+            const [total, records] = await Promise.all([
+                prisma.BLOG.count(), // 查询总记录数
+                prisma.BLOG.findMany({
+                })
+            ])
+
+            // 返回分页结果
+            return {
+                total,
+                records
+            }
+        } catch (error) {
+            console.log('获取日志失败!', JSON.stringify(error))
+
+            throw error
+        }
+    }
 }

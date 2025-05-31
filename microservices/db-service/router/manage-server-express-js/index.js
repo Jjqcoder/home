@@ -19,6 +19,11 @@ const router = {
         require('../../middleware/index.js').securityMiddleware, // 安全前置中间件
         controller.getBlogByPageAndTag
     ],
+    // 获取全部日志
+    '/getAllBlog': [
+        require('../../middleware/index.js').securityMiddleware, // 安全前置中间件
+        controller.getAllBlog
+    ],
     // 随机获取一个英语句子
     '/getSentenceRandomOne': [
         require('../../middleware/index.js').securityMiddleware, // 安全前置中间件

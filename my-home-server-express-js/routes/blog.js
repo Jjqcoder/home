@@ -17,6 +17,7 @@ expressWs(router)
 /* 路由挂在开始 */
 router.get('/getBlogByPage', controller.blogController.getBlogByPage)
 router.get('/getBlogByPageAndTag', controller.blogController.getBlogByPageAndTag)
+router.get('/getAllBlog', controller.blogController.getAllBlog)
 /* 路由挂载结束 */
 
 module.exports = router

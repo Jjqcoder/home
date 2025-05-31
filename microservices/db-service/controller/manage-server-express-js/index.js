@@ -34,6 +34,22 @@ module.exports = class controller {
         }
     }
 
+    // 获取全部日志
+    static async getAllBlog(req) {
+        console.log('接受到请求✍️');
+        try {
+            return R.ok(200, '获取日志成功', await service.blogService.getAllBlog(req))
+        } catch (error) {
+            return R.err(
+                500,
+                '获取全部的日志失败',
+                String(error)
+            )
+            
+        }
+        
+    }
+
     static async getSentenceRandomOne(req) {
         try {
             return R.ok(200, '获取句子成功', await service.englishService.getSentenceRandomOne(req))

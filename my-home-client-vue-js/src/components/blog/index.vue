@@ -64,10 +64,9 @@ onMounted(async () => {
         /* 存全部的blog tag开始 */
         // 下方的代码临时获取全部的blog数据解决blog标签显示不全的问题
         // TODO 后续使用getAllBlog解决此问题
-        let res2 = await get(`/blog/getBlogByPage`, {
-            current: currentPage.value,
-            size: 10000// 注：获取全部的博客数据 确保标签显示全
-        })
+        let res2 = await get(`/blog/getAllBlog`, {})
+        console.log('res2', res2);
+        
         res2.data.data.records.forEach(item => {
             console.log('item.BLOG_TAGS', item.BLOG_TAGS)
 

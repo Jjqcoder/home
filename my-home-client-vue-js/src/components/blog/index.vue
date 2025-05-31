@@ -59,16 +59,10 @@ onMounted(async () => {
             current: currentPage.value,
             size: pageSize.value
         })
-        console.log('res', res)
         
         /* 存全部的blog tag开始 */
-        // 下方的代码临时获取全部的blog数据解决blog标签显示不全的问题
-        // TODO 后续使用getAllBlog解决此问题
-        let res2 = await get(`/blog/getAllBlog`, {})
-        console.log('res2', res2);
-        
-        res2.data.data.records.forEach(item => {
-            console.log('item.BLOG_TAGS', item.BLOG_TAGS)
+        let allBlog = await get(`/blog/getAllBlog`, {})
+        allBlog.data.data.records.forEach(item => {
 
             if (item.BLOG_TAGS && item.BLOG_TAGS.trim() !== '') {
                 // 将标签字符串转换为数组
@@ -77,8 +71,6 @@ onMounted(async () => {
                 allBlogType.value = [...new Set([...allBlogType.value, ...tagsArray])]
             }
         })
-        console.log('遍历完毕', allBlogType.value)
-
         /* 存全部的blog tag结束 */
 
         // 赋值博客的总条数

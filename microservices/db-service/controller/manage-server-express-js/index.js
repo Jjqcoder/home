@@ -36,7 +36,6 @@ module.exports = class controller {
 
     // 获取全部日志
     static async getAllBlog(req) {
-        console.log('接受到请求✍️');
         try {
             return R.ok(200, '获取日志成功', await service.blogService.getAllBlog(req))
         } catch (error) {

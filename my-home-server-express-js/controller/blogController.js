@@ -104,6 +104,20 @@ module.exports = class BlogController {
     }
 
     static async getAllBlog(req, res) {
-        return res.send(R.ok(200, '获取所有博客信息成功', await service.rpcBlogService.getAllBlog(req, res))) /* 注：改为rpc调用 */
+        try {
+            /* 字段校验开始 */
+            const reqObj = req.query
+            for (const key in reqObj) {
+                switch (key) {
+                    default:
+                        return res.send(R.err(400, '请求参数错误', `入参【${key}】不合法`))
+                } 
+            }
+            /* 字段校验结束 */
+            return res.send(R.ok(200, '获取所有博客信息成功', await service.rpcBlogService.getAllBlog(req, res))) /* 注：改为rpc调用 */
+        } catch (error) {
+            
+            return res.send(R.err(500, `controller >>> blgoController.js >>> getAllBlog >>> 获取所有博客信息失败 >>> 【${String(error)}】`, error))
+        }
     }
 }

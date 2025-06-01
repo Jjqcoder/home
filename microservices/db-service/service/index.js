@@ -11,5 +11,6 @@ module.exports = class service {
     static blogService = require('./blogService.js') // 日志服务
     static englishService = require('./englishService.js') // 英语学习服务
     static visitService = require('./visitService.js') // 访问记录服务
+    static dbserviceVersionService = require('./dbserviceVersionService.js') // 版本服务
     /* 服务层挂载开始 */
 }

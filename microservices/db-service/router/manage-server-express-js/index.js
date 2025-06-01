@@ -14,6 +14,7 @@ const router = {
     ...routerConfig.blogRouterConfig,
     ...routerConfig.englishRouterConfig,
     ...routerConfig.visitRouterConfig,
+    ...routerConfig.dbServiceRouterConfig,
     /* manage-server-express-js路由配置挂载结束 */
     
     /* 其他项目挂载开始 */

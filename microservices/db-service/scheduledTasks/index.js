@@ -10,8 +10,8 @@ let job1 = (() => {
     return function() {
       // 返回的函数逻辑
       setInterval(() => {
-        console.log('每秒执行一次')
-      }, 1000)
+        console.log('每5秒执行一次')
+      }, 5000)
     };
   })();
 /* 定时任务定义结束 */
@@ -22,4 +22,4 @@ let job1 = (() => {
 job1()
 /* 启动定时任务结束 */
 
-module.exports = job
+module.exports = job1

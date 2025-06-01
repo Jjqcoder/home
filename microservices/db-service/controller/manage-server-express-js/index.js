@@ -14,5 +14,6 @@ module.exports = class controller {
     static blogController = require('./blog.js')
     static englishController = require('./english.js')
     static visitController = require('./visit.js')
+    static DbServiceVersionController = require('./dbServiceVersion.js')
     /* 控制器挂载结束 */
 }

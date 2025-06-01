@@ -16,6 +16,8 @@ module.exports = class Utils {
     static async startQueueResponder(queueName, router) {
         try {
             const requestHandler = async requestData => {
+                console.log('🎯', requestData);
+                
                 console.log('🎯', router[requestData.route])
 
                 const middlewaresLength = router[requestData.route].length

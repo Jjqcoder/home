@@ -18,7 +18,14 @@ const displayData = ref({
 
 const getServerVersion = async () => {
     try {
+        // my-home-server-express-js版本
         const res = await get('/version/getVersion')
+
+        /* 获取db-service 版本开始 */
+        const res2 = await get('/dbservice/getVersion')
+        console.log('res2.data🍭', res2.data);
+        
+        /* 获取db service 版本结束 */
 
         if (res.data.code === 200) {
             serverVersion.value = res.data.data

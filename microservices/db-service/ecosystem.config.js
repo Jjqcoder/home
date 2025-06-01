@@ -1,5 +1,6 @@
 module.exports = {
     apps: [
+        /* 主应用（多实例）配置开始 */
         {
             // 应用的名称，用于在 PM2 中标识应用
             name: 'db-service',
@@ -26,7 +27,20 @@ module.exports = {
             env: {
                 NODE_ENV: 'production'
             }
-        }
+        },
+        /* 主应用（多实例）配置结束 */
+        /* 定时任务（单实例）配置开始 */
+        {
+            name: 'scheduled-tasks',  // 唯一名称
+            script: './scheduledTasks/index.js',
+            instances: 1,              // 关键：只运行 1 个实例
+            autorestart: true,
+            watch: false,
+            env: {
+              NODE_ENV: 'production'
+            }
+          }
+        /* 定时任务（单实例）配置结束 */
     ]
 }
 

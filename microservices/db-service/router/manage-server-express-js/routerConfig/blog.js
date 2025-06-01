@@ -5,27 +5,27 @@
  */
 
 const middleware = require('../../../middleware/index.js')
-const controller = require('../../../controller/manage-server-express-js/index.js')
+const blogController = require('../../../controller/manage-server-express-js/index.js').blogController
 
 module.exports = {
     /* 分页获取日志 */
     '/getBlogByPage': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getBlogByPage
+        blogController.getBlogByPage
     ],
     /* 分页且根据TAG获取日志 */
     '/getBlogByPageAndTag': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getBlogByPageAndTag
+        blogController.getBlogByPageAndTag
     ],
     // 获取全部日志
     '/getAllBlog': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getAllBlog
+        blogController.getAllBlog
     ],
     // 获取全部的日志标签
     '/getAllTag': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getAllTag
+        blogController.getAllTag
     ],
 }

@@ -1,13 +1,15 @@
 /**
  * 创建时间: 2025-05-16
  * 作者: jjq
- * 描述: service类各项目共用，在controller层做项目的区分即可
+ * 描述: service 层
  */
 
 const R = require('../R.js') // 引入响应工具类
 
 module.exports = class service {
+    /* 服务层挂载开始 */
     static blogService = require('./blogService.js') // 日志服务
     static englishService = require('./englishService.js') // 英语学习服务
     static visitService = require('./visitService.js') // 访问记录服务
+    /* 服务层挂载开始 */
 }

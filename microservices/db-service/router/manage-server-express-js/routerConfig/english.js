@@ -5,12 +5,12 @@
  */
 
 const middleware = require('../../../middleware/index.js')
-const controller = require('../../../controller/manage-server-express-js/index.js')
+const englishController = require('../../../controller/manage-server-express-js/index.js').englishController
 
 module.exports = {
     // 随机获取一个英语句子
     '/getSentenceRandomOne': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getSentenceRandomOne
+        englishController.getSentenceRandomOne
     ],
 }

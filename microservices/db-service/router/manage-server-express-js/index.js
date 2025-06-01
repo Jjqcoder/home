@@ -10,11 +10,15 @@ const routerConfig = require('./routerConfig/index.js')
 
 // 涉及数据库的操作均在此服务完成
 const router = {
-    /* 路由配置挂载开始 */
+    /* manage-server-express-js路由配置挂载开始 */
     ...routerConfig.blogRouterConfig,
     ...routerConfig.englishRouterConfig,
     ...routerConfig.visitRouterConfig,
-    /* 路由配置挂载结束 */
+    /* manage-server-express-js路由配置挂载结束 */
+    
+    /* 其他项目挂载开始 */
+    // .....
+    /* 其他项目挂载结束 */
 }
 
 module.exports = router

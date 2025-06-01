@@ -5,17 +5,17 @@
  */
 
 const middleware = require('../../../middleware/index.js')
-const controller = require('../../../controller/manage-server-express-js/index.js')
+const visitController = require('../../../controller/manage-server-express-js/index.js').visitController
 
 module.exports = {
     // 获取所有访问记录
     '/getAllVisit': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getAllVisit
+        visitController.getAllVisit
     ],
     // 获取近期访问记录
     '/getVisitByLimit': [
         middleware.securityMiddleware, // 安全前置中间件
-        controller.getVisitByLimit
+        visitController.getVisitByLimit
     ]
 }

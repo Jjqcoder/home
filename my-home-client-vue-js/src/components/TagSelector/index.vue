@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import {ref, watch, defineProps, defineEmits} from 'vue'
+import { defineEmits, defineProps, ref, watch } from 'vue'
 
 const props = defineProps({
     tags: {
@@ -51,25 +51,38 @@ const handleTagChange = () => {
     gap: 8px;
 }
 
-.tag-item {
-    display: flex;
-    align-items: center;
-}
-
 .tag-item label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    padding: 4px 8px;
-    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border: 1px solid #dcdfe6;
     border-radius: 4px;
     cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    background: #f5f7fa;
+    user-select: none; /* 防止文字被选中 */
+}
+
+.tag-item label:hover {
+    border-color: #c0c4cc;
+    background: #ebeef5;
 }
 
 .tag-item label.selected {
-    background-color: #e0e0e0;
+    background: #ecf5ff;
+    color: #409eff;
+    border-color: #c6e2ff;
 }
 
 .tag-item input[type='checkbox'] {
     margin-right: 8px;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.tag-item input[type='checkbox']:checked {
+    accent-color: #409eff; /* 复选框选中颜色 */
 }
 </style>

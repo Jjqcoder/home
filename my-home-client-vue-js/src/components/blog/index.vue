@@ -2,7 +2,7 @@
     <div>
         <!-- 标签选择组件开始 -->
         <div class="tag-selector-container">
-            <h1>标签选择器示例</h1>
+            <h1>根据标签筛选日志</h1>
             <TagSelector :tags="allTags" v-model="selectedTagIds" />
             <p>已选择的标签：</p>
             <ul>

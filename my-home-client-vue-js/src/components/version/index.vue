@@ -8,10 +8,11 @@
 import { ElMessage } from 'element-plus'
 import { ref, watch } from 'vue'
 import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
-import { version as clientVersion } from './../../../package.json'
+import { version as my_home_client_vue_js_version } from './../../../package.json'
 import { get } from './../../utils/api/index.js'
 
-const serverVersion = ref('获取中...')
+const my_home_server_express_js_version = ref('获取中...')
+const db_service_version = ref('获取中...')
 const displayData = ref({
     CONTENT: ''
 })
@@ -23,12 +24,14 @@ const getServerVersion = async () => {
 
         /* 获取db-service 版本开始 */
         const res2 = await get('/dbservice/getVersion')
-        console.log('res2.data🍭', res2.data);
+        console.log('res2.data🍭', res2.data);// {code: 200, msg: '获取db-service版本成功', data: '1.0.3'}
+        // console.log('res2.data.data🍭', res2.data.data);
         
+        db_service_version.value = res2.data.data
         /* 获取db service 版本结束 */
 
         if (res.data.code === 200) {
-            serverVersion.value = res.data.data
+            my_home_server_express_js_version.value = res.data.data
             ElMessage({
                 message: res.data.msg,
                 type: 'success'
@@ -40,7 +43,7 @@ const getServerVersion = async () => {
             })
         }
     } catch (error) {
-        serverVersion.value = '后端版本获取失败'
+        my_home_server_express_js_version.value = '后端版本获取失败'
         ElMessage({
             message: error.message || '获取版本信息失败',
             type: 'error'
@@ -50,22 +53,26 @@ const getServerVersion = async () => {
 
 // 使用watch来监听版本变化
 watch(
-    [() => clientVersion, serverVersion], // 监听的属性
-    ([clientVer, serverVer]) => {
+    [() => my_home_client_vue_js_version, my_home_server_express_js_version, db_service_version], // 监听的属性
+    ([my_home_client_vue_js_version, my_home_server_express_js_version, db_service_version]) => {
         displayData.value = {
             CONTENT: `
-            <div style="text-align: center;">
-                <div style="display: inline-block; font-family: Arial, sans-serif; background: #f5f5f5; padding: 12px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 0 auto;">
-                    <div style="margin-bottom: 8px; display: flex; justify-content: space-between;">
-                        <span style="font-weight: bold; color: #555;">前端版本：</span>
-                        <span style="color: #2196F3; font-weight: 500;">${clientVer}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="font-weight: bold; color: #555;">后端版本：</span>
-                        <span style="color: #4CAF50; font-weight: 500;">${serverVer}</span>
-                    </div>
-                </div>
-            </div>`
+        <div style="padding: 12px; max-width: 100%;">
+            <h1>版本信息</h1>
+            <div style="margin-bottom: 12px;">
+                <div style="font-weight: bold; color: #333; margin-bottom: 4px;">my_home_client_vue_js</div>
+                <div style="color: #2196F3; font-size: 14px;">${my_home_client_vue_js_version}</div>
+            </div>
+            <div>
+                <div style="font-weight: bold; color: #333; margin-bottom: 4px;">my_home_server_express_js</div>
+                <div style="color: #4CAF50; font-size: 14px;">${my_home_server_express_js_version}</div>
+            </div>
+            <div>
+                <div style="font-weight: bold; color: #333; margin-bottom: 4px;">db_service</div>
+                <div style="color: #4CAF50; font-size: 14px;">${db_service_version}</div>
+            </div>
+        </div>
+    `
         }
     },
     {immediate: true} // 立即执行一次

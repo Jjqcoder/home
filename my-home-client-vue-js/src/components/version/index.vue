@@ -8,7 +8,7 @@
 import { ElMessage } from 'element-plus'
 import { ref, watch } from 'vue'
 import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
-import { versionApi } from '../../lib/api/version.api.js'
+import { versionApi } from '../../lib/api/version.js'
 import { version as my_home_client_vue_js_version } from './../../../package.json'
 
 const my_home_server_express_js_version = ref('获取中...')

@@ -3,7 +3,7 @@
  * 作者: jjq
  * 描述: 英语api模块
  */
-import { get } from './http.api.js';
+import { get } from './http.js';
 export const englishApi = {
     getSentenceRandomOne: async () => {
         return await get(

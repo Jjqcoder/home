@@ -5,11 +5,11 @@
  */
 
 /* 导出开始 */
-// export * from './http.api.js'; 不导出 内部使用
-export * from './blog.api.js';
-export * from './english.api.js';
-export * from './version.api.js';
-export * from './visit.api.js';
-export * from './weather.api.js';
+// export * from './http.js'; 不导出 内部使用
+export * from './blog.js';
+export * from './english.js';
+export * from './version.js';
+export * from './visit.js';
+export * from './weather.js';
 /* 导出结束 */
 

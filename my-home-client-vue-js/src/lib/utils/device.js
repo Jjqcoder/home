@@ -1,3 +1,9 @@
+/**
+ * 创建时间: 2025-06-02
+ * 作者: jjq
+ * 描述: 设备相关工具函数
+ */
+
 // 判断当前是手机端还是电脑端
 export function isMobileDevice() {
     const userAgent = navigator.userAgent.toLowerCase()

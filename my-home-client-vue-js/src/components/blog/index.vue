@@ -41,7 +41,7 @@
 import TagSelector from '../TagSelector/index.vue' /* 引入标签选择组件 */
 import {ref, onMounted, computed, watch} from 'vue'
 import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
-import {isMobileDevice} from '../../lib/utils/index.js' /* 判断是手机端还是PC端 */
+import {isMobileDevice, messageNotify} from '../../lib/utils/index.js' /* 判断是手机端还是PC端 */
 import {blogApi} from '../../lib/api/index.js'
 const totalDataCount = ref(100) /* 记录一共有多少条数据 */
 const currentPage = ref(1)
@@ -80,42 +80,14 @@ onMounted(async () => {
                 item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
             })
         }
-        // ================弹窗开始================
-        // res的消息提示开始
-        if (res.data.code === 200) {
-            ElMessage({
-                message: `${res.data.msg}`,
-                type: 'success' // success, warning, info, error
-            })
-        } else {
-            ElMessage({
-                message: `${JSON.stringify(res.data)}`,
-                type: 'error' // success, warning, info, error
-            })
-        }
-        // res的消息提示结束
-
-        // allTagFromServer的消息提示开始
-        if (allTagFromServer.data.code === 200) {
-            ElMessage({
-                message: `${allTagFromServer.data.msg}`,
-                type:'success' // success, warning, info, error
-            })
-        } else {
-            ElMessage({
-                message: `${JSON.stringify(allTagFromServer.data)}`,
-                type: 'error' // success, warning, info, error
-            })
-        }
-        // allTagFromServer的消息提示结束
-        // ================弹窗结束================
+        // 弹窗
+        messageNotify(res, allTagFromServer)
     } catch (error) {
-        // ================弹窗开始================
+        // 弹窗
         ElMessage({
             message: `error: ${error}`,
             type: 'error' // success, warning, info, error
         })
-        // ================弹窗结束================
     }
 })
 
@@ -136,8 +108,15 @@ const handleCurrentChange = async val => {
     try {
         let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
         pageSelectData.value = res.data.data.records
+        // 弹窗
+        messageNotify(res)
+        
     } catch (error) {
         console.error('更换页码过程发生异常', error)
+        ElMessage({
+            message: `error: ${error}`,
+            type: 'error' // success, warning, info, error
+        })
     }
 }
 
@@ -176,27 +155,16 @@ watch(
                 })
             }
 
-            // ================弹窗开始================
-            // 消息提示
-            if (res.data.code === 200) {
-                ElMessage({
-                    message: `${res.data.msg}`,
-                    type: 'success' // success, warning, info, error
-                })
-            } else {
-                ElMessage({
-                    message: `${JSON.stringify(res.data)}`,
-                    type: 'error' // success, warning, info, error
-                })
-            }
-            // ================弹窗结束================
+            // 弹窗
+            messageNotify(res)
+            
         } catch (error) {
-            // ================弹窗开始================
+            // 弹窗
             ElMessage({
                 message: `error: ${error}`,
                 type: 'error' // success, warning, info, error
             })
-            // ================弹窗结束================
+            
         }
         /* 重新获取数据结束 */
     },

@@ -9,6 +9,7 @@
 import { onMounted, ref } from 'vue';
 import { englishApi } from '../../lib/api/index.js';
 import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
+import {messageNotify} from '../../lib/utils/index.js'
 
 // 当前句子
 const currentSentence = ref(null)
@@ -16,23 +17,14 @@ const currentSentence = ref(null)
 // 获取下一个句子
 const nextSentence = async () => {
     try {
+        // 获取一个句子
         const resRandomSentence = await englishApi.getSentenceRandomOne()
 
-        if (resRandomSentence.data.code === 200) {
-            // 句子赋值
-            currentSentence.value = resRandomSentence.data.data.CONTENT
-            // 弹窗
-            ElMessage({
-                message: `${resRandomSentence.data.msg}`,
-                type: 'success' // success, warning, info, error
-            })
-        } else {
-            // 弹窗
-            ElMessage({
-                message: `${JSON.stringify(resRandomSentence.data)}`,
-                type: 'error' // success, warning, info, error
-            })
-        }
+        // 句子赋值
+        currentSentence.value = resRandomSentence.data.data.CONTENT
+
+        // 弹窗
+        messageNotify(resRandomSentence)
     } catch (error) {
         // 弹窗
         ElMessage({

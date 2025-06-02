@@ -10,6 +10,7 @@ import { ref, watch } from 'vue'
 import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
 import { versionApi } from '../../lib/api/version.js'
 import { version as my_home_client_vue_js_version } from './../../../package.json'
+import { messageNotify } from '../../lib/utils/index.js'
 
 const my_home_server_express_js_version = ref('获取中...')
 const db_service_version = ref('获取中...')
@@ -27,22 +28,17 @@ const getServerVersion = async () => {
         db_service_version.value = res2.data.data
         /* 获取db service 版本结束 */
 
-        if (res.data.code === 200) {
-            my_home_server_express_js_version.value = res.data.data
-            ElMessage({
-                message: res.data.msg,
-                type: 'success'
-            })
-        } else {
-            ElMessage({
-                message: `${JSON.stringify(res.data)}`,
-                type: 'error'
-            })
-        }
+        // 赋值
+        my_home_server_express_js_version.value = res.data.data
+        
+        // 弹窗
+        messageNotify(res, res2)
     } catch (error) {
-        my_home_server_express_js_version.value = '后端版本获取失败'
+        my_home_server_express_js_version.value = 'my-home-server-express-js版本获取失败'
+        db_service_version.value = 'db-service版本获取失败'
+        // 弹窗
         ElMessage({
-            message: error.message || '获取版本信息失败',
+            message: String(error),
             type: 'error'
         })
     }

@@ -6,33 +6,24 @@
 import { Chart, registerables } from 'chart.js'
 import { onBeforeMount, ref, watch } from 'vue'
 import { visitApi } from '../../lib/api/visit.js'
+import {messageNotify} from '../../lib/utils/index.js'
 
 // 获取部分访客信息
 const getVisitorStatistics = async () => {
     try {
         const res = await visitApi.someVisit()
-        // ================弹窗开始================
-        if (res.data.code === 200) {
-            ElMessage({
-                message: `${res.data.msg}`,
-                type: 'success' // success, warning, info, error
-            })
-        } else {
-            ElMessage({
-                message: `${JSON.stringify(res.data)}`,
-                type: 'error' // success, warning, info, error
-            })
-        }
-        // ================弹窗结束================
+        // 弹窗
+        messageNotify(res)
+        
         return res.data
     } catch (error) {
         console.error('Failed to fetch visitor statistics:', error)
-        // ================弹窗开始================
+        // 弹窗
         ElMessage({
-            message: `${error}`,
+            message: String(error),
             type: 'error' // success, warning, info, error
         })
-        // ================弹窗结束================
+        
         return null
     }
 }

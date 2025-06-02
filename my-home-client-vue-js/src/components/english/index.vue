@@ -7,7 +7,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { get } from '../../utils/api/index.js'; // 导入请求方法
+import { englishApi } from '../../api/index.js';
 import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
 
 // 当前句子
@@ -16,7 +16,8 @@ const currentSentence = ref(null)
 // 获取下一个句子
 const nextSentence = async () => {
     try {
-        const resRandomSentence = await get('/english/getSentenceRandomOne', {})
+        // const resRandomSentence = await get('/english/getSentenceRandomOne', {})
+        const resRandomSentence = await englishApi.getSentenceRandomOne()
 
         if (resRandomSentence.data.code === 200) {
             // 句子赋值

@@ -5,4 +5,8 @@
  */
 
 export * from './blog.api.js';
+export * from './english.api.js';
+export * from './version.api.js';
+export * from './visit.api.js';
+export * from './weather.api.js';
 

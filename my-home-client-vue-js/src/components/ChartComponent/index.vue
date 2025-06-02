@@ -5,12 +5,13 @@
 <script setup>
 import { Chart, registerables } from 'chart.js'
 import { onBeforeMount, ref, watch } from 'vue'
-import { get } from '../../utils/api/index.js'
+import { visitApi } from '../../api/visit.api.js'
 
 // 获取部分访客信息
 const getVisitorStatistics = async () => {
     try {
-        const res = await get('/visit/someVisit')
+        // const res = await get('/visit/someVisit')
+        const res = await visitApi.someVisit()
         // ================弹窗开始================
         if (res.data.code === 200) {
             ElMessage({

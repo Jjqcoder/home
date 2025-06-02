@@ -7,9 +7,9 @@
 <script setup>
 import { ElMessage } from 'element-plus'
 import { ref, watch } from 'vue'
+import { versionApi } from '../../api/version.api.js'
 import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
 import { version as my_home_client_vue_js_version } from './../../../package.json'
-import { get } from './../../utils/api/index.js'
 
 const my_home_server_express_js_version = ref('获取中...')
 const db_service_version = ref('获取中...')
@@ -20,11 +20,13 @@ const displayData = ref({
 const getServerVersion = async () => {
     try {
         // my-home-server-express-js版本
-        const res = await get('/version/getVersion')
+        // const res = await get('/version/getVersion')
+        const res = await versionApi.myHomeServerExpressJsVersion()
 
         /* 获取db-service 版本开始 */
-        const res2 = await get('/dbservice/getVersion')
-        console.log('res2.data🍭', res2.data);// {code: 200, msg: '获取db-service版本成功', data: '1.0.3'}
+        // const res2 = await get('/dbservice/getVersion')
+        const res2 = await versionApi.dbserviceVersion()
+        // console.log('res2.data🍭', res2.data);// {code: 200, msg: '获取db-service版本成功', data: '1.0.3'}
         // console.log('res2.data.data🍭', res2.data.data);
         
         db_service_version.value = res2.data.data

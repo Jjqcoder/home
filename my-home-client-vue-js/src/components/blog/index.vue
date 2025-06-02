@@ -65,7 +65,8 @@ onMounted(async () => {
         let res = await blogApi.getBlogByPage(currentPage.value, pageSize.value)
 
         /* 获取全部的TAG开始 */
-        let allTagFromServer = await get('blog/getAllTag', {})
+        // let allTagFromServer = await get('blog/getAllTag', {})
+        let allTagFromServer = await blogApi.getAllTag()
         // console.log('allTagFromServer', allTagFromServer);// ['随笔', '徒步', 'demo']
         // 将其装换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
         allTagFromServer.data.data.forEach((item, index) => {
@@ -144,12 +145,12 @@ const handleSizeChange = async val => {
 const handleCurrentChange = async val => {
     try {
 
-        let res = await get(`/blog/getBlogByPageAndTag`, {
-            current: currentPage.value,
-            size: pageSize.value,
-            tags: selectedTags.value.map(tag => tag.name).join('|')
-        })
-
+        // let res = await get(`/blog/getBlogByPageAndTag`, {
+        //     current: currentPage.value,
+        //     size: pageSize.value,
+        //     tags: selectedTags.value.map(tag => tag.name).join('|')
+        // })
+        let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
         pageSelectData.value = res.data.data.records
     } catch (error) {
         console.error('更换页码过程发生异常', error)
@@ -176,11 +177,12 @@ watch(
 
         /* 重新获取数据开始 */
         try {
-            let res = await get(`/blog/getBlogByPageAndTag`, {
-                current: currentPage.value,
-                size: pageSize.value,
-                tags: selectedTags.value.map(tag => tag.name).join('|')
-            })
+            // let res = await get(`/blog/getBlogByPageAndTag`, {
+            //     current: currentPage.value,
+            //     size: pageSize.value,
+            //     tags: selectedTags.value.map(tag => tag.name).join('|')
+            // })
+            let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
             // 赋值博客的总条数
             totalDataCount.value = res.data.data.total
             // 赋值分页查询到的数据

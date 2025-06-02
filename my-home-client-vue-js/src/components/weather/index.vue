@@ -20,7 +20,7 @@
 <script setup>
 import { pcTextArr } from 'element-china-area-data'
 import { ref, toRaw, watch } from 'vue'
-import { post } from '../../utils/api/index.js'
+import { weatherApi } from '../../api/weather.api.js'
 import ListCom from './../list/index.vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
@@ -36,9 +36,10 @@ let MyWeatherData = ref([])
 watch(selectedOptions, async (newValue, oldValue) => {
     try {
         // 请求后端接口，获取天气数据
-        const response = await post(`/weather/getWeather`, {
-            city: newValue[1]
-        })
+        // const response = await post(`/weather/getWeather`, {
+        //     city: newValue[1]
+        // })
+        const response = await weatherApi.getWeather(newValue[1])
         MyWeatherData.value.push(toRaw(response).data.data[0])
         // ================弹窗开始================
         if (response.data.code === 200) {

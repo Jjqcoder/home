@@ -41,38 +41,29 @@
 import TagSelector from '../TagSelector/index.vue' /* 引入标签选择组件 */
 import {ref, onMounted, computed, watch} from 'vue'
 import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
-import {get} from './../../utils/api/index.js'
 import {isMobileDevice} from '../../utils/index.js' /* 判断是手机端还是PC端 */
 import {blogApi} from '../../api/index.js'
 const totalDataCount = ref(100) /* 记录一共有多少条数据 */
 const currentPage = ref(1)
-let pageSize = isMobileDevice() ? ref(5) : ref(15) /* 根据设备类型设置每页显示的条数 */
 const small = ref(false)
 const background = ref(false)
 const disabled = ref(false)
 const pageSelectData = ref(null) /* 用于存储分页查询来的数据 */
 const allBlogType = ref([]) /* 存储博客全部的Tag */
+let pageSize = isMobileDevice() ? ref(5) : ref(15) /* 根据设备类型设置每页显示的条数 */
 
 // 配合onMounted，页面加载完成后就开始获取数据的条数
 onMounted(async () => {
     try {
         // 分页获取blog数据
-        // let res = await get(`/blog/getBlogByPage`, {
-        //     current: currentPage.value,
-        //     size: pageSize.value
-        // })
-        // 使用模块模式
         let res = await blogApi.getBlogByPage(currentPage.value, pageSize.value)
 
         /* 获取全部的TAG开始 */
-        // let allTagFromServer = await get('blog/getAllTag', {})
         let allTagFromServer = await blogApi.getAllTag()
-        // console.log('allTagFromServer', allTagFromServer);// ['随笔', '徒步', 'demo']
+
         // 将其装换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
         allTagFromServer.data.data.forEach((item, index) => {
             allBlogType.value[index] = item
-            // console.log('allBlogType.value👻', allBlogType.value);
-            
         })
         /* 获取全部的TAG结束 */
         
@@ -87,7 +78,6 @@ onMounted(async () => {
             pageSelectData.value.forEach(item => {
                 item.BLOG_CREATE_TIME = item.BLOG_CREATE_TIME.replace('T', ' ').replace('.000Z', '')
                 item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
-                // item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行 注：目前使用富文本 不再需要手动处理换行
             })
         }
         // ================弹窗开始================
@@ -144,12 +134,6 @@ const handleSizeChange = async val => {
 // 页码发生改变触发的回调
 const handleCurrentChange = async val => {
     try {
-
-        // let res = await get(`/blog/getBlogByPageAndTag`, {
-        //     current: currentPage.value,
-        //     size: pageSize.value,
-        //     tags: selectedTags.value.map(tag => tag.name).join('|')
-        // })
         let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
         pageSelectData.value = res.data.data.records
     } catch (error) {
@@ -174,14 +158,8 @@ watch(
     selectedTagIds,
     async () => {
         // console.log('当前选中的标签:', selectedTags.value.map(tag => tag.name).join(', '))
-
         /* 重新获取数据开始 */
         try {
-            // let res = await get(`/blog/getBlogByPageAndTag`, {
-            //     current: currentPage.value,
-            //     size: pageSize.value,
-            //     tags: selectedTags.value.map(tag => tag.name).join('|')
-            // })
             let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
             // 赋值博客的总条数
             totalDataCount.value = res.data.data.total
@@ -234,14 +212,10 @@ const selectedTags = computed(() => {
 watch(
     allBlogType,
     () => {
-        console.log('allBlogType变化了', allBlogType.value);
-        
         allTags.value = allBlogType.value.map((tag, index) => ({
             id: index + 1, // 使用索引作为 ID
             name: tag
         }))
-        console.log('allTags变化了', allTags.value);
-        
     },
     {immediate: true, deep: true}
 )

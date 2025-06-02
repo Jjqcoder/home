@@ -20,15 +20,10 @@ const displayData = ref({
 const getServerVersion = async () => {
     try {
         // my-home-server-express-js版本
-        // const res = await get('/version/getVersion')
         const res = await versionApi.myHomeServerExpressJsVersion()
 
         /* 获取db-service 版本开始 */
-        // const res2 = await get('/dbservice/getVersion')
         const res2 = await versionApi.dbserviceVersion()
-        // console.log('res2.data🍭', res2.data);// {code: 200, msg: '获取db-service版本成功', data: '1.0.3'}
-        // console.log('res2.data.data🍭', res2.data.data);
-        
         db_service_version.value = res2.data.data
         /* 获取db service 版本结束 */
 

@@ -20,20 +20,6 @@
                 >（很喜欢手串戴在手上，随着时间流逝，颜色慢慢变化的那种感觉。手汗偏多的朋友们推荐菩提小金刚和紫金鼠，价格便宜【十几块】且耐造！），
                 <span>学习英语</span>（每日英语听力重度使用者，累计打卡694天，累计时长1143h）
             </p>
-            <!-- <div class="link-item">
-        <a href="https://juejin.cn/user/4051056254523991" class="link">✨掘金⛏️</a>
-      </div>
-      <div class="link-item">
-        <a href="https://github.com/Jjqcoder" class="link">✨GitHub🎈</a>
-      </div>
-      <div class="link-item">
-        <a href="https://leetcode.cn/u/windy0_0/" class="link">✨力扣🧐</a>
-      </div>
-      <div class="qrcode-item">
-        <span>✨公众号(主要用来记录学英语的过程,不过近期没有更新了)</span>
-        <img class="qrcode" src="../../assets/qrcode.jpg" alt="公众号二维码" />
-        <span class="small">[看不见我看不见我🙈]</span>
-      </div> -->
         </div>
     </div>
 </template>

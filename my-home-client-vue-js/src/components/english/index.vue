@@ -16,7 +16,6 @@ const currentSentence = ref(null)
 // 获取下一个句子
 const nextSentence = async () => {
     try {
-        // const resRandomSentence = await get('/english/getSentenceRandomOne', {})
         const resRandomSentence = await englishApi.getSentenceRandomOne()
 
         if (resRandomSentence.data.code === 200) {

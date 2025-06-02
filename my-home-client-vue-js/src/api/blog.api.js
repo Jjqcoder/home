@@ -5,18 +5,13 @@
  */
 
 import { get } from '../utils/api/index.js';
-export const blogApi =  (function() {
-
-    // 导出公开接口
-    return {
-        // 分页获取博客
-        getBlogByPage: async (current, size) => {
-            console.log('我被执行了');
-            
-            return await get(
-                `/blog/getBlogByPage`,
-                 {current,size}
-                )
-        }
+export const blogApi = {
+    // 分页获取博客
+    getBlogByPage: async (current, size) => {
+        console.log('我被执行了!!');
+        return await get(
+            `/blog/getBlogByPage`,
+             {current,size}
+            )
     }
-})()
+}

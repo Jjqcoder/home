@@ -7,7 +7,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { englishApi } from '../../api/index.js';
+import { englishApi } from '../../lib/api/index.js';
 import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
 
 // 当前句子

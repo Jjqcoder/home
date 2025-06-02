@@ -43,6 +43,7 @@ import {ref, onMounted, computed, watch} from 'vue'
 import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
 import {get} from './../../utils/api/index.js'
 import {isMobileDevice} from '../../utils/index.js' /* 判断是手机端还是PC端 */
+import {blogApi} from '../../api/index.js'
 const totalDataCount = ref(100) /* 记录一共有多少条数据 */
 const currentPage = ref(1)
 let pageSize = isMobileDevice() ? ref(5) : ref(15) /* 根据设备类型设置每页显示的条数 */
@@ -56,10 +57,12 @@ const allBlogType = ref([]) /* 存储博客全部的Tag */
 onMounted(async () => {
     try {
         // 分页获取blog数据
-        let res = await get(`/blog/getBlogByPage`, {
-            current: currentPage.value,
-            size: pageSize.value
-        })
+        // let res = await get(`/blog/getBlogByPage`, {
+        //     current: currentPage.value,
+        //     size: pageSize.value
+        // })
+        // 使用模块模式
+        let res = await blogApi.getBlogByPage(currentPage.value, pageSize.value)
 
         /* 获取全部的TAG开始 */
         let allTagFromServer = await get('blog/getAllTag', {})

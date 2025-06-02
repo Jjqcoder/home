@@ -17,6 +17,6 @@ module.exports = class Service {
     static rpcBlogService = require('./rpc/blogService.js')
     static rpcEnglishService = require('./rpc/englishService.js')
     static rpcVisitService = require('./rpc/visitService.js')
-    static rpcDbserviceVersionService = require('./rpc/dbServiceVersionService.js')
+    static rpcDbserviceVersionService = require('./rpc/dbserviceVersionService.js')
     /* rpc调用结束 */
 }

@@ -24,15 +24,6 @@
 │   ├── index.js
 │   ├── prisma.js
 │   └── redis.js
-├── logs
-│   ├── app..2025-05-26.log
-│   ├── app..2025-05-28.1.log.gz
-│   ├── app..2025-05-29.log
-│   ├── app..2025-05-30.log
-│   ├── app..2025-05-31.1.log.gz
-│   ├── app..2025-06-01.log
-│   ├── app..2025-06-02.log
-│   └── app..2025-06-03.log
 ├── markdown
 │   └── dockerfile+pm2.md
 ├── middlewares
@@ -43,6 +34,7 @@
 ├── pnpm-lock.yaml
 ├── prisma
 │   └── schema.prisma
+├── PROJECT-STRUCTURE.md
 ├── public
 │   └── favicon.ico
 ├── README.md

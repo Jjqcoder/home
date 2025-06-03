@@ -1,9 +1,15 @@
-// src/routes/blog.ts
+/**
+ * 创建时间: 2025-06-03
+ * 作者: jjq
+ * 描述: blog 路由
+ */
+
 import { Router } from 'express';
 import { BlogResponse, CreateBlogRequest } from './../types/index';
 
 const router = Router();
 
+/* 路由挂载开始 */
 // 2. 使用明确类型
 // url:http://localhost:8080/blog
 // 请求体：{"title":1, "content":1}
@@ -32,5 +38,6 @@ router.get<{ id: string }>('/:id', (req, res) => {
   
   res.send(`获取ID为 ${req.params.id} 的博客`);
 });
+/* 路由挂载结束 */
 
 export default router;

@@ -3,6 +3,8 @@
  * 作者: jjq
  * 描述: blog类型声明
  */
+
+/* blog类型声明开始 */
 export type Blog = {
   id: number;
   title: string;
@@ -19,3 +21,4 @@ export type BlogResponse = {
   title: string;
   createdAt: string;
 };
+/* blog类型声明结束 */

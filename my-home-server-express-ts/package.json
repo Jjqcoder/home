@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "ts-node-dev --respawn src/app.ts",
         "build": "rimraf dist && tsc",
-        "prod": "pm2-runtime start ecosystem.config.js"
+        "prod": "npm run build && pm2-runtime start ecosystem.config.js"
     },
     "keywords": [],
     "author": "",

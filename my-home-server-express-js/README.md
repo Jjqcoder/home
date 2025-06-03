@@ -34,3 +34,6 @@ sudo docker run -d \
 
 3. 将文件上传到`/myProject/my-home-server-express-js`即可
 4. 注：更新项目时，将文件上传到指定文件夹后重启容器即可。
+
+## 其他
+-   项目结构参考`PROJECT-STRUCTURE.md`——在项目根目录下执行 `node generate-structure.js` 即可生成。此命令已经集成进`pnpm dev`

@@ -12,11 +12,10 @@ export const blogController = class {
     static async getBlogByPage(req: Request, res: Response): Promise<void> {// async 函数总是返回 Promise
         try {
             /* 入参校验开始 */    
-            // ...       
-            let p1 = req.query.p1;
-            let p2 = req.query.p2;
+            let current = req.query.current
+            let size = req.query.size
             /* 入参校验结束 */           
-            res.send(R.ok(200, '博客数据分页获取成功', await blogService.getBlogByPage(Number(p1), Number(p2)))) 
+            res.send(R.ok(200, '博客数据分页获取成功', await blogService.getBlogByPage(Number(current), Number(size)))) 
         } catch (error) {
             
         }

@@ -7,9 +7,13 @@
 import { Request, Response } from 'express';
 import { R } from '../lib/R';
 import { blogService } from '../service/index';
+import { BlogPageQuery } from '../types/index';
 
 export const blogController = class {
-    static async getBlogByPage(req: Request, res: Response): Promise<void> {// async 函数总是返回 Promise
+    static async getBlogByPage(
+        req: Request<{}, {}, {}, BlogPageQuery>, 
+        res: Response
+    ): Promise<void> {
         try {
             /* 入参校验开始 */    
             let current = req.query.current
@@ -17,7 +21,7 @@ export const blogController = class {
             /* 入参校验结束 */           
             res.send(R.ok(200, '博客数据分页获取成功', await blogService.getBlogByPage(Number(current), Number(size)))) 
         } catch (error) {
-            
+            res.send(R.err(500, '博客数据分页获取失败', error)) 
         }
     }
 }

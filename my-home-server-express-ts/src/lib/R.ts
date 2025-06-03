@@ -41,7 +41,7 @@ export class R<T = any> {
      * @param code 错误码 (可选，默认500)
      * @param data 附加数据 (可选)
      */
-    static err<T>(msg: string, code: number = 500, data: T | null = null): R<T> {
+    static err<T>(code: number = 500, msg: string, data: T | null = null): R<T> {
       return new R<T>(code, msg, data);
     }
 }

@@ -5,20 +5,27 @@
  */
 
 /* blog类型声明开始 */
-export type Blog = {
-  id: number;
-  title: string;
-  content: string;
+// blog实体类
+export interface Blog {
+  ID: number;
+  BLOG_CREATE_TIME?: Date | null;
+  BLOG_UPDATE_TIME?: Date | null;
+  BLOG_TITLE?: string | null;
+  BLOG_CONTENT?: string | null;
+  IS_DELETE?: string | null;
+  BLOG_TAGS?: string | null;
+}
+// 分页获取博客数据控制层入参
+export interface BlogPageQuery {
+  current?: string;
+  size?: string;
+}
+// 分页获取博客数据service返回值类型
+export interface BlogPaginationResult {
+  total: number;
+  current: number;
+  size: number;
+  records: Blog[];
 }
 
-export type CreateBlogRequest = {
-  title: string;
-  content: string;
-};
-
-export type BlogResponse = {
-  id: number;
-  title: string;
-  createdAt: string;
-};
 /* blog类型声明结束 */

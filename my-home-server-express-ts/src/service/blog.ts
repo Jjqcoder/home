@@ -5,19 +5,12 @@
  */
 
 import { prisma } from '../lib/index'
+import { BlogPaginationResult } from '../types/index'
 
 export const blogService = class {
-    static async getBlogByPage(current: number, size: number) {
+    static async getBlogByPage(current: number, size: number): Promise<BlogPaginationResult> {
         // return '我是 blog 服务层的内容'+p1+p2
         const skip = (current - 1) * size // 计算跳过的记录数
-
-            // // 查询总记录数
-            // const total = await prisma.BLOG.count()
-            // // 查询分页数据
-            // const records = await prisma.BLOG.findMany({
-            //     skip,
-            //     take: size
-            // })
 
             // 并行执行两个异步任务
             const [total, records] = await Promise.all([

@@ -2,6 +2,11 @@
 
 ## 相关命令
 
+### prisma相关
+-   `npx prisma init`初始化`prisma`项目
+-   `npx prisma db pull`拉取数据库结构到本项目
+-   `npx prisma generate`生成`prisma`客户端
+
 ### 开发环境
 
 -   `pnpm dev`

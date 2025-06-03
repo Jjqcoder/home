@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { prisma } from './lib/index';
 import router from './routes/index';
 
 const app = express()
@@ -10,7 +11,12 @@ app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-for
 /* 挂载中间件结束 */
 
 /* 项目入口的路由挂载开始 */
-app.get('/', (req: Request, res: Response) => {
+app.get('/', async (req: Request, res: Response) => {
+    console.log('【demo】输出全部的blog');
+    let allBlog = await prisma.bLOG.findMany();
+    console.log(allBlog);
+    
+    
     res.send('Hello World with Express and TypeScript!')
 })
 app.use('/blog', router)

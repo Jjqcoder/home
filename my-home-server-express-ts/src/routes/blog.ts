@@ -1,17 +1,6 @@
 // src/routes/blog.ts
 import { Router } from 'express';
-
-// 1. 先定义请求和响应类型
-type CreateBlogRequest = {
-  title: string;
-  content: string;
-};
-
-type BlogResponse = {
-  id: number;
-  title: string;
-  createdAt: string;
-};
+import { BlogResponse, CreateBlogRequest } from './../types/index';
 
 const router = Router();
 

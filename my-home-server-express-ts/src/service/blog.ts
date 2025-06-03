@@ -4,4 +4,8 @@
  * 描述: blog 服务层
  */
 
-export const demo = ()=>{}
+export const blogService = class {
+    static async getBlogByPage(p1: number, p2: number) {
+        return '我是 blog 服务层的内容'+p1+p2
+    }
+}

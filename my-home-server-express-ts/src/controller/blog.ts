@@ -4,4 +4,21 @@
  * 描述: blog 控制层
  */
 
-export const A = ()=>{}
+import { Request, Response } from 'express';
+import { R } from '../lib/R';
+import { blogService } from '../service/index';
+
+export const blogController = class {
+    static async getBlogByPage(req: Request, res: Response): Promise<void> {// async 函数总是返回 Promise
+        try {
+            /* 入参校验开始 */    
+            // ...       
+            let p1 = req.query.p1;
+            let p2 = req.query.p2;
+            /* 入参校验结束 */           
+            res.send(R.ok(200, '博客数据分页获取成功', await blogService.getBlogByPage(Number(p1), Number(p2)))) 
+        } catch (error) {
+            
+        }
+    }
+}

@@ -31,7 +31,7 @@ export class R<T = any> {
      * @param msg 提示信息 (可选)
      * @param code 状态码 (可选，默认200)
      */
-    static ok<T>(data: T | null = null, msg: string | null = 'success', code: number = 200): R<T> {
+    static ok<T>(code: number = 200, msg: string | null = 'success', data: T | null = null): R<T> {
       return new R<T>(code, msg, data);
     }
   

@@ -7,11 +7,11 @@
 import { Request, Response } from 'express';
 import { R } from '../lib/R';
 import { blogService } from '../service/index';
-import { BlogPageQuery } from '../types/index';
+import { PaginateBlogDto } from '../types';
 
 export const blogController = class {
     static async getBlogByPage(
-        req: Request<{}, {}, {}, BlogPageQuery>, 
+        req: Request<{}, {}, {}, PaginateBlogDto>, 
         res: Response
     ): Promise<void> {
         try {

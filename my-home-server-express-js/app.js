@@ -20,15 +20,20 @@ const limiter = rateLimit({
     standardHeaders: true, // 返回速率限制信息在 `RateLimit-*` headers中
     legacyHeaders: false, // 禁用 `X-RateLimit-*` headers
     message: `${JSON.stringify(R.err(429, '您的请求太频繁🥲请一分钟后再试🤝', null))}`, // 超过限制时的响应消息
+    keyGenerator: (req) => {
+        // 确保使用 X-Forwarded-For 的 IP（Nginx 传递的）
+        return req.headers['x-forwarded-for'] || req.ip;
+    }
   });
-app.use(
-    cors({
-        origin: true, // 或指定具体域名 ['http://example.com', 'https://example.com']
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
-        credentials: true // 如果需要跨域携带凭证
-    })
-)
+
+app.set('trust proxy', 1); // 只信任第一层代理（Nginx）
+
+app.use(cors({
+    origin: ['https://www.wbeishangw.top', 'https://wbeishangw.top'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true
+}));
+
 app.use(limiter)// 使用限流规则
 expressWs(app) // 注意 项目入口需要使用expressWs(app) 子路由中的ws配置才会生效！
 // 全局启用 CORS

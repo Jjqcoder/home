@@ -1,23 +1,34 @@
 # 基于官方 Nginx 镜像
 FROM nginx:latest
 
+# 安装 curl 和 jq（用于处理 JSON）
+# RUN apt-get update && apt-get install -y curl jq && rm -rf /var/lib/apt/lists/*
+
 # 将本地的配置文件复制到容器的 /etc/nginx 目录
 COPY myNginxConf/ /etc/nginx/
 
 # 将本地的 HTML 文件复制到容器的 /usr/share/nginx/html 目录
-# COPY myNginxHtml/ /usr/share/nginx/html/
 COPY dist/ /usr/share/nginx/html/
+
+# 复制 package.json 到容器中
+COPY package.json /usr/share/nginx/html/
 
 # SSL 证书文件
 COPY myNginxConf/cert/wbeishangw.top.key /etc/nginx/cert/
 COPY myNginxConf/cert/wbeishangw.top.pem /etc/nginx/cert/
 
+# 复制启动脚本
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 # 暴露 80 和 443 端口
 EXPOSE 80 443
 
+# 使用自定义的入口点脚本
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 # 启动 Nginx
 CMD ["nginx", "-g", "daemon off;"]
-
 # pnpm build 打包项目,再将项目上传到服务器
 # 权限记得设置chmod -R 777 ./*
 # 构建镜像(注意 构建镜像后再将打包后的文件复制到myNginxConf是不会生效的!需要在构建镜像前复制)：docker build -t my-home-client-vue-js-image .

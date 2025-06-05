@@ -41,8 +41,8 @@
 import TagSelector from '../TagSelector/index.vue' /* 引入标签选择组件 */
 import {ref, onMounted, computed, watch} from 'vue'
 import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
-import {isMobileDevice, messageNotify} from '../../lib/utils/index.js' /* 判断是手机端还是PC端 */
-import {blogApi} from '../../lib/api/index.js'
+import {isMobileDevice, messageNotify} from '../../lib' /* 判断是手机端还是PC端 */
+import {blogApi} from '../../lib'
 const totalDataCount = ref(100) /* 记录一共有多少条数据 */
 const currentPage = ref(1)
 const small = ref(false)

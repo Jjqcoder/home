@@ -9,7 +9,7 @@
 
 <script>
 import { onMounted, onUnmounted, ref } from 'vue'
-import { OnlineCount } from '../../lib/websocket'// 使用封装的ws操作
+import { OnlineCount } from '../../lib'// 使用封装的ws操作
 
 export default {
     setup() {

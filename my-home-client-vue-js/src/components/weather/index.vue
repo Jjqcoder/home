@@ -20,7 +20,7 @@
 <script setup>
 import { pcTextArr } from 'element-china-area-data'
 import { ref, toRaw, watch } from 'vue'
-import { weatherApi } from '../../lib/api/weather.js'
+import { weatherApi } from '../../lib'
 import ListCom from './../list/index.vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL

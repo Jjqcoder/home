@@ -5,8 +5,8 @@
 <script setup>
 import { Chart, registerables } from 'chart.js'
 import { onBeforeMount, ref, watch } from 'vue'
-import { visitApi } from '../../lib/api/visit.js'
-import {messageNotify} from '../../lib/utils/index.js'
+import { visitApi } from '../../lib'
+import {messageNotify} from '../../lib'
 
 // 获取部分访客信息
 const getVisitorStatistics = async () => {

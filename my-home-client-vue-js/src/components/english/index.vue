@@ -7,9 +7,9 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { englishApi } from '../../lib/api/index.js';
+import { englishApi } from '../../lib';
 import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
-import {messageNotify} from '../../lib/utils/index.js'
+import {messageNotify} from '../../lib'
 
 // 当前句子
 const currentSentence = ref(null)

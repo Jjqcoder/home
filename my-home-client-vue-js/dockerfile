@@ -8,6 +8,10 @@ COPY myNginxConf/ /etc/nginx/
 # COPY myNginxHtml/ /usr/share/nginx/html/
 COPY dist/ /usr/share/nginx/html/
 
+# SSL 证书文件
+COPY myNginxConf/cert/wbeishangw.top.key /etc/nginx/cert/
+COPY myNginxConf/cert/wbeishangw.top.pem /etc/nginx/cert/
+
 # 暴露 80 和 443 端口
 EXPOSE 80 443
 

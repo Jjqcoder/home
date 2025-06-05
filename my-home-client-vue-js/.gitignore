@@ -27,3 +27,4 @@ dist-ssr
 # my add
 .env
 *.zip
+myNginxConf/cert

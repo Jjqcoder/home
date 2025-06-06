@@ -29,21 +29,21 @@
                         <el-dropdown-item>🔢看数据</el-dropdown-item>
                     </router-link>
                     <!-- 跳转到本站的管理后台 后续将开放游客模式让游客体验后台的功能（功能会限制） -->
-                    <a href="http://wbeishangw.top:81/" target="_blank">
+                    <!-- <a href="http://wbeishangw.top:81/" target="_blank">
                         <el-dropdown-item>🎛️管后台</el-dropdown-item>
-                    </a>
+                    </a> -->
                     <router-link to="/version">
                         <el-dropdown-item>👓看版本</el-dropdown-item>
                     </router-link>
-                    <router-link to="/login">
+                    <!-- <router-link to="/login">
                         <el-dropdown-item>📲去登录</el-dropdown-item>
-                    </router-link>
-                    <router-link to="/game">
+                    </router-link> -->
+                    <!-- <router-link to="/game">
                         <el-dropdown-item>👻玩游戏</el-dropdown-item>
-                    </router-link>
-                    <router-link to="/aboutWebsite">
+                    </router-link> -->
+                    <!-- <router-link to="/aboutWebsite">
                         <el-dropdown-item>🧑‍💻关于本站</el-dropdown-item>
-                    </router-link>
+                    </router-link> -->
                     <router-link to="/about">
                         <el-dropdown-item>🤟关于我</el-dropdown-item>
                     </router-link>

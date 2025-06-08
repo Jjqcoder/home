@@ -6,7 +6,7 @@
  * 描述: 工具类
  */
 
-const RabbitMQResponder = require('../lib/rabbitmq/index.js')
+const RabbitMQResponder = require('../lib/index.js').rabbitMQResponder
 
 module.exports = class Utils {
     /* 

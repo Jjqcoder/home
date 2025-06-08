@@ -6,8 +6,10 @@
  * 描述: 用于管理本服务要监听并处理的任务
  */
 
+const startQueueListen = require('../lib/index.js')
+
 /* manage-server-express-js项目 */
-require('../utils/index.js').startQueueResponder(
+startQueueListen.startQueueResponder(
     require('../constants/index.js').MANAGE_SERVER_EXPRESS_JS_QUEUE_NAME /* 队列名 */,
     require('../router/manage-server-express-js/index.js') /* 路由 */
 )

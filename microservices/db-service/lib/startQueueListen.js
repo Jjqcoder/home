@@ -1,14 +1,10 @@
-'use strict'
-
 /**
- * 创建时间: 2025-05-16
+ * 创建时间: 2025-06-08
  * 作者: jjq
- * 描述: 工具类
+ * 描述: 用于开启rabbitmq队列监听
  */
-
-const RabbitMQResponder = require('../lib/index.js').rabbitMQResponder
-
-module.exports = class Utils {
+const RabbitMQResponder = require('./rabbitMQResponder.js')
+module.exports = class StartQueueListen {
     /* 
         功能：用于响应请求的方法
         约定：此方法会逐个执行中间件，直到有一个中间件返回数据为止（后续的中间件不会再执行）。中间件数组中必定会有一个返回数据的中间件。
@@ -16,9 +12,8 @@ module.exports = class Utils {
     static async startQueueResponder(queueName, router) {
         try {
             const requestHandler = async requestData => {
-                console.log('🎯', requestData);
-                
-                console.log('🎯', router[requestData.route])
+                // console.log('🎯', requestData);
+                // console.log('🎯', router[requestData.route])
 
                 const middlewaresLength = router[requestData.route].length
                 for (let i = 0; i < middlewaresLength; i++) {

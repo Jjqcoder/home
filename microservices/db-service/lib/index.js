@@ -7,4 +7,5 @@
 module.exports = class Lib {
     static prisma = require('./prisma.js')
     static rabbitMQResponder = require('./rabbitMQResponder.js')
+    static startQueueListen = require('./startQueueListen.js')
 }

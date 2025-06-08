@@ -4,7 +4,7 @@
  * 描述: service 层
  */
 
-const R = require('../R.js') // 引入响应工具类
+const R = require('../lib/R.js') // 引入响应工具类
 
 module.exports = class service {
     /* 服务层挂载开始 */

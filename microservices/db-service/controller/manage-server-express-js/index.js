@@ -6,9 +6,6 @@
  * 描述: controller 层
  */
 
-const service = require('../../service/index.js')
-const R = require('../../R.js')
-
 module.exports = class controller {
     /* 控制器挂载开始 */
     static blogController = require('./blog.js')

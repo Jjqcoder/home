@@ -5,7 +5,7 @@
  */
 
 const controller = require('../../controller/manage-server-express-js/index.js')
-const R = require('../../R.js')
+const R = require('../../lib/R.js')
 const routerConfig = require('./routerConfig/index.js')
 
 // 涉及数据库的操作均在此服务完成

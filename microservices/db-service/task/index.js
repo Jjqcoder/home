@@ -6,7 +6,7 @@
  * 描述: 用于管理本服务要监听并处理的任务
  */
 
-const startQueueListen = require('../lib/index.js')
+const startQueueListen = require('../lib/index.js').startQueueListen
 
 /* manage-server-express-js项目 */
 startQueueListen.startQueueResponder(

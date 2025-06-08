@@ -7,7 +7,7 @@
  * 约定：业务流程中，只会向请求方响应一次，一旦响应，后续中间件或者业务代码不再执行。保证整个业务流程会有返回值。
  */
 
-const R = require('../R.js')
+const R = require('../lib/R.js')
 
 module.exports = class Middleware {
     // 前置中间件

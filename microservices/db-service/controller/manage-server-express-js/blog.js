@@ -4,7 +4,7 @@
  * 描述: blog 控制层
  */
 
-const R = require('../../R.js')
+const R = require('../../lib/index.js').R
 const blogService = require('../../service/index.js').blogService
 
 module.exports = class BlogController {

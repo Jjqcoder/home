@@ -29,7 +29,7 @@ const limiter = rateLimit({
 app.set('trust proxy', 1); // 只信任第一层代理（Nginx）
 
 app.use(cors({
-    origin: ['https://www.wbeishangw.top', 'https://wbeishangw.top'],
+    origin: ['https://www.wbeishangw.top', 'https://wbeishangw.top', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));

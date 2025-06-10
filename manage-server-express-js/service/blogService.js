@@ -12,7 +12,8 @@ module.exports = class BlogService {
         await prisma.BLOG.create({
             data: {
                 BLOG_TITLE: req.body.BLOG_TITLE,
-                BLOG_CONTENT: req.body.BLOG_CONTENT
+                BLOG_CONTENT: req.body.BLOG_CONTENT,
+                BLOG_TAGS: req.body?.BLOG_TAGS??"随笔"// 默认的标签为随笔
             }
         })
     }

@@ -17,9 +17,10 @@ sudo docker pull node:18-alpine
 ```
 
 2. 创建容器并运行
-
+> 注：cpu核心数【--cpus】不能超出服务器cpu核心数，否则会报错
 ```sh
 sudo docker run -d \
+  --cpus=2 \
   --memory=1G --memory-swap=1.5G \
   --log-opt max-size=10m \
   --log-opt max-file=3 \

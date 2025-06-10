@@ -6,9 +6,17 @@
 
 // 文档：https://www.npmjs.com/package/safe-timers
 const setInterval = require('safe-timers').setInterval;
+const controller = require('../controller/manage-server-express-js/index')
  
-setInterval(function (msg) {
-  console.log(msg);
-}, 1000, '每秒执行一次');
+setInterval(async () => {
+  console.log('==============定时任务开始==============');
+  console.log(`当前时间为：${new Date().toLocaleString()}`);
+  
+  const res = await controller.visitController.keepLatestVisit()
+  console.log(res);
 
-// 注：此文件内容由pm2调用 所以此处不需要导出内容
+  console.log(`当前时间为：${new Date().toLocaleString()}`);
+  console.log('==============定时任务结束==============');
+}, 1000 * 60 * 24);// 24小时执行一次
+
+/* 注：此文件内容由pm2调用 所以此处不需要导出内容 */

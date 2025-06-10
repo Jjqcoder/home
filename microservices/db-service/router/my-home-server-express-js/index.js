@@ -4,12 +4,20 @@
  * 描述: 路由配置，使用map维护路由
  */
 
-const service = require('../../service/project1/index.js')
+const routerConfig = require('./routerConfig/index.js')
 
+// 涉及数据库的操作均在此服务完成
 const router = {
-    '/add': service.add,
-    '/subtract': service.subtract
-    // 可以继续添加更多方法
+    /* manage-server-express-js路由配置挂载开始 */
+    ...routerConfig.blogRouterConfig,
+    ...routerConfig.englishRouterConfig,
+    ...routerConfig.visitRouterConfig,
+    ...routerConfig.dbServiceRouterConfig,
+    /* manage-server-express-js路由配置挂载结束 */
+    
+    /* 其他项目挂载开始 */
+    // .....
+    /* 其他项目挂载结束 */
 }
 
 module.exports = router

@@ -8,11 +8,11 @@
 
 const startQueueListen = require('../lib/index.js').startQueueListen
 
-/* manage-server-express-js项目 */
+/* my-home-server-express-js项目开始 */
 startQueueListen.startQueueResponder(
-    require('../constants/index.js').MANAGE_SERVER_EXPRESS_JS_QUEUE_NAME /* 队列名 */,
-    require('../router/manage-server-express-js/index.js') /* 路由 */
+    require('../constants/index.js').MY_HOME_SERVER_EXPRESS_JS_QUEUE_NAME /* 队列名 */,
+    require('../router/my-home-server-express-js/index.js') /* 路由 */
 )
-/* my-home-server-express-js项目 */
+/* my-home-server-express-js项目结束 */
 /* 其他项目... */
 /* 其他项目... */

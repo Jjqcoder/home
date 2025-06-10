@@ -21,6 +21,10 @@ const config = new Map([
         'xxx'
     ],
     [
+        'DB_SERVICE_QUEUE_NAME', // DB_SERVICE队列名称
+        '/my-home-server-express-js'
+    ],
+    [
         'rabbitmqConf',// rabbitmq配置
         {
             ip: 'xxx',

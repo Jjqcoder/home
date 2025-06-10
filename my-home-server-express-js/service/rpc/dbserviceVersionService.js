@@ -8,12 +8,13 @@
 
 const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
 const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
+const DB_SERVICE_QUEUE_NAME = require('../../config/index.js').get('DB_SERVICE_QUEUE_NAME')
 
 module.exports = class DbserviceVersionService {
     // 获取
     static async getDbserviceVersion(req, res) {
         try {
-            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
+            let res = await RabbitMQRequester.sendRequest(DB_SERVICE_QUEUE_NAME, {
                 route: '/getDbserviceVersion',
                 data: {...req?.query, dbServiceKey: DB_SERVICE_KEY}
             })

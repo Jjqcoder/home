@@ -5,7 +5,7 @@
  */
 
 const middleware = require('../../../middleware/index.js')
-const visitController = require('../../../controller/manage-server-express-js/index.js').visitController
+const visitController = require('../../../controller/my-home-server-express-js/index.js').visitController
 
 module.exports = {
     // 获取所有访问记录

@@ -7,6 +7,7 @@
  */
 
 const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
+const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
 
 module.exports = class EnglishService {
     // 随机获取ENGLISH表中的一个句子
@@ -14,7 +15,7 @@ module.exports = class EnglishService {
         try {
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
                 route: '/getSentenceRandomOne',
-                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+                data: {...req?.query, dbServiceKey: DB_SERVICE_KEY}
             })
             res = JSON.parse(res)
             if (res.code === 200) {

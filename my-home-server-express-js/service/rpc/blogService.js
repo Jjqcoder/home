@@ -7,6 +7,7 @@
  */
 
 const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
+const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
 
 module.exports = class BlogService {
     static async getBlogByPage(req, res) {
@@ -17,7 +18,7 @@ module.exports = class BlogService {
             // }
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
                 route: '/getBlogByPage',
-                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+                data: {...req?.ueqry, dbServiceKey: DB_SERVICE_KEY}
             })
             res = JSON.parse(res)
             if (res.code === 200) {
@@ -36,7 +37,7 @@ module.exports = class BlogService {
         try {
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
                 route: '/getBlogByPageAndTag',
-                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+                data: {...req?.query, dbServiceKey: DB_SERVICE_KEY}
             })
             res = JSON.parse(res)
             if (res.code === 200) {
@@ -56,7 +57,7 @@ module.exports = class BlogService {
         try {
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
                 route: '/getAllBlog',
-                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+                data: {...req?.query, dbServiceKey: DB_SERVICE_KEY}
             })
             res = JSON.parse(res)
             if (res.code === 200) {
@@ -73,7 +74,7 @@ module.exports = class BlogService {
         try {
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
                 route: '/getAllTag',
-                data: {...req?.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+                data: {...req?.query, dbServiceKey: DB_SERVICE_KEY}
             })
             res = JSON.parse(res)
             if (res.code === 200) {

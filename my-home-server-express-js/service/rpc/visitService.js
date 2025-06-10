@@ -6,10 +6,13 @@
  * 描述: 访客 服务层(rpc)
  */
 
+const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
+const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
+
 module.exports = class VisitService {
     static async getAllVisit(req, res) {
         try {
-            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getAllVisit', data: {...req?.query}})
+            let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getAllVisit', data: {...req?.query, dbServiceKey: DB_SERVICE_KEY}})
             res = JSON.parse(res)
             if (res.code === 200) {
                 return res.data
@@ -26,7 +29,7 @@ module.exports = class VisitService {
         try {
             let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {
                 route: '/getVisitByLimit',
-                data: {...req.query, dbServiceKey: require('../../config/index.js').get('DB_SERVICE_KEY')}
+                data: {...req.query, dbServiceKey: DB_SERVICE_KEY}
             })
             res = JSON.parse(res)
             if (res.code === 200) {

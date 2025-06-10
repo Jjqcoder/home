@@ -39,7 +39,7 @@ module.exports = class VisitController {
                 }
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '获近期访客信息成功', await Service.visitService.getVisitByLimit(req, res)))
+            return res.send(R.ok(200, '获近期访客信息成功', await Service.rpcVisitService.getVisitByLimit(req, res)))
         } catch (error) {
             return res.send(R.err(500, `controller >>> visitController.js >>> getVisitByLimit >>>  获取近期访客信息失败 >>> 【${error}】`, error))
         }

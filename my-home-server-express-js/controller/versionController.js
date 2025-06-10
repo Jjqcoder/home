@@ -21,7 +21,7 @@ module.exports = class VersionController {
                 }
             }
             /* 字段校验结束 */
-            return res.send(R.ok(200, '获取后端版本号成功', service.versionService.getVersion()))
+            return res.send(R.ok(200, '获取my-home-server-express-js版本号成功', service.versionService.getVersion()))
         } catch (error) {
             return res.send(R.err(500, `controller >>> versionController.js >>> getVersion >>> 获取后端版本号失败 >>> 【${error}】`, error))
         }

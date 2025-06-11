@@ -14,7 +14,7 @@ Prisma Client could not locate the Query Engine for runtime "linux-musl-openssl-
 This happened because Prisma Client was generated for "windows", but the actual deployment required "linux-musl-openssl-3.0.x".
 ```
 需要在prisma/schema.prisma的generator client中增加如下配置：
-```json
+```text
 binaryTargets = ["native", "linux-musl-openssl-3.0.x"]// 指定 Prisma 引擎（Query Engine）需要兼容哪些操作系统环境。
 engineType    = "binary"// 使用本地编译的二进制查询引擎（.node 文件），性能更高。(当添加上方的参数之后，遇到网络问题无法自动下载引擎时，强制使用二进制模式会有一些缓解)
 ```

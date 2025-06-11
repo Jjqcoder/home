@@ -15,13 +15,12 @@ module.exports = class visitService {
         }
     }
 
-    // 获取指定数量的数据 默认为500条（前端不会发送limit数量）
+    // 获取指定数量的数据 默认为1000条（前端不会发送limit数量）
     static async getVisitByLimit(req) {
         try {
             console.log('我被调用了');
             
-            // const limit = req.query.limit || 500 // 默认为500条
-            const limit = 1000 // 默认为500条
+            const limit = 1000 // 默认为1000条
 
             let res = await prisma.vISIT_RECORDER.findMany({
                 take: limit, // 限制返回的记录数

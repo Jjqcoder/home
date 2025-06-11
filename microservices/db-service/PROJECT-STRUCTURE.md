@@ -12,37 +12,22 @@
 │   └── index.js
 ├── controller
 │   ├── manage-server-express-js
-│   │   ├── blog.js
-│   │   ├── dbServiceVersion.js
-│   │   ├── english.js
-│   │   ├── index.js
-│   │   └── visit.js
+│   │   └── index.js
 │   └── my-home-server-express-js
-│       └── index.js
+│       ├── blog.js
+│       ├── dbServiceVersion.js
+│       ├── english.js
+│       ├── index.js
+│       └── visit.js
 ├── dockerfile
 ├── ecosystem.config.js
 ├── generate-structure.js
 ├── lib
-│   ├── generated
-│   │   └── prisma
-│   │       ├── client.d.ts
-│   │       ├── client.js
-│   │       ├── default.d.ts
-│   │       ├── default.js
-│   │       ├── edge.d.ts
-│   │       ├── edge.js
-│   │       ├── index-browser.js
-│   │       ├── index.d.ts
-│   │       ├── index.js
-│   │       ├── package.json
-│   │       ├── query_engine-windows.dll.node
-│   │       ├── runtime
-│   │       ├── schema.prisma
-│   │       ├── wasm.d.ts
-│   │       └── wasm.js
+│   ├── index.js
 │   ├── prisma.js
-│   └── rabbitmq
-│       └── index.js
+│   ├── R.js
+│   ├── rabbitMQResponder.js
+│   └── startQueueListen.js
 ├── middleware
 │   └── index.js
 ├── package.json
@@ -50,19 +35,18 @@
 ├── prisma
 │   └── schema.prisma
 ├── PROJECT-STRUCTURE.md
-├── R.js
 ├── README.md
 ├── router
 │   ├── manage-server-express-js
-│   │   ├── index.js
-│   │   └── routerConfig
-│   │       ├── blog.js
-│   │       ├── dbserviceVersion.js
-│   │       ├── english.js
-│   │       ├── index.js
-│   │       └── visit.js
+│   │   └── index.js
 │   └── my-home-server-express-js
-│       └── index.js
+│       ├── index.js
+│       └── routerConfig
+│           ├── blog.js
+│           ├── dbserviceVersion.js
+│           ├── english.js
+│           ├── index.js
+│           └── visit.js
 ├── scheduledTasks
 │   └── index.js
 ├── service
@@ -71,8 +55,6 @@
 │   ├── englishService.js
 │   ├── index.js
 │   └── visitService.js
-├── task
-│   └── index.js
-└── utils
+└── task
     └── index.js
 ```

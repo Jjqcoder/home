@@ -81,9 +81,9 @@ const myProps = defineProps({
 const dataFromFather = ref(myProps.fatherDataToSon) // 注意，此处不需要点vlaue就可以在页面上使用{{}}渲染出值，但是在script页面，因为数据是被ref包裹的，所以在访问这个变量的时候需要加上.value才能访问到值！！！
 // dataFromFather.value是一个数组!!!!
 
-watch(dataFromFather.value, (newVal, oldVal) => {
+// watch(dataFromFather.value, (newVal, oldVal) => {
     // console.log(newVal, oldVal)
-})
+// })
 
 // 开始实现新增功能，点击新增之后，dataFromFather会产生一个新对象
 const AddData = () => {
@@ -103,11 +103,7 @@ let dataToBeDel = ref([])
 
 // 选中选框，触发下方函数
 const handleSelectionChange = val => {
-    // console.log('选框发生变化！', val);
-    // 覆盖`待删除的数据的数组`的值
     dataToBeDel.value = val
-    // dataToBeDel.value是一个数组
-    // console.log("dataToBeDel", dataToBeDel.value[1].name);
 }
 
 // 定义一个函数，传入两个对象，判断两个对象是否相等，如果相等，则返回true，否则返回false

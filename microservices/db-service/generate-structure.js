@@ -20,7 +20,7 @@ function generateTree(dir, prefix = '', depth = 0, maxDepth = 3) {
     
     files.forEach((file, index) => {
       // logs文件夹也不要跟踪
-      if (file.match(/node_modules|dist|build|\.git|logs/)) return;
+      if (file.match(/node_modules|generated|dist|build|\.git|logs/)) return;
       
       const fullPath = path.join(dir, file);
       const isLast = index === files.length - 1;

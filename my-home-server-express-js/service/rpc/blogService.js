@@ -14,9 +14,6 @@ module.exports = class BlogService {
     static async getBlogByPage(req, res) {
         // 使用rpc调用
         try {
-            // if (1) {
-            //     throw '测试错误'
-            // }
             let res = await RabbitMQRequester.sendRequest(DB_SERVICE_QUEUE_NAME, {
                 route: '/getBlogByPage',
                 data: {...req?.ueqry, dbServiceKey: DB_SERVICE_KEY}

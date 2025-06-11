@@ -1,12 +1,11 @@
 <template>
     <div class="footer">
-        <span>👮备案号：<a href="https://beian.miit.gov.cn/#/Integrated/index">闽ICP备2023004666号</a></span>
+        <div class="footer-content">
+            <span>👮备案号：<a href="https://beian.miit.gov.cn/#/Integrated/index">闽ICP备2023004666号</a></span>
+            <span>Made on 🌏 by ❤️.</span>
+        </div>
     </div>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style scoped>
 .footer {
@@ -20,6 +19,13 @@ export default {}
     justify-content: center;
     align-items: center;
     color: rgb(75, 61, 1);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px; /* 增加两行之间的间距 */
 }
 
 /* 消除a标签的默认样式 */

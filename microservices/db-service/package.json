@@ -6,7 +6,7 @@
         "email": "1810422805@qq.com"
     },
     "scripts": {
-        "dev": "npx prisma db pull && npx prisma generate && pm2-runtime start ecosystem.config.js",
+        "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && pm2-runtime start ecosystem.config.js",
         "prod": "pm2-runtime start ecosystem.config.js"
     },
     "dependencies": {

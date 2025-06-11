@@ -37,7 +37,6 @@ module.exports = class blogService {
             }
         } catch (error) {
             console.log('获取日志失败!', JSON.stringify(error))
-
             throw error
         }
     }

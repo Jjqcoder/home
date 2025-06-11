@@ -1,3 +1,5 @@
+'use strict'
+
 /**
  * 创建时间: 2025-04-26
  * 作者: jjq
@@ -6,6 +8,7 @@
 
 const XLSX = require('xlsx') // 引入 xlsx 库
 const path = require('path') // 引入 path 模块
+
 module.exports = class XlsxUtils {
     /**
      * @param {string} city 城市名称

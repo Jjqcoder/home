@@ -11,12 +11,8 @@ module.exports = class DbserviceVersionService {
     // 获取版本号
     static async getDbserviceVersion(req, res) {
         try {
-            console.log('🩵', R.ok(200, '获取db-service版本成功', await service.rpcDbserviceVersionService.getDbserviceVersion()));
-            
            return res.send(R.ok(200, '获取db-service版本成功', await service.rpcDbserviceVersionService.getDbserviceVersion()))
         } catch (error) {
-            console.log('🩵error', error);
-            
             return res.send(
                 R.err(500, `controller >>> dbserviceVersionController.js >>> getDbserviceVersion >>> 获取db-service版本失败 >>> 【${error}】`, error)
             )

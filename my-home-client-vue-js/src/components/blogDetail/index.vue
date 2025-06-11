@@ -11,7 +11,6 @@ const route = useRoute()
 
 // 获取动态参数 row
 let DATA_TOBE_DISPLAY = JSON.parse(route.params.row)
-console.log(`DATA_TOBE_DISPLAY`, DATA_TOBE_DISPLAY)
 // 替换掉键名中的 'BLOG_' 前缀
 DATA_TOBE_DISPLAY = Object.fromEntries(
     Object.entries(DATA_TOBE_DISPLAY).map(([key, value]) => {

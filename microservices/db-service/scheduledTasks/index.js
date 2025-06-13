@@ -6,7 +6,7 @@
 
 // 文档：https://www.npmjs.com/package/safe-timers
 const setInterval = require('safe-timers').setInterval;
-const controller = require('../controller/manage-server-express-js/index')
+const controller = require('../controller/my-home-server-express-js/index')
  
 setInterval(async () => {
   console.log('==============定时任务开始==============');

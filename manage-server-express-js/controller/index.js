@@ -5,5 +5,8 @@
  */
 
 module.exports = class Controller {
+    /* 挂载开始 */
     static blogController = require('./blogController.js')
+    static loginController = require('./loginController.js')
+    /* 挂载结束 */
 }

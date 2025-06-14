@@ -1,5 +1,6 @@
-import {Button, Form, Input, Space} from 'antd'
-import {useState} from 'react'
+import { Button, Form, Input, Space } from 'antd'
+import { useState } from 'react'
+import { post } from '../utils/request'
 
 const Login = () => {
     // 定义状态用于存储用户名和密码
@@ -7,11 +8,19 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     // 登录按钮的点击事件处理函数
-    const handleLogin = () => {
+    const handleLogin = async () => {
         console.log('用户名:', username)
         console.log('密码:', password)
+        // 登录注册开始
+        let res = await post('/login/loginAndRegister', {
+            username,
+            password
+        })
+        console.log(res);
+        // 登录注册结束
+        
         // 路由跳转到 /main
-        window.location.href = '/main'
+        // window.location.href = '/main'
     }
 
     return (

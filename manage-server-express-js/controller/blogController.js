@@ -4,7 +4,7 @@
  * 描述: blog控制层
  */
 
-const service = require('../service/blogService')
+const service = require('../service').blogService
 
 module.exports = class BlogController {
     static async insertOne(req, res) {

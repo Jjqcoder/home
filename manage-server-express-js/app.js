@@ -24,7 +24,8 @@ app.use(
 app.use(express.json()) // 解析JSON请求体
 
 /* 路由挂载开始 */
-app.use('/blog', require('./routes/index.js')) // 挂载博客相关路由
+app.use('/blog', require('./routes/blog.js')) // 挂载博客相关路由
+app.use('/login', require('./routes/login.js'))// 挂载登录注册路由
 /* 路由挂载结束 */
 app.listen(port, () => {
     console.log(`server runnning at http://localhost:8081`)

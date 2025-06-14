@@ -9,7 +9,7 @@ const Login = () => {
 
     // 登录按钮的点击事件处理函数
     const handleLogin = async () => {
-        console.log('用户名:', username)
+        console.log('用户名:', username + '\u200B')
         console.log('密码:', password)
         // 登录注册开始
         let res = await post('/login/loginAndRegister', {

@@ -6,11 +6,12 @@
  * 描述: 项目入口
  */
 
+/* 导入依赖开始 */
 const express = require('express')
 const app = express()
 const port = 8081
 const cors = require('cors')
-// const RabbitMQRequester = require('./lib/rabbitmq/index.js') // 导入RabbitMQRequester类
+/* 导入依赖结束 */
 
 app.use(
     cors({
@@ -20,14 +21,12 @@ app.use(
         credentials: true // 如果需要跨域携带凭证
     })
 )
-
 app.use(express.json()) // 解析JSON请求体
 
 /* 路由挂载开始 */
-// app.use('/blog', require('./routes/blog.js')) // 挂载博客相关路由
-// app.use('/login', require('./routes/login.js'))// 挂载登录注册路由
 app.use('/', require('./routes/index.js'))
 /* 路由挂载结束 */
+
 app.listen(port, () => {
     console.log(`server runnning at http://localhost:8081`)
 })

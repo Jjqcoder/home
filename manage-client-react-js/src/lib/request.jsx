@@ -10,7 +10,10 @@ import axios from 'axios'
 // 创建 axios 实例
 const http = axios.create({
     baseURL: `${import.meta.env.VITE_IN_USE_BASE_URL}`, // 设置请求的基础路径
-    timeout: 10000 // 设置超时时间
+    timeout: 10000, // 设置超时时间
+    headers: {
+        'Content-Type': 'application/json' // 默认全局设置 JSON 格式
+    }
 })
 
 // 封装 GET 请求

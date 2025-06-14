@@ -1,6 +1,6 @@
 import { Button, Form, Input, Space } from 'antd'
 import { useState } from 'react'
-import { post } from '../lib'
+import { isStringValid, post } from '../lib'
 
 const Login = () => {
     // 定义状态用于存储用户名和密码
@@ -11,6 +11,10 @@ const Login = () => {
     const handleLogin = async () => {
         console.log('用户名:', username + '\u200B')
         console.log('密码:', password)
+        if (!isStringValid(username) || !isStringValid(password)) {
+            console.log('用户名或密码不合法！')
+            return
+        }
         // 登录注册开始
         let res = await post('/login/loginAndRegister', {
             username,

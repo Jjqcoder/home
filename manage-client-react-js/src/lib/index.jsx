@@ -6,5 +6,6 @@
 
 /* 导出开始 */
 export * from './request';
+export * from './utils';
 /* 导出结束 */
 

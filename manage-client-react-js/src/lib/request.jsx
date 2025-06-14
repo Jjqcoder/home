@@ -34,4 +34,5 @@ async function post(url, data = {}) {
 }
 
 // 导出方法
-export {get, post}
+export { get, post }
+

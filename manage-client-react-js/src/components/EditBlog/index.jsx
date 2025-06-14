@@ -6,11 +6,11 @@
 
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
-import {EditorContent, useEditor} from '@tiptap/react'
+import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 // 引入request
-import {post} from '../../utils/request'
+import { post } from '../../lib'
 
 const RichTextEditor = () => {
     const [editorContent, setEditorContent] = useState('<p>加载中...</p>')

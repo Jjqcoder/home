@@ -1,6 +1,6 @@
 import { Button, Form, Input, Space } from 'antd'
 import { useState } from 'react'
-import { post } from '../utils/request'
+import { post } from '../lib'
 
 const Login = () => {
     // 定义状态用于存储用户名和密码

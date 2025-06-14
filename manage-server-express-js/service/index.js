@@ -4,6 +4,12 @@
  * 描述: 服务层入口
  */
 
-module.exports = class Service {
-    static blogService = require('./blogService.js')
+// module.exports = class Service {
+//     static blogService = require('./blogService.js')
+// }
+
+/* 导出开始 */
+module.exports = {
+    blogService: require('./blogService.js')
 }
+/* 导出结束 */

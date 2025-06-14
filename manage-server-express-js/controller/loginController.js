@@ -7,7 +7,6 @@
 module.exports = class LoginController {
     static async loginAndRegister(req, res) {
         console.log(req.body);
-        
-        console.log('接受到请求');
+        console.log('收到请求');
     }
 }

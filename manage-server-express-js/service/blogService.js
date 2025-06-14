@@ -4,7 +4,7 @@
  * 描述: blog服务类
  */
 
-const prisma = require('../lib/prisma/index.js')
+const prisma = require('../lib/index.js').prisma
 
 module.exports = class BlogService {
     static async insertOne(req, res) {

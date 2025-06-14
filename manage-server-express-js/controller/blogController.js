@@ -8,8 +8,6 @@ const service = require('../service/blogService')
 
 module.exports = class BlogController {
     static async insertOne(req, res) {
-        console.log('👻', req.body)
-
         res.send(await service.insertOne(req, res))
     }
 }

@@ -1,9 +1,9 @@
 import vue from '@vitejs/plugin-vue'
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
 
 // element-plus使用按需导入
 import AutoImport from 'unplugin-auto-import/vite'
-import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/

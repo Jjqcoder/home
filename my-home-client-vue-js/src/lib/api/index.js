@@ -5,7 +5,6 @@
  */
 
 /* 导出开始 */
-// export * from './http.js'; 不导出 内部使用
 export * from './blog.js';
 export * from './english.js';
 export * from './version.js';

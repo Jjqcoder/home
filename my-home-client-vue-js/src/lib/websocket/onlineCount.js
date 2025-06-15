@@ -19,7 +19,7 @@ export class OnlineCount {
       this.onMessageCallback = onMessageCallback;
       this.options = {
         maxReconnectAttempts: options.maxReconnectAttempts || 5,
-        reconnectInterval: options.reconnectInterval || 3000,
+        reconnectInterval: options.reconnectInterval || 5000,
         pingInterval: options.pingInterval || 10000,
       };
       
@@ -40,7 +40,7 @@ export class OnlineCount {
         
         // 连接成功
         this.socket.onopen = () => {
-          console.log('WebSocket connected');
+          console.log('【OnlineCount-WebSocket】连接成功');
           this.reconnectAttempts = 0; // 重置重连次数
           this.startHeartbeat(); // 开始心跳检测
         };
@@ -100,7 +100,7 @@ export class OnlineCount {
       
       this.pingTimer = setInterval(() => {
         if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-          console.log('发送心跳包');
+          console.log('【前端->后端】发送心跳包');
           this.send('ping');
         }
       }, this.options.pingInterval);
@@ -122,7 +122,7 @@ export class OnlineCount {
     reconnect() {
       if (this.reconnectAttempts < this.options.maxReconnectAttempts) {
         this.reconnectAttempts++;
-        console.log(`尝试第 ${this.reconnectAttempts} 次重连...`);
+        console.log(`【WebSocket】尝试第【${this.reconnectAttempts}】次重连...`);
         setTimeout(() => this.connect(), this.options.reconnectInterval);
       } else {
         console.error('达到最大重连次数，不再尝试重连');

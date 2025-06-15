@@ -1,27 +1,35 @@
 <template>
+    <!-- 标题开始 -->
     <div class="weather">
         <span class="search">今日天气查询🔍</span><el-cascader size="large" :options="pcTextArr" v-model="selectedOptions"> </el-cascader>
     </div>
+    <!-- 标题结束 -->
 
-    <!-- 分割线 -->
+    <!-- 分割线开始 -->
     <el-divider />
+    <!-- 分割线结束 -->
+
+    <!-- 存放天气查询结果信息的列表开始 -->
     <div class="weatherData">
         <ListCom :fatherDataToSon="MyWeatherData"></ListCom>
     </div>
+    <!-- 存放天气查询结果信息的列表开始 -->
 
-    <!-- 下面开始显示预报信息 -->
+
+    <!-- 预报信息开始 -->
     <!-- <div class="forecst">
     <span class="search">未来天气查询🔍</span>
     <el-cascader size="large" :options="pcTextArr" v-model="selectedOptionsForecast">
     </el-cascader>
   </div> -->
+    <!-- 预报信息结束 -->
 </template>
 
 <script setup>
 import { pcTextArr } from 'element-china-area-data'
 import { ref, toRaw, watch } from 'vue'
 import { weatherApi } from '../../lib'
-import ListCom from './../list/index.vue'
+import ListCom from '../List/index.vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
 
@@ -35,10 +43,7 @@ let MyWeatherData = ref([])
 // 监听所选的内容
 watch(selectedOptions, async (newValue, oldValue) => {
     try {
-        // 请求后端接口，获取天气数据
-        // const response = await post(`/weather/getWeather`, {
-        //     city: newValue[1]
-        // })
+        // 获取天气数据
         const response = await weatherApi.getWeather(newValue[1])
         MyWeatherData.value.push(toRaw(response).data.data[0])
         // ================弹窗开始================
@@ -63,34 +68,28 @@ watch(selectedOptions, async (newValue, oldValue) => {
         // ================弹窗结束================
     }
 })
-
-// 开始天气预报信息的查询。
 </script>
 
-<style>
+<style lang="less" scoped>
 .weather {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+  align-items: center;
+
+  // Nested search styles
+  .search {
     display: flex;
-    margin-top: 5%;
-    justify-content: center;
-    align-items: center;
-}
-.search {
-    display: flex;
-    /* 1%代表父元素宽度的百分比 */
     margin-top: 1%;
     justify-content: center;
+    font-size: 25px; // 放大镜
+  }
 }
 
-/* 放大镜 */
-.search {
-    font-size: 25px;
-}
-
-/* 天气预报 */
 .forecst {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }
 </style>

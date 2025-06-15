@@ -8,12 +8,12 @@ import {ref, watch} from 'vue'
 
 const props = defineProps({
     DATA_TOBE_DISPLAY: {
-        type: Object, // 替换为对象类型
+        type: Object,
         required: true
     }
 })
 
-const editorContent = ref('') // 初始化编辑器内容
+const editorContent = ref('内容正在加载中...') // 初始化编辑器内容
 
 watch(
     () => props.DATA_TOBE_DISPLAY, // 监听传入的DATA_TOBE_DISPLAY属性

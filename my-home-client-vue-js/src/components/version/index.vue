@@ -8,10 +8,11 @@
 import { ElMessage } from 'element-plus'
 import { ref, watch } from 'vue'
 import RichTextDisplay from '../../components/RichTextDisplay/index.vue'
-import { versionApi } from '../../lib'
-import { version as my_home_client_vue_js_version } from './../../../package.json'
-import { messageNotify } from '../../lib'
+import { versionApi, messageNotify } from '../../lib'
+// import { version as my_home_client_vue_js_version } from './../../../package.json' 静态获取 watch 中需要使用回调方式进行监听 使用响应式之后可简化监听方式
+import { version as pkgVersion } from './../../../package.json'
 
+const my_home_client_vue_js_version = ref(pkgVersion) // 变成响应式 方便后续的监听
 const my_home_server_express_js_version = ref('获取中...')
 const db_service_version = ref('获取中...')
 const displayData = ref({
@@ -46,7 +47,7 @@ const getServerVersion = async () => {
 
 // 使用watch来监听版本变化
 watch(
-    [() => my_home_client_vue_js_version, my_home_server_express_js_version, db_service_version], // 监听的属性
+    [my_home_client_vue_js_version, my_home_server_express_js_version, db_service_version], // 监听的属性
     ([my_home_client_vue_js_version, my_home_server_express_js_version, db_service_version]) => {
         displayData.value = {
             CONTENT: `

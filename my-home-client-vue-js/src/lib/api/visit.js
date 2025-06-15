@@ -4,7 +4,7 @@
  * 描述: 访客api模块
  */
 
-import { get } from './http.js';
+import { get } from './internal/http.js';
 
 export const visitApi = {
     someVisit: async () => {

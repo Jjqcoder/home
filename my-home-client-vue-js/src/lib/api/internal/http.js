@@ -1,7 +1,7 @@
 /**
  * 创建时间: 2025-03-20
  * 作者: jjq
- * 描述: 封装 axios 请求
+ * 描述: 【仅lib模块内部使用】封装 axios 请求
  */
 
 // 引入 axios
@@ -47,7 +47,7 @@ async function requestWithRetry(requestFn) {
 
     for (let i = 0; i < maxRetries; i++) {
         try {
-            console.log(`最大请求次数为${maxRetries}，正在进行第${i + 1}次请求...`)
+            console.log(`【requestWithRetry】最大请求次数为【${maxRetries}】，正在进行第【${i + 1}】次请求...`)
 
             const response = await requestFn()
             return response

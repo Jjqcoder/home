@@ -7,12 +7,11 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { englishApi } from '../../lib';
+import { englishApi, messageNotify } from '../../lib';
 import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
-import {messageNotify} from '../../lib'
 
 // 当前句子
-const currentSentence = ref(null)
+const currentSentence = ref('正在获取英语句子...')
 
 // 获取下一个句子
 const nextSentence = async () => {

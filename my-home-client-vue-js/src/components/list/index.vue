@@ -28,7 +28,7 @@
     </el-table>
     <!-- ======列表内容结束====== -->
 
-    <!-- ======弹出框内容开始====== -->
+    <!-- ======弹出框内容（用于编辑天气数据）开始====== -->
     <!-- 我是待编辑的数据，我不会影响到列表中的数据，只有在点击确认之后我才会覆盖子组件的相应数据，并且影响父组件的数据 {{ dataTobeEdit }} -->
     <div>
         <el-dialog v-model="dialogFormVisible" title="编辑数据" width="500">
@@ -61,14 +61,14 @@
             </template>
         </el-dialog>
     </div>
-    <!-- ======弹出框内容结束====== -->
+    <!-- ======弹出框内容结束（用于编辑天气数据）====== -->
 </template>
 <script lang="" setup>
 // 引入相关依赖
 import {ref, watch} from 'vue'
 import _ from 'lodash'
 
-// 开始定义props，用于接收父组件传递来的数据、后续需要将器渲染到页面上然后进行响应式的修改。
+// 开始定义props，用于接收父组件传递来的天气数据、后续需要将器渲染到页面上然后进行响应式的修改。
 const myProps = defineProps({
     fatherDataToSon: {
         type: Object,
@@ -79,11 +79,6 @@ const myProps = defineProps({
 // 定义从父组件传递到子组件的数据（此处使用ref对其进行双向绑定，但是只有点击确认之后数据才会真正影响到父组件的自身数据）
 // 为了确保每一条数据的唯一性,为每一个对象都附上一个随机值,并且该随机值不进行渲染,后续只需要使用delete进行删除接即可,后面是具体操作的网址:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete
 const dataFromFather = ref(myProps.fatherDataToSon) // 注意，此处不需要点vlaue就可以在页面上使用{{}}渲染出值，但是在script页面，因为数据是被ref包裹的，所以在访问这个变量的时候需要加上.value才能访问到值！！！
-// dataFromFather.value是一个数组!!!!
-
-// watch(dataFromFather.value, (newVal, oldVal) => {
-    // console.log(newVal, oldVal)
-// })
 
 // 开始实现新增功能，点击新增之后，dataFromFather会产生一个新对象
 const AddData = () => {
@@ -101,8 +96,9 @@ const AddData = () => {
 // 定义一个用于存储将要被删除的数组
 let dataToBeDel = ref([])
 
-// 选中选框，触发下方函数
+// 选中选框，触发下方函数。val为当前用户选中的数据（是一个对象列表）。
 const handleSelectionChange = val => {
+    console.log(val);
     dataToBeDel.value = val
 }
 
@@ -131,7 +127,7 @@ const deleteData = () => {
     // 删除完数据之后，不需要重置dataToBeDel，因为数据已经一个个全部删除完了
 }
 
-// 弹出框内容开始===========
+// ===========弹出框内容开始===========
 const dialogTableVisible = ref(false)
 const dialogFormVisible = ref(false)
 const formLabelWidth = '140px'
@@ -139,7 +135,7 @@ const formLabelWidth = '140px'
 // 创建一个响应式数据，用于进行数据的编辑
 // 当双击列表中的一行的时候触发的回调
 // 记录当前双击的列表行的数据所在dataFromFather.value中的下标
-const dbclickIndex = ref(-1)
+const doubleClickIndex = ref(-1)
 // 创建一个对象，用于实现数据的编辑
 const dataTobeEdit = ref(null)
 const rowDblclickHandler = val => {
@@ -147,7 +143,7 @@ const rowDblclickHandler = val => {
     for (let i = 0; i < dataFromFather.value.length; i++) {
         if (objCompare(dataFromFather.value[i], val)) {
             // 定义当前双击的数据下标为当前的i
-            dbclickIndex.value = i
+            doubleClickIndex.value = i
             // 给dataTobeEdit赋值,注意，需要深拷贝！
             dataTobeEdit.value = _.cloneDeep(dataFromFather.value[i])
             // 结束循环
@@ -156,17 +152,17 @@ const rowDblclickHandler = val => {
     }
     dialogFormVisible.value = true
 }
-// 弹出框内容结束===========
+// ===========弹出框内容结束===========
 
-// 点击提交按钮触发的回调
+// 用户编辑完天气信息，点击提交按钮触发的回调，此时会修改父组件传递过来的天气数数据。
 const submitHandler = () => {
     // 将正在编辑的数据覆盖到子组件本地的数据
     dialogFormVisible.value = false // 首先将对话框设置为不可见
     // 再将修改后的数据覆盖到子组件本地的数据
-    dataFromFather.value[dbclickIndex.value] = dataTobeEdit.value
+    dataFromFather.value[doubleClickIndex.value] = dataTobeEdit.value
 }
 
-// 将天气数据导出为图片
+/* ===========将天气数据导出为图片开始=========== */
 // 导出表格为图片
 // 部分手机浏览器还是无法下载：如小米自带浏览器
 // Edge手机浏览器就可以
@@ -198,6 +194,7 @@ const exportTableAsImage = () => {
             alert('生成图片失败，请检查浏览器设置或尝试其他浏览器。')
         })
 }
+/* ===========将天气数据导出为图片结束=========== */
 </script>
 
 <style scoped>

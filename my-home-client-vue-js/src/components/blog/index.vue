@@ -33,7 +33,7 @@
             <!-- @size-change="handleSizeChange" 暂不启用 -->
             <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
         </div>
-        <!-- 页码跳转开始 -->
+        <!-- 页码跳转结束 -->
     </div>
 </template>
 
@@ -52,7 +52,7 @@ const pageSelectData = ref(null) /* 用于存储分页查询来的数据 */
 const allBlogType = ref([]) /* 存储博客全部的Tag */
 let pageSize = isMobileDevice() ? ref(5) : ref(15) /* 根据设备类型设置每页显示的条数 */
 
-// 配合onMounted，页面加载完成后就开始获取数据的条数
+/* ===============================页面加载完毕之后，获取博客数据开始=============================== */
 onMounted(async () => {
     try {
         // 分页获取blog数据
@@ -61,7 +61,7 @@ onMounted(async () => {
         /* 获取全部的TAG开始 */
         let allTagFromServer = await blogApi.getAllTag()
 
-        // 将其装换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
+        // 将其转换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
         allTagFromServer.data.data.forEach((item, index) => {
             allBlogType.value[index] = item
         })
@@ -90,6 +90,7 @@ onMounted(async () => {
         })
     }
 })
+/* ===============================页面加载完毕之后，获取博客数据结束=============================== */
 
 // size发生变化发生的回调(注：考虑到页面布局 目前暂未启用)
 /*
@@ -136,8 +137,7 @@ const selectedTagIds = ref([]) // 初始时选中 JavaScript 和 CSS
 watch(
     selectedTagIds,
     async () => {
-        // console.log('当前选中的标签:', selectedTags.value.map(tag => tag.name).join(', '))
-        /* 重新获取数据开始 */
+        /* 选中的blog标签发生变化 重新获取数据开始 */
         try {
             let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
             // 赋值博客的总条数
@@ -166,14 +166,28 @@ watch(
             })
             
         }
-        /* 重新获取数据结束 */
+        /* 选中的blog标签发生变化 重新获取数据结束 */
     },
     {deep: true}
 )
 
 // 计算已选择的标签
 const selectedTags = computed(() => {
-    return allTags.value.filter(tag => selectedTagIds.value.includes(tag.id))
+    /*
+        allTags：
+        0
+        : 
+        {id: 1, name: '随笔'}
+        1
+        : 
+        {id: 2, name: '徒步'}
+        2
+        : 
+        {id: 3, name: 'demo'}
+    */
+    // selectedTagIds 发生变化，selectedTags 会重新计算
+    const res = allTags.value.filter(tag => selectedTagIds.value.includes(tag.id))
+    return res
 })
 
 // 监听 allBlogType 的变化，更新 allTags

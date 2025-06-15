@@ -12,34 +12,64 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        sentence: {
-            type: String,
-            required: true
-        }
-    },
-    data() {
-        return {
-            isImmersiveMode: false
-        }
-    },
-    methods: {
-        nextSentence() {
-            this.$emit('next-sentence')
-        },
-        toggleImmersiveMode() {
-            this.isImmersiveMode = !this.isImmersiveMode
-            if (this.isImmersiveMode) {
-                document.documentElement.classList.add('immersive-mode-active')
-            } else {
-                document.documentElement.classList.remove('immersive-mode-active')
-            }
-        }
-    }
+// <script>
+// export default {
+//     props: {
+//         sentence: {
+//             type: String,
+//             required: true
+//         }
+//     },
+//     data() {
+//         return {
+//             isImmersiveMode: false
+//         }
+//     },
+//     methods: {
+//         nextSentence() {
+//             this.$emit('next-sentence')
+//         },
+//         toggleImmersiveMode() {
+//             this.isImmersiveMode = !this.isImmersiveMode
+//             if (this.isImmersiveMode) {
+//                 document.documentElement.classList.add('immersive-mode-active')
+//             } else {
+//                 document.documentElement.classList.remove('immersive-mode-active')
+//             }
+//         }
+//     }
+// }
+// </script>
+
+// 换成 Composition API 写法
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+  sentence: {
+    type: String,
+    required: true
+  }
+})
+
+const emit = defineEmits(['next-sentence'])
+
+const isImmersiveMode = ref(false)
+
+const nextSentence = () => {
+  emit('next-sentence')
+}
+
+const toggleImmersiveMode = () => {
+  isImmersiveMode.value = !isImmersiveMode.value
+  if (isImmersiveMode.value) {
+    document.documentElement.classList.add('immersive-mode-active')
+  } else {
+    document.documentElement.classList.remove('immersive-mode-active')
+  }
 }
 </script>
+
 <style scoped>
 
 /* 

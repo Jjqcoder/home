@@ -17,7 +17,7 @@
             </el-table-column>
             <el-table-column label="操作" width="100" fixed="right">
                 <template v-slot="scope">
-                    <el-button @click="row_click(scope.row)" size="small">查看</el-button>
+                    <el-button @click="viewBlog(scope.row)" size="small">查看</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -35,7 +35,8 @@ const myProps = defineProps({
 
 const router = useRouter()
 
-const row_click = row => {
+// 查看blog
+const viewBlog = row => {
     router.push({name: 'blogDetail', params: {row: JSON.stringify(row)}})
 }
 </script>

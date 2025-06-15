@@ -22,7 +22,7 @@ export class Notification {
         this.defaultOptions = {
             content: '【通知】这是一个公告',
             position: 'top-right',
-            duration: 3000,
+            duration: 8000,
             backgroundColor: 'rgba(255, 255, 255, 0.9)',
             textColor: '#333',
             zIndex: 1000,
@@ -141,7 +141,7 @@ export class Notification {
                 break;
             case 'top-right':
             default:
-                style.top = '20px';
+                style.top = '90px';/* 避免遮挡“全部功能”按钮 */
                 style.right = '20px';
         }
     }
@@ -187,7 +187,8 @@ export class Notification {
     }
 }
 
-// 使用示例
+
+/* 使用示例开始 */
 // 基本使用
 // const notification = new Notification({ content: '这是一个测试通知' });
 // notification.show();
@@ -219,3 +220,4 @@ export class Notification {
 //     };
 //     document.addEventListener('click', handler);
 // };
+/* 使用示例结束 */

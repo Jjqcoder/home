@@ -13,9 +13,9 @@ COPY dist/ /usr/share/nginx/html/
 # 复制 package.json 到容器中
 COPY package.json /usr/share/nginx/html/
 
-# SSL 证书文件
-COPY myNginxConf/cert/wbeishangw.top.key /etc/nginx/cert/
-COPY myNginxConf/cert/wbeishangw.top.pem /etc/nginx/cert/
+# SSL 证书文件(myNginxConf已经被复制过了)
+# COPY myNginxConf/cert/wbeishangw.top.key /etc/nginx/cert/
+# COPY myNginxConf/cert/wbeishangw.top.pem /etc/nginx/cert/
 
 # 复制启动脚本
 COPY docker-entrypoint.sh /docker-entrypoint.sh

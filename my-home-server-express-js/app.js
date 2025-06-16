@@ -1,6 +1,18 @@
 /* 项目入口 */
 'use strict'
 
+/*判断当前的环境(开发OR生产)开始*/
+const env = process.env.NODE_ENV || 'development'; // 默认 development
+
+if (env === 'production') {
+  console.log('✅ 当前的环境是【生产环境】');
+  // 生产环境配置（如数据库、日志、缓存等）
+} else {
+  console.log('🛠️ 当前的环境是【开发环境】');
+  // 开发环境配置（如启用调试、本地数据库等）
+}
+/*判断当前的环境(开发OR生产)结束*/
+
 const express = require('express') // 引入 Express 模块
 const app = express() // 创建一个 Express 应用实例
 const port = 8080 // 定义服务器运行的端口号

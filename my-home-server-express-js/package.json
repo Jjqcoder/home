@@ -7,8 +7,9 @@
     "version": "2.0.6",
     "main": "index.js",
     "scripts": {
-        "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && nodemon app.js",
-        "prod": "pm2-runtime start ecosystem.config.js"
+        "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && cross-env NODE_ENV=development pnpm run start:dev",
+        "prod": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js",
+        "start:dev": "nodemon app.js"
     },
     "keywords": [],
     "license": "ISC",
@@ -33,6 +34,7 @@
         "xlsx": "^0.18.5"
     },
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "nodemon": "^3.1.9"
     }
 }

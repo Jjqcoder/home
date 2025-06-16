@@ -23,9 +23,9 @@ module.exports = {
             // 当应用占用内存超过指定值时自动重启，单位可以是 MB 或 GB
             max_memory_restart: '200M',
 
-            // 环境变量配置，这里设置了 NODE_ENV 为 production
+            // 环境变量配置，项目启动命令中的【cross-env NODE_ENV=development】将会传递到此处
             env: {
-                NODE_ENV: 'production'
+                NODE_ENV: process.env.NODE_ENV || "development"
             }
         },
         /* 主应用（多实例）配置结束 */

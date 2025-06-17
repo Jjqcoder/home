@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 // 引入自定义字体到main.js
 import App from './App.vue';
 import './font-style/font.css';
-import { ClickEffects, initEyeProtection, Notification, showSplash, startInfo } from './lib';
+import { ClickEffects, enableCustomSelectionStyle, initEyeProtection, Notification, setPointingCursor, showSplash, startInfo } from './lib';
 import router from './router'; // 导入路由
 
 
@@ -58,6 +58,14 @@ async function initializeApp() {
         enableRipple: false // 禁用涟漪效果
     });
     /* 美化点击效果结束 */
+
+    /* 改变鼠标的样子为手指开始 */
+    setPointingCursor()
+    /* 改变鼠标的样子为手指结束 */
+
+    /* 文字选中样式开始 */
+    enableCustomSelectionStyle()
+    /* 文字选中样式结束 */
 
 }
 initializeApp()

@@ -19,11 +19,11 @@ startInfo()
 // })
 /* 弹窗库测试结束 */
 
-/* 公告开始 */
-// 目前暂不启用
-const notification = new Notification({ content: '【测试】这是一个测试通知' });
-notification.show();
-/* 公告结束 */
+
+
+/* 改变鼠标的样子为手指开始 */
+setPointingCursor()
+/* 改变鼠标的样子为手指结束 */
 
 async function initializeApp() {
     /* 显示入场动画开始 */
@@ -59,17 +59,14 @@ async function initializeApp() {
     });
     /* 美化点击效果结束 */
 
-    /* 改变鼠标的样子为手指开始 */
-    setPointingCursor()
-    /* 改变鼠标的样子为手指结束 */
-
     /* 文字选中样式开始 */
     enableCustomSelectionStyle()
     /* 文字选中样式结束 */
 
+    /* 公告开始 */
+    const notification = new Notification({ content: '【测试】这是一个测试通知' });
+    notification.show();
+    /* 公告结束 */
+
 }
 initializeApp()
-
-
-
-

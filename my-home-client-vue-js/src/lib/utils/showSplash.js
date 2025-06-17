@@ -126,15 +126,7 @@ export const showSplash = (imageUrl, text) => {
         splashDiv.appendChild(textDiv);
       }
   
-      // 添加事件处理
-      splashDiv.addEventListener('mousemove', (e) => {
-        e.currentTarget.style.cursor = 'none';
-      });
-  
-      splashDiv.addEventListener('mouseleave', (e) => {
-        e.currentTarget.style.cursor = 'default';
-      });
-  
+      // 添加点击事件处理
       splashDiv.addEventListener('click', () => {
         splashDiv.style.opacity = '0';
         setTimeout(() => {
@@ -147,4 +139,4 @@ export const showSplash = (imageUrl, text) => {
       // 添加到DOM
       document.body.appendChild(splashDiv);
     });
-  };
+  };    

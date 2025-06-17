@@ -29,6 +29,12 @@ const activities = [
         icon: MoreFilled
     },
     {
+        content: '🎆正式决定将「my-home-client-vue-js」向「my-home-client-vue-ts」迁移',
+        timestamp: '🗓️2025-06-18',
+        type: 'primary',
+        hollow: true
+    },
+    {
         content: '🍜初步完成Tag筛选Blog的功能',
         timestamp: '🗓️2025-05-29',
         type: 'primary',

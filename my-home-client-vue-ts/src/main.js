@@ -3,6 +3,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import './font-style/font.css';
 import { ClickEffects, enableCustomSelectionStyle, initEyeProtection, Notification, setPointingCursor, showSplash, startInfo } from './lib';
+import { demo } from './lib/utils/hello';
 import router from './router'; // 导入路由
 
 
@@ -51,6 +52,10 @@ async function initializeApp() {
     const notification = new Notification({ content: '【测试】这是一个测试通知' });
     notification.show();
     /* 公告结束 */
+
+    /*demo开始*/
+    demo()
+    /*demo结束*/
 
 }
 initializeApp()

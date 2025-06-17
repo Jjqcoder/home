@@ -2,8 +2,7 @@ import { createApp } from 'vue';
 // 引入自定义字体到main.js
 import App from './App.vue';
 import './font-style/font.css';
-import { Notification, startInfo } from './lib';
-import { initEyeProtection, showSplash } from './lib/index';
+import { ClickEffects, initEyeProtection, Notification, showSplash, startInfo } from './lib';
 import router from './router'; // 导入路由
 
 
@@ -45,6 +44,20 @@ async function initializeApp() {
         }
     });
     /* 护眼模式相关内容结束 */
+
+    /* 美化点击效果开始 */
+    new ClickEffects({
+        colors: [
+            '#FF5733', '#FFC371', '#FF70A6', '#7BED9F', '#33C1FF', '#8E44AD',
+            '#FFD700', '#FF6347', '#90EE90', '#ADD8E6', '#FFB6C1', '#FFFF99',
+            '#FF4500', '#87CEEB', '#FF69B4', '#FFDAB9', '#FF1493', '#FF8C00',
+            '#FFA07A', '#FFB90F'
+        ],
+        particleCount: 5,
+        trailDensity: 0.4,
+        enableRipple: false // 禁用涟漪效果
+    });
+    /* 美化点击效果结束 */
 
 }
 initializeApp()

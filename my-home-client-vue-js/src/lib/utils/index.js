@@ -5,6 +5,7 @@
  */
 
 /* 导出开始 */
+export * from './clickEffects.js';
 export * from './device.js';
 export * from './eyeProtection.js';
 export * from './messageNotify.js';

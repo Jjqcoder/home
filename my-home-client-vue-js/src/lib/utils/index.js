@@ -6,7 +6,9 @@
 
 /* 导出开始 */
 export * from './device.js';
+export * from './eyeProtection.js';
 export * from './messageNotify.js';
 export * from './notification.js';
+export * from './showSplash.js';
 export * from './startInfo.js';
 /* 导出结束 */

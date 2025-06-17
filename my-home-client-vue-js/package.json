@@ -26,6 +26,7 @@
         "less": "^4.2.0",
         "less-loader": "^12.2.0",
         "lodash": "^4.17.21",
+        "micro-pane": "^1.0.1",
         "sockjs-client": "^1.6.1",
         "three": "^0.163.0",
         "vue": "^3.4.21",

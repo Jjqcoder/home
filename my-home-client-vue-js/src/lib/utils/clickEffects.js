@@ -5,7 +5,17 @@
  */
 
 export class ClickEffects {
-    constructor(options = {}) {
+    constructor(options = {
+            colors: [
+                '#FF5733', '#FFC371', '#FF70A6', '#7BED9F', '#33C1FF', '#8E44AD',
+                '#FFD700', '#FF6347', '#90EE90', '#ADD8E6', '#FFB6C1', '#FFFF99',
+                '#FF4500', '#87CEEB', '#FF69B4', '#FFDAB9', '#FF1493', '#FF8C00',
+                '#FFA07A', '#FFB90F'
+            ],
+            particleCount: 5,
+            trailDensity: 0.4,
+            enableRipple: false // 禁用涟漪效果
+        }) {
         // 合并配置
         this.config = {
             particleCount: options.particleCount || 25,

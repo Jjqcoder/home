@@ -21,7 +21,14 @@
  * @param {number} [options.zIndex.overlay=9998] - 遮罩层z-index
  * @param {number} [options.zIndex.button=9999] - 按钮z-index
  */
-export function initEyeProtection(options = {}) {
+export function initEyeProtection(options = {
+        opacity: 0.6,
+        buttonText: '护眼模式',
+        zIndex: {
+            overlay: 9999,
+            button: 10000
+        }
+    }) {
     // 默认配置
     const finalOptions = {
         opacity: 0.5,

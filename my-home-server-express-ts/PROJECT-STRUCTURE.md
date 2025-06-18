@@ -6,7 +6,7 @@
 ├── app.js
 ├── code.json
 ├── config
-│   └── index.js
+│   └── index.ts
 ├── config-sample
 │   └── index.js
 ├── controller
@@ -34,6 +34,7 @@
 ├── pnpm-lock.yaml
 ├── prisma
 │   └── schema.prisma
+├── PROJECT-STRUCTURE.md
 ├── public
 │   └── favicon.ico
 ├── README.md

@@ -6,9 +6,9 @@
  * 描述: 日志 service 层(rpc)
  */
 
-const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
-const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
-const DB_SERVICE_QUEUE_NAME = require('../../config/index.js').get('DB_SERVICE_QUEUE_NAME')
+const RabbitMQRequester = require('../../rpc/rabbitmq/index')
+const DB_SERVICE_KEY = require('../../config/index').get('DB_SERVICE_KEY')
+const DB_SERVICE_QUEUE_NAME = require('../../config/index').get('DB_SERVICE_QUEUE_NAME')
 
 module.exports = class BlogService {
     static async getBlogByPage(req, res) {

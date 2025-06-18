@@ -6,9 +6,9 @@
  * 描述: 访客 服务层(rpc)
  */
 
-const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
-const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
-const DB_SERVICE_QUEUE_NAME = require('../../config/index.js').get('DB_SERVICE_QUEUE_NAME')
+const RabbitMQRequester = require('../../rpc/rabbitmq/index')
+const DB_SERVICE_KEY = require('../../config/index').get('DB_SERVICE_KEY')
+const DB_SERVICE_QUEUE_NAME = require('../../config/index').get('DB_SERVICE_QUEUE_NAME')
 
 module.exports = class VisitService {
     static async getAllVisit(req, res) {

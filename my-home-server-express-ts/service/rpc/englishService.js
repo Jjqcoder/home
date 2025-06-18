@@ -7,8 +7,8 @@
  */
 
 const RabbitMQRequester = require('../../rpc/rabbitmq/index.js')
-const DB_SERVICE_KEY = require('../../config/index.js').get('DB_SERVICE_KEY')
-const DB_SERVICE_QUEUE_NAME = require('../../config/index.js').get('DB_SERVICE_QUEUE_NAME')
+const DB_SERVICE_KEY = require('../../config/index').get('DB_SERVICE_KEY')
+const DB_SERVICE_QUEUE_NAME = require('../../config/index').get('DB_SERVICE_QUEUE_NAME')
 
 module.exports = class EnglishService {
     // 随机获取ENGLISH表中的一个句子

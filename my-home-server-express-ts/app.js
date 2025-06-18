@@ -19,12 +19,12 @@ const port = 8080 // 定义服务器运行的端口号
 const expressWs = require('express-ws')
 const cors = require('cors')
 const bodyParser = require('body-parser') // 引入 body-parser 模块
-const middlewares = require('./middlewares/index.js') // 引入自定义中间件
-const router = require('./routes/index.js') // 引入自定义路由
+const middlewares = require('./middlewares/index') // 引入自定义中间件
+const router = require('./routes/index') // 引入自定义路由
 const morgan = require('morgan') // 引入 morgan 模块
 const responseTime = require('response-time') // 引入 response-time 中间件
 const rateLimit = require('express-rate-limit')// 引入express-rate-limit模块
-const R = require('./utils/R.js')
+const R = require('./utils/R')
 // 创建限流规则（一分钟一百请求）
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 单位时间（毫秒）

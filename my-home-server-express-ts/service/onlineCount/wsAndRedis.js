@@ -9,7 +9,7 @@
 const RedisClient = require('../../lib/index.js').redis
 console.log('redisClient', RedisClient)
 
-const redis = new RedisClient(require('../../config/index.js').get('redisConf'))
+const redis = new RedisClient(require('../../config/index').get('redisConf'))
 
 const onlineUsers = new Map() // 使用Map存储用户及其最后活跃时间
 

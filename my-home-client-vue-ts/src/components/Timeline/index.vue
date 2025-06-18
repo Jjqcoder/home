@@ -28,18 +28,26 @@ const activities = [
         type: 'primary',
         icon: MoreFilled
     },
-    {
-        content: '🐼正式决定将「my-home-server-express-js」向「my-home-server-express-ts」进行迁移',
-        timestamp: '🗓️2025-06-19',
-        type: 'primary',
-        hollow: true
-    },
-    {
-        content: '🎆正式决定将「my-home-client-vue-js」向「my-home-client-vue-ts」进行迁移',
-        timestamp: '🗓️2025-06-18',
-        type: 'primary',
-        hollow: true
-    },
+    /* 迁移取得阶段性成功之后再打开 - 开始 */
+    // {
+    //     content: '✈️正式开始对「db-service」进行渐进式 TypeScript 迁移',
+    //     timestamp: '🗓️2025-06-19',
+    //     type: 'primary',
+    //     hollow: true
+    // },
+    // {
+    //     content: '🐼正式开始将「my-home-server-express-js」向「my-home-server-express-ts」进行渐进式 TypeScript 迁移',
+    //     timestamp: '🗓️2025-06-19',
+    //     type: 'primary',
+    //     hollow: true
+    // },
+    // {
+    //     content: '🎆正式开始将「my-home-client-vue-js」向「my-home-client-vue-ts」进行渐进式 TypeScript 迁移',
+    //     timestamp: '🗓️2025-06-18',
+    //     type: 'primary',
+    //     hollow: true
+    // },
+    /* 迁移取得阶段性成功之后再打开 - 结束 */
     {
         content: '🍜初步完成Tag筛选Blog的功能',
         timestamp: '🗓️2025-05-29',
@@ -52,12 +60,6 @@ const activities = [
         type: 'primary',
         hollow: true
     },
-    // {
-    //     content: '🩵正式决定对「my-home-server-express-ts」与「my-home-server-express-js」进行同步开发与维护',
-    //     timestamp: '🗓️2025-05-22',
-    //     type: 'primary',
-    //     hollow: true
-    // },
     {
         content: '🔤初步完成并上线「学英语」模块',
         timestamp: '🗓️2025-05-17',

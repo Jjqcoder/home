@@ -41,7 +41,14 @@ sudo docker run -d \
   -v /myProject/db-service:/usr/src/app \
   -w /usr/src/app \
   node:18-alpine \
-  sh -c "npm install && npm run prod"
+  sh -c "npm install && npm run start"
 ```
 
 3. 将文件上传到`/myProject/db-service`即可
+
+## 引入ts
+- 开发环境
+`pnpm dev`
+- 生产部署
+`pnpm build`
+`pnpm start`

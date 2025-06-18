@@ -6,7 +6,7 @@ module.exports = {
             name: 'db-service',
 
             // 入口文件路径，相对于项目根目录
-            script: './app.js',
+            script: './dist/app.js',
 
             // 传递给入口文件的命令行参数，如果不需要可以留空
             args: '',

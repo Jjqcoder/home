@@ -13,7 +13,7 @@ const getVisitorStatistics = async () => {
         const res = await visitApi.someVisit()
         // 弹窗
         messageNotify(res)
-        return res.data
+        return res
     } catch (error) {
         console.error('Failed to fetch visitor statistics:', error)
         // 弹窗

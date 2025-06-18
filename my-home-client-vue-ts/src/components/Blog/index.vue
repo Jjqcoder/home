@@ -62,15 +62,15 @@ onMounted(async () => {
         let allTagFromServer = await blogApi.getAllTag()
 
         // 将其转换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
-        allTagFromServer.data.data.forEach((item, index) => {
+        allTagFromServer.data.forEach((item, index) => {
             allBlogType.value[index] = item
         })
         /* 获取全部的TAG结束 */
         
         // 赋值博客的总条数
-        totalDataCount.value = res.data.data.total
+        totalDataCount.value = res.data.total
         // 赋值分页查询到的数据
-        pageSelectData.value = res.data.data.records
+        pageSelectData.value = res.data.records
 
         // 处理获取到的日期信息显示、换行
         // 2025-03-09T15:01:38.000Z ==> 2025-03-09 15:01:38
@@ -108,7 +108,7 @@ const handleSizeChange = async val => {
 const handleCurrentChange = async val => {
     try {
         let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
-        pageSelectData.value = res.data.data.records
+        pageSelectData.value = res.data.records
         // 弹窗
         messageNotify(res)
         
@@ -141,9 +141,9 @@ watch(
         try {
             let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
             // 赋值博客的总条数
-            totalDataCount.value = res.data.data.total
+            totalDataCount.value = res.data.total
             // 赋值分页查询到的数据
-            pageSelectData.value = res.data.data.records
+            pageSelectData.value = res.data.records
 
             // 处理获取到的日期信息显示、换行
             // 2025-03-09T15:01:38.000Z ==> 2025-03-09 15:01:38

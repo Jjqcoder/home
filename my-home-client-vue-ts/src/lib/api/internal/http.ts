@@ -38,7 +38,7 @@ http.interceptors.response.use(
         return Promise.reject(error)
     }
 )
-/* 请求过于频繁的处理开始 */
+/* 请求过于频繁的处理结束 */
 
 // 带重试的请求函数 (内部使用)
 async function requestWithRetry(requestFn) {
@@ -50,7 +50,7 @@ async function requestWithRetry(requestFn) {
             console.log(`【requestWithRetry】最大请求次数为【${maxRetries}】，正在进行第【${i + 1}】次请求...`)
 
             const response = await requestFn()
-            return response
+            return response.data/* 此处直接取data，方便后续的使用 */
         } catch (error) {
             lastError = error
             // 只在网络错误或5xx错误时重试

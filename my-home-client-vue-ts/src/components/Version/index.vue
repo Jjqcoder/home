@@ -27,11 +27,11 @@ const getServerVersion = async () => {
 
         /* 获取db-service 版本开始 */
         const res2 = await versionApi.dbserviceVersion()
-        db_service_version.value = res2.data.data
+        db_service_version.value = res2.data
         /* 获取db service 版本结束 */
 
         // 赋值
-        my_home_server_express_ts_version.value = res.data.data
+        my_home_server_express_ts_version.value = res.data
         
         // 弹窗
         messageNotify(res, res2)

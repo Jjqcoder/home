@@ -20,7 +20,7 @@ const nextSentence = async () => {
         const resRandomSentence = await englishApi.getSentenceRandomOne()
 
         // 句子赋值
-        currentSentence.value = resRandomSentence.data.data.CONTENT
+        currentSentence.value = resRandomSentence.data.CONTENT
 
         // 弹窗
         messageNotify(resRandomSentence)

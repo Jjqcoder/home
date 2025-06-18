@@ -45,16 +45,16 @@ watch(selectedOptions, async (newValue, oldValue) => {
     try {
         // 获取天气数据
         const response = await weatherApi.getWeather(newValue[1])
-        MyWeatherData.value.push(toRaw(response).data.data[0])
+        MyWeatherData.value.push(toRaw(response).data[0])
         // ================弹窗开始================
-        if (response.data.code === 200) {
+        if (response.code === 200) {
             ElMessage({
-                message: `${response.data.msg}`,
+                message: `${response.msg}`,
                 type: 'success' // success, warning, info, error
             })
         } else {
             ElMessage({
-                message: `${JSON.stringify(response.data)}`,
+                message: `${JSON.stringify(response)}`,
                 type: 'error' // success, warning, info, error
             })
         }

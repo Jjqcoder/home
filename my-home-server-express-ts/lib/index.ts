@@ -1,5 +1,3 @@
-'use strict'
-
 /**
  * 创建时间: 2025-04-21
  * 作者: jjq
@@ -8,7 +6,7 @@
 
 module.exports = class Lib {
     /* 生成prisma客户端 */
-    static prisma = require('./prisma.js')
+    static prisma = require('./prisma')
     /**
      * Redis 操作封装（当前主要用于在线人数统计）
      *
@@ -24,6 +22,6 @@ module.exports = class Lib {
      *   3. 没有异步初始化过程
      */
     static get redis() {
-        return require('./redis.js')
+        return require('./redis')
     }
 }

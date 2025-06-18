@@ -1,11 +1,12 @@
+export {}; // 让 TypeScript 把该文件当作模块
+
 /**
  * 创建时间: 2025-06-01
  * 作者: jjq
  * 描述: db-service 版本控制层
  */
-const R = require('../utils/R.js')
-
-const service = require('../service/index.js')
+const R = require('../utils').R
+const service = require('../service/index')
 
 module.exports = class DbserviceVersionService {
     // 获取版本号

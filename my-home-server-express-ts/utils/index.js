@@ -7,5 +7,6 @@
  */
 
 module.exports = class Utils {
-    static xlsx = require('./xlsx.js')
+    static xlsx = require('./xlsx')
+    static R = require('./R')
 }

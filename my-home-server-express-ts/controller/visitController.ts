@@ -1,4 +1,4 @@
-'use strict'
+export {}; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-04-26
@@ -6,8 +6,8 @@
  * 描述: 访客控制层
  */
 
-const Service = require('../service/index.js')
-const R = require('../utils/R.js')
+const Service = require('../service/index')
+const R = require('../utils').R
 
 module.exports = class VisitController {
     static async getAllVisit(req, res) {

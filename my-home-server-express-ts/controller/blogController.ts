@@ -1,4 +1,4 @@
-'use strict'
+export {}; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-04-21
@@ -6,8 +6,8 @@
  * 描述: 日志 controller 层
  */
 
-const service = require('../service/index.js')
-const R = require('../utils/R.js')
+const service = require('../service/index')
+const R = require('../utils').R
 
 module.exports = class BlogController {
     static async getBlogByPage(req, res) {

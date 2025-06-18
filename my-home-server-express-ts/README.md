@@ -24,15 +24,15 @@ sudo docker run -d \
   --log-opt max-file=3 \
   -e TZ=Asia/Shanghai \
   --restart=always \
-  --name my-home-server-express-js \
+  --name my-home-server-express-ts \
   -p 8080:8080 \
-  -v /myProject/my-home-server-express-js:/usr/src/app \
+  -v /myProject/my-home-server-express-ts:/usr/src/app \
   -w /usr/src/app \
   node:18-alpine \
-  sh -c "npm install && npm run prod"
+  sh -c "npm install && npm run start"
 ```
 
-3. 将文件上传到`/myProject/my-home-server-express-js`即可
+3. 将文件上传到`/myProject/my-home-server-express-ts`即可
 4. 注：更新项目时，将文件上传到指定文件夹后重启容器即可。
 
 ## 其他
@@ -44,3 +44,4 @@ sudo docker run -d \
 - 生产模式
 `pnpm build`
 `pnpm prod`
+- 注意，改动了源码之后一定要记得重新打包！！！——`pnpm build`

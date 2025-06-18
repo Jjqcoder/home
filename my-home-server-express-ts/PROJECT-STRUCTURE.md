@@ -34,7 +34,6 @@
 ├── pnpm-lock.yaml
 ├── prisma
 │   └── schema.prisma
-├── PROJECT-STRUCTURE.md
 ├── public
 │   └── favicon.ico
 ├── README.md

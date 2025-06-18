@@ -4,14 +4,14 @@
         "name": "江建清",
         "email": "1810422805@qq.com"
     },
-    "version": "2.0.6",
+    "version": "2.0.7",
     "main": "index.js",
     "scripts": {
         "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && cross-env NODE_ENV=development pnpm run start:dev",
         "prod": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js",
         "start:dev": "nodemon -r ts-node/register app.js",
         "build": "tsc && copyfiles \"resource/**/*\" dist",
-        "start": "node dist/index.js"
+        "start": "node dist/app.js"
     },
     "keywords": [],
     "license": "ISC",

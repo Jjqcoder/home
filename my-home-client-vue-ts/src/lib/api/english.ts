@@ -4,7 +4,7 @@
  * 描述: 英语api模块
  */
 
-import { get } from './internal/http.js';
+import { get } from './internal/http';
 export const englishApi = {
     getSentenceRandomOne: async () => {
         return await get(

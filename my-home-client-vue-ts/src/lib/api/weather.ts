@@ -4,7 +4,7 @@
  * 描述: 天气api模块
  */
 
-import { post } from './internal/http.js';
+import { post } from './internal/http';
 
 export const weatherApi = {
     getWeather: async (city) => {

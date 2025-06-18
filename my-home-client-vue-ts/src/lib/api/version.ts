@@ -4,7 +4,7 @@
  * 描述: 版本api模块
  */
 
-import { get } from './internal/http.js';
+import { get } from './internal/http';
 
 export const versionApi = {
     myHomeServerExpressJsVersion: async () => {

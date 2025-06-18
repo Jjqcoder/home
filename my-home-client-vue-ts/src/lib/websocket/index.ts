@@ -5,5 +5,5 @@
  */
 
 /* 导出开始 */
-export * from './onlineCount.js';
+export * from './onlineCount';
 /* 导出结束 */

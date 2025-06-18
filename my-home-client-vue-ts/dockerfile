@@ -31,7 +31,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
 # pnpm build 打包项目,再将项目上传到服务器
 # 权限记得设置chmod -R 777 ./*
-# 构建镜像(注意 构建镜像后再将打包后的文件复制到myNginxConf是不会生效的!需要在构建镜像前复制)：docker build -t my-home-client-vue-js-image .
-# 运行容器：docker run -d --memory=1G --memory-swap=1.5G --log-opt max-size=10m --log-opt max-file=3 -e TZ=Asia/Shanghai --name my-home-client-vue-js --restart=always -p 80:80 -p 443:443 my-home-client-vue-js-image
+# 构建镜像(注意 构建镜像后再将打包后的文件复制到myNginxConf是不会生效的!需要在构建镜像前复制)：docker build -t my-home-client-vue-ts-image .
+# 运行容器：docker run -d --memory=1G --memory-swap=1.5G --log-opt max-size=10m --log-opt max-file=3 -e TZ=Asia/Shanghai --name my-home-client-vue-ts --restart=always -p 80:80 -p 443:443 my-home-client-vue-ts-image
 
 # 删除悬空镜像 docker rmi -f $(docker images -f "dangling=true" -q)

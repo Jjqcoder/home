@@ -1,0 +1,51 @@
+{
+    "name": "my-home-server-express-ts",
+    "author": {
+        "name": "江建清",
+        "email": "1810422805@qq.com"
+    },
+    "version": "2.0.6",
+    "main": "index.js",
+    "scripts": {
+        "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && cross-env NODE_ENV=development pnpm run start:dev",
+        "prod": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js",
+        "start:dev": "nodemon -r ts-node/register app.js",
+        "build": "tsc && copyfiles \"resource/**/*\" dist",
+        "start": "node dist/index.js"
+    },
+    "keywords": [],
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@prisma/client": "^6.4.1",
+        "amqplib": "^0.10.8",
+        "axios": "^1.9.0",
+        "body-parser": "^2.2.0",
+        "cors": "^2.8.5",
+        "dayjs": "^1.11.13",
+        "express": "^4.21.2",
+        "express-rate-limit": "^7.5.0",
+        "express-ws": "^5.0.2",
+        "ioredis": "^5.6.1",
+        "log4js": "^6.9.1",
+        "morgan": "^1.10.0",
+        "mysql": "^2.18.1",
+        "pm2": "^6.0.5",
+        "prisma": "^6.4.1",
+        "response-time": "^2.3.3",
+        "xlsx": "^0.18.5"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.19.6",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/morgan": "^1.9.10",
+        "@types/node": "^24.0.3",
+        "@types/response-time": "^2.3.9",
+        "copyfiles": "^2.4.1",
+        "cross-env": "^7.0.3",
+        "nodemon": "^3.1.9",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    }
+}

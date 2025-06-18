@@ -1,0 +1,19 @@
+'use strict'
+
+/**
+ * 创建时间: 2025-04-26
+ * 作者: jjq
+ * 描述: 访客路由
+ */
+
+const express = require('express')
+const router = express.Router()
+
+const controller = require('../controller/index.js')
+
+/* 路由挂在开始 */
+router.get('/allVisit', controller.visitController.getAllVisit)
+router.get('/someVisit', controller.visitController.getVisitByLimit)
+/* 路由挂载结束 */
+
+module.exports = router

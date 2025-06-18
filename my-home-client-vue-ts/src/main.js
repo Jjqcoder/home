@@ -34,8 +34,8 @@ setPointingCursor()
 
 async function initializeApp() {
     /* 显示入场动画开始 */
-    // await showSplash('/img/windy.webp', 'Hello traveler!', 'rgba(218, 165, 32, 0.8)')
-    await showSplash('/img/furina.jpg', 'Hello traveler!', 'rgba(47, 164, 231, 0.8)')
+    // await showSplash('/img/windy.webp', 'Hello traveler!', 'rgba(218, 165, 32, 0.8)', 10001)
+    await showSplash('/img/furina.jpg', 'Hello traveler!', 'rgba(47, 164, 231, 0.8)', 10001)
     /* 显示入场动画结束 */
 }
 initializeApp()

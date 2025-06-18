@@ -6,7 +6,7 @@
  * 描述: 天气服务层
  */
 
-const util = require('../utils/index.js')
+const util = require('../utils/index')
 
 const axios = require('axios')
 module.exports = class WeatherService {

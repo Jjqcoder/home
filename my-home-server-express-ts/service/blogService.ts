@@ -1,4 +1,4 @@
-'use strict'
+export {}; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-04-21
@@ -6,8 +6,8 @@
  * 描述: 日志 service 层
  */
 
-const {prisma} = require('../lib/index.js')
-const RabbitMQRequester = require('../rpc/rabbitmq/index.js')
+const {prisma} = require('../lib/index')
+const RabbitMQRequester = require('../rpc/rabbitmq/index')
 
 module.exports = class BlogService {
     static async getBlogByPage(req, res) {

@@ -1,4 +1,4 @@
-'use strict'
+export { }; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-04-26
@@ -6,7 +6,7 @@
  * 描述: 访客 服务层
  */
 
-const {prisma} = require('../lib/index.js')
+const {prisma} = require('../lib/index')
 
 module.exports = class VisitService {
     static async getAllVisit(req, res) {

@@ -8,5 +8,5 @@
 
 module.exports = class VersionService {
     /* 获取版本号 */
-    static getVersion = require('./getVersion.js')
+    static getVersion = require('./getVersion')
 }

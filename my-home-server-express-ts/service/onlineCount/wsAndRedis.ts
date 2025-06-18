@@ -1,4 +1,4 @@
-'use strict'
+export { }; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-05-14
@@ -6,7 +6,7 @@
  * 描述: 基于ws+redis的在线人数（解决pm2多进程下各实例有各自的在线人数的问题）
  */
 
-const RedisClient = require('../../lib/index.js').redis
+const RedisClient = require('../../lib/index').redis
 console.log('redisClient', RedisClient)
 
 const redis = new RedisClient(require('../../config/index').get('redisConf'))

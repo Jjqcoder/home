@@ -7,7 +7,7 @@
 import { get } from './internal/http';
 
 export const versionApi = {
-    myHomeServerExpressJsVersion: async () => {
+    myHomeServerExpressTsVersion: async () => {
         return await get(
             `/version/getVersion`,
             )

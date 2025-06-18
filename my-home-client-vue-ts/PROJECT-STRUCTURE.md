@@ -9,8 +9,10 @@
 ├── index.html
 ├── myNginxConf
 │   ├── cert
-│   │   ├── wbeishangw.top.key
-│   │   └── wbeishangw.top.pem
+│   │   ├── cert.pem
+│   │   ├── chain.pem
+│   │   ├── fullchain.pem
+│   │   └── privkey.pem
 │   └── nginx.conf
 ├── myNginxHtml
 │   ├── assets
@@ -26,16 +28,19 @@
 │   └── windy.jpg
 ├── package.json
 ├── pnpm-lock.yaml
+├── PROJECT-STRUCTURE.md
 ├── public
 │   ├── css
 │   │   ├── entranceWebBeautify.css
 │   │   └── selectionBeautif.css
 │   ├── home.svg
-│   ├── js
-│   │   ├── clickBeautify.js
-│   │   ├── entranceWebBeautify.js
-│   │   └── eyeProtection.js
-│   └── windy.webp
+│   ├── img
+│   │   ├── furina.jpg
+│   │   └── windy.webp
+│   └── js
+│       ├── clickBeautify.js
+│       ├── entranceWebBeautify.js
+│       └── eyeProtection.js
 ├── src
 │   ├── App.vue
 │   ├── assets
@@ -103,26 +108,35 @@
 │   │   └── font.css
 │   ├── lib
 │   │   ├── api
-│   │   │   ├── blog.js
-│   │   │   ├── english.js
-│   │   │   ├── http.js
-│   │   │   ├── index.js
-│   │   │   ├── version.js
-│   │   │   ├── visit.js
-│   │   │   └── weather.js
-│   │   ├── index.js
+│   │   │   ├── blog.ts
+│   │   │   ├── english.ts
+│   │   │   ├── index.ts
+│   │   │   ├── internal
+│   │   │   ├── version.ts
+│   │   │   ├── visit.ts
+│   │   │   └── weather.ts
+│   │   ├── index.ts
 │   │   ├── utils
-│   │   │   ├── device.js
-│   │   │   ├── index.js
-│   │   │   ├── messageNotify.js
-│   │   │   └── startInfo.js
+│   │   │   ├── clickEffects.ts
+│   │   │   ├── device.ts
+│   │   │   ├── enableCustomSelectionStyle.ts
+│   │   │   ├── eyeProtection.ts
+│   │   │   ├── index.ts
+│   │   │   ├── messageNotify.ts
+│   │   │   ├── notification.ts
+│   │   │   ├── setPointingCursor.ts
+│   │   │   ├── showSplash.ts
+│   │   │   └── startInfo.ts
 │   │   └── websocket
-│   │       ├── index.js
-│   │       └── onlineCount.js
-│   ├── main.js
+│   │       ├── index.ts
+│   │       └── onlineCount.ts
+│   ├── main.ts
 │   ├── router
-│   │   └── index.js
+│   │   └── index.ts
+│   ├── script
+│   │   └── getCert.sh
 │   └── views
 │       └── ArticleView.vue
+├── stats.html
 └── vite.config.js
 ```

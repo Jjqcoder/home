@@ -1,5 +1,5 @@
 // 导入 Vue Router
-import {createRouter, createWebHashHistory} from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 // 定义路由
 const routes = [

@@ -1,14 +1,59 @@
 /**
+ * 开场图片显示管理器
+ * 
+ * 功能：
+ * 1. 显示一个全屏的开场图片和文字
+ * 2. 支持发光效果和动画
+ * 3. 点击后淡出消失
+ * 4. 返回Promise以便于后续操作
+ * 
  * 创建时间: 2025-06-18
  * 作者: jjq
- * 描述: 此文件用于开场显示图片 (纯JS版本)
  */
 
-export const showSplash = (imageUrl, text, glowColor = 'rgba(218, 165, 32, 0.8)', zIndex = 10001) => {
-    return new Promise((resolve) => {
-        // 创建样式
-        const style = document.createElement('style');
-        style.textContent = `
+class SplashManager {
+    private container: HTMLElement | null = null;
+    private styleElement: HTMLStyleElement | null = null;
+    private isClosing: boolean = false;
+    private resolvePromise: (() => void) | null = null;
+
+    /**
+     * 显示开场画面
+     * @param imageUrl 图片URL
+     * @param text 显示的文字
+     * @param glowColor 发光颜色，默认为金色
+     * @param zIndex z-index值，默认为10001
+     * @returns Promise，当画面关闭时resolve
+     */
+    public show(
+        imageUrl: string, 
+        text?: string, 
+        glowColor: string = 'rgba(218, 165, 32, 0.8)', 
+        zIndex: number = 10001
+    ): Promise<void> {
+        return new Promise((resolve) => {
+            this.resolvePromise = resolve;
+            this.createStyle(glowColor, zIndex);
+            this.createContainer();
+            this.createImage(imageUrl);
+            this.createGlowEffect(glowColor);
+            
+            if (text) {
+                this.createText(text);
+            }
+            
+            this.addEventListeners();
+        });
+    }
+
+    /**
+     * 创建样式元素
+     * @param glowColor 发光颜色
+     * @param zIndex z-index值
+     */
+    private createStyle(glowColor: string, zIndex: number): void {
+        this.styleElement = document.createElement('style');
+        this.styleElement.textContent = `
             #splash-container {
                 position: fixed;
                 top: 0;
@@ -94,66 +139,125 @@ export const showSplash = (imageUrl, text, glowColor = 'rgba(218, 165, 32, 0.8)'
                 }
             }
         `;
-        document.head.appendChild(style);
-  
-        // 创建容器
-        const splashDiv = document.createElement('div');
-        splashDiv.id = 'splash-container';
-  
-        // 创建图片容器
+        document.head.appendChild(this.styleElement);
+    }
+
+    /**
+     * 创建容器元素
+     */
+    private createContainer(): void {
+        this.container = document.createElement('div');
+        this.container.id = 'splash-container';
+        document.body.appendChild(this.container);
+    }
+
+    /**
+     * 创建图片元素
+     * @param imageUrl 图片URL
+     */
+    private createImage(imageUrl: string): void {
+        if (!this.container) return;
+
         const imageContainer = document.createElement('div');
         imageContainer.className = 'splash-image-container';
-  
-        // 创建图片
+
         const img = document.createElement('img');
         img.className = 'splash-image';
         img.src = imageUrl;
-  
-        // 创建发光效果
+
+        imageContainer.appendChild(img);
+        this.container.appendChild(imageContainer);
+    }
+
+    /**
+     * 创建发光效果元素
+     * @param glowColor 发光颜色
+     */
+    private createGlowEffect(glowColor: string): void {
+        if (!this.container) return;
+
         const glow = document.createElement('div');
         glow.className = 'splash-glow';
-  
-        // 组装图片部分
-        imageContainer.appendChild(img);
-        imageContainer.appendChild(glow);
-        splashDiv.appendChild(imageContainer);
-  
-        // 创建文字（如果有）
-        if (text) {
-            const textDiv = document.createElement('div');
-            textDiv.className = 'splash-text';
-            textDiv.textContent = text;
-            splashDiv.appendChild(textDiv);
+        
+        const imageContainer = this.container.querySelector('.splash-image-container');
+        if (imageContainer) {
+            imageContainer.appendChild(glow);
         }
-  
-        // 添加到DOM
-        document.body.appendChild(splashDiv);
-  
-        // 状态标记，防止重复移除
-        let isClosing = false;
-  
-        // 点击事件处理函数
-        const handleClick = () => {
-            if (isClosing) return; // 如果正在关闭，直接返回
-            isClosing = true;
-  
-            // 移除点击事件监听器，防止重复触发
-            splashDiv.removeEventListener('click', handleClick);
-  
-            splashDiv.style.opacity = '0';
-            setTimeout(() => {
-                // 在移除前检查节点是否存在
-                if (style.parentNode === document.head) {
-                    document.head.removeChild(style);
-                }
-                if (splashDiv.parentNode === document.body) {
-                    document.body.removeChild(splashDiv);
-                }
-                resolve();
-            }, 500);
-        };
-  
-        // 添加点击事件处理
-        splashDiv.addEventListener('click', handleClick);
-    });
-  };
+    }
+
+    /**
+     * 创建文字元素
+     * @param text 显示的文字
+     */
+    private createText(text: string): void {
+        if (!this.container) return;
+
+        const textDiv = document.createElement('div');
+        textDiv.className = 'splash-text';
+        textDiv.textContent = text;
+        this.container.appendChild(textDiv);
+    }
+
+    /**
+     * 添加事件监听器
+     */
+    private addEventListeners(): void {
+        if (!this.container) return;
+
+        this.container.addEventListener('click', this.handleClick.bind(this));
+    }
+
+    /**
+     * 点击事件处理函数
+     */
+    private handleClick(): void {
+        if (this.isClosing || !this.container) return;
+        this.isClosing = true;
+
+        // 移除点击事件监听器
+        this.container.removeEventListener('click', this.handleClick);
+
+        // 开始淡出动画
+        this.container.style.opacity = '0';
+
+        // 动画结束后清理
+        setTimeout(() => {
+            this.cleanUp();
+        }, 500);
+    }
+
+    /**
+     * 清理DOM元素和资源
+     */
+    private cleanUp(): void {
+        if (this.styleElement && this.styleElement.parentNode === document.head) {
+            document.head.removeChild(this.styleElement);
+        }
+
+        if (this.container && this.container.parentNode === document.body) {
+            document.body.removeChild(this.container);
+        }
+
+        // 解析Promise
+        if (this.resolvePromise) {
+            this.resolvePromise();
+        }
+
+        // 重置状态
+        this.container = null;
+        this.styleElement = null;
+        this.isClosing = false;
+        this.resolvePromise = null;
+    }
+
+    /**
+     * 强制关闭开场画面
+     */
+    public close(): void {
+        if (this.isClosing) return;
+        this.handleClick();
+    }
+}
+
+// 导出单例实例
+export const splashManager = new SplashManager();

@@ -4,9 +4,9 @@
  * 描述: 自定义文字选中效果
  */
 
-export function enableCustomSelectionStyle() {
+export function enableCustomSelectionStyle(): HTMLStyleElement {
     // 创建一个 style 元素
-    const styleElement = document.createElement('style');
+    const styleElement: HTMLStyleElement = document.createElement('style');
     
     // 设置选中效果的 CSS 规则
     styleElement.textContent = `

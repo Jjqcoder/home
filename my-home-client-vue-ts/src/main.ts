@@ -5,9 +5,9 @@ import './font-style/font.css';
 import {
     ClickEffects,
     enableCustomSelectionStyle,
-    initEyeProtection,
+    EyeProtection,
     setPointingCursor,
-    showSplash,
+    splashManager,
     startInfo
 } from './lib';
 import { startPubSub } from './lib/pubsub/index';
@@ -38,8 +38,7 @@ async function initializeApp() {
     /* 项目启动之后打印相关信息方便调试结束 */
 
     /* 显示入场动画开始 */
-    // await showSplash('/img/windy.webp', 'Hello traveler!', 'rgba(218, 165, 32, 0.8)', 10001)
-    await showSplash('/img/furina.jpg', 'Hello traveler!', 'rgba(47, 164, 231, 0.8)', 10001)
+    splashManager.show('/img/windy.webp', 'Hello traveler!', 'rgba(218, 165, 32, 0.8)')
     /* 显示入场动画结束 */
 
     /* 发布订阅开始 */
@@ -55,7 +54,7 @@ createApp(App).use(router).mount('#app')
 /* 正常渲染页面结束 */
 
 /* 护眼模式相关内容开始 */
-initEyeProtection();
+new EyeProtection();
 /* 护眼模式相关内容结束 */
 
 /* 美化点击效果开始 */

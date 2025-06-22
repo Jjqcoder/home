@@ -6,6 +6,6 @@
  * 描述: 控制层
  */
 
-const service = require('../../service/index.js')
+const service = require('../../service/index')
 
 module.exports = class controller {}

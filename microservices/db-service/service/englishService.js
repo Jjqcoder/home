@@ -6,7 +6,7 @@
  * 描述: 英语学习服务层
  */
 
-const prisma = require('../lib/index.js').prisma
+const prisma = require('../lib/index').prisma
 module.exports = class englishService {
     static async getSentenceRandomOne(req) {
         try {

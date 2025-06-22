@@ -4,8 +4,8 @@
  * 描述: dbService 版本路由配置
  */
 
-const middleware = require('../../../middleware/index.js')
-const controller = require('../../../controller/my-home-server-express-js/index.js')
+const middleware = require('../../../middleware/index')
+const controller = require('../../../controller/my-home-server-express-js/index')
 
 module.exports = {
     // 获取db-service版本

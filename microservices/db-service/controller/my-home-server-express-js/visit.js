@@ -4,7 +4,7 @@
  * 描述: visit 控制层
  */
 
-const R = require('../../lib/index.js').R
+const R = require('../../lib/index').R
 const visitService = require('../../service/index.js').visitService
 
 module.exports = class VisitController {

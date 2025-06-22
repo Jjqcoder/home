@@ -4,7 +4,7 @@
  * 描述: dbService 版本控制层
  */
 
-const R = require('../../lib/index.js').R
+const R = require('../../lib/index').R
 const service = require('../../service/index.js')
 
 module.exports = class DbServiceVersionController {

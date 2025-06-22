@@ -1,7 +1,7 @@
 'use strict'
 
 const amqp = require('amqplib')
-const config = require('../config/index.js').get('rabbitmqConf')
+const config = require('../config/index').get('rabbitmqConf')
 
 class RabbitMQResponder {
     /**

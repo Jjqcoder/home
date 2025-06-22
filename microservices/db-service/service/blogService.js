@@ -6,7 +6,7 @@
  * 描述: 日志服务层
  */
 
-const prisma = require('../lib/index.js').prisma
+const prisma = require('../lib/index').prisma
 
 module.exports = class blogService {
     static async getBlogByPage(req) {

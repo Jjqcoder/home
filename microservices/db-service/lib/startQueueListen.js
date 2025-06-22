@@ -3,7 +3,7 @@
  * 作者: jjq
  * 描述: 用于开启rabbitmq队列监听
  */
-const RabbitMQResponder = require('./rabbitMQResponder.js')
+const RabbitMQResponder = require('./rabbitMQResponder')
 module.exports = class StartQueueListen {
     /* 
         功能：用于响应请求的方法

@@ -4,7 +4,7 @@
  * 描述: 路由配置，使用map维护路由
  */
 
-const routerConfig = require('./routerConfig/index.js')
+const routerConfig = require('./routerConfig/index')
 
 // 涉及数据库的操作均在此服务完成
 const router = {

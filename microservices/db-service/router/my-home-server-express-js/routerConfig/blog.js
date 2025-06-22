@@ -4,8 +4,8 @@
  * 描述: 博客路由配置
  */
 
-const middleware = require('../../../middleware/index.js')
-const blogController = require('../../../controller/my-home-server-express-js/index.js').blogController
+const middleware = require('../../../middleware/index')
+const blogController = require('../../../controller/my-home-server-express-js/index').blogController
 
 module.exports = {
     /* 分页获取日志 */

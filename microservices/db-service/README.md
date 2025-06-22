@@ -52,3 +52,13 @@ sudo docker run -d \
 - 生产部署
 `pnpm build`
 `pnpm start`
+
+## 小贴士
+- 如果模块路径中没有扩展名，TypeScript 会依次尝试以下扩展名：
+```
+.ts
+.tsx（如果支持 JSX）
+.d.ts（声明文件）
+.js
+.jsx（如果支持 JSX）
+```

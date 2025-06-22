@@ -6,7 +6,7 @@
  * 描述: prisma客户端
  */
 
-const {PrismaClient} = require('../prisma/generated/prisma/index.js')
+const {PrismaClient} = require('../prisma/generated/prisma/index')
 
 const prisma = new PrismaClient()
 

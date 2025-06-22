@@ -4,13 +4,13 @@
  * 描述: service 层
  */
 
-const R = require('../lib/R.js') // 引入响应工具类
+const R = require('../lib/R') // 引入响应工具类
 
 module.exports = class service {
     /* 服务层挂载开始 */
-    static blogService = require('./blogService.js') // 日志服务
-    static englishService = require('./englishService.js') // 英语学习服务
-    static visitService = require('./visitService.js') // 访问记录服务
-    static dbserviceVersionService = require('./dbserviceVersionService.js') // 版本服务
+    static blogService = require('./blogService') // 日志服务
+    static englishService = require('./englishService') // 英语学习服务
+    static visitService = require('./visitService') // 访问记录服务
+    static dbserviceVersionService = require('./dbserviceVersionService') // 版本服务
     /* 服务层挂载开始 */
 }

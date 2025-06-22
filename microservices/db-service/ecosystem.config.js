@@ -26,7 +26,11 @@ module.exports = {
             // 环境变量配置，项目启动命令中的【cross-env NODE_ENV=development】将会传递到此处
             env: {
                 NODE_ENV: process.env.NODE_ENV || "development"
-            }
+            },
+
+            // 禁用进程统计(因为 Windows 新版已移除 wmic)
+            pmx: false,          // 关闭 PM2 的监控扩展
+            disable_metrics: true // 禁用指标收集
         },
         /* 主应用（多实例）配置结束 */
         /* 定时任务（单实例）配置开始 */

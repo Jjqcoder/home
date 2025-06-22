@@ -5,7 +5,7 @@
  */
 
 const R = require('../../lib/index').R
-const visitService = require('../../service/index.js').visitService
+const visitService = require('../../service/index').visitService
 
 module.exports = class VisitController {
     static async getAllVisit(req) {

@@ -5,7 +5,7 @@
  */
 
 const R = require('../../lib/index').R
-const englishService = require('../../service/index.js').englishService
+const englishService = require('../../service/index').englishService
 
 module.exports = class EngineController{
     static async getSentenceRandomOne(req) {

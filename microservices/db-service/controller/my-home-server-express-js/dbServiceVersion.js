@@ -5,7 +5,7 @@
  */
 
 const R = require('../../lib/index').R
-const service = require('../../service/index.js')
+const service = require('../../service/index')
 
 module.exports = class DbServiceVersionController {
 

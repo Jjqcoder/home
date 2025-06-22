@@ -12,7 +12,7 @@ const R = require('../lib/R')
 module.exports = class Middleware {
     // 前置中间件
     static async securityMiddleware(req) {
-        if (req.dbServiceKey !== require('../config/index.js').get('dbServiceKey')) {
+        if (req.dbServiceKey !== require('../config/index').get('dbServiceKey')) {
             // 如果请求的秘钥不合法，直接返回错误
             return R.err(401, '您的请求不合法，请检查DB_SERVICE_KEY的配置', null)
         }

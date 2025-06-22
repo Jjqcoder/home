@@ -5,7 +5,7 @@
  */
 
 const R = require('../../lib/index').R
-const blogService = require('../../service/index.js').blogService
+const blogService = require('../../service/index').blogService
 
 module.exports = class BlogController {
     static async getBlogByPage(req) {

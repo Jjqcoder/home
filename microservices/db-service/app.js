@@ -19,6 +19,6 @@ if (env === "production") {
 /* 打印当前环境（生产环境OR开发环境）结束 */
 
 /* 注册监听任务开始 */
-require('./task/index.js')
+require('./task/index')
 /* 注册监听任务结束 */
 

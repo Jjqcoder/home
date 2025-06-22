@@ -6,7 +6,7 @@ module.exports = {
             name: 'db-service',
 
             // 入口文件路径，相对于项目根目录
-            script: './dist/app.js',
+            script: 'dist/app.js',
 
             // 传递给入口文件的命令行参数，如果不需要可以留空
             args: '',
@@ -21,16 +21,12 @@ module.exports = {
             watch: false,
 
             // 当应用占用内存超过指定值时自动重启，单位可以是 MB 或 GB
-            max_memory_restart: '200M',
+            max_memory_restart: '400M',
 
-            // 环境变量配置，项目启动命令中的【cross-env NODE_ENV=development】将会传递到此处
+            // 环境变量配置，这里设置了 NODE_ENV 为 production
             env: {
-                NODE_ENV: process.env.NODE_ENV || "development"
-            },
-
-            // 禁用进程统计(因为 Windows 新版已移除 wmic)
-            pmx: false,          // 关闭 PM2 的监控扩展
-            disable_metrics: true // 禁用指标收集
+                NODE_ENV: 'production'
+            }
         },
         /* 主应用（多实例）配置结束 */
         /* 定时任务（单实例）配置开始 */

@@ -1,3 +1,4 @@
+export { }; // 让 TypeScript 把该文件当作模块
 'use strict'
 
 /**

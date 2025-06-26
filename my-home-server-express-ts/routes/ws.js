@@ -13,7 +13,7 @@ const expressWs = require('express-ws')
 expressWs(router)
 
 /* 路由挂在开始 */
-router.ws('/onlineCount', require('../service/index.js').onlineCountService.ws) /* [ws实现]在线人数 */
+router.ws('/onlineCount', require('../service/index').onlineCountService.ws) /* [ws实现]在线人数 */
 // router.ws('/onlineCount', require('../service/index.js').onlineCountService.wsAndRedis) /* [ws+redis实现]在线人数 */
 /* 路由挂载结束 */
 

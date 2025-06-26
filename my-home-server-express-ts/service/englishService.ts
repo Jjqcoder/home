@@ -1,4 +1,4 @@
-export {}; // 让 TypeScript 把该文件当作模块
+export { }; // 让 TypeScript 把该文件当作模块
 
 const e = require('express')
 /**
@@ -7,7 +7,7 @@ const e = require('express')
  * 描述: 英语学习服务层
  */
 
-const {prisma} = require('../lib/index.js')
+const {prisma} = require('../lib/index')
 
 module.exports = class EnglishService {
     // 随机获取ENGLISH表中的一个句子

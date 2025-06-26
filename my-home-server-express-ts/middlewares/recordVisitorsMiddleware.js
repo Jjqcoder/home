@@ -5,7 +5,7 @@
  * 作者: jjq
  * 描述: 访客记录中间件
  */
-const prisma = require('../lib/prisma.js')
+const prisma = require('../lib/prisma')
 
 module.exports = async (req, res, next) => {
     try {

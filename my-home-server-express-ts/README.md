@@ -45,3 +45,6 @@ sudo docker run -d \
 `pnpm build`
 `pnpm prod`
 - 注意，改动了源码之后一定要记得重新打包！！！——`pnpm build`
+
+## 小贴士
+- 指定prisma客户端的生成地点，让其可控。

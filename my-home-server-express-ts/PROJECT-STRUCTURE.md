@@ -8,22 +8,22 @@
 ├── config
 │   └── index.ts
 ├── config-sample
-│   └── index.js
+│   └── index.ts
 ├── controller
-│   ├── blogController.js
-│   ├── dbserviceVersionController.js
-│   ├── englishController.js
-│   ├── index.js
-│   ├── versionController.js
-│   ├── visitController.js
-│   └── weatherController.js
+│   ├── blogController.ts
+│   ├── dbserviceVersionController.ts
+│   ├── englishController.ts
+│   ├── index.ts
+│   ├── versionController.ts
+│   ├── visitController.ts
+│   └── weatherController.ts
 ├── dockerfile
 ├── ecosystem.config.js
 ├── generate-structure.js
 ├── lib
-│   ├── index.js
+│   ├── index.ts
 │   ├── prisma.js
-│   └── redis.js
+│   └── redis.ts
 ├── markdown
 │   └── dockerfile+pm2.md
 ├── middlewares
@@ -33,6 +33,22 @@
 ├── package.json
 ├── pnpm-lock.yaml
 ├── prisma
+│   ├── prisma
+│   │   └── client
+│   │       ├── default.d.ts
+│   │       ├── default.js
+│   │       ├── edge.d.ts
+│   │       ├── edge.js
+│   │       ├── index-browser.js
+│   │       ├── index.d.ts
+│   │       ├── index.js
+│   │       ├── libquery_engine-linux-musl-openssl-3.0.x.so.node
+│   │       ├── package.json
+│   │       ├── query_engine-windows.dll.node
+│   │       ├── runtime
+│   │       ├── schema.prisma
+│   │       ├── wasm.d.ts
+│   │       └── wasm.js
 │   └── schema.prisma
 ├── PROJECT-STRUCTURE.md
 ├── public
@@ -54,24 +70,27 @@
 │   └── rabbitmq
 │       └── index.js
 ├── service
-│   ├── blogService.js
-│   ├── englishService.js
-│   ├── index.js
+│   ├── blogService.ts
+│   ├── englishService.ts
+│   ├── index.ts
 │   ├── onlineCount
-│   │   ├── index.js
-│   │   ├── ws.js
-│   │   └── wsAndRedis.js
+│   │   ├── index.ts
+│   │   ├── ws.ts
+│   │   └── wsAndRedis.ts
 │   ├── rpc
-│   │   ├── blogService.js
-│   │   ├── dbserviceVersionService.js
-│   │   ├── englishService.js
-│   │   └── visitService.js
+│   │   ├── blogService.ts
+│   │   ├── dbserviceVersionService.ts
+│   │   ├── englishService.ts
+│   │   └── visitService.ts
 │   ├── version
-│   │   ├── getVersion.js
-│   │   └── index.js
-│   ├── visitService.js
-│   └── weatherService.js
+│   │   ├── getVersion.ts
+│   │   └── index.ts
+│   ├── visitService.ts
+│   └── weatherService.ts
 ├── tsconfig.json
+├── types
+│   └── config
+│       └── index.ts
 └── utils
     ├── index.js
     ├── R.js

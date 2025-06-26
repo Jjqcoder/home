@@ -8,7 +8,7 @@
 
 const express = require('express')
 const router = express.Router()
-const controller = require('../controller/index.js')
+const controller = require('../controller/index')
 
 /* 路由挂在开始 */
 router.post('/getWeather', controller.weatherController.getWeather)

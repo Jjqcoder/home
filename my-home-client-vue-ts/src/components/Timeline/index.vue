@@ -28,6 +28,12 @@ const activities = [
         type: 'primary',
         icon: MoreFilled
     },
+    {
+        content: '🙀项目首次使用Docker Compose进行部署[此前使用Dockerfile]',
+        timestamp: '🗓️2025-06-26',
+        type: 'primary',
+        hollow: true
+    },
     /* 迁移取得阶段性成功之后再打开 - 开始 */
     // {
     //     content: '✈️正式开始对「db-service」进行渐进式 TypeScript 迁移',

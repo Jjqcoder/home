@@ -1,0 +1,41 @@
+# 1. 使用docker-compose，不再需要dockerfile
+# 2. 启动方式：
+#    2.1 本地启动：docker-compose up -d
+#    2.2 关闭：docker-compose down
+#    2.3 重启：docker-compose restart
+#    2.4 查看日志：docker-compose logs -f
+#    2.5 进入容器：docker-compose exec web bash
+# 3. 注意：
+#    3.1 docker-compose.yml文件所在目录，必须是所有挂载目录的父目录
+#    3.2 每次修改docker-compose.yml文件，都需要重启docker-compose
+#    3.3 每次重启docker-compose，都会重新拉取镜像，可能会导致重启时间较长
+
+version: '3.8'  # 使用 Docker Compose 版本 3.8
+
+services:
+  web:  # 定义一个名为 web 的服务
+    image: nginx:latest  # 使用官方 nginx 最新镜像作为基础
+    container_name: my-home-client-vue-ts  # 指定容器名称
+    restart: always  # 容器退出时总是重启
+    ports:
+      - "80:80"  # 映射主机80端口到容器80端口
+      - "443:443"  # 映射主机443端口到容器443端口
+    environment:
+      - TZ=Asia/Shanghai  # 设置时区为亚洲/上海
+    # 资源限制配置（已修改为兼容格式）
+    mem_limit: 1G  # 限制内存使用为1GB（替代原deploy.resources.limits.memory）
+    memswap_limit: 1.5G  # 限制交换内存为1.5GB（替代原memory_swap）
+    logging:
+      driver: "json-file"  # 使用json-file日志驱动
+      options:
+        max-size: "10m"  # 单个日志文件最大10MB
+        max-file: "3"  # 最多保留3个日志文件
+    volumes:
+    # 注意，不要覆盖/etc/nginx/目录，否则会报错。按需挂载即可
+      - ./myNginxConf/nginx.conf:/etc/nginx/nginx.conf   # 挂载本地nginx配置文件到容器
+      - ./myNginxConf/cert:/etc/nginx/cert  # 挂载本地证书目录到nginx证书目录
+      - ./dist:/usr/share/nginx/html  # 挂载本地dist目录到nginx默认html目录
+      - ./package.json:/usr/share/nginx/html/package.json  # 挂载package.json文件
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh  # 挂载自定义入口点脚本
+    entrypoint: /docker-entrypoint.sh  # 使用自定义入口点脚本
+    command: ["nginx", "-g", "daemon off;"]  # 容器启动命令

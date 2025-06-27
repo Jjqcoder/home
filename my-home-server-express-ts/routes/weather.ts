@@ -1,19 +1,17 @@
-'use strict'
+export { }; // 让 TypeScript 把该文件当作模块
 
 /**
- * 创建时间: 2025-06-01
+ * 创建时间: 2025-04-26
  * 作者: jjq
- * 描述: db-service版本路由
+ * 描述: 天气路由
  */
-
 
 const express = require('express')
 const router = express.Router()
-
 const controller = require('../controller/index')
 
 /* 路由挂在开始 */
-router.get('/getVersion', controller.dbserviceVersionController.getDbserviceVersion)
+router.post('/getWeather', controller.weatherController.getWeather)
 /* 路由挂载结束 */
 
 module.exports = router

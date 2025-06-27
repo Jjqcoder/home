@@ -4,13 +4,13 @@
         "name": "江建清",
         "email": "1810422805@qq.com"
     },
-    "version": "2.0.12",
+    "version": "2.0.13",
     "main": "index.js",
     "scripts": {
         "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && cross-env NODE_ENV=development pnpm run start:dev",
         "prod": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js",
         "start:dev": "nodemon -r ts-node/register app.js",
-        "build": "tsc && copyfiles \"resource/**/*\" \"package.json\" dist",
+        "build": "rimraf dist && tsc && copyfiles \"resource/**/*\" \"package.json\" dist",
         "start": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js"
     },
     "keywords": [],
@@ -45,6 +45,7 @@
         "copyfiles": "^2.4.1",
         "cross-env": "^7.0.3",
         "nodemon": "^3.1.9",
+        "rimraf": "^6.0.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.3"
     }

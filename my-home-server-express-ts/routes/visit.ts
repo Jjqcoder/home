@@ -1,4 +1,4 @@
-'use strict'
+export { }; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-04-26

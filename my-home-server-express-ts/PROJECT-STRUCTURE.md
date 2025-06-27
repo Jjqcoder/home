@@ -17,12 +17,13 @@
 │   ├── versionController.ts
 │   ├── visitController.ts
 │   └── weatherController.ts
+├── docker-compose.yml
 ├── dockerfile
 ├── ecosystem.config.js
 ├── generate-structure.js
 ├── lib
 │   ├── index.ts
-│   ├── prisma.js
+│   ├── prisma.ts
 │   └── redis.ts
 ├── markdown
 │   └── dockerfile+pm2.md
@@ -58,14 +59,14 @@
 │   └── weather
 │       └── AMap_adcode_citycode.xlsx
 ├── routes
-│   ├── blog.js
-│   ├── dbserviceVersion.js
-│   ├── english.js
-│   ├── index.js
-│   ├── version.js
-│   ├── visit.js
-│   ├── weather.js
-│   └── ws.js
+│   ├── blog.ts
+│   ├── dbserviceVersion.ts
+│   ├── english.ts
+│   ├── index.ts
+│   ├── version.ts
+│   ├── visit.ts
+│   ├── weather.ts
+│   └── ws.ts
 ├── rpc
 │   └── rabbitmq
 │       └── index.js
@@ -92,8 +93,8 @@
 │   └── config
 │       └── index.ts
 └── utils
-    ├── index.js
-    ├── R.js
-    ├── test.js
-    └── xlsx.js
+    ├── index.ts
+    ├── R.ts
+    ├── test.ts
+    └── xlsx.ts
 ```

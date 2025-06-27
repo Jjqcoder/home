@@ -7,6 +7,6 @@
  */
 
 module.exports = class Middleware {
-    static logger = require('./loggerMiddleware.js')
-    static recordVisitors = require('./recordVisitorsMiddleware.js')
+    static logger = require('./loggerMiddleware')
+    static recordVisitors = require('./recordVisitorsMiddleware')
 }

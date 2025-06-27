@@ -13,13 +13,13 @@ const expressWs = require('express-ws')
 expressWs(router)
 
 /* 路由挂载开始 */
-router.use('/blog', require('./blog.js'))
-router.use('/visit', require('./visit.js'))
-router.use('/weather', require('./weather.js'))
-router.use('/ws', require('./ws.js')) // websocket路由，注意，此处使用router.use 而不是router.ws
-router.use('/version', require('./version.js'))
-router.use('/english', require('./english.js'))
-router.use('/dbservice', require('./dbserviceVersion.js'))
+router.use('/blog', require('./blog'))
+router.use('/visit', require('./visit'))
+router.use('/weather', require('./weather'))
+router.use('/ws', require('./ws')) // websocket路由，注意，此处使用router.use 而不是router.ws
+router.use('/version', require('./version'))
+router.use('/english', require('./english'))
+router.use('/dbservice', require('./dbserviceVersion'))
 /* 路由挂载结束 */
 
 // 导出路由

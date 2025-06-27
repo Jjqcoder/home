@@ -25,5 +25,5 @@ class R {
 module.exports = R
 
 // 使用示例：
-// const R = require('./R.js');
+// const R = require('./R');
 // const result = R.ok(200, '操作成功', { 'name' : 'jjq' });

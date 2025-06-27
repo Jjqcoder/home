@@ -6,6 +6,6 @@
  * 描述: 测试文件读取工具
  */
 
-const {xlsx} = require('./index.js')
+const {xlsx} = require('./index')
 
 xlsx.getCityCode('莆田市')

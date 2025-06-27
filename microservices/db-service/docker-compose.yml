@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  db-service:
+    image: node:18-alpine
+    container_name: db-service
+    restart: always
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - TZ=Asia/Shanghai
+    cpus: 2                   # 限制CPU使用核数
+    mem_limit: 1G             # 限制内存使用为1GB
+    memswap_limit: 1.5G       # 限制交换内存为1.5GB（包含内存+交换区）
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    command: sh -c "npm install && npm run start"
+
+# 启动容器
+# docker-compose up -d

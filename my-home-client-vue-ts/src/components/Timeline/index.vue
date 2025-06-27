@@ -28,13 +28,25 @@ const activities = [
         type: 'primary',
         icon: MoreFilled
     },
-    {
-        content: '🙀项目首次使用Docker Compose进行部署[此前使用Dockerfile]',
-        timestamp: '🗓️2025-06-26',
-        type: 'primary',
-        hollow: true
-    },
+    /* Postpone 'Timeline' component release.[start] */
+
+    // {
+    //     content: '🧩Officially decided to migrate this project to English.',
+    //     timestamp: '🗓️June 26, 2025',
+    //     type: 'primary',
+    //     hollow: true
+    // },
+    // {
+    //     content: '🙀项目首次使用Docker Compose进行部署[此前使用Dockerfile]',
+    //     timestamp: '🗓️2025-06-26',
+    //     type: 'primary',
+    //     hollow: true
+    // },
+
+    /* Postpone 'Timeline' component release.[end] */
+
     /* 迁移取得阶段性成功之后再打开 - 开始 */
+
     // {
     //     content: '✈️正式开始对「db-service」进行渐进式 TypeScript 迁移',
     //     timestamp: '🗓️2025-06-19',
@@ -53,6 +65,7 @@ const activities = [
     //     type: 'primary',
     //     hollow: true
     // },
+
     /* 迁移取得阶段性成功之后再打开 - 结束 */
     {
         content: '🍜初步完成Tag筛选Blog的功能',

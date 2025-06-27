@@ -1,0 +1,31 @@
+# 使用docker-compose.yml 不再使用dockerfile
+
+version: '3.8'
+
+services:
+  my-home-server-express-ts:
+    container_name: my-home-server-express-ts
+    image: node:18-alpine
+    restart: always
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app # 使用相对路径 ./ 代替绝对路径
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=Asia/Shanghai
+    mem_limit: 1G  # 限制内存使用为1GB（等同于原--memory=1G）
+    memswap_limit: 1.5G  # 限制交换内存为1.5GB（等同于原--memory-swap=1.5G）
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    command: sh -c "npm install && npm run start"
+
+# 注意差异：
+# 1. 直接使用 mem_limit 和 memswap_limit 替代了 deploy.resources
+# 2. 这种写法更接近原始 docker run 命令的参数
+# 3. 适用于 standalone 容器（非 Swarm 模式）
+
+# 如何启动？
+# docker-compose up -d

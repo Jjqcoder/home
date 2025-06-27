@@ -5,7 +5,7 @@
  */
 
 const middleware = require('../../../middleware/index')
-const englishController = require('../../../controller/my-home-server-express-js/index').englishController
+const englishController = require('../../../controller/my-home-server-express-ts/index').englishController
 
 module.exports = {
     // 随机获取一个英语句子

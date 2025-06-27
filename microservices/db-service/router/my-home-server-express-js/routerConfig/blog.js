@@ -5,7 +5,7 @@
  */
 
 const middleware = require('../../../middleware/index')
-const blogController = require('../../../controller/my-home-server-express-js/index').blogController
+const blogController = require('../../../controller/my-home-server-express-ts/index').blogController
 
 module.exports = {
     /* 分页获取日志 */

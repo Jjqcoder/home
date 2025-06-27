@@ -1,4 +1,4 @@
-export {}; // 让 TypeScript 把该文件当作模块
+export { }; // 让 TypeScript 把该文件当作模块
 
 /**
  * 创建时间: 2025-04-21
@@ -15,7 +15,7 @@ module.exports = class BlogService {
         try {
             // rpc测试
             if (1) {
-                let res = await RabbitMQRequester.sendRequest('/manage-server-express-js', {route: '/getBlogByPage', data: {current: 1, size: 2}})
+                let res = await RabbitMQRequester.sendRequest('/manage-server-express-ts', {route: '/getBlogByPage', data: {current: 1, size: 2}})
                 res = JSON.parse(res)
                 if (res.code === 200) {
                     console.log('结果:', res.data)

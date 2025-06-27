@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             // 应用的名称，用于在 PM2 中标识应用
-            name: 'my-home-server-express-js',
+            name: 'my-home-server-express-ts',
 
             // 入口文件路径，相对于项目根目录
             script: 'dist/app.js',

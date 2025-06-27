@@ -26,7 +26,7 @@ const config = new Map<keyof Config, Config[keyof Config]>([
     ],
     [
         'DB_SERVICE_QUEUE_NAME', // DB_SERVICE队列名称
-        '/my-home-server-express-js'
+        '/my-home-server-express-ts'
     ],
     [
         'rabbitmqConf',// rabbitmq配置

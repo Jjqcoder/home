@@ -5,7 +5,7 @@
  */
 
 const middleware = require('../../../middleware/index')
-const controller = require('../../../controller/my-home-server-express-js/index')
+const controller = require('../../../controller/my-home-server-express-ts/index')
 
 module.exports = {
     // 获取db-service版本

@@ -1,4 +1,7 @@
 <template>
+    <!-- the test of component of loading start -->
+    <!-- <Loading/> -->
+    <!-- the test of component of loading end -->
     <div class="timeline-container">
         <div class="timeline-content">
             <el-timeline class="timeline">
@@ -21,6 +24,7 @@
 
 <script lang="ts" setup>
 import {MoreFilled} from '@element-plus/icons-vue'
+import Loading from '../Loading/index.vue' // 引入自定义加载组件
 
 const activities = [
     {

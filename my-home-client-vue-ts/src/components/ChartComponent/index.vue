@@ -212,12 +212,12 @@ watch([labels, data], () => {
 
 <style scoped>
 /* 加载中文字样式 */
-.loading-text {
+/* .loading-text {
     text-align: center;
     padding: 20px;
     font-size: 16px;
     color: #666;
-}
+} */
 
 /* 图表容器样式 */
 .chart-container {

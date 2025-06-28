@@ -1,5 +1,5 @@
 {
-    "version": "1.0.11",
+    "version": "1.0.12",
     "name": "db-service",
     "author": {
         "name": "江建清",
@@ -8,7 +8,7 @@
     "scripts": {
         "dev": "npx prisma db pull && npx prisma generate && node generate-structure.js && cross-env NODE_ENV=development pm2-runtime start ecosystem.config.js",
         "prod": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js",
-        "build": "tsc --build tsconfig.json && copyfiles package.json dist",
+        "build": "rimraf dist && tsc --build tsconfig.json && copyfiles package.json dist",
         "start": "cross-env NODE_ENV=production pm2-runtime start ecosystem.config.js"
     },
     "dependencies": {

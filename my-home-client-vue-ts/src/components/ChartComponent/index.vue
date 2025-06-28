@@ -1,6 +1,8 @@
 <template>
     <!-- 加载状态显示 -->
-    <div v-if="loading" class="loading-text">加载中...</div>
+    <div v-if="loading" class="loading-text">
+        <Loading />
+    </div>
     <!-- 图表容器 -->
     <div class="chart-container">
         <!-- Canvas图表元素，加载完成后显示 -->
@@ -15,6 +17,8 @@ import { Chart, registerables } from 'chart.js'
 import { onBeforeMount, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 // 引入自定义API工具
 import { visitApi, messageNotify } from '../../lib'
+// Custom "Loading" Component (Note: Use Default Export)
+import Loading from '../Loading/index.vue'
 
 /**
  * 获取访客统计信息

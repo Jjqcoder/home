@@ -11,6 +11,15 @@
 ## 项目简介
 本项目为本人的个人网站，主要模块有**日志模块**、**富文本模块**、**标签模块**、**天气模块**、**在线人数模块**、**访客数据可视化模块**、**版本模块**
 
+主要`子项目`介绍：
+- `my-home-client-vue-ts`:本站前端
+- `my-home-server-express-ts`：本站后端
+- `manage-client-react-ts`：管理前端
+- `manage-server-express-ts`：管理后端
+
+主要`微服务`介绍：
+- `db-service`:数据库微服务
+
 ## 运行效果预览
 
 <div align="center">

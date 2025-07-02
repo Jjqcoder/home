@@ -1,28 +1,28 @@
 <template>
-    <!-- 标题开始 -->
+    <!-- title start -->
     <div class="weather">
-        <span class="search">今日天气查询🔍</span><el-cascader size="large" :options="pcTextArr" v-model="selectedOptions"> </el-cascader>
+        <span class="search">today's weather forecast</span><el-cascader size="large" :options="pcTextArr" v-model="selectedOptions"> </el-cascader>
     </div>
-    <!-- 标题结束 -->
+    <!-- title end -->
 
-    <!-- 分割线开始 -->
+    <!-- divider start -->
     <el-divider />
-    <!-- 分割线结束 -->
+    <!-- divider end -->
 
-    <!-- 存放天气查询结果信息的列表开始 -->
+    <!-- weather query result list start -->
     <div class="weatherData">
         <ListCom :fatherDataToSon="MyWeatherData"></ListCom>
     </div>
-    <!-- 存放天气查询结果信息的列表开始 -->
+    <!-- weather query result list end -->
 
 
-    <!-- 预报信息开始 -->
+    <!-- forecast information start -->
     <!-- <div class="forecst">
-    <span class="search">未来天气查询🔍</span>
+    <span class="search">future weather forecast🔍</span>
     <el-cascader size="large" :options="pcTextArr" v-model="selectedOptionsForecast">
     </el-cascader>
   </div> -->
-    <!-- 预报信息结束 -->
+    <!-- forecast information end -->
 </template>
 
 <script setup>
@@ -33,20 +33,20 @@ import ListCom from '../List/index.vue'
 
 const in_use_base_url = import.meta.env.VITE_IN_USE_BASE_URL
 
-// 保存选择的城市信息
-const selectedOptions = ref([]) // 当日
-// const selectedOptionsForecast = ref([]) // 预报:目前未启用
+// safe selected city information
+const selectedOptions = ref([]) // today
+// const selectedOptionsForecast = ref([]) // forecast:currently disable
 
-// 定义用于存储天气数据的变量,后续将实时渲染到子组件list中
+// define variables to store weather data, which will be rendered in real-time to the child component 'list' later
 let MyWeatherData = ref([])
 
-// 监听所选的内容
+// monitor selected content
 watch(selectedOptions, async (newValue, oldValue) => {
     try {
-        // 获取天气数据
+        // fetch weather data
         const response = await weatherApi.getWeather(newValue[1])
         MyWeatherData.value.push(toRaw(response).data[0])
-        // ================弹窗开始================
+        // ================modal start================
         if (response.code === 200) {
             ElMessage({
                 message: `${response.msg}`,
@@ -58,14 +58,14 @@ watch(selectedOptions, async (newValue, oldValue) => {
                 type: 'error' // success, warning, info, error
             })
         }
-        // ================弹窗结束================
+        // ================modal end================
     } catch (err) {
-        // ================弹窗开始================
+        // ================modal start================
         ElMessage({
             message: `${err}`,
             type: 'error' // success, warning, info, error
         })
-        // ================弹窗结束================
+        // ================modal end================
     }
 })
 </script>
@@ -82,7 +82,7 @@ watch(selectedOptions, async (newValue, oldValue) => {
     display: flex;
     margin-top: 1%;
     justify-content: center;
-    font-size: 25px; // 放大镜
+    font-size: 25px; // magnifying glass
   }
 }
 

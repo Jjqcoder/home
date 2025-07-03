@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>
-            当前在线人数: <span class="online">{{ onlineCount }}</span
+            Active Users Now: <span class="online">{{ onlineCount }}</span
             >✨
         </p>
     </div>
@@ -9,18 +9,18 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
-import { OnlineCount } from '../../lib' // 使用封装的ws操作
+import { OnlineCount } from '../../lib' // Use encapsulated WebSocket operations
 
 const onlineCount = ref(0)
 let wsService = null
 
 onMounted(() => {
-  // 创建 WebSocket 服务实例
+  // Create WebSocket service instance
   wsService = new OnlineCount(
     `${import.meta.env.VITE_IN_USE_WS_URL}/ws/onlineCount`,
     data => {
       onlineCount.value = parseInt(data)
-      console.log(`【后端->前端】在线人数【${data}】` )
+      console.log(`Backend → Frontend: Online users [${data}]` )
     },
     {
       maxReconnectAttempts: 5,
@@ -31,7 +31,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  // 组件卸载时关闭 WebSocket 连接
+  // Close WebSocket connection on component unmount
   if (wsService) {
     wsService.close()
   }

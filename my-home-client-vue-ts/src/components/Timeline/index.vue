@@ -24,134 +24,134 @@
 
 <script lang="ts" setup>
 import {MoreFilled} from '@element-plus/icons-vue'
-import Loading from '../Loading/index.vue' // 引入自定义加载组件
+import Loading from '../Loading/index.vue' // Import custom loading component
 
 const activities = [
     {
-        content: '👋至今',
+        content: '👋Up to now',
         type: 'primary',
         icon: MoreFilled
     },
     /* Postpone 'Timeline' component release.[start] */
 
-    // {
-    //     content: '🧩Officially decided to migrate this project to English.',
-    //     timestamp: '🗓️June 26, 2025',
-    //     type: 'primary',
-    //     hollow: true
-    // },
-    // {
-    //     content: '🙀项目首次使用Docker Compose进行部署[此前使用Dockerfile]',
-    //     timestamp: '🗓️2025-06-26',
-    //     type: 'primary',
-    //     hollow: true
-    // },
+    {
+        content: '🧩Officially decided to migrate this project to English.',
+        timestamp: '🗓️June 26, 2025',
+        type: 'primary',
+        hollow: true
+    },
+    {
+        content: "🙀Project's first deployment using Docker Compose [previously used Dockerfile]",
+        timestamp: '🗓️June 26, 2025',
+        type: 'primary',
+        hollow: true
+    },
 
     /* Postpone 'Timeline' component release.[end] */
 
-    /* 迁移取得阶段性成功之后再打开 - 开始 */
+    /* Open after migration achieves phased success — start */
 
-    // {
-    //     content: '✈️正式开始对「db-service」进行渐进式 TypeScript 迁移',
-    //     timestamp: '🗓️2025-06-19',
-    //     type: 'primary',
-    //     hollow: true
-    // },
-    // {
-    //     content: '🐼正式开始将「my-home-server-express-js」向「my-home-server-express-ts」进行渐进式 TypeScript 迁移',
-    //     timestamp: '🗓️2025-06-19',
-    //     type: 'primary',
-    //     hollow: true
-    // },
-    // {
-    //     content: '🎆正式开始将「my-home-client-vue-js」向「my-home-client-vue-ts」进行渐进式 TypeScript 迁移',
-    //     timestamp: '🗓️2025-06-18',
-    //     type: 'primary',
-    //     hollow: true
-    // },
+    {
+        content: '✈️Officially begin gradual TypeScript migration for 「db-service」',
+        timestamp: '🗓️June 19, 2025',
+        type: 'primary',
+        hollow: true
+    },
+    {
+        content: '🐼Officially begin gradual TypeScript migration from 「my-home-server-express-js」 to 「my-home-server-express-ts」',
+        timestamp: '🗓️June 19, 2025',
+        type: 'primary',
+        hollow: true
+    },
+    {
+        content: '🎆Officially begin gradual TypeScript migration from 「my-home-client-vue-js」 to 「my-home-client-vue-ts」',
+        timestamp: '🗓️June 18, 2025',
+        type: 'primary',
+        hollow: true
+    },
 
-    /* 迁移取得阶段性成功之后再打开 - 结束 */
+    /* Open after migration achieves phased success — end */
     {
-        content: '🍜初步完成Tag筛选Blog的功能',
-        timestamp: '🗓️2025-05-29',
+        content: '🍜Preliminary completion of tag-filtered blog functionality',
+        timestamp: '🗓️May 29, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🎯项目首次以微服务架构部署',
-        timestamp: '🗓️2025-05-26',
+        content: "🎯Project's first deployment with microservices architecture",
+        timestamp: '🗓️May 26, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔤初步完成并上线「学英语」模块',
-        timestamp: '🗓️2025-05-17',
+        content: '🔤Preliminary completion and launch of the 「Learn English」 module',
+        timestamp: '🗓️May 17, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🌒引入「暗色模式」',
-        timestamp: '🗓️2025-05-01',
+        content: '🌒Introduce 「Dark Mode」',
+        timestamp: '🗓️May 1, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '💞引入「微服务」',
-        timestamp: '🗓️2025-04-22',
+        content: '💞Introduce 「Microservices」',
+        timestamp: '🗓️April 22, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔧正式决定使用「my-home-server-express-js」重构「my-home-server-springboot」',
-        timestamp: '🗓️2025-04-11',
+        content: '🔧Officially decided to refactor 「my-home-server-springboot」 into 「my-home-server-express-js」',
+        timestamp: '🗓️April 11, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔐网站升级为「https」',
-        timestamp: '🗓️2025-03-21',
+        content: '🔐Website upgraded to 「HTTPS」',
+        timestamp: '🗓️March 21, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🔢引入「访客统计」功能',
-        timestamp: '🗓️2025-03-20',
+        content: '🔢Introduce 「Visitor Analytics」 feature',
+        timestamp: '🗓️March 20, 2025',
         type: 'primary',
         hollow: true
     },
     {
-        content: '⏱️引入「时间线」功能',
-        timestamp: '🗓️2024-05-06',
+        content: '⏱️Introduce 「Timeline」 feature',
+        timestamp: '🗓️May 6, 2024',
         type: 'primary',
         hollow: true
     },
     {
-        content: '✍️完成「日志列表」功能',
-        timestamp: '🗓️2024-04-27',
+        content: '✍️Completed 「Blog List」 feature',
+        timestamp: '🗓️April 27, 2024',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🌤️完成「天气查询」功能',
-        timestamp: '🗓️2024-04-22',
+        content: '🌤️Completed 「Weather Lookup」 feature',
+        timestamp: '🗓️April 22, 2024',
         type: 'primary',
         hollow: true
     },
     {
-        content: '🎈项目初始化「Vue3+SpringBoot」',
-        timestamp: '🗓️2024-04-11'
+        content: '🎈Project initialized with 「Vue 3 + Spring Boot」',
+        timestamp: '🗓️April 11, 2024'
     }
 ]
 </script>
 
 <style scoped>
 .timeline-container {
-    /* 时间线居中显示开始 */
+    /* Timeline centered display - start */
     display: flex;
     justify-content: center;
-    /* 时间线居中显示结束 */
-    /* 设置padding-top，防止时间线紧贴顶部开始 */
+    /* Timeline centered display - end */
+    /* Set padding-top to prevent timeline from touching the top edge - start */
     padding-top: 20px;
-    /* 设置padding-top，防止时间线紧贴顶部结束 */
+    /* Set padding-top to prevent timeline from touching the top edge - end */
 }
 </style>

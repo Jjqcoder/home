@@ -15,7 +15,14 @@
                     :hollow="activity.hollow"
                     :timestamp="activity.timestamp"
                 >
-                    {{ activity.content }}
+                    <!-- if index is 0, then display the content with current time -->
+                    <div v-if="index === 0">
+                        {{ activity.content }} <CurrentTime />
+                    </div>
+                    <!-- else, display the content -->
+                    <template v-else>
+                        {{ activity.content }}
+                    </template>
                 </el-timeline-item>
             </el-timeline>
         </div>
@@ -25,14 +32,14 @@
 <script lang="ts" setup>
 import {MoreFilled} from '@element-plus/icons-vue'
 import Loading from '../Loading/index.vue' // Import custom loading component
+import CurrentTime from '../CurrentTime/index.vue'
 
 const activities = [
     {
-        content: '👋Up to now',
+        content: '👋Up to now:',
         type: 'primary',
         icon: MoreFilled
     },
-    /* Postpone 'Timeline' component release.[start] */
 
     {
         content: '🧩Officially decided to migrate this project to English.',
@@ -46,10 +53,6 @@ const activities = [
         type: 'primary',
         hollow: true
     },
-
-    /* Postpone 'Timeline' component release.[end] */
-
-    /* Open after migration achieves phased success — start */
 
     {
         content: '✈️Officially begin gradual TypeScript migration for 「db-service」',
@@ -70,7 +73,6 @@ const activities = [
         hollow: true
     },
 
-    /* Open after migration achieves phased success — end */
     {
         content: '🍜Preliminary completion of tag-filtered blog functionality',
         timestamp: '🗓️May 29, 2025',

@@ -40,7 +40,12 @@ const activities = [
         type: 'primary',
         icon: MoreFilled
     },
-
+    {
+        content: '🌞Decide on 「Vue + Nest」 as the technical stack for the admin side.',
+        timestamp: '🗓️July 5, 2025',
+        type: 'primary',
+        hollow: true
+    },
     {
         content: '🧩Officially decided to migrate this project to English.',
         timestamp: '🗓️June 26, 2025',

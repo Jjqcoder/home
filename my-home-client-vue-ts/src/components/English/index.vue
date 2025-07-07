@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 style="text-align: center">英语学习模块</h1>
+        <h1 style="text-align: center">English Learning Module</h1>
         <EnglishSentenceViewer :sentence="currentSentence" @next-sentence="nextSentence" />
     </div>
 </template>
@@ -8,24 +8,24 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { englishApi, messageNotify } from '../../lib';
-import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // 英语句子展示组件
+import EnglishSentenceViewer from './../EnglishSentenceViewer/index.vue'; // English sentence display component
 
-// 当前句子
-const currentSentence = ref('正在获取英语句子...')
+// Current sentence
+const currentSentence = ref('Fetching English sentence...')
 
-// 获取下一个句子
+// Get the next sentence
 const nextSentence = async () => {
     try {
-        // 获取一个句子
+        // Get a sentence
         const resRandomSentence = await englishApi.getSentenceRandomOne()
 
-        // 句子赋值
+        // Assign the sentence
         currentSentence.value = resRandomSentence.data.CONTENT
 
-        // 弹窗
+        // Pop-up notification
         messageNotify(resRandomSentence)
     } catch (error) {
-        // 弹窗
+        // Pop-up notification
         ElMessage({
             message: `error: ${error}`,
             type: 'error' // success, warning, info, error
@@ -33,8 +33,8 @@ const nextSentence = async () => {
     }
 }
 
-// 页面挂载完之后执行一下获取句子函数
+// Execute the sentence fetching function after the page is mounted
 onMounted(async () => {
-    await nextSentence() // 加载完页面就获取一个句子
+    await nextSentence() // Fetch a sentence after the page is loaded
 })
 </script>

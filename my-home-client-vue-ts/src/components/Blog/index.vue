@@ -1,21 +1,21 @@
 <template>
     <div>
-        <!-- 标签选择组件开始 -->
+        <!-- Tag selection component starts -->
         <div class="tag-selector-container">
-            <h1>根据标签筛选日志</h1>
+            <h1>Filter Logs by Tags</h1>
             <TagSelector :tags="allTags" v-model="selectedTagIds" />
-            <p>已选择的标签：</p>
+            <p>Selected tags:</p>
             <ul>
                 <li v-for="tag in selectedTags" :key="tag.id">
                     {{ tag.name }}
                 </li>
             </ul>
         </div>
-        <!-- 标签选择组件结束 -->
-        <!-- 渲染全部的文章列表开始 -->
+        <!-- Tag selection component ends -->
+        <!-- Render all article lists starts -->
         <FixedList class="my-blog" :pageSelectData="pageSelectData"></FixedList>
-        <!-- 渲染全部的文章列表结束 -->
-        <!-- 页码跳转开始 -->
+        <!-- Render all article lists ends -->
+        <!-- Pagination starts -->
         <div class="demo-pagination-block">
             <div class="demonstration"></div>
             <el-pagination
@@ -30,49 +30,49 @@
                 :total="totalDataCount"
                 @current-change="handleCurrentChange"
             />
-            <!-- @size-change="handleSizeChange" 暂不启用 -->
-            <!--下方是完全的: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
+            <!-- @size-change="handleSizeChange" Not enabled for now -->
+            <!-- The complete one is: layout="total, sizes, prev, pager, next, jumper" :total="totalDataCount" -->
         </div>
-        <!-- 页码跳转结束 -->
+        <!-- Pagination ends -->
     </div>
 </template>
 
 <script lang="" setup>
-import TagSelector from '../TagSelector/index.vue' /* 引入标签选择组件 */
+import TagSelector from '../TagSelector/index.vue' /* Import the tag selection component */
 import {ref, onMounted, computed, watch} from 'vue'
-import FixedList from './../FixedList/index.vue' /* 引入fixedList组件 */
-import {isMobileDevice, messageNotify} from '../../lib' /* 判断是手机端还是PC端 */
+import FixedList from './../FixedList/index.vue' /* Import the fixedList component */
+import {isMobileDevice, messageNotify} from '../../lib' /* Determine whether it is a mobile device or PC */
 import {blogApi} from '../../lib'
-const totalDataCount = ref(100) /* 记录一共有多少条数据 */
+const totalDataCount = ref(100) /* Record the total number of data */
 const currentPage = ref(1)
 const small = ref(false)
 const background = ref(false)
 const disabled = ref(false)
-const pageSelectData = ref(null) /* 用于存储分页查询来的数据 */
-const allBlogType = ref([]) /* 存储博客全部的Tag */
-let pageSize = isMobileDevice() ? ref(5) : ref(15) /* 根据设备类型设置每页显示的条数 */
+const pageSelectData = ref(null) /* Store the data queried by pagination */
+const allBlogType = ref([]) /* Store all the Tags of the blog */
+let pageSize = isMobileDevice() ? ref(5) : ref(15) /* Set the number of items per page based on the device type */
 
-/* ===============================页面加载完毕之后，获取博客数据开始=============================== */
+/* ===============================After the page is loaded, get the blog data starts=============================== */
 onMounted(async () => {
     try {
-        // 分页获取blog数据
+        // Get blog data by pagination
         let res = await blogApi.getBlogByPage(currentPage.value, pageSize.value)
 
-        /* 获取全部的TAG开始 */
+        /* Get all TAGs starts */
         let allTagFromServer = await blogApi.getAllTag()
 
-        // 将其转换成{0: '随笔', 1: '徒步', 2: 'demo'}的格式
+        // Convert it to the format {0: 'Essay', 1: 'Hiking', 2: 'Demo'}
         allTagFromServer.data.forEach((item, index) => {
             allBlogType.value[index] = item
         })
-        /* 获取全部的TAG结束 */
+        /* Get all TAGs ends */
         
-        // 赋值博客的总条数
+        // Assign the total number of blog entries
         totalDataCount.value = res.data.total
-        // 赋值分页查询到的数据
+        // Assign the data queried by pagination
         pageSelectData.value = res.data.records
 
-        // 处理获取到的日期信息显示、换行
+        // Process the date information display and line breaks
         // 2025-03-09T15:01:38.000Z ==> 2025-03-09 15:01:38
         if (pageSelectData.value) {
             pageSelectData.value.forEach(item => {
@@ -80,40 +80,40 @@ onMounted(async () => {
                 item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
             })
         }
-        // 弹窗
+        // Pop-up
         messageNotify(res, allTagFromServer)
     } catch (error) {
-        // 弹窗
+        // Pop-up
         ElMessage({
             message: `error: ${error}`,
             type: 'error' // success, warning, info, error
         })
     }
 })
-/* ===============================页面加载完毕之后，获取博客数据结束=============================== */
+/* ===============================After the page is loaded, get the blog data ends=============================== */
 
-// size发生变化发生的回调(注：考虑到页面布局 目前暂未启用)
+// Callback when the size changes (Note: Considering the page layout, it is not enabled for now)
 /*
 const handleSizeChange = async val => {
     try {
         pageSize.value = val
         await handleCurrentChange()
     } catch (error) {
-        console.error('更换页码过程发生异常')
+        console.error('An exception occurred while changing the page size')
     }
 }
 */
 
-// 页码发生改变触发的回调
+// Callback when the page number changes
 const handleCurrentChange = async val => {
     try {
         let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
         pageSelectData.value = res.data.records
-        // 弹窗
+        // Pop-up
         messageNotify(res)
         
     } catch (error) {
-        console.error('更换页码过程发生异常', error)
+        console.error('An exception occurred while changing the page number', error)
         ElMessage({
             message: `error: ${error}`,
             type: 'error' // success, warning, info, error
@@ -121,96 +121,96 @@ const handleCurrentChange = async val => {
     }
 }
 
-/* ===================================标签选择相关的内容开始=================================== */
-// 用于存储从后端获取的全部标签数据
+/* ===================================Tag selection related content starts=================================== */
+// Store all the tag data obtained from the backend
 const allTags = ref([])
-// 将allBlogType中的标签转换为对象数组
+// Convert the tags in allBlogType to an array of objects
 allTags.value = allBlogType.value.map((tag, index) => ({
-    id: index + 1, // 使用索引作为 ID
+    id: index + 1, // Use the index as ID
     name: tag
 }))
 
-// 用于存储已选择的标签 ID
-const selectedTagIds = ref([]) // 初始时选中 JavaScript 和 CSS
+// Store the IDs of the selected tags
+const selectedTagIds = ref([]) // Initially select JavaScript and CSS
 
-// 添加 watch 来监听 selectedTagIds 的变化
+// Add a watch to monitor changes in selectedTagIds
 watch(
     selectedTagIds,
     async () => {
-        /* 选中的blog标签发生变化 重新获取数据开始 */
+        /* When the selected blog tags change, re-fetch the data starts */
         try {
             let res = await blogApi.getBlogByPageAndTag(currentPage.value, pageSize.value, selectedTags.value.map(tag => tag.name).join('|'))
-            // 赋值博客的总条数
+            // Assign the total number of blog entries
             totalDataCount.value = res.data.total
-            // 赋值分页查询到的数据
+            // Assign the data queried by pagination
             pageSelectData.value = res.data.records
 
-            // 处理获取到的日期信息显示、换行
+            // Process the date information display and line breaks
             // 2025-03-09T15:01:38.000Z ==> 2025-03-09 15:01:38
             if (pageSelectData.value) {
                 pageSelectData.value.forEach(item => {
                     item.BLOG_CREATE_TIME = item.BLOG_CREATE_TIME.replace('T', ' ').replace('.000Z', '')
                     item.BLOG_UPDATE_TIME = item.BLOG_UPDATE_TIME.replace('T', ' ').replace('.000Z', '')
-                    // item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // 实现换行 注：目前使用富文本 不再需要手动处理换行
+                    // item.BLOG_CONTENT = item.BLOG_CONTENT.replace(/\n/g, '<br>') // Implement line breaks Note: Currently using rich text, no need to manually handle line breaks
                 })
             }
 
-            // 弹窗
+            // Pop-up
             messageNotify(res)
             
         } catch (error) {
-            // 弹窗
+            // Pop-up
             ElMessage({
                 message: `error: ${error}`,
                 type: 'error' // success, warning, info, error
             })
             
         }
-        /* 选中的blog标签发生变化 重新获取数据结束 */
+        /* When the selected blog tags change, re-fetch the data ends */
     },
     {deep: true}
 )
 
-// 计算已选择的标签
+// Calculate the selected tags
 const selectedTags = computed(() => {
     /*
-        allTags：
+        allTags:
         0
         : 
-        {id: 1, name: '随笔'}
+        {id: 1, name: 'Essay'}
         1
         : 
-        {id: 2, name: '徒步'}
+        {id: 2, name: 'Hiking'}
         2
         : 
-        {id: 3, name: 'demo'}
+        {id: 3, name: 'Demo'}
     */
-    // selectedTagIds 发生变化，selectedTags 会重新计算
+    // When selectedTagIds changes, selectedTags will be recalculated
     const res = allTags.value.filter(tag => selectedTagIds.value.includes(tag.id))
     return res
 })
 
-// 监听 allBlogType 的变化，更新 allTags
+// Watch changes in allBlogType and update allTags
 watch(
     allBlogType,
     () => {
         allTags.value = allBlogType.value.map((tag, index) => ({
-            id: index + 1, // 使用索引作为 ID
+            id: index + 1, // Use the index as ID
             name: tag
         }))
     },
     {immediate: true, deep: true}
 )
-/* ===================================标签选择相关的内容结束=================================== */
+/* ===================================Tag selection related content ends=================================== */
 </script>
 
 <style scoped>
-/* 标签选择器样式开始 */
+/* Tag selector style starts */
 .tag-selector-container {
     margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
 }
-/* 标签选择器样式结束 */
+/* Tag selector style ends */
 </style>

@@ -1,14 +1,14 @@
 <template>
     <div class="menu">
-        <!-- 在线人数 -->
+        <!-- online user count -->
         <OnlineCount />
-        <!-- 展示全部功能 -->
+        <!-- display all functions -->
         <AllFunction />
     </div>
 </template>
 
 <script setup>
-// 挂载在线人数组件
+// mount the online user count component
 import OnlineCount from '../OnlineCount/index.vue'
 import AllFunction from '../AllFunction/index.vue'
 </script>
@@ -23,9 +23,9 @@ import AllFunction from '../AllFunction/index.vue'
     flex-wrap: nowrap;
 }
 
-/* 消除超链接的默认格式 */
+/* remove default hyperlink styles */
 a {
-    // & 代表父选择器 也就是 a
+    // & represents the parent selector, which is a
     &, &:hover, &:active, &:focus {
         text-decoration: none;
         color: inherit;

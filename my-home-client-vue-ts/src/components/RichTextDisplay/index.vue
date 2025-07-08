@@ -1,4 +1,4 @@
-<!-- 富文本展示组件，后续会将大部分的显示工作交给此组件 -->
+<!-- Rich text display component - most display work will be handled by this component later -->
 <template>
     <div v-html="editorContent"></div>
 </template>
@@ -13,15 +13,15 @@ const props = defineProps({
     }
 })
 
-const editorContent = ref('内容正在加载中...') // 初始化编辑器内容
+const editorContent = ref('Content is loading...') // Initialize editor content
 
 watch(
-    () => props.DATA_TOBE_DISPLAY, // 监听传入的DATA_TOBE_DISPLAY属性
+    () => props.DATA_TOBE_DISPLAY, // Watch the DATA_TOBE_DISPLAY prop
     newVal => {
         editorContent.value = `
         ${newVal.TITLE ? `<h2 style="text-align: center">${newVal.TITLE}</h2>` : ''}
-        ${newVal.CREATE_TIME ? `<p>【创建时间: ${newVal.CREATE_TIME}】</p>` : ''}
-        ${newVal.UPDATE_TIME ? `<p>【更新时间: ${newVal.UPDATE_TIME}】</p>` : ''}
+        ${newVal.CREATE_TIME ? `<p>【Created at: ${newVal.CREATE_TIME}】</p>` : ''}
+        ${newVal.UPDATE_TIME ? `<p>【Updated at: ${newVal.UPDATE_TIME}】</p>` : ''}
         ${newVal.CONTENT ? `<div style="text-indent: 2em">${newVal.CONTENT}</div>` : ''}
     `
     },

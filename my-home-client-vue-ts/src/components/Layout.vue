@@ -1,18 +1,18 @@
 <script setup>
-// 引入页脚组件
+// Import footer component
 import FooterCom from './footer/index.vue'
-// 引入菜单组件-用于代替更多功能组件
+// Import menu component - used to replace more functionality components
 import MenuCom from './../components/menu/index.vue'
 </script>
 
 <template>
     <el-row>
-        <!-- 一共有24份 -->
-        <!-- 左边留白 -->
+        <!-- Total of 24 columns -->
+        <!-- Left margin -->
         <el-col :span="1" style="background: white">
             <div class="grid-content" />
         </el-col>
-        <!-- 导航栏左侧-LOGO -->
+        <!-- Navigation bar left - LOGO -->
         <el-col :span="11" style="background: Beige">
             <div class="grid-content ep-bg-purple-dark my-home">
                 <router-link to="/">
@@ -20,20 +20,16 @@ import MenuCom from './../components/menu/index.vue'
                 </router-link>
             </div>
         </el-col>
-        <!-- 导航栏中心 -->
-        <!-- <el-col :span="4" style="background:Beige">
-      <div class="grid-content"><span class="my-search">搜索本站</span></div>
-    </el-col> -->
-        <!-- 导航栏右侧-存放下拉框，放入网站相关信息、功能 -->
+        <!-- Navigation bar right - All functions button -->
         <el-col :span="11" style="background: Beige">
             <div class="grid-content">
                 <span class="my-more">
-                    <!-- 菜单 -->
+                    <!-- Menu -->
                     <MenuCom />
                 </span>
             </div>
         </el-col>
-        <!-- 右边留白 -->
+        <!-- Right margin -->
         <el-col :span="1" style="background: Khaki2">
             <div class="grid-content" />
         </el-col>
@@ -44,18 +40,18 @@ import MenuCom from './../components/menu/index.vue'
         </el-col>
         <el-col :span="22" style="background: Cornsilk" class="content">
             <span class="my-content">
-                <!-- 主体内容 -->
+                <!-- Main content -->
                 <router-view></router-view>
             </span>
-            <!-- 存放主体内容 -->
+            <!-- Container for main content -->
             <div class="grid-content" />
         </el-col>
-        <!-- 右边留白 -->
+        <!-- Right margin -->
         <el-col :span="1" style="background: white" class="content">
             <div class="grid-content" />
         </el-col>
     </el-row>
-    <!-- 页脚开始 -->
+    <!-- Footer section -->
     <el-row>
         <el-col :span="1" style="background: white">
             <div class="grid-content" />
@@ -85,59 +81,59 @@ import MenuCom from './../components/menu/index.vue'
     min-height: 45px;
 }
 
-// 新增样式
+// New styles
 .content {
-    min-height: 100vb; // 使用min-height 以确保当内容超过视口高度时，元素能够扩展以适应内容。着需要其父元素的高度为100%
+    min-height: 100vb; // Using min-height to ensure element expands when content exceeds viewport height
 }
 
 .grid-content {
     display: flex;
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
 }
 
 .my-logo {
-    font-size: 100%; // 继承父元素的字体大小
+    font-size: 100%; // Inherit parent element's font size
     color: DarkRed;
 }
 
 .my-search {
-    font-size: 100%; // 继承父元素的字体大小
+    font-size: 100%; // Inherit parent element's font size
     color: DarkRed;
 }
 
 .my-more {
-    font-size: 100%; // 继承父元素的字体大小
+    font-size: 100%; // Inherit parent element's font size
     color: DarkRed;
 }
 
-// 消除超链接的默认属性
-/* 消除a标签的默认样式 */
+// Remove default link styling
+/* Remove default anchor tag styles */
 a {
-    text-decoration: none; /* 移除下划线 */
-    color: inherit; /* 继承父元素的文本颜色 */
-    /* 其他你想要重置的样式 */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit parent element's text color */
+    /* Other styles you want to reset */
 }
 
 a:hover,
 a:active,
 a:focus {
-    text-decoration: none; /* 移除鼠标悬停、激活和聚焦时的下划线 */
-    /* 其他你想要重置的样式 */
+    text-decoration: none; /* Remove underline on hover, active and focus states */
+    /* Other styles you want to reset */
 }
 
-/* 重新设置 hover 格式 */
+/* Redefine hover style */
 a:hover {
     /* border: 1px solid black; */
     border-bottom: 3px solid rgba(171, 4, 4, 0.941);
 }
-/* 隐藏全局滚动条 */
+/* Hide global scrollbar */
 ::-webkit-scrollbar {
-    display: none; /* 针对 Chrome、Safari 和 Opera */
+    display: none; /* For Chrome, Safari and Opera */
 }
 
 body {
-    -ms-overflow-style: none; /* 针对 IE 和 Edge */
-    scrollbar-width: none; /* 针对 Firefox */
+    -ms-overflow-style: none; /* For IE and Edge */
+    scrollbar-width: none; /* For Firefox */
 }
 </style>

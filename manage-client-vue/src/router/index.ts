@@ -6,15 +6,15 @@ import type { RouteRecordRaw } from 'vue-router/dist/vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('../views/Home.vue')
-
+    name: 'Login',
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/about',
     name: 'About',
     component: () => import('../views/About.vue')
-  }
+  },
+  
 ]
 
 const router = createRouter({

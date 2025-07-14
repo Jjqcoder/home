@@ -7,7 +7,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    // component: () => import('../views/Login.vue')
+
+    // 临时修改
+    component: () => import('../components/Layout/index.vue'),
   },
   {
     path: '/about',

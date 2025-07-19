@@ -44,6 +44,9 @@
                     <!-- <router-link to="/aboutWebsite">
                         <el-dropdown-item>🧑‍💻About This Site</el-dropdown-item>
                     </router-link> -->
+                    <router-link to="/portfolio">
+                        <el-dropdown-item>📚Portfolio</el-dropdown-item>
+                    </router-link>
                     <router-link to="/about">
                         <el-dropdown-item>🤟About Me</el-dropdown-item>
                     </router-link>

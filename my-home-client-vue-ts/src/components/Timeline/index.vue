@@ -41,6 +41,12 @@ const activities = [
         icon: MoreFilled
     },
     {
+        content: '🐧Introducing 「Portfolio」',
+        timestamp: '🗓️July 19, 2025',
+        type: 'primary',
+        hollow: true
+    },
+    {
         content: '🌞Decide on 「Vue + Nest」 as the technical stack for the admin side.',
         timestamp: '🗓️July 5, 2025',
         type: 'primary',

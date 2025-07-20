@@ -165,8 +165,7 @@ function startConfetti(card, idx) {
   const particles = Array.from({ length: 20 }, () => new Particle(canvas))
 
   function animate() {
-    canvas.getContext('2d').fillStyle = 'rgba(255, 255, 255, 0.2)'
-    canvas.getContext('2d').fillRect(0, 0, canvas.width, canvas.height)
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     
     particles.forEach(p => {
       p.update()
@@ -206,7 +205,6 @@ onBeforeUnmount(() => {
 .portfolio {
   padding: 4rem 2rem;
   min-height: 100vh;
-  background: rgb(245, 245, 220);
   font-family: 'Segoe UI', sans-serif;
 }
 

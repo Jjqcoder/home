@@ -25,6 +25,12 @@ services:
     # 资源限制配置（已修改为兼容格式）
     mem_limit: 1G  # 限制内存使用为1GB（替代原deploy.resources.limits.memory）
     memswap_limit: 1.5G  # 限制交换内存为1.5GB（替代原memory_swap）
+    healthcheck:  # 添加健康检查配置
+      test: ["CMD", "curl", "-f", "http://localhost"]  # 检查本地80端口是否响应
+      interval: 30s  # 每30秒检查一次
+      timeout: 10s  # 超时时间为10秒
+      retries: 3  # 重试3次后才标记为不健康
+      start_period: 5s  # 容器启动后5秒开始检查
     logging:
       driver: "json-file"  # 使用json-file日志驱动
       options:

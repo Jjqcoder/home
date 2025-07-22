@@ -313,4 +313,60 @@ onBeforeUnmount(() => {
   z-index: 1;
   border-radius: 12px;
 }
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 2rem 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    height: 200px;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .links {
+    gap: 1rem;
+  }
+  
+  .link {
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .techs {
+    margin-bottom: 1rem;
+  }
+  
+  .tech {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+}
 </style>

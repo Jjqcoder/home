@@ -4,20 +4,17 @@ FROM nginx:latest
 # 设置时区
 ENV TZ=Asia/Shanghai
 
-# 创建必要的目录
+# 创建证书目录
 RUN mkdir -p /etc/nginx/cert
 
 # 复制nginx配置文件
 COPY myNginxConf/nginx.conf /etc/nginx/nginx.conf
 
-# 复制证书文件（如果有）
+# 复制SSL证书文件（生产环境必须预先准备好）
 COPY myNginxConf/cert/ /etc/nginx/cert/
 
-# 复制应用文件
+# 复制前端构建产物
 COPY dist/ /usr/share/nginx/html/
-
-# 复制package.json
-COPY package.json /usr/share/nginx/html/package.json
 
 # 复制入口脚本并设置可执行权限
 COPY docker-entrypoint.sh /docker-entrypoint.sh

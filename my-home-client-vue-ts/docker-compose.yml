@@ -4,26 +4,23 @@ services:
   web:
     build: .  # 使用当前目录下的Dockerfile构建镜像
     container_name: my-home-client-vue-ts
-    restart: always
+    restart: always  # 异常退出时自动重启
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:80"     # HTTP端口
+      - "443:443"   # HTTPS端口
+    environment:
+      - TZ=Asia/Shanghai  # 时区设置
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 5s
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
+    # 资源限制
     mem_limit: 1G
     memswap_limit: 1.5G
-    volumes:
-      # 仅挂载需要动态修改的内容
-      - ./myNginxConf/nginx.conf:/etc/nginx/nginx.conf
-      - ./myNginxConf/cert:/etc/nginx/cert
-      - ./dist:/usr/share/nginx/html
-      - ./package.json:/usr/share/nginx/html/package.json
+    # 注意：生产环境不挂载任何卷！

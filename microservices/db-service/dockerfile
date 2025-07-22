@@ -1,0 +1,14 @@
+FROM node:18-alpine
+
+WORKDIR /usr/src/app
+
+# Set npm registry to Taobao mirror for China
+RUN npm config set registry https://registry.npmmirror.com
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]

@@ -21,30 +21,11 @@ engineType    = "binary"// 使用本地编译的二进制查询引擎（.node �
 
 ## 部署方式
 
-1. 拉取`node`镜像
-
-```sh
-sudo docker pull node:18-alpine
-```
-
-2. 创建容器并运行
 > 注：cpu核心数【--cpus】不能超出服务器cpu核心数，否则会报错
-```sh
-sudo docker run -d \
-  --cpus=2 \
-  --memory=1G --memory-swap=1.5G \
-  --log-opt max-size=10m \
-  --log-opt max-file=3 \
-  -e TZ=Asia/Shanghai \
-  --restart=always \
-  --name db-service \
-  -v /myProject/db-service:/usr/src/app \
-  -w /usr/src/app \
-  node:18-alpine \
-  sh -c "npm install && npm run start"
-```
 
-3. 将文件上传到`/myProject/db-service`即可
+1. 打包：`pnpm build`
+2. 项目上传服务器，项目根目录下执行`docker-compose down --rmi all -v`
+3. 执行`docker-compose up -d`
 
 ## 引入ts
 - 开发环境

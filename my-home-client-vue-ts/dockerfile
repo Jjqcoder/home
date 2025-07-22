@@ -1,0 +1,32 @@
+# 使用官方nginx镜像作为基础
+FROM nginx:latest
+
+# 设置时区
+ENV TZ=Asia/Shanghai
+
+# 创建必要的目录
+RUN mkdir -p /etc/nginx/cert
+
+# 复制nginx配置文件
+COPY myNginxConf/nginx.conf /etc/nginx/nginx.conf
+
+# 复制证书文件（如果有）
+COPY myNginxConf/cert/ /etc/nginx/cert/
+
+# 复制应用文件
+COPY dist/ /usr/share/nginx/html/
+
+# 复制package.json
+COPY package.json /usr/share/nginx/html/package.json
+
+# 复制入口脚本并设置可执行权限
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
+# 暴露端口
+EXPOSE 80
+EXPOSE 443
+
+# 设置入口点和默认命令
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]

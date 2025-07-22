@@ -13,3 +13,9 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep node"]  # 检查node进程是否存在
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

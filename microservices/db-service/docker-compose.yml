@@ -16,3 +16,8 @@ services:
         max-file: '3'
     volumes:
       - ./:/usr/src/app
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f \"npm run start\" || exit 1"]
+      interval: 30s
+      timeout: 3s
+      retries: 3

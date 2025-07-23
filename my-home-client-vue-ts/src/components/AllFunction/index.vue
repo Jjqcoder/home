@@ -29,9 +29,9 @@
                         <el-dropdown-item>🔢View Data</el-dropdown-item>
                     </router-link>
                     <!-- Go to Admin Panel (Visitor Mode coming soon – experience limited backend functionality.) -->
-                    <!-- <a href="http://wbeishangw.top:81/" target="_blank">
-                        <el-dropdown-item>🎛️Admin Panel</el-dropdown-item>
-                    </a> -->
+                    <a href="https://wbeishangw.top:444" target="_blank">
+                        <el-dropdown-item>🎛️Admin Panel <span style="margin-left:4px; font-size:13px; color:#666">↗</span></el-dropdown-item>
+                    </a>
                     <router-link to="/version">
                         <el-dropdown-item>👓View Version</el-dropdown-item>
                     </router-link>

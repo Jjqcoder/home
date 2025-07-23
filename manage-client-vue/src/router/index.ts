@@ -1,16 +1,17 @@
 // src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteRecordRaw } from 'vue-router/dist/vue-router'
+// import type { RouteRecordRaw } from 'vue-router/dist/vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 // 定义路由组件
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Login',
-    // component: () => import('../views/Login.vue')
+    component: () => import('../views/Login.vue')
 
     // 临时修改
-    component: () => import('../components/Layout/index.vue'),
+    // component: () => import('../components/Layout/index.vue'),
   },
   {
     path: '/about',

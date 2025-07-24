@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+.git
+.vscode
+# dist文件需要保留，除非打包阶段被放在构建阶段
+# dist
+*.log
+# .env需要允许被复制进容器
+# .env

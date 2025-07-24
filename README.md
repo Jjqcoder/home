@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./markdown_media/home.png" alt="Home" style="width:30%; height:auto;">
+    <img src="./markdown-media/home.png" alt="Home" style="width:30%; height:auto;">
 </div>
 
 <h1 align="center">HOME🏠</h1>
@@ -25,43 +25,43 @@
 <div align="center">
     <div>
         <h4>过渡页</h4>
-        <img src="./markdown_media/项目运行图片/init.png" alt="过渡页" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/init.png" alt="过渡页" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>时间线</h4>
-        <img src="./markdown_media/项目运行图片/timeline.jpeg" alt="时间线" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/timeline.jpeg" alt="时间线" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>博客列表</h4>
-        <img src="./markdown_media/项目运行图片/blogs.jpeg" alt="博客列表" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/blogs.jpeg" alt="博客列表" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>博客</h4>
-        <img src="./markdown_media/项目运行图片/blogDetail.jpeg" alt="博客" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/blogDetail.jpeg" alt="博客" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>英语学习</h4>
-        <img src="./markdown_media/项目运行图片/english.jpeg" alt="英语学习" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/english.jpeg" alt="英语学习" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>沉浸式英语学习</h4>
-        <img src="./markdown_media/项目运行图片/englishImmersive.png" alt="沉浸式英语学习" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/englishImmersive.png" alt="沉浸式英语学习" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>天气查询</h4>
-        <img src="./markdown_media/项目运行图片/weather.jpeg" alt="天气查询" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/weather.jpeg" alt="天气查询" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>访客统计</h4>
-        <img src="./markdown_media/项目运行图片/visit.jpeg" alt="访客统计" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/visit.jpeg" alt="访客统计" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>版本页</h4>
-        <img src="./markdown_media/项目运行图片/version.jpeg" alt="版本页" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/version.jpeg" alt="版本页" style="width:100%; height:auto;">
     </div>
     <div>
         <h4>关于</h4>
-        <img src="./markdown_media/项目运行图片/about.jpeg" alt="关于" style="width:100%; height:auto;">
+        <img src="./markdown-media/项目运行图片/about.jpeg" alt="关于" style="width:100%; height:auto;">
     </div>
 </div>
 

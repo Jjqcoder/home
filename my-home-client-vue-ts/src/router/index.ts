@@ -77,6 +77,10 @@ const routes = [
                 path: '/portfolio',
                 name: 'portfolio',
                 component: () => import('../components/Portfolio/index.vue')
+            },{
+                path: '/supportMe',
+                name: 'supportMe',
+                component: () => import('../components/SupportMe/index.vue')
             },
             {
                 path: '/:pathMatch(.*)*', // 捕获所有路径

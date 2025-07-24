@@ -50,6 +50,9 @@
                     <router-link to="/about">
                         <el-dropdown-item>🤟About Me</el-dropdown-item>
                     </router-link>
+                    <router-link to="/supportMe">
+                        <el-dropdown-item>😮Support Me</el-dropdown-item>
+                    </router-link>
                 </el-dropdown-menu>
             </template>
         </el-dropdown>

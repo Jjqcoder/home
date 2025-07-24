@@ -40,6 +40,14 @@ const activities = [
         type: 'primary',
         icon: MoreFilled
     },
+    /* Temporarily not to be disclosed start */
+    {
+        content: '☺️Officially begin refactoring the project using the BFF architecture.',
+        timestamp: '🗓️July 24, 2025',
+        type: 'primary',
+        hollow: true
+    },
+    /* Temporarily not to be disclosed end */
     {
         content: '🐧Introducing 「Portfolio」',
         timestamp: '🗓️July 19, 2025',

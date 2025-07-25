@@ -5,7 +5,10 @@
 <h1 align="center">HOME🏠</h1>
 
 <h2 align="center">
-    <a href="https://www.wbeishangw.top/" target="_blank" rel="noopener noreferrer">在线预览</a>
+    <a href="https://www.wbeishangw.top/" target="_blank" rel="noopener noreferrer">在线预览🤳</a>
+    <br/>
+    <br/>
+    <a href="https://juejin.cn/column/7530897270038528050" target="_blank" rel="noopener noreferrer">本项目配套文章专栏📚</a>
 </h2>
 
 ## 项目简介

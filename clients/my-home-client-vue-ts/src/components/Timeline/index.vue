@@ -42,6 +42,12 @@ const activities = [
     },
     /* Temporarily not to be disclosed start */
     {
+        content: '❤️‍🔥Create a Juejin blog column with the same name as the project, a fire burns in my heart.',
+        timestamp: '🗓️July 26, 2025',
+        type: 'primary',
+        hollow: true
+    },
+    {
         content: '☺️Officially begin refactoring the project using the BFF architecture.',
         timestamp: '🗓️July 24, 2025',
         type: 'primary',

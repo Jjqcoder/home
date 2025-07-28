@@ -11,7 +11,7 @@
 
 1. 编译：`pnpm build`
 2. 项目上传服务器，根目录下执行`docker-compose down --rmi all -v`
-3. 执行`docker-compose up -d`
+3. 执行`docker compose up --build -d`
 
 ## 其他
 -   项目结构参考`PROJECT-STRUCTURE.md`——在项目根目录下执行 `node generate-structure.js` 即可生成。此命令已经集成进`pnpm dev`

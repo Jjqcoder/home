@@ -1,0 +1,41 @@
+services:
+  # 主站项目
+  home-client:
+    build: ./clients/my-home-client-vue-ts
+    container_name: my-home-client-vue-ts
+    ports:
+      - "80:80"      # HTTP端口
+      - "443:443"    # HTTPS端口
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1G
+    memswap_limit: 1.5G
+
+  # 管理端项目
+  manage-client:
+    build: ./clients/manage-client-vue
+    container_name: manage-client-vue
+    ports:
+      - "81:81"     # 管理端使用81端口
+      - "444:444"    # 管理端使用444端口
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1G
+    memswap_limit: 1.5G

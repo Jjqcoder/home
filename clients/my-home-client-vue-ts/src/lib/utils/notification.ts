@@ -181,9 +181,12 @@ export class Notification {
      * 设置自动关闭
      */
     setupAutoClose() {
-        this.timeoutIds.push(setTimeout(() => {
+        // 当 duration <= 0 时不自动关闭
+        if (this.options.autoClose && this.options.duration > 0) {
+            this.timeoutIds.push(setTimeout(() => {
             this.hide();
-        }, this.options.duration));
+            }, this.options.duration));
+        }
     }
 }
 
@@ -220,4 +223,10 @@ export class Notification {
 //     };
 //     document.addEventListener('click', handler);
 // };
+
+// 永久显示（自动关闭为false 或 duration <= 0）
+// new Notification({
+//   content: '永久公告',
+//   autoClose: false, // 或 duration: 0
+// }).show();
 /* 使用示例结束 */

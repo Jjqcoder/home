@@ -1,1 +1,46 @@
-node_modules
+# 忽略node_modules目录（构建产物在dist里，不需要源码依赖）
+node_modules/
+
+# 忽略git相关文件
+.git/
+.gitignore
+
+# 忽略Docker相关文件（避免自身被复制）
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.*.yml
+
+# 忽略环境变量文件（如.env、.env.local等）
+.env
+.env.*
+!.env.sample
+
+# 忽略开发工具文件
+.vscode/
+.idea/
+
+# 忽略日志和缓存
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/
+.cache/
+dist-ssr/
+
+# 忽略测试和文档
+coverage/
+*.test.js
+*.spec.js
+tests/
+docs/
+PROJECT-STRUCTURE.md
+README.md
+
+# 忽略构建工具和配置文件
+vite.config.js
+stats.html
+generate-structure.js
+.nvmrc

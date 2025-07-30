@@ -1,0 +1,23 @@
+# 忽略所有源码和开发相关文件
+src/
+.vscode/
+node_modules/
+public/
+
+# 忽略构建工具和配置文件（除了明确用到的）
+*.json
+vite.config.ts
+tsconfig*.json
+dockerfile
+.dockerignore
+.gitignore
+README.md
+
+# 忽略版本控制
+.git/
+.gitattributes
+
+# 忽略日志和缓存
+*.log
+.pnpm-debug.log*
+pnpm-lock.yaml

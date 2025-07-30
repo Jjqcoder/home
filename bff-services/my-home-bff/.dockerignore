@@ -1,9 +1,39 @@
-node_modules
-.DS_Store
-.git
-.vscode
-# dist文件需要保留，除非打包阶段被放在构建阶段
-# dist
-*.log
-# .env需要允许被复制进容器
+# 忽略 node_modules 目录
+node_modules/
+
+# 忽略编译后的文件
+# dist/
+
+# 忽略编辑器配置文件
+.vscode/
+
+# 忽略环境配置文件
 # .env
+
+# 忽略 Docker 本身的配置文件
+.dockerignore
+
+# 忽略本地的 .git 配置
+.git/
+
+# 忽略日志文件
+logs/
+
+# 忽略测试目录
+test/
+
+# 忽略临时文件和编译文件
+*.log
+*.tmp
+*.tgz
+*.zip
+
+# 忽略 IDE 配置文件
+.idea/
+*.iml
+
+# 其他
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

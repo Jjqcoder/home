@@ -1,0 +1,31 @@
+# 此文件用于本地测试
+services:
+  
+  # 博客专用MySQL服务开始 #
+  blog-mysql:
+    image: mysql:8.0
+    container_name: blog-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - TZ=Asia/Shanghai
+    volumes:
+      - blog-mysql-data:/var/lib/mysql
+      # - ./mysql/conf.d:/etc/mysql/conf.d  # 暂时不对配置信息进行修改
+      - ./init-sql:/docker-entrypoint-initdb.d  # 添加初始化脚本目录
+    ports:
+      - "3306:3306"  # 如果需要外部访问可以保留，否则可以去掉
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    mem_limit: 512m
+    memswap_limit: 1g
+  # 博客专用MySQL服务结束 #
+
+volumes:
+  blog-mysql-data:  # 定义数据卷用于持久化MySQL数据

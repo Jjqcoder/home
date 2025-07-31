@@ -1,4 +1,9 @@
 # 此文件用于本地测试
+# 如何执行此docker-compose?
+# 创建容器
+# docker compose -f docker-compose-dev.yml up --build -d
+# 清理容器
+# docker-compose -f docker-compose-dev.yml down --rmi all -v
 services:
   
   # 博客专用MySQL服务开始 #

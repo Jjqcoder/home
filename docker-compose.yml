@@ -1,93 +1,5 @@
 services:
-  # 主站项目开始 #
-  home-client:
-    build: ./clients/my-home-client-vue-ts
-    container_name: my-home-client-vue-ts
-    ports:
-      - "80:80"      # HTTP端口
-      - "443:443"    # HTTPS端口
-    restart: always
-    environment:
-      - TZ=Asia/Shanghai
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    mem_limit: 1G
-    memswap_limit: 1.5G
-  # 主站项目结束 #
-
-  # 管理端项目开始 #
-  manage-client:
-    build: ./clients/manage-client-vue
-    container_name: manage-client-vue
-    ports:
-      - "81:81"     # 管理端使用81端口
-      - "444:444"    # 管理端使用444端口
-    restart: unless-stopped
-    environment:
-      - TZ=Asia/Shanghai
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    mem_limit: 1G
-    memswap_limit: 1.5G
-  # 管理端项目结束 #
-
-  # 主站BFF层开始 #
-  my-home-bff:
-    build: ./bff-services/my-home-bff
-    container_name: my-home-bff
-    ports:
-      - "8080:8080"
-    healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health | grep -q ok"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-  # 主站BFF层结束 #
-
-  # 管理端BFF层开始 #
-  manage-bff:
-    build: ./bff-services/manage-bff
-    container_name: manage-bff
-    ports:
-      - "8081:8081"
-    healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8081/health | grep -q ok"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-  # 管理端BFF层结束 #
-
-  # 博客微服务开始 #
-  blog-service:
-    build: ./microservices/blog-service
-    container_name: blog-service
-    ports:
-      - "8082:8082"
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-    depends_on:
-      - blog-mysql
-    healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8082/health | grep -q ok"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-  # 博客微服务结束 #
+  
 
   # 博客专用MySQL服务开始 #
   blog-mysql:
@@ -101,7 +13,8 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - blog-mysql-data:/var/lib/mysql
-      - ./mysql/conf.d:/etc/mysql/conf.d  # 可选：自定义配置
+      # - ./mysql/conf.d:/etc/mysql/conf.d  # 暂时不对配置信息进行修改
+      - ./init-sql:/docker-entrypoint-initdb.d  # 添加初始化脚本目录
     ports:
       - "3306:3306"  # 如果需要外部访问可以保留，否则可以去掉
     healthcheck:

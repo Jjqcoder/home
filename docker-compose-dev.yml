@@ -5,32 +5,53 @@
 # 清理容器
 # docker-compose -f docker-compose-dev.yml down --rmi all -v
 services:
+
+# 管理端项目开始 #
+  manage-client:
+    build:
+      context: ./clients/manage-client-vue
+      dockerfile: dockerfile-dev  # 指定使用开发版 dockerfile
+    container_name: manage-client-vue
+    ports:
+      - "81:81"     # 管理端使用81端口
+      - "444:444"    # 管理端使用444端口
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1G
+    memswap_limit: 1.5G
+  # 管理端项目结束 #
   
   # 博客专用MySQL服务开始 #
-  blog-mysql:
-    image: mysql:8.0
-    container_name: blog-mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - TZ=Asia/Shanghai
-    volumes:
-      - blog-mysql-data:/var/lib/mysql
-      # - ./mysql/conf.d:/etc/mysql/conf.d  # 暂时不对配置信息进行修改
-      - ./init-sql:/docker-entrypoint-initdb.d  # 添加初始化脚本目录
-    ports:
-      - "3306:3306"  # 如果需要外部访问可以保留，否则可以去掉
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-    restart: unless-stopped
-    mem_limit: 512m
-    memswap_limit: 1g
+  # blog-mysql:
+  #   image: mysql:8.0
+  #   container_name: blog-mysql
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  #     - MYSQL_DATABASE=${MYSQL_DATABASE}
+  #     - MYSQL_USER=${MYSQL_USER}
+  #     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  #     - TZ=Asia/Shanghai
+  #   volumes:
+  #     - blog-mysql-data:/var/lib/mysql
+  #     # - ./mysql/conf.d:/etc/mysql/conf.d  # 暂时不对配置信息进行修改
+  #     - ./init-sql:/docker-entrypoint-initdb.d  # 添加初始化脚本目录
+  #   ports:
+  #     - "3306:3306"  # 如果需要外部访问可以保留，否则可以去掉
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 3
+  #   restart: unless-stopped
+  #   mem_limit: 512m
+  #   memswap_limit: 1g
   # 博客专用MySQL服务结束 #
 
-volumes:
-  blog-mysql-data:  # 定义数据卷用于持久化MySQL数据
+# volumes:
+  # blog-mysql-data:  # 定义数据卷用于持久化MySQL数据

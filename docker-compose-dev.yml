@@ -52,6 +52,36 @@ services:
     mem_limit: 1G
     memswap_limit: 1.5G
   # 管理端项目结束 #
+
+  # 主站BFF层开始 #
+  my-home-bff:
+    build:
+      context: ./bff-services/my-home-bff
+      dockerfile: dockerfile-dev  # 指定使用开发版 dockerfile
+    container_name: my-home-bff
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health | grep -q ok"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  # 主站BFF层结束 #
+
+  # 管理端BFF层开始 #
+  manage-bff:
+    build:
+      context: ./bff-services/manage-bff
+      dockerfile: dockerfile-dev  # 指定使用开发版 dockerfile
+    container_name: manage-bff
+    ports:
+      - "8081:8081"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8081/health | grep -q ok"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  # 管理端BFF层结束 #
   
   # 博客专用MySQL服务开始 #
   # blog-mysql:

@@ -3,7 +3,7 @@
 USE `my_blog_db`;
 
 -- 创建文章表
-CREATE TABLE IF NOT EXISTS `posts` (
+CREATE TABLE IF NOT EXISTS `blogs` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `title` VARCHAR(255) NOT NULL,
   `content` TEXT,
@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 可选：插入初始数据
-INSERT IGNORE INTO `posts` (`title`, `content`, `author`) VALUES
+INSERT IGNORE INTO `blogs` (`title`, `content`, `author`) VALUES
 ('欢迎来到我的博客', '这是我的第一篇博客文章', '管理员');

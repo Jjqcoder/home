@@ -3,6 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+/* 引入Blog模块开始 */
+import { BlogModule } from './blog/blog.module';
+/* 引入Blog模块结束 */
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -26,7 +29,7 @@ import { HealthModule } from './health/health.module';
         autoLoadEntities: true,
       }),
       inject: [ConfigService],
-    }), HealthModule,
+    }), HealthModule,BlogModule,
     /* typeorm end */
   ],
   controllers: [AppController],

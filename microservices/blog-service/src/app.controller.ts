@@ -8,9 +8,9 @@ export class AppController {
   @Get()
   async getHello(): Promise<string> {
     /* get blog data start */
-    // console.log(await this.appService.testBlogTable());
-    console.log('hello');
-    
+    console.log('typeorm test start');
+    console.log(await this.appService.testBlogTable());
+    console.log('typeorm test end');
     
     /* get blog data end */
     return this.appService.getHello();

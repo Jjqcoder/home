@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
   imports: [
     /* config start */
-    // ConfigModule.forRoot(), // 加载.env文件
+    ConfigModule.forRoot(), // 加载.env文件
     /* config end */
 
     /* typeorm start */

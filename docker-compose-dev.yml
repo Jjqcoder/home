@@ -6,7 +6,33 @@
 # docker-compose -f docker-compose-dev.yml down --rmi all -v
 services:
 
-# 管理端项目开始 #
+# 主站项目开始 #
+  home-client:
+    build:
+      context: ./clients/my-home-client-vue-ts
+      dockerfile: dockerfile-dev  # 指定使用开发版 dockerfile
+    container_name: my-home-client-vue-ts
+    ports:
+      - "80:80"      # HTTP端口
+      - "443:443"    # HTTPS端口
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    mem_limit: 1G
+    memswap_limit: 1.5G
+  # 主站项目结束 #
+
+  # 管理端项目开始 #
   manage-client:
     build:
       context: ./clients/manage-client-vue

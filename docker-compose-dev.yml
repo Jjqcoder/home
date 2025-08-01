@@ -1,9 +1,18 @@
 # 此文件用于本地测试
 # 如何执行此docker-compose?
+### 完全不受之前构建的做法开始 ###
+# ⚠️注意，不要在服务器频繁删除、拉取镜像。如果服务器性能不佳，这会是很耗时的操作！！
 # 创建容器
 # docker compose -f docker-compose-dev.yml up --build -d
 # 清理容器
 # docker-compose -f docker-compose-dev.yml down --rmi all -v
+### 完全不受之前构建的做法结束 ###
+
+### 仅清理容器（删除数据卷、保留镜像），强制重新构建并启动（仅构建变更部分）开始 ###
+# docker-compose -f docker-compose-dev.yml down -v
+# docker compose -f docker-compose-dev.yml up --build -d
+### 仅清理容器（保留镜像），强制重新构建并启动（仅构建变更部分）结束 ###
+
 services:
 
 # 主站项目开始 #
@@ -82,32 +91,55 @@ services:
       timeout: 10s
       retries: 3
   # 管理端BFF层结束 #
+
+  # 博客微服务开始 #
+  blog-service:
+    build:
+      context: ./microservices/blog-service
+      dockerfile: dockerfile-dev  # 指定使用开发版 dockerfile
+    container_name: blog-service
+    ports:
+      - "8082:8082"
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    depends_on:
+      - blog-mysql
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8082/health | grep -q ok"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  # 博客微服务结束 #
   
   # 博客专用MySQL服务开始 #
-  # blog-mysql:
-  #   image: mysql:8.0
-  #   container_name: blog-mysql
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-  #     - MYSQL_DATABASE=${MYSQL_DATABASE}
-  #     - MYSQL_USER=${MYSQL_USER}
-  #     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-  #     - TZ=Asia/Shanghai
-  #   volumes:
-  #     - blog-mysql-data:/var/lib/mysql
-  #     # - ./mysql/conf.d:/etc/mysql/conf.d  # 暂时不对配置信息进行修改
-  #     - ./init-sql:/docker-entrypoint-initdb.d  # 添加初始化脚本目录
-  #   ports:
-  #     - "3306:3306"  # 如果需要外部访问可以保留，否则可以去掉
-  #   healthcheck:
-  #     test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 3
-  #   restart: unless-stopped
-  #   mem_limit: 512m
-  #   memswap_limit: 1g
+  blog-mysql:
+    image: mysql:8.0-debian  # 约 150MB
+    container_name: blog-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - TZ=Asia/Shanghai
+    volumes:
+      - blog-mysql-data:/var/lib/mysql
+      # - ./mysql/conf.d:/etc/mysql/conf.d  # 暂时不对配置信息进行修改
+      - ./init-sql:/docker-entrypoint-initdb.d  # 添加初始化脚本目录
+    ports:
+      - "3306:3306"  # 如果需要外部访问可以保留，否则可以去掉
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    mem_limit: 512m
+    memswap_limit: 1g
   # 博客专用MySQL服务结束 #
 
-# volumes:
-  # blog-mysql-data:  # 定义数据卷用于持久化MySQL数据
+volumes:
+  blog-mysql-data:  # 定义数据卷用于持久化MySQL数据

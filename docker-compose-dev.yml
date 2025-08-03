@@ -77,7 +77,7 @@ services:
     ports:
       - "8080:8080"
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health | grep -q ok"]
+      test: ["CMD-SHELL", "wget -q -O - http://localhost:8080/health | grep -q '\"status\":\"ok\"'"]
       interval: 30s
       timeout: 10s
       retries: 3

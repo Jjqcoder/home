@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -25,6 +26,8 @@ import { AppService } from './app.service';
     //   inject: [ConfigService],
     // }), HealthModule,
     /* typeorm end */
+    // 引入健康检查
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

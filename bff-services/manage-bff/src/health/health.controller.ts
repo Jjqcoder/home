@@ -8,9 +8,6 @@ export class HealthController {
   @Get()
   @HealthCheck()
   check() {
-    return this.health.check([
-      // 可以添加其他健康指标，例如：
-      // () => this.db.pingCheck('database'),
-    ]);
+    return this.health.check([]);
   }
 }
